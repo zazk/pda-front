@@ -161,11 +161,8 @@
 						</h4>
 						<div class="row">
 							<div class="col-xs-8 col-sm-11">
-								<div class="input-group">
-									<input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" size="10" />
-									<span class="input-group-addon">
-										<i class="fa fa-calendar bigger-110"></i>
-									</span>
+								<div class="input-group" id="datepicker">
+									<input class="form-control date-picker" type="hidden" id="my_hidden_input" data-date-format="dd-mm-yyyy" />
 								</div>
 							</div>
 						</div>
@@ -246,6 +243,12 @@
 					$(this).prev().focus();
 				});
 			
+			$('#datepicker').datepicker();
+$('#datepicker').on('changeDate', function() {
+    $('#my_hidden_input').val(
+        $('#datepicker').datepicker('getFormattedDate')
+    );
+});
 		</script>
 	</body>
 </html>
