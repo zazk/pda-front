@@ -10,7 +10,6 @@
 
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="assets/css/chosen.min.css" />
 		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 		<!-- text fonts -->
@@ -48,7 +47,8 @@
 	    </div>	    
 		<!-- menu responsive	 -->
     <div class="cnt-wrapper">
-        <div class="wrapper">				
+        <div class="wrapper">
+
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 				<div class="navbar-container ace-save-state" id="navbar-container">
 					<div class="navbar-header pull-left">
@@ -115,78 +115,36 @@
 						<ul class="breadcrumb menu-list">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">Panel</a>
-							</li>
-							<li class="active">
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">
-									Ingreso
-								</a>
-							</li>
-							<li >
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">
-									Fichas
-								</a>
-							</li>
-							<li >
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="ss10.html">
-									Pagos
-								</a>
+								<a href="ctrl_home.html">Home</a>
 							</li>
 						</ul><!-- /.breadcrumb -->
 				</div>
 			</div>
 			<div class="container ">
-				<h3 class="header green vert-offset-top-2">Revisar Fichas Pendientes</h3>
-				<div class="vert-offset-top-5 wancho-medium">
-					<div class="row vert-offset-bottom-1" >
-						<div class="col-xs-2">
-							<label for="form-field-select-3">Ruta</label>
-						</div>				
-						<div class="col-xs-10">
-							<select class="chosen-select form-control">
-								<option value="cusco">Cusco</option>
-								<option value="tacna">Tacna</option>
-								<option value="arequipa">Arequipa</option>
-								<option value="moquegua">Moquegua</option>
-								<option value="ilo">Ilo</option>
-								<option value="cajamarca">Cajamarca</option>
-								
-							</select>							
-						</div>		
-					</div>					
+				<h3 class="header green vert-offset-top-2">Revisar Datos</h3>
+				<div class="wancho-medium">
+					<h3 class="vert-offset-top-2 header smaller lighter blue">Operador: Peru Travel &nbsp;&nbsp;|&nbsp;&nbsp; Grupo Nro. 000196-MAPI &nbsp;&nbsp;|&nbsp;&nbsp; 12 junio 2018</h3>
 					<div class="table-header">
-						Fichas
+						6 visitantes ingresados
 					</div>	
 					<div>
 						<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>
-										<i class="ace-icon fa fa-files-o"></i> 
-										Ficha Nro.
+										<i class="ace-icon fa fa-bolt"></i>
+										Item
 									</th>
 									<th>
-										<i class="ace-icon fa fa-money"></i>
-										Monto
+										<i class="ace-icon fa fa-user"></i>
+										Nombres y Apellidos
 									</th>
 									<th>
-										<i class="ace-icon fa fa-users"></i>
-										Pasajeros
+										<i class="ace-icon fa file-o"></i>
+										DNI
 									</th>
 									<th>
-										<i class="ace-icon fa fa-calendar"></i>
-										Fecha
-									</th>
-									<th>
-										Acción
+										Estado
 									</th>
 								</tr>
 							</thead>
@@ -194,105 +152,110 @@
 							<tbody>
 								<tr>
 									<td>
-										0023
+										1
 									</td>
 									<td>
-										200.00
+										Juan Perez Maldonado
 									</td>
 									<td>
-										10
+										88445454
 									</td>
 									<td>
-										12 junio 2018
-									</td>
-									<td>
-										<a class="btn btn-primary btn-sm" href="ss12.html">
-											<i class="ace-icon fa fa-eye"></i>Ver
-										</a>
+										<span class="label label-success arrowed">Verificado</span>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										0023
+										2
 									</td>
 									<td>
-										200.00
+										Enrique Lucio Juan
 									</td>
 									<td>
-										10
+										88445454
 									</td>
 									<td>
-										12 junio 2018
-									</td>
-									<td>
-										<a class="btn btn-primary btn-sm">
-											<i class="ace-icon fa fa-eye"></i>Ver
-										</a>
+										<span class="label label-danger arrowed">No Verificado</span>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										0023
+										3
 									</td>
 									<td>
-										200.00
+										Juan Perez Maldonado
 									</td>
 									<td>
-										10
+										88445454
 									</td>
 									<td>
-										12 junio 2018
-									</td>
-									<td>
-										<a class="btn btn-primary btn-sm">
-											<i class="ace-icon fa fa-eye"></i>Ver
-										</a>
+										<span class="label label-success arrowed">Verificado</span>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										0023
+										4
 									</td>
 									<td>
-										200.00
+										Juan Perez Maldonado
 									</td>
 									<td>
-										10
+										88445454
 									</td>
 									<td>
-										12 junio 2018
-									</td>
-									<td>
-										<a class="btn btn-primary btn-sm">
-											<i class="ace-icon fa fa-eye"></i>Ver
-										</a>
+										<span class="label label-success arrowed">Verificado</span>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										0023
+										5
 									</td>
 									<td>
-										200.00
+										Enrique Lucio Juan
 									</td>
 									<td>
-										10
+										88445454
 									</td>
 									<td>
-										12 junio 2018
+										<span class="label label-danger arrowed">No Verificado</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										6
 									</td>
 									<td>
-										<a class="btn btn-primary btn-sm">
-											<i class="ace-icon fa fa-eye"></i>Ver
-										</a>
+										Juan Perez Maldonado
 									</td>
+									<td>
+										88445454
+									</td>
+									<td>
+										<span class="label label-success arrowed">Verificado</span>
+									</td>
+								</tr>
+								<tr>
+									 <td class="p10" colspan="3">
+										<form action="" class="form-horizontal">
+											<div class="form-group">
+
+											<div class="col-sm-9">
+												<input type="file" id="id-input-file-2" />
+											</div>
+											
+											</div>
+									</form>
+									 </td>
 								</tr>
 							</tbody>
 						</table>
-					</div>								
+						
+					</div>		
+					<div class="text-center">
+						<button class="btn btn-warning" onclick="window.location.href='ctrl_home.html'">Cancelar</button>
+						<button class="btn btn-success" onclick="window.location.href='ctrl_home.html'">Finalizar verificacion</button>
+					</div>							
 				</div>
-
-
 			</div>
 		</div><!-- /.main-container -->
 		</div>
@@ -311,7 +274,7 @@
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/chosen.jquery.min.js"></script>
+
 		<!-- page specific plugin scripts -->
 
 		<!-- ace scripts -->
@@ -321,8 +284,21 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$(".chosen-select").chosen(); 
+				$('#id-input-file-2').ace_file_input({
+					no_file:'Ingresar imagen',
+					btn_choose:'Choose',
+					btn_change:'Cargar',
+					droppable:false,
+					onchange:null,
+					thumbnail:false //| true | large
+					//whitelist:'gif|png|jpg|jpeg'
+					//blacklist:'exe|php'
+					//onchange:''
+					//
+				});				
 			});
 
 		</script>
+
 	</body>
 </html>

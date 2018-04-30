@@ -78,14 +78,14 @@
 									<li>
 										<a href="#">
 											<i class="ace-icon fa fa-cog"></i>
-											Settings
+											Configuracion
 										</a>
 									</li>
 
 									<li>
 										<a href="profile.html">
 											<i class="ace-icon fa fa-user"></i>
-											Profile
+											Perfil
 										</a>
 									</li>
 
@@ -94,7 +94,7 @@
 									<li>
 										<a href="#">
 											<i class="ace-icon fa fa-power-off"></i>
-											Logout
+											Cerrar Sesion
 										</a>
 									</li>
 								</ul>
@@ -115,30 +115,7 @@
 						<ul class="breadcrumb menu-list">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">Panel</a>
-							</li>
-							<li class="active">
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">
-									Ingreso
-								</a>
-							</li>
-							<li >
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">
-									Fichas
-								</a>
-							</li>
-							<li >
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="ss10.html">
-									Pagos
-								</a>
+								<a href="ctrl_home.html">Home</a>
 							</li>
 						</ul><!-- /.breadcrumb -->
 				</div>
@@ -146,14 +123,18 @@
 			<div class="container ">
 				<h3 class="header green vert-offset-top-2">Revisar Datos</h3>
 				<div class="wancho-medium">
-					<h3 class="vert-offset-top-2 header smaller lighter blue">Grupo Nro. 000196-MAPI</h3>
+					<h3 class="vert-offset-top-2 header smaller lighter blue">Operador: Peru Travel &nbsp;&nbsp;|&nbsp;&nbsp; Grupo Nro. 000196-MAPI &nbsp;&nbsp;|&nbsp;&nbsp; 12 junio 2018</h3>
 					<div class="table-header">
-						4 pasajeros ingresados
+						6 visitantes ingresados
 					</div>	
 					<div>
 						<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
+									<th>
+										<i class="ace-icon fa fa-bolt"></i>
+										Item
+									</th>
 									<th>
 										<i class="ace-icon fa fa-user"></i>
 										Nombres y Apellidos
@@ -171,6 +152,9 @@
 							<tbody>
 								<tr>
 									<td>
+										1
+									</td>
+									<td>
 										Juan Perez Maldonado
 									</td>
 									<td>
@@ -181,6 +165,9 @@
 									</td>
 								</tr>
 								<tr>
+									<td>
+										2
+									</td>
 									<td>
 										Enrique Lucio Juan
 									</td>
@@ -193,6 +180,9 @@
 								</tr>
 								<tr>
 									<td>
+										3
+									</td>
+									<td>
 										Juan Perez Maldonado
 									</td>
 									<td>
@@ -204,6 +194,9 @@
 								</tr>
 								<tr>
 									<td>
+										4
+									</td>
+									<td>
 										Juan Perez Maldonado
 									</td>
 									<td>
@@ -214,6 +207,9 @@
 									</td>
 								</tr>
 								<tr>
+									<td>
+										5
+									</td>
 									<td>
 										Enrique Lucio Juan
 									</td>
@@ -225,6 +221,9 @@
 									</td>
 								</tr>
 								<tr>
+									<td>
+										6
+									</td>
 									<td>
 										Juan Perez Maldonado
 									</td>
@@ -239,7 +238,8 @@
 						</table>
 					</div>		
 					<div class="text-center">
-							<button class="btn btn-success" onclick="window.location.href='ss7.html'">Finalizar verificacion</button>
+						<button class="btn btn-warning" onclick="window.location.href='ctrl_home.html'">Cancelar</button>
+						<button class="btn btn-success" onclick="window.location.href='ctrl_visitantesverificados.html'">Finalizar verificacion</button>
 					</div>							
 				</div>
 			</div>
