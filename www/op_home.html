@@ -13,6 +13,9 @@
 		<link rel="stylesheet" href="assets/css/bootstrap-3-vert-offset-shim.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/chosen.min.css" />
+		
+		<link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
+		
 		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 		<!-- text fonts -->
@@ -81,14 +84,14 @@
 									<li>
 										<a href="#">
 											<i class="ace-icon fa fa-cog"></i>
-											Settings
+											Configuracion
 										</a>
 									</li>
 
 									<li>
 										<a href="profile.html">
 											<i class="ace-icon fa fa-user"></i>
-											Profile
+											Perfil
 										</a>
 									</li>
 
@@ -97,7 +100,7 @@
 									<li>
 										<a href="#">
 											<i class="ace-icon fa fa-power-off"></i>
-											Logout
+											Cerrar Sesion
 										</a>
 									</li>
 								</ul>
@@ -116,26 +119,22 @@
 				</h4>
 				<div class="breadcrumbs ace-save-state " id="breadcrumbs">
 						<ul class="breadcrumb menu-list">
-							<li>
+							<li class="active">
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Home</a>
 							</li>
 
 							<li>
 								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">Panel</a>
+								Panel
 							</li>
-							<li class="active">
+							<li>
 								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">
 									Ingreso
-								</a>
 							</li>
 							<li >
 								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">
 									Fichas
-								</a>
 							</li>
 							<li >
 								<i class="ace-icon fa fa-arrow-circle-right"></i>
@@ -155,7 +154,21 @@
 						<h1 class="smaller vert-offset-top-1">
 							<span class="bigger-125 bg-primary p10">S/. 200.00</span>
 						</h3>
-
+						<br><br>
+						
+						<h4 class="blue">
+						Fecha de visita
+						</h4>
+						<div class="row">
+							<div class="col-xs-8 col-sm-11">
+								<div class="input-group">
+									<input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" size="10" />
+									<span class="input-group-addon">
+										<i class="fa fa-calendar bigger-110"></i>
+									</span>
+								</div>
+							</div>
+						</div>
 						
 						<div class="w96 label label-xlg label-success arrowed arrowed-right vert-offset-top-4">
 							<b>Elija la ruta de su grupo</b>
@@ -204,6 +217,7 @@
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script src="assets/js/bootstrap-datepicker.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$(".chosen-select").chosen(); 
@@ -220,7 +234,18 @@
 					//
 				});				
 			});
-
+			
+			//datepicker plugin
+				//link
+				$('.date-picker').datepicker({
+					autoclose: true,
+					todayHighlight: true
+				})
+				//show datepicker when clicking on the icon
+				.next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+			
 		</script>
 	</body>
 </html>
