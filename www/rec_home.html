@@ -113,9 +113,13 @@
 				</h4>
 				<div class="breadcrumbs ace-save-state " id="breadcrumbs">
 						<ul class="breadcrumb menu-list">
-							<li>
+							<li class = "active">
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="rec_home.html">Home</a>
+							</li>
+							<li>
+								<i class="ace-icon fa fa-arrow-circle-right"></i>
+								<a href="rec_grupos.html">Grupos</a>
 							</li>
 						</ul><!-- /.breadcrumb -->
 				</div>
@@ -225,15 +229,7 @@
 										</td>
 										<td>
 										
-											<button class="btn btn-white btn-sm btn-round" id="bootbox-regular">
-												<i class="ace-icon fa fa-check"></i>
-												Abonar
-											</button>
 											
-											<button class="btn btn-white btn-sm btn-round">
-												<i class="ace-icon fa fa-times red2"></i>
-												Rechazar
-											</button>
 										</td>
 									</tr>
 									<tr>
@@ -273,7 +269,7 @@
 												Abonar
 											</button>
 											
-											<button class="btn btn-white btn-sm btn-round">
+											<button class="btn btn-white btn-sm btn-round" id="bootbox-regular">
 												<i class="ace-icon fa fa-times red2"></i>
 												Rechazar
 											</button>
@@ -311,15 +307,6 @@
 										</td>
 										<td>
 										
-											<button class="btn btn-white btn-sm btn-round">
-												<i class="ace-icon fa fa-check"></i>
-												Abonar
-											</button>
-											
-											<button class="btn btn-white btn-sm btn-round">
-												<i class="ace-icon fa fa-times red2"></i>
-												Rechazar
-											</button>
 										</td>
 									</tr>
 									<tr>
@@ -339,7 +326,7 @@
 											01/03/2017
 										</td>
 										<td>
-											<span class="label label-success">
+											<span class="label label-warning">
 												Pendiente
 											</span>
 										</td>
@@ -358,7 +345,7 @@
 												Abonar
 											</button>
 											
-											<button class="btn btn-white btn-sm btn-round">
+											<button class="btn btn-white btn-sm btn-round" id="bootbox-regular3">
 												<i class="ace-icon fa fa-times red2"></i>
 												Rechazar
 											</button>
@@ -474,14 +461,14 @@
    
    
    $("#bootbox-regular").on(ace.click_event, function() {
-					bootbox.prompt("Motivo de rechazo", function(result) {
-						if (result === null) {
+		bootbox.prompt("Motivo de rechazo", function(result) {
+			if (result === null) {
 							
-						} else {
+			} else {
 							
-						}
-					});
-				});
+			}
+		});
+	});
    
 })
 
