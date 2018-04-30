@@ -11,7 +11,9 @@
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
-
+		
+		<link rel="stylesheet" href="assets/css/colorbox.min.css" />
+		
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
 
@@ -76,14 +78,14 @@
 									<li>
 										<a href="#">
 											<i class="ace-icon fa fa-cog"></i>
-											Settings
+											Configuracion
 										</a>
 									</li>
 
 									<li>
 										<a href="profile.html">
 											<i class="ace-icon fa fa-user"></i>
-											Profile
+											Perfil
 										</a>
 									</li>
 
@@ -92,7 +94,7 @@
 									<li>
 										<a href="#">
 											<i class="ace-icon fa fa-power-off"></i>
-											Logout
+											Cerrar Sesion
 										</a>
 									</li>
 								</ul>
@@ -113,28 +115,24 @@
 						<ul class="breadcrumb menu-list">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="ss1.html">Home</a>
+								<a href="op_home.html">Home</a>
 							</li>
 
 							<li>
 								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">Panel</a>
+								Panel
+							</li>
+							<li>
+								<i class="ace-icon fa fa-arrow-circle-right"></i>
+									Ingreso
+							</li>
+							<li >
+								<i class="ace-icon fa fa-arrow-circle-right"></i>
+									Fichas
 							</li>
 							<li class="active">
 								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">
-									Ingreso
-								</a>
-							</li>
-							<li >
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#">
-									Fichas
-								</a>
-							</li>
-							<li >
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="ss10.html">
+								<a href="#.html">
 									Pagos
 								</a>
 							</li>
@@ -142,26 +140,32 @@
 				</div>
 			</div>
 			<div class="container ">
-				<h3 class="header green vert-offset-top-2">Revisar Datos</h3>
+				<h3 class="header green vert-offset-top-2">Lista de pagos</h3>
 				<div class="vert-offset-top-3">
 					<div class="wancho-medium">
 						<div class="table-header">
-							3 pasajeros ingresados
+							4 pagos realizados
 						</div>	
 						<div>
 							<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
 										<th>
-											<i class="ace-icon fa fa-user"></i>
-											Nombres y Apellidos
+											<i class="ace-icon fa fa-edit"></i>
+											Nro de operacion
 										</th>
 										<th>
 											<i class="ace-icon fa file-o"></i>
-											DNI
+											Monto Abonado
 										</th>
 										<th>
-											Acción
+											Fecha Abono
+										</th>
+										<th>
+											Estado
+										</th>
+										<th>
+											Voucher
 										</th>
 									</tr>
 								</thead>
@@ -169,75 +173,146 @@
 								<tbody>
 									<tr>
 										<td>
-											Juan Perez Maldonado
+											0123456
 										</td>
 										<td>
-											88445454
+											S/. 450.00
 										</td>
 										<td>
-											<a class="btn btn-danger btn-sm"><i class="ace-icon fa fa-trash-o "></i>Eliminar</a>
+											01/03/2017
+										</td>
+										<td>
+											<span class="label label-success">
+												Aprobado
+											</span>
+										</td>
+										<td>
+											<ul class="ace-thumbnails clearfix">
+												<li>
+													<a class="btn btn-primary btn-sm" href="voucher/voucher1.png" data-rel="colorbox">
+														<i class="ace-icon fa fa-eye"></i>Ver
+													</a>
+												</li>
+											</ul>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											Enrique Lucio Juan
+											0123456
 										</td>
 										<td>
-											88445454
+											S/. 450.00
 										</td>
 										<td>
-											<a class="btn btn-danger btn-sm"><i class="ace-icon fa fa-trash-o "></i>Eliminar</a>
+											01/03/2017
+										</td>
+										<td>
+											<span class="label label-warning">
+												Pendiente
+											</span>
+										</td>
+										<td>
+											<ul class="ace-thumbnails clearfix">
+												<li>
+													<a class="btn btn-primary btn-sm" href="voucher/voucher1.png" data-rel="colorbox">
+														<i class="ace-icon fa fa-eye"></i>Ver
+													</a>
+												</li>
+											</ul>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											Juan Perez Maldonado
+											0123456
 										</td>
 										<td>
-											88445454
+											S/. 450.00
 										</td>
 										<td>
-											<a class="btn btn-danger btn-sm"><i class="ace-icon fa fa-trash-o "></i>Eliminar</a>
+											01/03/2017
+										</td>
+										<td>
+											<span class="label label-danger">
+												Rechazado
+											</span>
+										</td>
+										<td>
+											<ul class="ace-thumbnails clearfix">
+												<li>
+													<a class="btn btn-primary btn-sm" href="voucher/voucher1.png" data-rel="colorbox">
+														<i class="ace-icon fa fa-eye"></i>Ver
+													</a>
+												</li>
+											</ul>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											Juan Perez Maldonado
+											0123456
 										</td>
 										<td>
-											88445454
+											S/. 450.00
 										</td>
 										<td>
-											<a class="btn btn-danger btn-sm"><i class="ace-icon fa fa-trash-o "></i>Eliminar</a>
+											01/03/2017
+										</td>
+										<td>
+											<span class="label label-success">
+												Pendiente
+											</span>
+										</td>
+										<td>
+											<ul class="ace-thumbnails clearfix">
+												<li>
+													<a class="btn btn-primary btn-sm" href="voucher/voucher1.png" data-rel="colorbox">
+														<i class="ace-icon fa fa-eye"></i>Ver
+													</a>
+												</li>
+											</ul>
 										</td>
 									</tr>
 									<tr>
-										<td>
-											Enrique Lucio Juan
-										</td>
-										<td>
-											88445454
-										</td>
-										<td>
-											<a class="btn btn-danger btn-sm"><i class="ace-icon fa fa-trash-o "></i>Eliminar</a>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											Juan Perez Maldonado
-										</td>
-										<td>
-											88445454
-										</td>
-										<td>
-											<a class="btn btn-danger btn-sm"><i class="ace-icon fa fa-trash-o "></i>Eliminar</a>
-										</td>
-									</tr>
+									<td colspan="5" style="text-align: right">
+										<ul class="pagination">
+											<li class="disabled">
+												<a href="#">
+													<i class="ace-icon fa fa-angle-double-left"></i>
+												</a>
+											</li>
+
+											<li class="active">
+												<a href="#">1</a>
+											</li>
+
+											<li>
+												<a href="#">2</a>
+											</li>
+
+											<li>
+												<a href="#">3</a>
+											</li>
+
+											<li>
+												<a href="#">4</a>
+											</li>
+
+											<li>
+												<a href="#">5</a>
+											</li>
+
+											<li>
+												<a href="#">
+													<i class="ace-icon fa fa-angle-double-right"></i>
+												</a>
+											</li>
+										</ul>
+									</td>
+								</tr>
 								</tbody>
 							</table>
 						</div>		
 						<div class="text-center">
-								<button type="button" class="btn btn-success" onclick="window.location.href='ss5.html'">Datos confirmados</button>
+								<button type="button" class="btn btn-success" onclick="window.location.href='op_agregarpago.html'">+ Agregar pago</button>
 						</div>							
 					</div>
 				</div>
@@ -262,11 +337,48 @@
 		<script src="assets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-
+		<script src="assets/js/jquery.colorbox.min.js"></script>
+		
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		<script src="assets/js/main.js"></script>
+		
+		<script type="text/javascript">
+			jQuery(function($) {
+	var $overflow = '';
+	var colorbox_params = {
+		rel: 'colorbox',
+		reposition:true,
+		scalePhotos:true,
+		scrolling:false,
+		previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+		next:'<i class="ace-icon fa fa-arrow-right"></i>',
+		close:'&times;',
+		current:'{current} of {total}',
+		maxWidth:'100%',
+		maxHeight:'100%',
+		onOpen:function(){
+			$overflow = document.body.style.overflow;
+			document.body.style.overflow = 'hidden';
+		},
+		onClosed:function(){
+			document.body.style.overflow = $overflow;
+		},
+		onComplete:function(){
+			$.colorbox.resize();
+		}
+	};
+
+	$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+	$("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
+	
+	
+	$(document).one('ajaxloadstart.page', function(e) {
+		$('#colorbox, #cboxOverlay').remove();
+   });
+})
+		</script>
 
 	</body>
 </html>
