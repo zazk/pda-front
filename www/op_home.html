@@ -159,11 +159,10 @@
 						<h4 class="blue">
 						Fecha de visita
 						</h4>
-						<div class="row">
-							<div class="col-xs-8 col-sm-11">
-								<div class="input-group" id="datepicker">
-									<input class="form-control date-picker" type="hidden" id="my_hidden_input" data-date-format="dd-mm-yyyy" />
-								</div>
+						
+						<div class="col-xs-8 col-sm-11">
+							<div class="input-group" id="datepicker" style="margin:auto; border-style: solid; border-color: #478FCA">
+								<input class="form-control date-picker" type="hidden" id="my_hidden_input" data-date-format="dd-mm-yyyy" />
 							</div>
 						</div>
 						
@@ -183,7 +182,7 @@
 						</div>
 						<div class="vert-offset-top-2">
 							<button type="button" class="btn btn-success" onclick="window.location.href='op_ingresovisitantes.html'">Continuar</button>
-							
+							<br><br>
 						</div>					
 					</form>
 				</div>				
@@ -232,23 +231,17 @@
 				});				
 			});
 			
-			//datepicker plugin
-				//link
-				$('.date-picker').datepicker({
-					autoclose: true,
-					todayHighlight: true
-				})
-				//show datepicker when clicking on the icon
-				.next().on(ace.click_event, function(){
-					$(this).prev().focus();
-				});
 			
-			$('#datepicker').datepicker();
-$('#datepicker').on('changeDate', function() {
-    $('#my_hidden_input').val(
-        $('#datepicker').datepicker('getFormattedDate')
-    );
-});
+			$('#datepicker').datepicker({
+				minDate: 0,
+				todayHighlight: true
+				});
+			$('#datepicker').on('changeDate', function() {
+				$('#my_hidden_input').val(
+					$('#datepicker').datepicker('getFormattedDate')
+				);
+			}
+			);
 		</script>
 	</body>
 </html>
