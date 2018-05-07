@@ -11,7 +11,10 @@
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
-
+		
+		<link rel="stylesheet" href="assets/css/colorbox.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
+		
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
 
@@ -44,10 +47,9 @@
 	    <div class="menu-sidebar">
 	        <div class="menu-sidebar-cnt"></div>
 	    </div>	    
-		<!-- menu responsive	 -->	
-
+		<!-- menu responsive	 -->
     <div class="cnt-wrapper">
-        <div class="wrapper">			
+        <div class="wrapper">		
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 				<div class="navbar-container ace-save-state" id="navbar-container">
 					<div class="navbar-header pull-left">
@@ -66,7 +68,7 @@
 							</li>
 							
 							<li class="grey dropdown-modal">
-								<a href="#">
+								<a href="op_noticias.html">
 									<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 									<span class="badge badge-important">&nbsp;Noticias&nbsp;</span>
 								</a>
@@ -117,9 +119,9 @@
 							<i class="ace-icon fa fa-home home-icon"></i>
 							<a href="op_home.html">Home</a>
 						</li>
-						<li>
+						<li class="active">
 							<i class="ace-icon fa fa-money"></i>
-							<a href="op_pagos.html">Pagos</a>
+							<a href="#">Pagos</a>
 						</li>
 						<li>
 							<i class="ace-icon fa fa-users"></i>
@@ -136,113 +138,66 @@
 					</ul><!-- /.breadcrumb -->
 				</div>
 			</div>
-			<div class="container ">
-				<h3 class="header green vert-offset-top-1">Noticias</h3>
-				<div class="vert-offset-top-2 wancho-medium">
-					<div class="table-header">
-						Lista de noticias
-					</div>	
-					<div class="widget-box">
-						<div class="widget-header widget-header-flat">
-							<h4 class="widget-title smaller">
-								<i class="ace-icon fa  fa-pencil-square-o"></i>
-								Titulo | <i class="ace-icon fa  fa-calendar"></i> 12 -06-2018
-							</h4>
-						</div>
+			
+		<div class="main-container">
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							<div class="position-relative">
+								
 
-						<div class="widget-body">
-							<div class="widget-main">
-								<div class="row">
-									<div class="col-xs-12">
-										<blockquote>
-											<p class="lighter line-height-125">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-											</p>
-											<p class="lighter line-height-125">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+								<div id="forgot-box" class="forgot-box widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header red lighter bigger">
+												<i class="ace-icon fa fa-key"></i>
+												Cambiar contraseña
+											</h4>
+
+											<div class="space-6"></div>
+											<p>
+												Ingrese su nueva contraseña
 											</p>
 
-											<small>
-												Someone famous
-												<cite title="Source Title">Source Title</cite>
-											</small>
-										</blockquote>
-									</div>
-								</div>
-							</div>
+											<form>
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="Nueva contraseña" />
+															<i class="ace-icon fa fa-key"></i>
+														</span>
+													</label>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="Confirme nueva contraseña" />
+															<i class="ace-icon fa fa-key"></i>
+														</span>
+													</label>
+
+													<div class="clearfix">
+														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+															<i class="ace-icon fa fa-lightbulb-o"></i>
+															<span class="bigger-110">Cambiar</span>
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div><!-- /.widget-main -->
+
+									</div><!-- /.widget-body -->
+								</div><!-- /.forgot-box -->
+
+								
+							</div><!-- /.position-relative -->
 						</div>
-					</div>
-
-					<div class="widget-box">
-						<div class="widget-header widget-header-flat">
-							<h4 class="widget-title smaller">
-								<i class="ace-icon fa  fa-pencil-square-o"></i>
-								Titulo 2 | <i class="ace-icon fa  fa-calendar"></i> 07-04-2018
-							</h4>
-						</div>
-
-						<div class="widget-body">
-							<div class="widget-main">
-								<div class="row">
-									<div class="col-xs-12">
-										<blockquote>
-											<p class="lighter line-height-125">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-											</p>
-											<p class="lighter line-height-125">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-											</p>
-
-											<small>
-												Someone famous
-												<cite title="Source Title">Source Title</cite>
-											</small>
-										</blockquote>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="widget-box">
-						<div class="widget-header widget-header-flat">
-							<h4 class="widget-title smaller">
-								<i class="ace-icon fa  fa-pencil-square-o"></i>
-								Titulo 3 | <i class="ace-icon fa  fa-calendar"></i> 01-03-2018
-							</h4>
-						</div>
-
-						<div class="widget-body">
-							<div class="widget-main">
-								<div class="row">
-									<div class="col-xs-12">
-										<blockquote>
-											<p class="lighter line-height-125">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-											</p>
-											<p class="lighter line-height-125">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-											</p>
-
-											<small>
-												Someone famous
-												<cite title="Source Title">Source Title</cite>
-											</small>
-										</blockquote>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.main-content -->
 		</div><!-- /.main-container -->
-		</div>
-	</div>
+
 		<!-- basic scripts -->
 
-		<!--[if !IE]> -->
 		<script src="assets/js/jquery-2.1.4.min.js"></script>
 
 		<!-- <![endif]-->

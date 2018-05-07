@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 		
 		<link rel="stylesheet" href="assets/css/colorbox.min.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
 		
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
@@ -62,13 +63,23 @@
 
 					<div class="navbar-buttons navbar-header pull-right" role="navigation">
 						<ul class="nav ace-nav" style="">
+							<li>
+								<h4 style="color:white">Saldo: <b>S/. 200.00</b>&nbsp;</h4>
+							</li>
+							
+							<li class="grey dropdown-modal">
+								<a href="op_noticias.html">
+									<i class="ace-icon fa fa-bell icon-animated-bell"></i>
+									<span class="badge badge-important">&nbsp;Noticias&nbsp;</span>
+								</a>
+							</li>
+							
 							<li class="light-blue dropdown-modal">
 								<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 
 									<span class="fa fa-user-circle fa-2x"></span>
 									<span class="user-info">
-										<small>Bienvenido,</small>
-										Carlos
+										<small>Bienvenido,</small>Carlos
 									</span>
 
 									<i class="ace-icon fa fa-caret-down"></i>
@@ -76,16 +87,8 @@
 
 								<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 									<li>
-										<a href="#">
-											<i class="ace-icon fa fa-cog"></i>
-											Configuracion
-										</a>
-									</li>
-
-									<li>
-										<a href="profile.html">
-											<i class="ace-icon fa fa-user"></i>
-											Perfil
+										<a href="op_cambioclave.html">
+											<i class="ace-icon fa fa-cog"></i>Cambio contraseña
 										</a>
 									</li>
 
@@ -93,8 +96,7 @@
 
 									<li>
 										<a href="#">
-											<i class="ace-icon fa fa-power-off"></i>
-											Cerrar Sesion
+											<i class="ace-icon fa fa-power-off"></i>Cerrar Sesion
 										</a>
 									</li>
 								</ul>
@@ -112,37 +114,41 @@
 					Modulo de Turismo
 				</h4>
 				<div class="breadcrumbs ace-save-state " id="breadcrumbs">
-						<ul class="breadcrumb menu-list">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="op_home.html">Home</a>
-							</li>
-
-							<li>
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								Panel
-							</li>
-							<li>
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-									Ingreso
-							</li>
-							<li >
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-									Fichas
-							</li>
-							<li class="active">
-								<i class="ace-icon fa fa-arrow-circle-right"></i>
-								<a href="#.html">
-									Pagos
-								</a>
-							</li>
-						</ul><!-- /.breadcrumb -->
+					<ul class="breadcrumb menu-list">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="op_home.html">Home</a>
+						</li>
+						<li class="active">
+							<i class="ace-icon fa fa-money"></i>
+							<a href="#">Pagos</a>
+						</li>
+						<li>
+							<i class="ace-icon fa fa-users"></i>
+							<a href="op_grupos.html">Grupos</a>
+						</li>
+						<li>
+							<i class="ace-icon fa fa-arrow-circle-right"></i>
+							Ingreso
+						</li>
+						<li>
+							<i class="ace-icon fa fa-arrow-circle-right"></i>
+							Confirmacion
+						</li>
+					</ul><!-- /.breadcrumb -->
 				</div>
 			</div>
-			<div class="container ">
-				<h3 class="header green vert-offset-top-2">Lista de pagos</h3>
-				<div class="vert-offset-top-3">
+			<div class="container">
+				<h3 class="header green vert-offset-top-1">Lista de pagos</h3>
+				<div class="vert-offset-top-2">
 					<div class="wancho-medium">
+						<form action="" class="form-horizontal">
+							<h4 class="header smaller lighter blue">Operacion: <input type="text" placeholder="Nro Operacion" maxlength="10" /> &nbsp;&nbsp;Fecha: <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" /> &nbsp;&nbsp;Estado: <select class="w20">
+											<option value="1" selected>Pendiente</option>
+											<option value="2">Aprobados</option>
+											<option value="3">Rechazdos</option>
+										</select></h4>
+						</form>
 						<div class="table-header">
 							4 pagos realizados
 						</div>	
@@ -151,20 +157,27 @@
 								<thead>
 									<tr>
 										<th>
-											<i class="ace-icon fa fa-edit"></i>
-											Nro de operacion
+											<i class="ace-icon fa fa-certificate"></i>
+											Item
 										</th>
 										<th>
-											<i class="ace-icon fa file-o"></i>
+											<i class="ace-icon fa fa-edit"></i>
+											Nro operacion
+										</th>
+										<th>
+											<i class="ace-icon fa fa-money"></i>
 											Monto Abonado
 										</th>
 										<th>
+											<i class="ace-icon fa fa-calendar"></i>
 											Fecha Abono
 										</th>
 										<th>
+											<i class="ace-icon fa fa-info-circle"></i>
 											Estado
 										</th>
 										<th>
+											<i class="ace-icon fa fa-folder-o"></i>
 											Voucher
 										</th>
 									</tr>
@@ -172,6 +185,9 @@
 
 								<tbody>
 									<tr>
+										<td>
+											1
+										</td>
 										<td>
 											0123456
 										</td>
@@ -198,13 +214,16 @@
 									</tr>
 									<tr>
 										<td>
-											0123456
+											2
 										</td>
 										<td>
-											S/. 450.00
+											9053071
 										</td>
 										<td>
-											01/03/2017
+											S/. 1030.00
+										</td>
+										<td>
+											15/06/2017
 										</td>
 										<td>
 											<span class="label label-warning">
@@ -223,13 +242,16 @@
 									</tr>
 									<tr>
 										<td>
-											0123456
+											3
 										</td>
 										<td>
-											S/. 450.00
+											3466032
 										</td>
 										<td>
-											01/03/2017
+											S/. 250.00
+										</td>
+										<td>
+											05/03/2017
 										</td>
 										<td>
 											<span class="label label-danger">
@@ -248,17 +270,20 @@
 									</tr>
 									<tr>
 										<td>
-											0123456
+											4
 										</td>
 										<td>
-											S/. 450.00
+											9896032
 										</td>
 										<td>
-											01/03/2017
+											S/. 340.00
+										</td>
+										<td>
+											01/04/2018
 										</td>
 										<td>
 											<span class="label label-success">
-												Pendiente
+												Aprovado
 											</span>
 										</td>
 										<td>
@@ -272,7 +297,7 @@
 										</td>
 									</tr>
 									<tr>
-									<td colspan="5" style="text-align: right">
+									<td colspan="6" style="text-align: right">
 										<ul class="pagination">
 											<li class="disabled">
 												<a href="#">
@@ -344,40 +369,47 @@
 		<script src="assets/js/ace.min.js"></script>
 		<script src="assets/js/main.js"></script>
 		
+		<script src="assets/js/bootstrap-datepicker.min.js"></script>
+		
 		<script type="text/javascript">
 			jQuery(function($) {
-	var $overflow = '';
-	var colorbox_params = {
-		rel: 'colorbox',
-		reposition:true,
-		scalePhotos:true,
-		scrolling:false,
-		previous:'<i class="ace-icon fa fa-arrow-left"></i>',
-		next:'<i class="ace-icon fa fa-arrow-right"></i>',
-		close:'&times;',
-		current:'{current} of {total}',
-		maxWidth:'100%',
-		maxHeight:'100%',
-		onOpen:function(){
-			$overflow = document.body.style.overflow;
-			document.body.style.overflow = 'hidden';
-		},
-		onClosed:function(){
-			document.body.style.overflow = $overflow;
-		},
-		onComplete:function(){
-			$.colorbox.resize();
-		}
-	};
+				var $overflow = '';
+				var colorbox_params = {
+					rel: 'colorbox',
+					reposition:true,
+					scalePhotos:true,
+					scrolling:false,
+					previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+					next:'<i class="ace-icon fa fa-arrow-right"></i>',
+					close:'&times;',
+					current:'{current} of {total}',
+					maxWidth:'100%',
+					maxHeight:'100%',
+					onOpen:function(){
+						$overflow = document.body.style.overflow;
+						document.body.style.overflow = 'hidden';
+					},
+					onClosed:function(){
+						document.body.style.overflow = $overflow;
+					},
+					onComplete:function(){
+						$.colorbox.resize();
+					}
+				};
 
-	$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
-	$("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
-	
-	
-	$(document).one('ajaxloadstart.page', function(e) {
-		$('#colorbox, #cboxOverlay').remove();
-   });
-})
+				$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+				$("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
+				
+				
+				$(document).one('ajaxloadstart.page', function(e) {
+					$('#colorbox, #cboxOverlay').remove();
+			   });
+			})
+			
+			$('.date-picker').datepicker({
+				autoclose: true,
+				todayHighlight: true
+			})
 		</script>
 
 	</body>
