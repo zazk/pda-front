@@ -23,18 +23,18 @@
 
                     <div class="space-6"></div>
 
-                    <form>
+                    <form  #f="ngForm" (ngSubmit)="onSubmit(f.value)"  >
                       <fieldset>
                         <label class="block clearfix">
                           <span class="block input-icon input-icon-right">
-                            <input type="text" class="form-control" placeholder="Usuario" />
+                            <input ngModel name="user" type="text" user="" class="form-control" placeholder="Usuario" />
                             <i class="ace-icon fa fa-user"></i>
                           </span>
                         </label>
 
                         <label class="block clearfix">
                           <span class="block input-icon input-icon-right">
-                            <input type="password" class="form-control" placeholder="Contraseña" />
+                            <input ngModel name="password" type="password" password="" class="form-control" placeholder="Contraseña" />
                             <i class="ace-icon fa fa-lock"></i>
                           </span>
                         </label>
@@ -43,11 +43,11 @@
 
                         <div class="clearfix">
                           <label class="inline">
-                            <input type="checkbox" class="ace" />
+                            <input type="checkbox"  class="ace" />
                             <span class="lbl"> Recuérdame</span>
                           </label>
 
-                          <button type="button" class="width-35 pull-right btn btn-sm btn-primary" onclick="window.location.href='op_home.html'">
+                          <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
                             <i class="ace-icon fa fa-key"></i>
                             <span class="bigger-110">Ingresar</span>
                           </button>
@@ -120,16 +120,4 @@
   </div><!-- /.main-container -->
 
   <!-- basic scripts -->
-
-  <!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
-  <script type="text/javascript">
-    if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-  </script>
-
-  <!-- inline scripts related to this page -->
-  <script type="text/javascript">
-
-  </script>
 </div>

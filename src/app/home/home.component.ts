@@ -1,62 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../shared/services/user/user.service';
+import { Component, OnInit } from "@angular/core";
+import { UserService } from "../shared/services/user/user.service";
 
 declare var $: any;
 @Component({
-  selector: 'app-home',
-  template: `
-    <div>
-      <div *ngFor="let item of routes">
-        {{item.var_nombre}}
-      </div>
-    </div>
-  `,
+  selector: "app-home",
+  templateUrl: "home.component.html",
   styles: []
 })
 export class HomeComponent implements OnInit {
-
   routes: any[];
-  constructor( private service: UserService) { }
+  constructor(private service: UserService) {}
 
   ngOnInit() {
-    this.service.getAll().subscribe((data) => {
-      console.log('DATA CTM:', data);
+    this.service.getAll().subscribe(data => {
+      console.log("DATA CTM:", data);
       this.routes = data;
     });
-    console.log('Gogogogo');
+    console.log("Gogogogo");
   }
-
 }
 
-$(document).ready( () => {
 
-  $(document).on('click', '.toolbar a[data-target]', function(e) {
-  e.preventDefault();
-  const target = $(this).data('target');
-  $('.widget-box.visible').removeClass('visible');//hide others
-  $(target).addClass('visible');//show target
+$(document).ready(() => {
+  $(".chosen-select").chosen();
+  $("#id-input-file-2").ace_file_input({
+    no_file: "Importar Visitantes",
+    btn_choose: "Importar",
+    btn_change: "Cambiar",
+    droppable: false,
+    onchange: null,
+    thumbnail: false
   });
 
-  $('#btn-login-dark').on('click', function(e) {
-  $('body').attr('class', 'login-layout');
-  $('#id-text2').attr('class', 'white');
-  $('#id-company-text').attr('class', 'blue');
-
-  e.preventDefault();
+  $("#datepicker").datepicker({
+    minDate: 0,
+    todayHighlight: true
   });
-  $('#btn-login-light').on('click', function(e) {
-  $('body').attr('class', 'login-layout light-login');
-  $('#id-text2').attr('class', 'grey');
-  $('#id-company-text').attr('class', 'blue');
 
-  e.preventDefault();
-  });
-  $('#btn-login-blur').on('click', function(e) {
-  $('body').attr('class', 'login-layout blur-login');
-  $('#id-text2').attr('class', 'white');
-  $('#id-company-text').attr('class', 'light-blue');
-
-  e.preventDefault();
+  $("#datepicker").on("changeDate", function() {
+    $("#my_hidden_input").val($("#datepicker").datepicker("getFormattedDate"));
   });
 
 });
