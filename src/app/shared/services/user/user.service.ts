@@ -12,128 +12,160 @@ export class UserService {
   }
 
 
-
-  getAll(): Observable<any> {
+  /* ( String user, String pwd ) */
+  loginUser(): Observable<any> {
     return this.http.get(this.url + "login_user");
   }
 
-  getAll(): Observable<any> {
+  /* ( String codOperador ) */
+  consultaOperador(): Observable<any> {
     return this.http.get(this.url + "consulta_operador");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codVisitante ) */
+  consultaVisitante(): Observable<any> {
     return this.http.get(this.url + "consulta_visitante");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codGrupo ) */
+  consultaGrupo(): Observable<any> {
     return this.http.get(this.url + "consulta_grupo");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codGrupo ) */
+  listVisitantexgrupo(): Observable<any> {
     return this.http.get(this.url + "list_visitantexgrupo");
   }
 
-  getAll(): Observable<any> {
+  /* ( String codOperador ) */
+  consultaGrupooperador(): Observable<any> {
     return this.http.get(this.url + "consulta_grupooperador");
   }
 
-  getAll(): Observable<any> {
+  /* ( String codOperador ) */
+  consultaPagooperador(): Observable<any> {
+    return this.http.get(this.url + "consulta_pagooperador");
+  }
+
+  /* ( String nroOperacion, String fecPago, Integer estado ) */
+  filtroPagooperador(): Observable<any> {
+    return this.http.get(this.url + "filtro_pagooperador");
+  }
+
+  /* ( String nroOperacion, String codOperador ) */
+  filtroPagorecaudador(): Observable<any> {
     return this.http.get(this.url + "filtro_pagorecaudador");
   }
 
-  getAll(): Observable<any> {
+  /* ( String codGrupo, String fecVisita, Integer estado ) */
+  filtroGrupooperador(): Observable<any> {
     return this.http.get(this.url + "filtro_grupooperador");
   }
 
-  getAll(): Observable<any> {
+  listVistantes(): Observable<any> {
     return this.http.get(this.url + "list_visitantes");
   }
 
-  getAll(): Observable<any> {
+  listRutas(): Observable<any> {
     return this.http.get(this.url + "list_rutas");
   }
 
-  getAll(): Observable<any> {
+  listCategorias(): Observable<any> {
     return this.http.get(this.url + "list_categorias");
   }
 
-  getAll(): Observable<any> {
+  listPaises(): Observable<any> {
     return this.http.get(this.url + "list_paises");
   }
 
-  getAll(): Observable<any> {
+  listTipdocumentos(): Observable<any> {
     return this.http.get(this.url + "list_tipdocumentos");
   }
 
-  getAll(): Observable<any> {
+  listNoticias(): Observable<any> {
     return this.http.get(this.url + "list_noticias");
   }
 
-  getAll(): Observable<any> {
+  listNoticiasactivas(): Observable<any> {
     return this.http.get(this.url + "list_noticias_activas");
   }
 
-  getAll(): Observable<any> {
+  listGrupos(): Observable<any> {
     return this.http.get(this.url + "list_grupos");
   }
 
-  getAll(): Observable<any> {
+  /* ( String titulo, String contenido, LocalDate date, String user ) */
+  insertNews(): Observable<any> {
     return this.http.get(this.url + "insert_news");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codDocumento, Integer codCategoria, Integer codPais, String nombre, String apellido, String nroDocumento, LocalDate fNac, Integer sexo ) */
+  insertVisitante(): Observable<any> {
     return this.http.get(this.url + "insert_visitante");
   }
 
-  getAll(): Observable<any> {
+  /* ( String codOperador, Integer codRuta, LocalDate fecProgramada, Integer nroVisitantes, Integer numCosto, String insUsuario ) */
+  insertGrupo(): Observable<any> {
     return this.http.get(this.url + "insert_grupo");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codGrupo, Integer codVisitante ) */
+  insertVisitantegrupo(): Observable<any> {
     return this.http.get(this.url + "insert_visitantegrupo");
   }
 
-  getAll(): Observable<any> {
+  /* ( String codOperador, String nroOperacion, Integer monto, LocalDate fecAbono, String voucher ) */
+  insertPago(): Observable<any> {
     return this.http.get(this.url + "insert_pago");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codNoticia ) */
+  deleteNews(): Observable<any> {
     return this.http.get(this.url + "delete_news");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codGrupo, Integer codVisitante ) */
+  deleteVisitantegrupo(): Observable<any> {
     return this.http.get(this.url + "delete_visitantegrupo");
   }
 
-  getAll(): Observable<any> {
+  /* ( String newClave, Integer codUser ) */
+  updatePwd(): Observable<any> {
     return this.http.get(this.url + "update_pwd");
   }
 
-  getAll(): Observable<any> {
+  /* ( String titulo, String contenido, LocalDate date, Boolean estado, Integer id ) */
+  updateNews(): Observable<any> {
     return this.http.get(this.url + "update_news");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codDocumento, Integer codCategoria, Integer codPais, String nombre, String apellido, String nroDocumento, LocalDate fNac, Integer sexo, Integer id ) */
+  updateVisitante(): Observable<any> {
     return this.http.get(this.url + "update_visitante");
   }
 
-  getAll(): Observable<any> {
+  /* ( LocalDate date, Integer codRuta, Integer id ) */
+  updateGrupo(): Observable<any> {
     return this.http.get(this.url + "update_grupo");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codGrupo, Integer codVisitante, Boolean asistio ) */
+  updateAsistencia(): Observable<any> {
     return this.http.get(this.url + "update_asistencia");
   }
 
-  getAll(): Observable<any> {
+  /* ( LocalDate date, Integer nroVisitantes, Integer nroInasistentes, Integer costo, Integer estado, String documento, String userModificacion, LocalDate dateModificacion, Integer codGrupo ) */
+  updateVisitagrupo(): Observable<any> {
     return this.http.get(this.url + "update_visitagrupo");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer codGrupo, String documento ) */
+  updateDocgrupo(): Observable<any> {
     return this.http.get(this.url + "update_docgrupo");
   }
 
-  getAll(): Observable<any> {
+  /* ( Integer estado, String motivoRechazo, Integer codPago ) */
+  updatePagorechazo(): Observable<any> {
     return this.http.get(this.url + "update_pagorechazo");
   }
 
