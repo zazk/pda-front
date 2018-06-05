@@ -10,6 +10,7 @@ import { UserService } from "./shared/services/user/user.service";
 import { AuthGuard } from "./shared/auth/auth.guard";
 import { LoginComponent } from "./login/login.component";
 import { IngresoVisitantesComponent } from "./ingreso-visitantes/ingreso-visitantes.component";
+import { ConfirmarVisitantesComponent } from "./confirmar-visitantes/confirmar-visitantes.component";
 
 const AppRouter: Routes = [
   {
@@ -30,6 +31,11 @@ const AppRouter: Routes = [
     path: "ingreso-visitantes",
     component: IngresoVisitantesComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "confirmar-visitantes",
+    component: ConfirmarVisitantesComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -38,7 +44,8 @@ const AppRouter: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    IngresoVisitantesComponent
+    IngresoVisitantesComponent,
+    ConfirmarVisitantesComponent
   ],
   imports: [
     BrowserModule,
