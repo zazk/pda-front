@@ -15,6 +15,8 @@ import { ResumenVisitantesComponent } from "./resumen-visitantes/resumen-visitan
 import { GruposComponent } from "./grupos/grupos.component";
 import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { BreadcrumbsComponent } from "./shared/breadcrumbs/breadcrumbs.component";
+import { PagosComponent } from "./pagos/pagos.component";
+import { NoticiasComponent } from "./noticias/noticias.component";
 
 const AppRouter: Routes = [
   {
@@ -50,6 +52,16 @@ const AppRouter: Routes = [
     path: "grupos",
     component: GruposComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "pagos",
+    component: PagosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "noticias",
+    component: NoticiasComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -63,7 +75,9 @@ const AppRouter: Routes = [
     ResumenVisitantesComponent,
     GruposComponent,
     NavbarComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    PagosComponent,
+    NoticiasComponent
   ],
   imports: [
     BrowserModule,
