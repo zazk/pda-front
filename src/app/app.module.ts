@@ -9,6 +9,7 @@ import { HomeComponent } from "./home/home.component";
 import { UserService } from "./shared/services/user/user.service";
 import { AuthGuard } from "./shared/auth/auth.guard";
 import { LoginComponent } from "./login/login.component";
+import { IngresoVisitantesComponent } from "./ingreso-visitantes/ingreso-visitantes.component";
 
 const AppRouter: Routes = [
   {
@@ -24,11 +25,21 @@ const AppRouter: Routes = [
     path: "home",
     component: HomeComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "ingreso-visitantes",
+    component: IngresoVisitantesComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    IngresoVisitantesComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,

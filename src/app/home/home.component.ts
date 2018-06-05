@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
   }
 }
 
-
 $(document).ready(() => {
   $(".chosen-select").chosen();
   $("#id-input-file-2").ace_file_input({
@@ -40,5 +39,4 @@ $(document).ready(() => {
   $("#datepicker").on("changeDate", function() {
     $("#my_hidden_input").val($("#datepicker").datepicker("getFormattedDate"));
   });
-
 });
