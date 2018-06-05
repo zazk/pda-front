@@ -12,6 +12,9 @@ import { LoginComponent } from "./login/login.component";
 import { IngresoVisitantesComponent } from "./ingreso-visitantes/ingreso-visitantes.component";
 import { ConfirmarVisitantesComponent } from "./confirmar-visitantes/confirmar-visitantes.component";
 import { ResumenVisitantesComponent } from "./resumen-visitantes/resumen-visitantes.component";
+import { GruposComponent } from "./grupos/grupos.component";
+import { NavbarComponent } from "./shared/navbar/navbar.component";
+import { BreadcrumbsComponent } from "./shared/breadcrumbs/breadcrumbs.component";
 
 const AppRouter: Routes = [
   {
@@ -42,6 +45,11 @@ const AppRouter: Routes = [
     path: "resumen-visitantes",
     component: ResumenVisitantesComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "grupos",
+    component: GruposComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -52,7 +60,10 @@ const AppRouter: Routes = [
     HomeComponent,
     IngresoVisitantesComponent,
     ConfirmarVisitantesComponent,
-    ResumenVisitantesComponent
+    ResumenVisitantesComponent,
+    GruposComponent,
+    NavbarComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     BrowserModule,
