@@ -11,6 +11,7 @@ import { AuthGuard } from "./shared/auth/auth.guard";
 import { LoginComponent } from "./login/login.component";
 import { IngresoVisitantesComponent } from "./ingreso-visitantes/ingreso-visitantes.component";
 import { ConfirmarVisitantesComponent } from "./confirmar-visitantes/confirmar-visitantes.component";
+import { ResumenVisitantesComponent } from "./resumen-visitantes/resumen-visitantes.component";
 
 const AppRouter: Routes = [
   {
@@ -36,6 +37,11 @@ const AppRouter: Routes = [
     path: "confirmar-visitantes",
     component: ConfirmarVisitantesComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "resumen-visitantes",
+    component: ResumenVisitantesComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -45,7 +51,8 @@ const AppRouter: Routes = [
     LoginComponent,
     HomeComponent,
     IngresoVisitantesComponent,
-    ConfirmarVisitantesComponent
+    ConfirmarVisitantesComponent,
+    ResumenVisitantesComponent
   ],
   imports: [
     BrowserModule,
