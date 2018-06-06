@@ -13,8 +13,8 @@ export class UserService {
 
 
   /* ( String user, String pwd ) */
-  loginUser(): Observable<any> {
-    return this.http.get(this.url + "login_user");
+  loginUser(user: string, pwd: string): Observable<any> {
+    return this.http.get( this.url + `login_user?user=${user}&pwd=${pwd}` );
   }
 
   /* ( String codOperador ) */
