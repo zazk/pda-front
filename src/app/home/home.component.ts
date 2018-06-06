@@ -12,8 +12,8 @@ export class HomeComponent implements OnInit {
   constructor(private service: UserService) {}
 
   ngOnInit() {
-    this.service.getAll().subscribe(data => {
-      console.log("DATA CTM:", data);
+    this.service.listRutas().subscribe(data => {
+      console.log("DATA :", data);
       this.routes = data;
     });
     console.log("Gogogogo");

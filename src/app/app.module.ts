@@ -17,6 +17,7 @@ import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { BreadcrumbsComponent } from "./shared/breadcrumbs/breadcrumbs.component";
 import { PagosComponent } from "./pagos/pagos.component";
 import { NoticiasComponent } from "./noticias/noticias.component";
+import { CambioClaveComponent } from "./cambio-clave/cambio-clave.component";
 
 const AppRouter: Routes = [
   {
@@ -31,6 +32,11 @@ const AppRouter: Routes = [
   {
     path: "home",
     component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "cambio-clave",
+    component: CambioClaveComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -77,7 +83,8 @@ const AppRouter: Routes = [
     NavbarComponent,
     BreadcrumbsComponent,
     PagosComponent,
-    NoticiasComponent
+    NoticiasComponent,
+    CambioClaveComponent
   ],
   imports: [
     BrowserModule,
