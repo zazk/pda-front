@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { UserService } from "../shared/services/user/user.service";
 import { Pax } from "../models/pax";
+import { NgForm } from "@angular/forms";
 
 declare var $: any;
 @Component({
@@ -10,7 +11,7 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
   routes: any[];
-  csvContent: any[];
+  paxes: Pax[];
   @ViewChild("fecha") fecha: ElementRef;
   constructor(private service: UserService) {}
 
@@ -21,8 +22,24 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onSubmit(form: any): void {
-    console.log("FORM", form, "data", this.fecha.nativeElement.value );
+  onSubmit(form: NgForm): void {
+    const fecha: string = this.fecha.nativeElement.value;
+    console.log(
+      "FORM",
+      form.value,
+      "Date Route",
+      fecha,
+      "Paxes:",
+      this.paxes
+    );
+    if (fecha !== "" && form.value.ruta) {
+      localStorage.setItem("paxes", JSON.stringify( this.paxes ) );
+      localStorage.setItem("fecha", fecha );
+      localStorage.setItem("ruta", form.value.ruta );
+      window.location.href = "ingreso-visitantes";
+    } else {
+      console.log("Por favor seleccione fecha");
+    }
   }
 
   onUpdateDate($event) {
@@ -42,11 +59,11 @@ export class HomeComponent implements OnInit {
       const fileReader = new FileReader();
       fileReader.onload = (fileLoadedEvent: any) => {
         const textFromFileLoaded = fileLoadedEvent.target.result;
-        this.csvContent = textFromFileLoaded
+        this.paxes = textFromFileLoaded
           .split("\n")
           .slice(1)
           .map(o => new Pax(o.split(",")));
-        console.log("CONTENT FILE", this.csvContent);
+        console.log("CONTENT FILE", this.paxes);
       };
 
       fileReader.readAsText(fileToRead, "UTF-8");
