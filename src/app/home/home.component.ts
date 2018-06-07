@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { UserService } from "../shared/services/user/user.service";
 import { Pax } from "../models/pax";
 
@@ -11,6 +11,7 @@ declare var $: any;
 export class HomeComponent implements OnInit {
   routes: any[];
   csvContent: any[];
+  @ViewChild("fecha") fecha: ElementRef;
   constructor(private service: UserService) {}
 
   ngOnInit() {
@@ -18,12 +19,14 @@ export class HomeComponent implements OnInit {
       console.log("DATA :", data);
       this.routes = data;
     });
-    console.log("Gogogogo");
   }
 
   onSubmit(form: any): void {
-    console.log("FORM", form);
+    console.log("FORM", form, "data", this.fecha.nativeElement.value );
+  }
 
+  onUpdateDate($event) {
+    console.log("event", $event);
   }
 
   onFileSelect(input: HTMLInputElement) {
@@ -65,7 +68,8 @@ $(document).ready(() => {
   $("#datepicker").datepicker({
     minDate: 0,
     startDate: new Date(),
-    todayHighlight: true
+    todayHighlight: true,
+    format: "dd-mm-yyyy"
   });
 
   $("#datepicker").on("changeDate", function() {
