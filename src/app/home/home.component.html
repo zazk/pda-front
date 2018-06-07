@@ -19,9 +19,10 @@
         <app-breadcrumbs></app-breadcrumbs>
       </div>
       <div class="container n-container">
+
         <h3 class="header green vert-offset-top-1">Selecciona Ruta</h3>
         <div class="login-container text-center vert-offset-top-3">
-          <form action="">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" >
             <h4 class="blue">Saldo Actual</h4>
             <h1 class="smaller vert-offset-top-1">
               <div class="bigger-125 bg-primary p10">S/. 200.00</div>
@@ -33,7 +34,7 @@
 
             <div class="">
               <div class="input-group" id="datepicker" style="margin:auto; border-style: solid; border-color: #478FCA">
-                <input class="form-control date-picker" type="hidden" id="my_hidden_input" data-date-format="dd-mm-yyyy" />
+                <input ngModel name="fecha" class="form-control date-picker" type="hidden" id="my_hidden_input" data-date-format="dd-mm-yyyy" />
               </div>
             </div>
 
@@ -42,16 +43,16 @@
               <h4 class="blue">Ruta seleccionada</h4>
             </div>
             <div class="form-group vert-offset-top-1">
-              <select class="w100">
+              <select ngModel name="ruta" class="w100">
                 <option selected>Seleccione la ruta</option>
                 <option *ngFor="let ruta of routes" value="{{ruta.srl_cod_ruta}}">{{ruta.var_nombre}}</option>
               </select>
             </div>
             <div class="form-group">
-              <input type="file"  (change)="onFileSelect($event.target)" id="id-input-file-2" />
+              <input ngModel name="paxes" type="file"  (change)="onFileSelect($event.target)" id="id-input-file-2" />
             </div>
             <div class="vert-offset-top-2">
-              <button type="button" class="btn btn-success" onclick="window.location.href='ingreso-visitantes'">Continuar</button>
+              <button type="button" class="btn btn-success"  type="submit" >Continuar</button>
               <br />
               <br />
             </div>

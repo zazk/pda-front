@@ -21,6 +21,11 @@ export class HomeComponent implements OnInit {
     console.log("Gogogogo");
   }
 
+  onSubmit(form: any): void {
+    console.log("FORM", form);
+
+  }
+
   onFileSelect(input: HTMLInputElement) {
     const files = input.files;
 
@@ -37,7 +42,7 @@ export class HomeComponent implements OnInit {
         this.csvContent = textFromFileLoaded
           .split("\n")
           .slice(1)
-          .map(o => new Pax( o.split(",") ) );
+          .map(o => new Pax(o.split(",")));
         console.log("CONTENT FILE", this.csvContent);
       };
 
@@ -59,6 +64,7 @@ $(document).ready(() => {
 
   $("#datepicker").datepicker({
     minDate: 0,
+    startDate: new Date(),
     todayHighlight: true
   });
 
