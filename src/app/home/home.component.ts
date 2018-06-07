@@ -10,7 +10,12 @@ declare var $: any;
   styles: []
 })
 export class HomeComponent implements OnInit {
-  routes: any[];
+  routes: any[] = [
+    { srl_cod_ruta: 1, var_nombre: "Camino Inca 2D/1N" },
+    { srl_cod_ruta: 1, var_nombre: "Camino Inca 4D/3N" },
+    { srl_cod_ruta: 1, var_nombre: "Salkantay 3D/2N" },
+    { srl_cod_ruta: 1, var_nombre: "Choquequirao 3D/2N" }
+  ];
   paxes: Pax[];
   @ViewChild("fecha") fecha: ElementRef;
   constructor(private service: UserService) {}
@@ -24,18 +29,11 @@ export class HomeComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     const fecha: string = this.fecha.nativeElement.value;
-    console.log(
-      "FORM",
-      form.value,
-      "Date Route",
-      fecha,
-      "Paxes:",
-      this.paxes
-    );
+    console.log("FORM", form.value, "Date Route", fecha, "Paxes:", this.paxes);
     if (fecha !== "" && form.value.ruta) {
-      localStorage.setItem("paxes", JSON.stringify( this.paxes ) );
-      localStorage.setItem("fecha", fecha );
-      localStorage.setItem("ruta", form.value.ruta );
+      localStorage.setItem("paxes", JSON.stringify(this.paxes));
+      localStorage.setItem("fecha", fecha);
+      localStorage.setItem("ruta", form.value.ruta);
       window.location.href = "ingreso-visitantes";
     } else {
       console.log("Por favor seleccione fecha");

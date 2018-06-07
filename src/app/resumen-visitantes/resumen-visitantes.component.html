@@ -51,88 +51,18 @@
                 </thead>
 
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let pax of paxes; let i = index">
                     <td>
-                      1
+                      {{i}}
                     </td>
                     <td>
-                      Juan Perez Maldonado
-                    </td>
-                    <td>
-                      DNI
-                    </td>
-                    <td>
-                      88445454
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      2
-                    </td>
-                    <td>
-                      Enrique Lucio Juan
-                    </td>
-                    <td>
-                      Pasaporte
-                    </td>
-                    <td>
-                      88445454
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      3
-                    </td>
-                    <td>
-                      Juan Perez Maldonado
+                      {{pax.nombres}} {{pax.apellidos}}
                     </td>
                     <td>
                       DNI
                     </td>
                     <td>
-                      88445454
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      4
-                    </td>
-                    <td>
-                      Juan Perez Maldonado
-                    </td>
-                    <td>
-                      Carné extranjeria
-                    </td>
-                    <td>
-                      88445454
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      5
-                    </td>
-                    <td>
-                      Enrique Lucio Juan
-                    </td>
-                    <td>
-                      Pasaporte
-                    </td>
-                    <td>
-                      88445454
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      6
-                    </td>
-                    <td>
-                      Juan Perez Maldonado
-                    </td>
-                    <td>
-                      DNI
-                    </td>
-                    <td>
-                      88445454
+                      {{pax.dni}}
                     </td>
                   </tr>
                 </tbody>
@@ -142,10 +72,6 @@
               <button type="button" class="btn btn-inverse" onclick="window.location.href='#'">
                 <i class="ace-icon fa fa-print bigger-160"></i>
                 &nbsp;Imprimir&nbsp;&nbsp;
-              </button>
-              <button type="button" class="btn btn-inverse" onclick="window.location.href='#'">
-                <i class="ace-icon fa fa-download bigger-160"></i>
-                &nbsp;Exportar a PDF&nbsp;&nbsp;
               </button>
               <br/>
               <br/>

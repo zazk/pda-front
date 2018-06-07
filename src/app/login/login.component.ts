@@ -15,6 +15,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(form: any): void {
+    // TEMP ----
+    localStorage.setItem("currentUser", "true");
+    window.location.href = "home";
+    // ---
     this.userService.loginUser( form.user, form.password ).subscribe( response => {
       console.log("USER", response, form);
       localStorage.setItem("currentUser", "true");
