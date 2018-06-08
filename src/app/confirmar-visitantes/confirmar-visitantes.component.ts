@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Pax } from "../models/pax";
 import { Router } from "@angular/router";
+import { Utils } from "../shared/utils/utils";
+import { Grupo } from "../models/grupo";
 
 declare var $: any;
 @Component({
@@ -14,16 +16,28 @@ export class ConfirmarVisitantesComponent implements OnInit {
   fecha: string;
   ruta: number;
   rutaActiva: string;
+  seq: number;
+  year: string;
+  grupos: any[];
   constructor( private router: Router) {}
 
   ngOnInit() {
+    this.seq = JSON.parse(localStorage.getItem("sequence")) || 0;
+
     this.paxes = JSON.parse(localStorage.getItem("paxes"));
+    this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
+    this.year = JSON.parse(localStorage.getItem("year")) || (new Date().getFullYear());
     this.fecha = localStorage.getItem("fecha");
     this.ruta = parseInt(localStorage.getItem("ruta"), 10);
     this.rutaActiva = JSON.parse( localStorage.getItem("rutas") )
       .find( obj => obj.srl_cod_ruta === this.ruta ).var_nombre;
   }
   onFinalizar() {
+    const sequence = Utils.sequence( ++this.seq  , this.year );
+    const grupo = new Grupo( this.paxes, sequence, this.fecha, this.ruta );
+    this.grupos.push(grupo);
+    console.log( grupo );
+    localStorage.setItem( "grupos", JSON.stringify( this.grupos ) );
     this.router.navigate(["resumen-visitantes"]);
   }
   onAgregarPax() {

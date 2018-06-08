@@ -70,108 +70,24 @@
               </thead>
 
               <tbody>
-                <tr>
+                <tr *ngFor="let grupo of grupos; let i = index">
                   <td>
-                    1
+                    {{i +1}}
                   </td>
                   <td>
-                    0023
+                    {{grupo.numero}}
                   </td>
                   <td>
-                    200.00
+                    {{grupo.monto}}
                   </td>
                   <td>
-                    10
-                  </td>
-                  <td>
-                    0
-                  </td>
-                  <td>
-                    10 mayo 2018
-                  </td>
-                  <td>
-                    <a class="btn btn-primary btn-xs" href="op_confirmvisitantes.html">
-                      <i class="ace-icon fa fa-eye"></i>Ver
-                    </a>
-                    <a class="btn btn-inverse btn-xs" href="#">
-                      <i class="ace-icon fa fa-download"></i>PDF
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    2
-                  </td>
-                  <td>
-                    0022
-                  </td>
-                  <td>
-                    200.00
-                  </td>
-                  <td>
-                    12
-                  </td>
-                  <td>
-                    1
-                  </td>
-                  <td>
-                    21 mayo 2018
-                  </td>
-                  <td>
-                    <a class="btn btn-primary btn-xs" href="op_confirmvisitantes.html">
-                      <i class="ace-icon fa fa-eye"></i>Ver
-                    </a>
-                    <a class="btn btn-inverse btn-xs" href="#">
-                      <i class="ace-icon fa fa-download"></i>PDF
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    3
-                  </td>
-                  <td>
-                    0025
-                  </td>
-                  <td>
-                    200.00
-                  </td>
-                  <td>
-                    15
-                  </td>
-                  <td>
-                    3
-                  </td>
-                  <td>
-                    02 junio 2018
-                  </td>
-                  <td>
-                    <a class="btn btn-primary btn-xs" href="op_confirmvisitantes.html">
-                      <i class="ace-icon fa fa-eye"></i>Ver
-                    </a>
-                    <a class="btn btn-inverse btn-xs" href="#">
-                      <i class="ace-icon fa fa-download"></i>PDF
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    4
-                  </td>
-                  <td>
-                    0026
-                  </td>
-                  <td>
-                    200.00
-                  </td>
-                  <td>
-                    10
+                    {{grupo.paxes.length}}
                   </td>
                   <td>
                     0
                   </td>
                   <td>
-                    12 junio 2018
+                    {{grupo.fecha}}
                   </td>
                   <td>
                     <a class="btn btn-primary btn-xs" href="op_confirmvisitantes.html">
@@ -180,155 +96,6 @@
                     <a class="btn btn-inverse btn-xs" href="#">
                       <i class="ace-icon fa fa-download"></i>PDF
                     </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    5
-                  </td>
-                  <td>
-                    0023
-                  </td>
-                  <td>
-                    200.00
-                  </td>
-                  <td>
-                    10
-                  </td>
-                  <td>
-                    2
-                  </td>
-                  <td>
-                    16 julio 2018
-                  </td>
-                  <td>
-                    <a class="btn btn-primary btn-xs" href="op_confirmvisitantes.html">
-                      <i class="ace-icon fa fa-eye"></i>Ver
-                    </a>
-                    <a class="btn btn-inverse btn-xs" href="#">
-                      <i class="ace-icon fa fa-download"></i>PDF
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    6
-                  </td>
-                  <td>
-                    0027
-                  </td>
-                  <td>
-                    200.00
-                  </td>
-                  <td>
-                    10
-                  </td>
-                  <td>
-                    0
-                  </td>
-                  <td>
-                    21 julio 2018
-                  </td>
-                  <td>
-                    <a class="btn btn-primary btn-xs" href="op_confirmvisitantes.html">
-                      <i class="ace-icon fa fa-eye"></i>Ver
-                    </a>
-                    <a class="btn btn-inverse btn-xs" href="#">
-                      <i class="ace-icon fa fa-download"></i>PDF
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    7
-                  </td>
-                  <td>
-                    0028
-                  </td>
-                  <td>
-                    200.00
-                  </td>
-                  <td>
-                    10
-                  </td>
-                  <td>
-                    4
-                  </td>
-                  <td>
-                    01 Agosto 2018
-                  </td>
-                  <td>
-                    <a class="btn btn-primary btn-xs" href="op_confirmvisitantes.html">
-                      <i class="ace-icon fa fa-eye"></i>Ver
-                    </a>
-                    <a class="btn btn-inverse btn-xs" href="#">
-                      <i class="ace-icon fa fa-download"></i>PDF
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    8
-                  </td>
-                  <td>
-                    0029
-                  </td>
-                  <td>
-                    200.00
-                  </td>
-                  <td>
-                    10
-                  </td>
-                  <td>
-                    1
-                  </td>
-                  <td>
-                    05 Agosto 2018
-                  </td>
-                  <td>
-                    <a class="btn btn-primary btn-xs" href="op_visitantesverificados.html">
-                      <i class="ace-icon fa fa-eye"></i>Ver
-                    </a>
-                    <a class="btn btn-inverse btn-xs" href="#">
-                      <i class="ace-icon fa fa-download"></i>PDF
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="7" style="text-align: right">
-                    <ul class="pagination">
-                      <li class="disabled">
-                        <a href="#">
-                          <i class="ace-icon fa fa-angle-double-left"></i>
-                        </a>
-                      </li>
-
-                      <li class="active">
-                        <a href="#">1</a>
-                      </li>
-
-                      <li>
-                        <a href="#">2</a>
-                      </li>
-
-                      <li>
-                        <a href="#">3</a>
-                      </li>
-
-                      <li>
-                        <a href="#">4</a>
-                      </li>
-
-                      <li>
-                        <a href="#">5</a>
-                      </li>
-
-                      <li>
-                        <a href="#">
-                          <i class="ace-icon fa fa-angle-double-right"></i>
-                        </a>
-                      </li>
-                    </ul>
                   </td>
                 </tr>
               </tbody>

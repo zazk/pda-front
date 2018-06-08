@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Grupo } from "../models/grupo";
 
 declare var $: any;
 @Component({
@@ -7,11 +8,12 @@ declare var $: any;
   styles: []
 })
 export class GruposComponent implements OnInit {
+  grupos: Grupo[];
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.grupos = JSON.parse( localStorage.getItem("grupos") ) || [];
+  }
 }
 
-$(document).ready(() => {
-
-});
+$(document).ready(() => {});
