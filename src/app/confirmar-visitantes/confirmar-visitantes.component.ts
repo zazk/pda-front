@@ -38,6 +38,7 @@ export class ConfirmarVisitantesComponent implements OnInit {
     this.grupos.push(grupo);
     console.log( grupo );
     localStorage.setItem( "grupos", JSON.stringify( this.grupos ) );
+    localStorage.setItem( "sequence", this.seq.toString()  );
     this.router.navigate(["resumen-visitantes"]);
   }
   onAgregarPax() {

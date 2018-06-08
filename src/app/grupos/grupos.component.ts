@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Grupo } from "../models/grupo";
+import { Router } from "@angular/router";
 
 declare var $: any;
 @Component({
@@ -9,10 +10,14 @@ declare var $: any;
 })
 export class GruposComponent implements OnInit {
   grupos: Grupo[];
-  constructor() {}
+  constructor( private router: Router) {}
 
   ngOnInit() {
-    this.grupos = JSON.parse( localStorage.getItem("grupos") ) || [];
+    this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
+  }
+  onVerGrupo(grupo: Grupo) {
+    console.log("Grupo:", grupo);
+    this.router.navigate(["ver-visitantes", grupo.numero]);
   }
 }
 
