@@ -11,10 +11,9 @@ export class UserService {
     return this.http.get(this.url + "login");
   }
 
-
   /* ( String user, String pwd ) */
   loginUser(user: string, pwd: string): Observable<any> {
-    return this.http.get( this.url + `login_user?user=${user}&pwd=${pwd}` );
+    return this.http.get(this.url + `login_user?user=${user}&pwd=${pwd}`);
   }
 
   /* ( String codOperador ) */
@@ -104,7 +103,8 @@ export class UserService {
     return this.http.get(this.url + "insert_news");
   }
 
-  /* ( Integer codDocumento, Integer codCategoria, Integer codPais, String nombre, String apellido, String nroDocumento, LocalDate fNac, Integer sexo ) */
+  /* ( Integer codDocumento, Integer codCategoria, Integer codPais, String nombre,
+    String apellido, String nroDocumento, LocalDate fNac, Integer sexo ) */
   insertVisitante(): Observable<any> {
     return this.http.get(this.url + "insert_visitante");
   }
@@ -144,7 +144,8 @@ export class UserService {
     return this.http.get(this.url + "update_news");
   }
 
-  /* ( Integer codDocumento, Integer codCategoria, Integer codPais, String nombre, String apellido, String nroDocumento, LocalDate fNac, Integer sexo, Integer id ) */
+  /* ( Integer codDocumento, Integer codCategoria, Integer codPais, String nombre,
+    String apellido, String nroDocumento, LocalDate fNac, Integer sexo, Integer id ) */
   updateVisitante(): Observable<any> {
     return this.http.get(this.url + "update_visitante");
   }
@@ -159,7 +160,8 @@ export class UserService {
     return this.http.get(this.url + "update_asistencia");
   }
 
-  /* ( LocalDate date, Integer nroVisitantes, Integer nroInasistentes, Integer costo, Integer estado, String documento, String userModificacion, LocalDate dateModificacion, Integer codGrupo ) */
+  /* ( LocalDate date, Integer nroVisitantes, Integer nroInasistentes, Integer costo,
+    Integer estado, String documento, String userModificacion, LocalDate dateModificacion, Integer codGrupo ) */
   updateVisitagrupo(): Observable<any> {
     return this.http.get(this.url + "update_visitagrupo");
   }
@@ -173,5 +175,4 @@ export class UserService {
   updatePagorechazo(): Observable<any> {
     return this.http.get(this.url + "update_pagorechazo");
   }
-
 }

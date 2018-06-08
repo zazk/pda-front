@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { UserService } from "../shared/services/user/user.service";
 import { Pax } from "../models/pax";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 
 declare var $: any;
 @Component({
@@ -17,10 +18,11 @@ export class HomeComponent implements OnInit {
     { srl_cod_ruta: 1, var_nombre: "Choquequirao 3D/2N" }
   ];
   paxes: Pax[];
-  @ViewChild("fecha") fecha: ElementRef;
-  constructor(private service: UserService) {}
+  fecha: string;
+  constructor( private router: Router, private service: UserService) {}
 
   ngOnInit() {
+    this.loadScripts();
     this.service.listRutas().subscribe(data => {
       console.log("DATA :", data);
       this.routes = data;
@@ -28,20 +30,19 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    const fecha: string = this.fecha.nativeElement.value;
-    console.log("FORM", form.value, "Date Route", fecha, "Paxes:", this.paxes);
-    if (fecha !== "" && form.value.ruta) {
-      localStorage.setItem("paxes", JSON.stringify(this.paxes));
-      localStorage.setItem("fecha", fecha);
+    if (this.fecha  && form.value.ruta) {
+      localStorage.setItem("paxes", JSON.stringify(this.paxes) || "[]" );
+      localStorage.setItem("fecha", this.fecha);
       localStorage.setItem("ruta", form.value.ruta);
-      window.location.href = "ingreso-visitantes";
+      localStorage.setItem("rutas", JSON.stringify(this.routes) );
+      this.router.navigate(["ingreso-visitantes"]);
     } else {
-      console.log("Por favor seleccione fecha");
+      console.log("Por favor seleccione fecha", this.fecha, form.value.ruta);
+      alert("Ingresar Fecha y Ruta ");
     }
   }
 
   onUpdateDate($event) {
-    console.log("event", $event);
   }
 
   onFileSelect(input: HTMLInputElement) {
@@ -67,27 +68,26 @@ export class HomeComponent implements OnInit {
       fileReader.readAsText(fileToRead, "UTF-8");
     }
   }
+  // JQuery Functions
+  loadScripts() {
+    $(".chosen-select").chosen();
+    $("#id-input-file-2").ace_file_input({
+      no_file: "Importar Visitantes",
+      btn_choose: "Importar",
+      btn_change: "Cambiar",
+      droppable: false,
+      onchange: null,
+      thumbnail: false
+    });
+    $("#datepicker").datepicker({
+      minDate: 0,
+      startDate: new Date(),
+      todayHighlight: true,
+      format: "dd-mm-yyyy"
+    });
+
+    $("#datepicker").on("changeDate", () => {
+      this.fecha = $("#datepicker").datepicker("getFormattedDate");
+    });
+  }
 }
-
-$(document).ready(() => {
-  $(".chosen-select").chosen();
-  $("#id-input-file-2").ace_file_input({
-    no_file: "Importar Visitantes",
-    btn_choose: "Importar",
-    btn_change: "Cambiar",
-    droppable: false,
-    onchange: null,
-    thumbnail: false
-  });
-
-  $("#datepicker").datepicker({
-    minDate: 0,
-    startDate: new Date(),
-    todayHighlight: true,
-    format: "dd-mm-yyyy"
-  });
-
-  $("#datepicker").on("changeDate", function() {
-    $("#my_hidden_input").val($("#datepicker").datepicker("getFormattedDate"));
-  });
-});

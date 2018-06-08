@@ -22,12 +22,19 @@
         <div class="row ss3-main">
 
           <form action="" class="form-horizontal">
-            <h4 class="header smaller lighter blue">Grupo Nro. 000134-MAPI &nbsp;&nbsp;|&nbsp;&nbsp; Fecha visita:
-              <input #fecha class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" value="12-06-2018" /> &nbsp;&nbsp;|&nbsp;&nbsp; Ruta:
-              <select #ruta class="w20">
-                <option value="1">Huascarán</option>
-                <option value="2">Camino Inca</option>
-                <option value="3" selected>Macchu picchu</option>
+            <h4 class="header smaller lighter blue">
+              Grupo Nro.
+              <strong>000134-MAPI</strong>
+              |
+              Fecha visita:
+              <input #fechaEl class="w20 datepicker" id="id-date-picker-2"
+                type="text" data-date-format="dd-mm-yyyy" value="{{fecha}}" />
+              <br />
+              Ruta:
+              <select #rutaEl class="w20">
+                <option  *ngFor="let r of routes"
+                  [attr.selected]="r.srl_cod_ruta == ruta? true : null"
+                  value="{{r.srl_cod_ruta}}">{{r.var_nombre}}</option>
               </select>
             </h4>
           </form>
@@ -45,7 +52,7 @@
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Tipo doc </label>
                       <div class="col-sm-9">
                         <select ngModel name="tipoDocumento" required>
-                          <option selected>Seleccionar</option>
+                          <option >Seleccionar</option>
                           <option value="1">DNI</option>
                           <option value="2">Pasaporte</option>
                           <option value="3">Carne extranjeria</option>
@@ -56,7 +63,7 @@
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Nro Doc</label>
 
                       <div class="col-sm-9">
-                        <input ngModel name="dni" required type="text" id="form-field-1" placeholder="Nro Doc" class="col-xs-10 col-sm-5 w100">
+                        <input ngModel name="dni" required type="text" id="form-field-1" placeholder="########" class="col-xs-10 col-sm-5 w100">
                       </div>
                     </div>
                     <div class="form-group">
@@ -138,7 +145,7 @@
               Visitantes
             </div>
             <table class="table table-striped table-bordered table-hover">
-              <tbody>
+              <tbody *ngIf="paxes.length">
                 <tr *ngFor="let pax of paxes">
                   <td>
                     {{pax.nombres}} {{pax.apellidos}}
@@ -150,6 +157,14 @@
                   </td>
                 </tr>
               </tbody>
+              <tbody *ngIf="!paxes.length">
+                <tr>
+                  <td>
+                    No se encuentran Visitantes Registrados.
+                  </td>
+                </tr>
+              </tbody>
+
             </table>
             <div class="text-center">
               <button type="button" class="btn btn-warning" (click)="onCancel()">Cancelar</button>

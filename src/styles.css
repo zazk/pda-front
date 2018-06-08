@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@media print {
+  .n-title{position: static;}
+  .navbar-buttons,.breadcrumbs,.btn { display: none; }
+}
