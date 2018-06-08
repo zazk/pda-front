@@ -27,7 +27,7 @@ export class ConfirmarVisitantesComponent implements OnInit {
     this.router.navigate(["resumen-visitantes"]);
   }
   onAgregarPax() {
-    this.router.navigate(["agregar-visitantes"]);
+    this.router.navigate(["ingreso-visitantes"]);
   }
 }
 
