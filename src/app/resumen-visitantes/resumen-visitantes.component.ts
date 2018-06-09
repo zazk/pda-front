@@ -23,7 +23,7 @@ export class ResumenVisitantesComponent implements OnInit {
       .find( obj => obj.srl_cod_ruta === this.ruta ).var_nombre;
   }
   onCreateGroup(): void {
-    "fecha,rutas,paxes,ruta".split(",").forEach(s => localStorage.removeItem(s));
+    "fecha,paxes,ruta".split(",").forEach(s => localStorage.removeItem(s));
     this.router.navigate(["home"]);
   }
 }
