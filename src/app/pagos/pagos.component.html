@@ -68,150 +68,29 @@
                 </thead>
 
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let pago of pagos; let i = index">
                     <td>
-                      1
+                      {{i}}
                     </td>
                     <td>
-                      0123456
+                      {{pago.operacion}}
                     </td>
                     <td>
-                      S/. 450.00
+                      S/. {{pago.monto}}
                     </td>
                     <td>
-                      01/03/2017
-                    </td>
-                    <td>
-                      <span class="label label-success">
-                        Aprobado
-                      </span>
-                    </td>
-                    <td>
-                      <ul class="ace-thumbnails clearfix">
-                        <li>
-                          <a class="btn btn-primary btn-sm" href="voucher/voucher1.png" data-rel="colorbox">
-                            <i class="ace-icon fa fa-eye"></i>Ver
-                          </a>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      2
-                    </td>
-                    <td>
-                      9053071
-                    </td>
-                    <td>
-                      S/. 1030.00
-                    </td>
-                    <td>
-                      15/06/2017
-                    </td>
-                    <td>
-                      <span class="label label-warning">
-                        Pendiente
-                      </span>
-                    </td>
-                    <td>
-                      <ul class="ace-thumbnails clearfix">
-                        <li>
-                          <a class="btn btn-primary btn-sm" href="voucher/voucher1.png" data-rel="colorbox">
-                            <i class="ace-icon fa fa-eye"></i>Ver
-                          </a>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      3
-                    </td>
-                    <td>
-                      3466032
-                    </td>
-                    <td>
-                      S/. 250.00
-                    </td>
-                    <td>
-                      05/03/2017
-                    </td>
-                    <td>
-                      <span class="label label-danger">
-                        Rechazado
-                      </span>
-                    </td>
-                    <td>
-                      <ul class="ace-thumbnails clearfix">
-                        <li>
-                          <a class="btn btn-primary btn-sm" href="voucher/voucher1.png" data-rel="colorbox">
-                            <i class="ace-icon fa fa-eye"></i>Ver
-                          </a>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      4
-                    </td>
-                    <td>
-                      9896032
-                    </td>
-                    <td>
-                      S/. 340.00
-                    </td>
-                    <td>
-                      01/04/2018
+                      {{pago.fecha}}
                     </td>
                     <td>
                       <span class="label label-success">
-                        Aprovado
+                        {{pago.estado}}
                       </span>
                     </td>
                     <td>
                       <ul class="ace-thumbnails clearfix">
                         <li>
-                          <a class="btn btn-primary btn-sm" href="voucher/voucher1.png" data-rel="colorbox">
+                          <a class="btn btn-primary btn-sm" href="http://localhost:8080/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
                             <i class="ace-icon fa fa-eye"></i>Ver
-                          </a>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="6" style="text-align: right">
-                      <ul class="pagination">
-                        <li class="disabled">
-                          <a href="#">
-                            <i class="ace-icon fa fa-angle-double-left"></i>
-                          </a>
-                        </li>
-
-                        <li class="active">
-                          <a href="#">1</a>
-                        </li>
-
-                        <li>
-                          <a href="#">2</a>
-                        </li>
-
-                        <li>
-                          <a href="#">3</a>
-                        </li>
-
-                        <li>
-                          <a href="#">4</a>
-                        </li>
-
-                        <li>
-                          <a href="#">5</a>
-                        </li>
-
-                        <li>
-                          <a href="#">
-                            <i class="ace-icon fa fa-angle-double-right"></i>
                           </a>
                         </li>
                       </ul>
@@ -221,7 +100,7 @@
               </table>
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-success" onclick="window.location.href='op_agregarpago.html'">+ Agregar pago</button>
+              <button type="button" class="btn btn-success" onclick="window.location.href='agregar-pago'">+ Agregar pago</button>
             </div>
           </div>
         </div>

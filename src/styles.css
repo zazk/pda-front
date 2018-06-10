@@ -3,3 +3,9 @@
   .n-title{position: static;}
   .navbar-buttons,.breadcrumbs,.btn { display: none; }
 }
+
+.breadcrumb > li + li:before {
+  color: #ccc;
+  content: "| ";
+  padding: 0 5px;
+}

@@ -1,0 +1,96 @@
+<!-- menu responsive	 -->
+<div class="menu-mobile-open fa fa-bars"></div>
+<div class="menu-mobile-close fa fa-times"></div>
+<div class="menu-overlay"></div>
+<div class="menu-sidebar">
+  <div class="menu-sidebar-cnt"></div>
+</div>
+<!-- menu responsive	 -->
+<div class="cnt-wrapper">
+  <div class="wrapper">
+    <div id="navbar" class="navbar navbar-default          ace-save-state">
+      <div class="navbar-container ace-save-state" id="navbar-container">
+        <div class="navbar-header pull-left">
+          <a href="index.html" class="navbar-brand">
+            <small>
+              <i class="fa fa-leaf"></i>
+              PDA Sernanp
+            </small>
+          </a>
+        </div>
+
+        <app-navbar></app-navbar>
+      </div>
+      <!-- /.navbar-container -->
+    </div>
+
+
+    <div class="main-container">
+      <div class="text-right n-navprimary">
+        <h4 class="n-title blue">
+          <i class="ace-icon fa fa-globe"></i>
+          Modulo de Turismo
+        </h4>
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="container ss3">
+        <h3 class="header green vert-offset-top-2">Registro de pagos</h3>
+        <div class="row ss3-main">
+          <div class="wancho-medium">
+            <h4 class="header smaller lighter blue">Pago de Agencia</h4>
+            <div class="table-header">
+              Insertar pago
+            </div>
+            <table class="table-bordered" width="100%">
+              <tr>
+                <td class="p10">
+                  <form  #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nro operacion </label>
+
+                      <div class="col-sm-9">
+                        <input ngModel name="operacion" type="text" id="form-field-1" placeholder="Nro operacion" class="col-xs-10 col-sm-5 w100">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Monto </label>
+
+                      <div class="col-sm-9">
+                        <input ngModel name="monto" type="text" id="form-field-1" placeholder="Monto" class="col-xs-10 col-sm-5 w100">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Fecha de abono</label>
+
+                      <div class="col-sm-9">
+                        <input ngModel name="fecha" class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Voucher</label>
+
+                      <div class="col-sm-9">
+                        <input ngModel name="voucher" type="file" (change)="onFileSelect($event.target)" id="id-input-file-2" />
+                      </div>
+
+
+                    </div>
+                    <div class="text-center">
+                      <button type="button" type="submit" class="btn btn-success" >Ingresar Pago</button>
+                    </div>
+                  </form>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+    <!-- /.main-container -->
+  </div>
+</div>

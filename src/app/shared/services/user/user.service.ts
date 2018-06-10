@@ -175,4 +175,9 @@ export class UserService {
   updatePagorechazo(): Observable<any> {
     return this.http.get(this.url + "update_pagorechazo");
   }
+  uploadFile(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append("imagen", file, file.name);
+    return this.http.post(this.url + "upload-pago", formData);
+  }
 }
