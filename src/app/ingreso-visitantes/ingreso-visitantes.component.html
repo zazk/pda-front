@@ -27,9 +27,9 @@
               <strong>000134-MAPI</strong>
               |
               Fecha visita:
-              <input #fechaEl class="w20 datepicker" id="id-date-picker-2"
-                type="text" data-date-format="dd-mm-yyyy" value="{{fecha}}" />
-              <br />
+              <input #fechaEl class=" datepicker" id="id-date-picker-2"
+                type="text" readonly data-date-format="dd-mm-yyyy" value="{{fecha}}" />
+              |
               Ruta:
               <select #rutaEl class="w20">
                 <option  *ngFor="let r of routes"
@@ -63,7 +63,8 @@
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Nro Doc</label>
 
                       <div class="col-sm-9">
-                        <input ngModel name="dni" required type="text" id="form-field-1" placeholder="########" class="col-xs-10 col-sm-5 w100">
+                        <input ngModel name="dni" required pattern="[0-9]+" (keydown)="onValidateNumber($event)"
+                          type="text" placeholder="########" class="col-xs-10 col-sm-5 w100" />
                       </div>
                     </div>
                     <div class="form-group">

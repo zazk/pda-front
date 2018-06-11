@@ -10,7 +10,7 @@ declare var $: any;
   styles: []
 })
 export class IngresoVisitantesComponent implements OnInit {
-  constructor( private router: Router) {}
+  constructor(private router: Router) {}
 
   paxes: Pax[];
   fecha: string;
@@ -19,8 +19,8 @@ export class IngresoVisitantesComponent implements OnInit {
   @ViewChild("fechaEl") fechaEl: ElementRef;
   @ViewChild("rutaEl") rutaEl: ElementRef;
   ngOnInit() {
-    this.paxes = JSON.parse(localStorage.getItem("paxes")) || [] ;
-    this.routes = JSON.parse( localStorage.getItem("rutas") ) || [];
+    this.paxes = JSON.parse(localStorage.getItem("paxes")) || [];
+    this.routes = JSON.parse(localStorage.getItem("rutas")) || [];
     this.fecha = localStorage.getItem("fecha");
     this.ruta = localStorage.getItem("ruta");
     console.log("RUTA", this.ruta);
@@ -30,7 +30,7 @@ export class IngresoVisitantesComponent implements OnInit {
     console.log(f);
     if (f.valid) {
       this.paxes.push(f.value);
-      localStorage.setItem("paxes", JSON.stringify( this.paxes ) );
+      localStorage.setItem("paxes", JSON.stringify(this.paxes));
       f.reset();
     } else {
       alert("Todos los datos del pasajero son requeridos");
@@ -38,18 +38,23 @@ export class IngresoVisitantesComponent implements OnInit {
   }
   onRemovePax(pax: Pax) {
     this.paxes = this.paxes.filter(p => p.dni !== pax.dni);
-    localStorage.setItem("paxes", JSON.stringify( this.paxes ) );
+    localStorage.setItem("paxes", JSON.stringify(this.paxes));
   }
   onFinalizar() {
-    localStorage.setItem("fecha", this.fechaEl.nativeElement.value );
-    localStorage.setItem("ruta", this.rutaEl.nativeElement.value );
+    localStorage.setItem("fecha", this.fechaEl.nativeElement.value);
+    localStorage.setItem("ruta", this.rutaEl.nativeElement.value);
     window.location.href = "confirmar-visitantes";
   }
   onCancel() {
     "fecha,rutas,paxes".split(",").forEach(s => localStorage.removeItem(s));
     this.router.navigate(["home"]);
   }
-
+  onValidateNumber(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    if (!pattern.test(event.key)) {
+      event.preventDefault();
+    }
+  }
   loadScript() {
     $(".datepicker").datepicker({
       minDate: 0,

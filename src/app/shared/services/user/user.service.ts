@@ -3,17 +3,19 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { Pago } from "../../../models/pago";
 import { Subject } from "rxjs/Subject";
+import { Pax } from "../../../models/pax";
 
 @Injectable()
 export class UserService {
-  //public url: string = "//localhost:8080/";
-  public url: string = "//ima.pe:8080/";
+  public url: string = "//localhost:8080/";
+  //public url: string = "//ima.pe:8080/";
 
   user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
 
   set theUser(value: any) {
     this.user.next(value); // this will make sure to tell every subscriber about the change.
+    console.log("HERE WE SET");
     localStorage.setItem("currentUser", value);
   }
 
@@ -56,13 +58,13 @@ export class UserService {
   }
 
   /* ( String codOperador ) */
-  consultaGrupooperador(): Observable<any> {
-    return this.http.get(this.url + "consulta_grupooperador");
+  consultaGrupooperador( codOperador: string): Observable<any> {
+    return this.http.get(this.url + `consulta_grupooperador?codOperador=${codOperador}`);
   }
 
   /* ( String codOperador ) */
-  consultaPagooperador(): Observable<any> {
-    return this.http.get(this.url + "consulta_pagooperador");
+  consultaPagooperador( codOperador: string): Observable<any> {
+    return this.http.get(this.url + `consulta_pagooperador?codOperador=${codOperador}`);
   }
 
   /* ( String nroOperacion, String fecPago, Integer estado ) */
@@ -121,6 +123,14 @@ export class UserService {
     String apellido, String nroDocumento, LocalDate fNac, Integer sexo ) */
   insertVisitante(): Observable<any> {
     return this.http.get(this.url + "insert_visitante");
+  }
+
+
+  /* ( Visitantes visitantes) */
+  insertVisitantes( paxes: Pax[]): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append("visitantes", JSON.stringify( paxes ));
+    return this.http.post(this.url + "insert_visitantes", formData);
   }
 
   /* ( String codOperador, Integer codRuta, LocalDate fecProgramada, Integer nroVisitantes, Integer numCosto, String insUsuario ) */
