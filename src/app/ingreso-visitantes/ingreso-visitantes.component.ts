@@ -10,14 +10,17 @@ declare var $: any;
   styles: []
 })
 export class IngresoVisitantesComponent implements OnInit {
-  constructor(private router: Router) {}
 
   paxes: Pax[];
   fecha: string;
   ruta: string;
   routes: any[];
+  fechaPax: string;
   @ViewChild("fechaEl") fechaEl: ElementRef;
   @ViewChild("rutaEl") rutaEl: ElementRef;
+
+  constructor(private router: Router) {}
+
   ngOnInit() {
     this.paxes = JSON.parse(localStorage.getItem("paxes")) || [];
     this.routes = JSON.parse(localStorage.getItem("rutas")) || [];
@@ -28,6 +31,7 @@ export class IngresoVisitantesComponent implements OnInit {
   }
   onSubmitPax(f: NgForm) {
     console.log(f);
+    f.value.nacimiento = this.fechaPax;
     if (f.valid) {
       this.paxes.push(f.value);
       localStorage.setItem("paxes", JSON.stringify(this.paxes));
@@ -64,8 +68,11 @@ export class IngresoVisitantesComponent implements OnInit {
       autoclose: true
     });
 
-    $("#datepicker").on("changeDate", () => {
+    $("#fecha-visita").on("changeDate", () => {
       this.fecha = $(".datepicker").datepicker("getFormattedDate");
+    });
+    $("#datepicker-pax").on("changeDate", () => {
+      this.fechaPax = $("#datepicker-pax").datepicker("getFormattedDate");
     });
   }
 }
