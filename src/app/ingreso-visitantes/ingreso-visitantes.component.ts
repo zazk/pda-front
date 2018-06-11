@@ -38,6 +38,7 @@ export class IngresoVisitantesComponent implements OnInit {
   }
   onRemovePax(pax: Pax) {
     this.paxes = this.paxes.filter(p => p.dni !== pax.dni);
+    localStorage.setItem("paxes", JSON.stringify( this.paxes ) );
   }
   onFinalizar() {
     localStorage.setItem("fecha", this.fechaEl.nativeElement.value );

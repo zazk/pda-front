@@ -33,4 +33,8 @@ export class VerVisitantesComponent implements OnInit {
   onVerGrupos() {
     this.router.navigate(["grupos"]);
   }
+  onRemovePax(pax: Pax) {
+    this.paxes = this.paxes.filter(p => p.dni !== pax.dni);
+    localStorage.setItem("paxes", JSON.stringify( this.paxes ) );
+  }
 }

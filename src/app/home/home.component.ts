@@ -19,10 +19,12 @@ export class HomeComponent implements OnInit {
   ];
   paxes: Pax[];
   fecha: string;
+  user: any;
   constructor( private router: Router, private service: UserService) {}
 
   ngOnInit() {
     this.loadScripts();
+    this.user = JSON.parse(localStorage.getItem("currentUser") ) || {};
     this.service.listRutas().subscribe(data => {
       console.log("DATA :", data);
       this.routes = data;
