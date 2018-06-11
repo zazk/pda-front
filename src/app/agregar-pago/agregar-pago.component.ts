@@ -43,7 +43,7 @@ export class AgregarPagoComponent implements OnInit {
       this.service.insertPago(pago).subscribe(( response) => {
         this.pagos.push(pago);
         localStorage.setItem("pagos", JSON.stringify(this.pagos));
-        localStorage.setItem("currentUser", JSON.stringify(response.operador));
+        this.service.theUser = JSON.stringify(response.operador);
         this.router.navigate(["pagos"]);
       });
     } else {

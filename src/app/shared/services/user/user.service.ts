@@ -12,6 +12,15 @@ export class UserService {
   user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
 
+  set theUser(value: any) {
+    this.user.next(value); // this will make sure to tell every subscriber about the change.
+    localStorage.setItem("currentUser", value);
+  }
+
+  get theUser() {
+    return localStorage.getItem("currentUser");
+  }
+
   login(): Observable<any> {
     return this.http.get(this.url + "login");
   }
@@ -126,7 +135,6 @@ export class UserService {
 
   /* ( String codOperador, String nroOperacion, Integer monto, LocalDate fecAbono, String voucher ) */
   insertPago(pago: Pago): Observable<any> {
-
     const formData: FormData = new FormData();
     formData.append("codOperador", pago.codOperador);
     formData.append("nroOperacion", pago.operacion);
