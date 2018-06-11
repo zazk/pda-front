@@ -67,7 +67,7 @@
                   </tr>
                 </thead>
 
-                <tbody>
+                <tbody  *ngIf="pagos.length">
                   <tr *ngFor="let pago of pagos; let i = index">
                     <td>
                       {{i}}
@@ -89,13 +89,16 @@
                     <td>
                       <ul class="ace-thumbnails clearfix">
                         <li>
-                          <a class="btn btn-primary btn-sm" href="http://localhost:8080/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
+                          <a class="btn btn-primary btn-sm" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
                             <i class="ace-icon fa fa-eye"></i>Ver
                           </a>
                         </li>
                       </ul>
                     </td>
                   </tr>
+                </tbody>
+                <tbody  *ngIf="!pagos.length">
+                  <tr><td colspan="6">No se ha realizado ningun pago</td></tr>
                 </tbody>
               </table>
             </div>

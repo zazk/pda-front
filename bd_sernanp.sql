@@ -36,7 +36,7 @@ SET client_min_messages = warning;
 
 --
 -- TOC entry 1 (class 3079 OID 11750)
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
@@ -45,7 +45,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 --
 -- TOC entry 2054 (class 0 OID 0)
 -- Dependencies: 1
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -57,7 +57,7 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 179 (class 1259 OID 16434)
--- Name: t_categoria; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_categoria; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_categoria (
@@ -103,7 +103,7 @@ ALTER SEQUENCE public.t_categoria_srl_cod_categoria_seq OWNED BY public.t_catego
 
 --
 -- TOC entry 189 (class 1259 OID 16498)
--- Name: t_grupo; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_grupo; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_grupo (
@@ -114,7 +114,7 @@ CREATE TABLE public.t_grupo (
     dte_fec_visita date,
     int_nro_visitante integer NOT NULL,
     int_nro_inasistente integer,
-    num_costo money,
+    num_costo integer,
     int_estado integer,
     var_documento character varying(200),
     txt_motivoobservado text,
@@ -153,7 +153,7 @@ ALTER SEQUENCE public.t_grupo_srl_cod_grupo_seq OWNED BY public.t_grupo.srl_cod_
 
 --
 -- TOC entry 190 (class 1259 OID 16517)
--- Name: t_grupo_visitante; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_grupo_visitante; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_grupo_visitante (
@@ -167,7 +167,7 @@ ALTER TABLE public.t_grupo_visitante OWNER TO postgres;
 
 --
 -- TOC entry 174 (class 1259 OID 16410)
--- Name: t_noticia; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_noticia; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_noticia (
@@ -208,7 +208,7 @@ ALTER SEQUENCE public.t_noticia_srl_cod_noticia_seq OWNED BY public.t_noticia.sr
 
 --
 -- TOC entry 177 (class 1259 OID 16427)
--- Name: t_operador; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_operador; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_operador (
@@ -219,7 +219,7 @@ CREATE TABLE public.t_operador (
     var_telefono character varying(20),
     var_email character varying(50),
     var_web character varying(100),
-    num_saldo money,
+    num_saldo integer,
     bol_estado boolean
 );
 
@@ -228,14 +228,14 @@ ALTER TABLE public.t_operador OWNER TO postgres;
 
 --
 -- TOC entry 185 (class 1259 OID 16458)
--- Name: t_pago; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_pago; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_pago (
     srl_cod_pago integer NOT NULL,
     var_cod_operador character varying(30) NOT NULL,
     var_operacion character varying(30) NOT NULL,
-    num_monto money NOT NULL,
+    num_monto integer NOT NULL,
     dte_fec_abono date,
     var_comprobante character varying(200) NOT NULL,
     int_estado integer,
@@ -298,7 +298,7 @@ ALTER SEQUENCE public.t_pago_srl_cod_pago_seq OWNED BY public.t_pago.srl_cod_pag
 
 --
 -- TOC entry 183 (class 1259 OID 16450)
--- Name: t_pais; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_pais; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_pais (
@@ -335,7 +335,7 @@ ALTER SEQUENCE public.t_pais_srl_cod_pais_seq OWNED BY public.t_pais.srl_cod_pai
 
 --
 -- TOC entry 172 (class 1259 OID 16402)
--- Name: t_ruta; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_ruta; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_ruta (
@@ -373,7 +373,7 @@ ALTER SEQUENCE public.t_ruta_srl_cod_ruta_seq OWNED BY public.t_ruta.srl_cod_rut
 
 --
 -- TOC entry 181 (class 1259 OID 16442)
--- Name: t_tip_documento; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_tip_documento; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_tip_documento (
@@ -410,7 +410,7 @@ ALTER SEQUENCE public.t_tip_documento_srl_cod_documento_seq OWNED BY public.t_ti
 
 --
 -- TOC entry 176 (class 1259 OID 16421)
--- Name: t_usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_usuario (
@@ -450,7 +450,7 @@ ALTER SEQUENCE public.t_usuario_srl_cod_usuario_seq OWNED BY public.t_usuario.sr
 
 --
 -- TOC entry 187 (class 1259 OID 16474)
--- Name: t_visitante; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_visitante; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE public.t_visitante (
@@ -817,7 +817,7 @@ SELECT pg_catalog.setval('public.t_visitante_srl_cod_visitante_seq', 1, false);
 
 --
 -- TOC entry 1900 (class 2606 OID 16439)
--- Name: t_categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_categoria_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_categoria
@@ -826,7 +826,7 @@ ALTER TABLE ONLY public.t_categoria
 
 --
 -- TOC entry 1910 (class 2606 OID 16503)
--- Name: t_grupo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_grupo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_grupo
@@ -835,7 +835,7 @@ ALTER TABLE ONLY public.t_grupo
 
 --
 -- TOC entry 1894 (class 2606 OID 16418)
--- Name: t_noticia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_noticia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_noticia
@@ -844,7 +844,7 @@ ALTER TABLE ONLY public.t_noticia
 
 --
 -- TOC entry 1898 (class 2606 OID 16431)
--- Name: t_operador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_operador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_operador
@@ -853,7 +853,7 @@ ALTER TABLE ONLY public.t_operador
 
 --
 -- TOC entry 1906 (class 2606 OID 16466)
--- Name: t_pago_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_pago_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_pago
@@ -862,7 +862,7 @@ ALTER TABLE ONLY public.t_pago
 
 --
 -- TOC entry 1904 (class 2606 OID 16455)
--- Name: t_pais_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_pais_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_pais
@@ -871,7 +871,7 @@ ALTER TABLE ONLY public.t_pais
 
 --
 -- TOC entry 1892 (class 2606 OID 16407)
--- Name: t_ruta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_ruta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_ruta
@@ -880,7 +880,7 @@ ALTER TABLE ONLY public.t_ruta
 
 --
 -- TOC entry 1902 (class 2606 OID 16447)
--- Name: t_tip_documento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_tip_documento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_tip_documento
@@ -889,7 +889,7 @@ ALTER TABLE ONLY public.t_tip_documento
 
 --
 -- TOC entry 1896 (class 2606 OID 16426)
--- Name: t_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_usuario
@@ -898,7 +898,7 @@ ALTER TABLE ONLY public.t_usuario
 
 --
 -- TOC entry 1908 (class 2606 OID 16479)
--- Name: t_visitante_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: t_visitante_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace:
 --
 
 ALTER TABLE ONLY public.t_visitante

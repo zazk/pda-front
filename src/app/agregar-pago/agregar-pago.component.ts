@@ -3,6 +3,7 @@ import { UserService } from "../shared/services/user/user.service";
 import { NgForm } from "@angular/forms";
 import { Pago } from "../models/pago";
 import { Router } from "@angular/router";
+import { User } from "../models/user";
 
 declare var $: any;
 
@@ -15,22 +16,36 @@ export class AgregarPagoComponent implements OnInit {
   filename: string;
   pagos: Pago[];
   fecha: string;
+  usuario: User;
   constructor(private service: UserService, private router: Router) {}
 
   ngOnInit() {
-
-    this.pagos = JSON.parse( localStorage.getItem("pagos") ) || [];
+    this.usuario = JSON.parse(localStorage.getItem("currentUser")) || {};
+    this.pagos = JSON.parse(localStorage.getItem("pagos")) || [];
+    console.log("USUARIO", this.usuario);
     this.loadScript();
   }
 
   onSubmit(form: NgForm): void {
-    console.log("FORM", form, "FECHA", this.fecha);
+    console.log("FORM", form, "FECHA", this.fecha, "USUARIO", this.usuario);
     const obj: any = form.value;
-    if (this.filename  && obj.monto && obj.operacion ) {
-        const pago: Pago = new Pago(obj.operacion, obj.monto, this.fecha, this.filename);
+    if (this.filename && obj.monto && obj.operacion) {
+      const pago: Pago = new Pago(
+        obj.operacion,
+        obj.monto,
+        this.fecha,
+        this.filename,
+        "true",
+        this.usuario.var_cod_operador
+      );
+      console.log("PAGO", pago);
+
+      this.service.insertPago(pago).subscribe(( response) => {
         this.pagos.push(pago);
-        localStorage.setItem("pagos", JSON.stringify( this.pagos ) );
+        localStorage.setItem("pagos", JSON.stringify(this.pagos));
+        localStorage.setItem("currentUser", JSON.stringify(response.operador));
         this.router.navigate(["pagos"]);
+      });
     } else {
       console.log("Por favor suba su pago", this.filename, form.value.monto);
       alert("Ingresar todos los campos");
@@ -79,14 +94,16 @@ export class AgregarPagoComponent implements OnInit {
 
     // datepicker plugin
     // link
-    $(".date-picker")
-      .datepicker({
-        autoclose: true,
-        todayHighlight: true
-      });
+    $(".date-picker").datepicker({
+      autoclose: true,
+      todayHighlight: true
+    });
 
-      $(".date-picker").on("changeDate", () => {
-        this.fecha = $(".date-picker").datepicker("getFormattedDate");
-      });
+    $(".date-picker").on("changeDate", () => {
+      this.fecha = $(".date-picker")
+        .data("datepicker")
+        .getFormattedDate("yyyy-mm-dd");
+        console.log("This Fecha", this.fecha);
+    });
   }
 }

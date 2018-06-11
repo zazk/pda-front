@@ -1,10 +1,15 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
+import { Pago } from "../../../models/pago";
+import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class UserService {
-  private url: string = "//localhost:8080/";
+  //public url: string = "//localhost:8080/";
+  public url: string = "//ima.pe:8080/";
+
+  user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
 
   login(): Observable<any> {
@@ -120,8 +125,15 @@ export class UserService {
   }
 
   /* ( String codOperador, String nroOperacion, Integer monto, LocalDate fecAbono, String voucher ) */
-  insertPago(): Observable<any> {
-    return this.http.get(this.url + "insert_pago");
+  insertPago(pago: Pago): Observable<any> {
+
+    const formData: FormData = new FormData();
+    formData.append("codOperador", pago.codOperador);
+    formData.append("nroOperacion", pago.operacion);
+    formData.append("monto", pago.monto.toString());
+    formData.append("fecAbono", pago.fecha);
+    formData.append("voucher", pago.voucher);
+    return this.http.post(this.url + "insert_pago", formData);
   }
 
   /* ( Integer codNoticia ) */
@@ -175,6 +187,7 @@ export class UserService {
   updatePagorechazo(): Observable<any> {
     return this.http.get(this.url + "update_pagorechazo");
   }
+
   uploadFile(file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append("imagen", file, file.name);

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { UserService } from "../shared/services/user/user.service";
+import { Router } from "@angular/router";
 
 declare var $: any;
 @Component({
@@ -10,19 +11,19 @@ declare var $: any;
 export class LoginComponent implements OnInit {
   @Input() user: string;
   @Input() password: string;
-  constructor( private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {}
 
   onSubmit(form: any): void {
-    // TEMP ----
-    localStorage.setItem("currentUser", "true");
-    window.location.href = "home";
-    // ---
-    this.userService.loginUser( form.user, form.password ).subscribe( response => {
-      console.log("USER", response, form);
-      localStorage.setItem("currentUser", "true");
-      window.location.href = "home";
+
+    this.userService.loginUser(form.user, form.password).subscribe(response => {
+      if (response.user) {
+        localStorage.setItem("currentUser", JSON.stringify(response.user));
+        this.router.navigate(["home"]);
+      } else {
+        alert("Mensaje:" + response.error);
+      }
     });
   }
 

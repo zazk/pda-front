@@ -5,6 +5,7 @@ export class Pago {
     public fecha: string,
     public voucher: string,
     public estado?: string,
+    public codOperador?: string
   ) {
     this.operacion = operacion;
     this.monto = monto;
