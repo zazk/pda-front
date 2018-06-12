@@ -32,7 +32,7 @@ export class IngresoVisitantesComponent implements OnInit {
   onSubmitPax(f: NgForm) {
     console.log(f);
     f.value.nacimiento = this.fechaPax;
-    if (f.valid) {
+    if (f.valid && this.fechaPax) {
       this.paxes.push(f.value);
       localStorage.setItem("paxes", JSON.stringify(this.paxes));
       f.reset();
