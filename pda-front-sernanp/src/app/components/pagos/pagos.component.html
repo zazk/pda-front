@@ -1,0 +1,115 @@
+<!-- menu responsive	 -->
+<div class="menu-mobile-open fa fa-bars"></div>
+<div class="menu-mobile-close fa fa-times"></div>
+<div class="menu-overlay"></div>
+<div class="menu-sidebar">
+  <div class="menu-sidebar-cnt"></div>
+</div>
+<!-- menu responsive	 -->
+<div class="cnt-wrapper">
+  <div class="wrapper">
+    <app-navbar></app-navbar>
+    <div class="main-container">
+      <div class="text-right n-navprimary">
+        <h4 class="n-title blue">
+          <i class="ace-icon fa fa-globe"></i>
+          Modulo de Turismo
+        </h4>
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="container">
+        <h3 class="header green vert-offset-top-1">Lista de pagos</h3>
+        <div class="vert-offset-top-2">
+          <div class="wancho-medium">
+            <form action="" class="form-horizontal">
+              <h4 class="header smaller lighter blue">Operacion:
+                <input type="text" placeholder="Nro Operacion" maxlength="10" /> &nbsp;&nbsp;Fecha:
+                <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy"
+                /> &nbsp;&nbsp;Estado:
+                <select class="w20">
+                  <option value="1" selected>Pendiente</option>
+                  <option value="2">Aprobados</option>
+                  <option value="3">Rechazdos</option>
+                </select>
+              </h4>
+            </form>
+            <div class="table-header">
+              4 pagos realizados
+            </div>
+            <div>
+              <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>
+                      <i class="ace-icon fa fa-certificate"></i>
+                      Item
+                    </th>
+                    <th>
+                      <i class="ace-icon fa fa-edit"></i>
+                      Nro operacion
+                    </th>
+                    <th>
+                      <i class="ace-icon fa fa-money"></i>
+                      Monto Abonado
+                    </th>
+                    <th>
+                      <i class="ace-icon fa fa-calendar"></i>
+                      Fecha Abono
+                    </th>
+                    <th>
+                      <i class="ace-icon fa fa-info-circle"></i>
+                      Estado
+                    </th>
+                    <th>
+                      <i class="ace-icon fa fa-folder-o"></i>
+                      Voucher
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody  *ngIf="pagos.length">
+                  <tr *ngFor="let pago of pagos; let i = index">
+                    <td>
+                      {{i}}
+                    </td>
+                    <td>
+                      {{pago.operacion}}
+                    </td>
+                    <td>
+                      S/. {{pago.monto}}
+                    </td>
+                    <td>
+                      {{pago.fecha}}
+                    </td>
+                    <td>
+                      <span class="label label-success">
+                        {{pago.estado}}
+                      </span>
+                    </td>
+                    <td>
+                      <ul class="ace-thumbnails clearfix">
+                        <li>
+                          <a class="btn btn-primary btn-sm" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
+                            <i class="ace-icon fa fa-eye"></i>Ver
+                          </a>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody  *ngIf="!pagos.length">
+                  <tr><td colspan="6">No se ha realizado ningun pago</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-success" onclick="window.location.href='agregar-pago'">+ Agregar pago</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- /.main-container -->
+  </div>
+</div>

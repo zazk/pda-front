@@ -1,0 +1,70 @@
+<!-- menu responsive	 -->
+<div class="menu-mobile-open fa fa-bars"></div>
+<div class="menu-mobile-close fa fa-times"></div>
+<div class="menu-overlay"></div>
+<div class="menu-sidebar">
+  <div class="menu-sidebar-cnt"></div>
+</div>
+<!-- /menu responsive	 -->
+
+<div class="cnt-wrapper">
+  <div class="wrapper">
+    <app-navbar></app-navbar>
+    <div class="main-container">
+      <div class="text-right n-navprimary">
+        <h4 class="n-title blue">
+          <i class="ace-icon fa fa-globe"></i>
+          Modulo de Turismo
+        </h4>
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="container n-container">
+
+        <h3 class="header green vert-offset-top-1">Selecciona Ruta</h3>
+        <div class="login-container text-center vert-offset-top-3">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+            <h4 class="blue">Saldo Actual</h4>
+            <h1 class="smaller vert-offset-top-1">
+              <div class="bigger-125 bg-primary p10">S/. {{user.num_saldo}}</div>
+              <br />
+            </h1>
+            <h4 class="blue">
+              Fecha de visita
+            </h4>
+
+            <div class="">
+              <div class="input-group" id="datepicker" style="margin:auto; border-style: solid; border-color: #478FCA">
+                <input name="fecha" class="form-control date-picker" type="hidden" id="my_hidden_input"  />
+              </div>
+            </div>
+
+            <div class="col-xs-8 col-sm-11">
+              <br />
+              <h4 class="blue">Ruta seleccionada</h4>
+            </div>
+            <div class="form-group vert-offset-top-1">
+              <select ngModel name="ruta" class="w100" placeholder="Seleccione" >
+                <option >Seleccione la ruta</option>
+                <option *ngFor="let ruta of routes" value="{{ruta.srl_cod_ruta}}">{{ruta.var_nombre}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input ngModel name="paxes" type="file"  (change)="onFileSelect($event.target)" id="id-input-file-2" />
+            </div>
+            <div class="vert-offset-top-2">
+              <button type="button" class="btn btn-success"  type="submit" >Continuar</button>
+              <br />
+              <br />
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.main-container -->
+
+  </div>
+
+
+
+</div>

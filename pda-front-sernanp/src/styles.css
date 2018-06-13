@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@media print {
+  .n-title{position: static;}
+  .navbar-buttons,.breadcrumbs,.btn { display: none; }
+}
+
+.breadcrumb > li + li:before {
+  color: #ccc;
+  content: "| ";
+  padding: 0 5px;
+}
