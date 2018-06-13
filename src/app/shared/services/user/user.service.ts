@@ -114,6 +114,10 @@ export class UserService {
     return this.http.get(this.url + "list_grupos");
   }
 
+  listPagos(): Observable<any> {
+    return this.http.get(this.url + "list_pagos");
+  }
+
   /* ( String titulo, String contenido, LocalDate date, String user ) */
   insertNews(): Observable<any> {
     return this.http.get(this.url + "insert_news");
