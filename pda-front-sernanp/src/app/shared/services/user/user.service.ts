@@ -29,7 +29,7 @@ export class UserService {
 
   /* ( String user, String pwd ) */
   loginUser(user: string, pwd: string): Observable<any> {
-    return this.http.get(this.url + `login_sernanp?user=${user}&pwd=${pwd}`);
+    return this.http.get(this.url + `login_user?user=${user}&pwd=${pwd}`);
   }
 
   /* ( String codOperador ) */
