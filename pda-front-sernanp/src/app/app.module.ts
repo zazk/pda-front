@@ -23,12 +23,12 @@ const AppRouter: Routes = [
   },
   {
     path: "",
-    redirectTo: "home",
+    redirectTo: "pagos",
     pathMatch: "full"
   },
   {
     path: "home",
-    component: HomeComponent,
+    redirectTo: "pagos",
     canActivate: [AuthGuard]
   },
   {

@@ -62,7 +62,7 @@ export class IngresoVisitantesComponent implements OnInit {
   loadScript() {
     $(".datepicker").datepicker({
       minDate: 0,
-      startDate: new Date(),
+      endDate: new Date(),
       todayHighlight: true,
       format: "dd-mm-yyyy",
       autoclose: true
