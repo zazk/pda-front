@@ -46,7 +46,8 @@ export class HomeComponent implements OnInit {
               r.dte_fec_abono,
               r.var_comprobante,
               r.int_estado,
-              r.var_cod_operador
+              r.var_cod_operador,
+              r.srl_cod_pago
             ));
           localStorage.setItem("pagos", JSON.stringify(pagos));
         }
@@ -56,7 +57,7 @@ export class HomeComponent implements OnInit {
       .subscribe(response => {
         console.log("GRUPOS", response);
         if (response.length) {
-          //const grupo = response.map( r = new Grupo([],))
+          // const grupo = response.map( r = new Grupo([],))
         }
       });
 /*     this.service

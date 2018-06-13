@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(form.user, form.password).subscribe(response => {
       if (response.user) {
         localStorage.setItem("currentUser", JSON.stringify(response.user));
-        this.router.navigate(["home"]);
+        this.router.navigate(["pagos"]);
       } else {
         alert("Mensaje:" + response.error);
       }
@@ -34,8 +34,8 @@ $(document).ready(() => {
   $(document).on("click", ".toolbar a[data-target]", function(e) {
     e.preventDefault();
     const target = $(this).data("target");
-    $(".widget-box.visible").removeClass("visible"); //hide others
-    $(target).addClass("visible"); //show target
+    $(".widget-box.visible").removeClass("visible"); // hide others
+    $(target).addClass("visible"); // show target
   });
 
   $("#btn-login-dark").on("click", function(e) {

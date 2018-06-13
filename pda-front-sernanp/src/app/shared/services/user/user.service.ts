@@ -7,8 +7,8 @@ import { Pax } from "../../../models/pax";
 
 @Injectable()
 export class UserService {
-  //public url: string = "//localhost:8080/";
-  public url: string = "//ima.pe:8080/";
+  public url: string = "//localhost:8080/";
+  //public url: string = "//ima.pe:8080/";
 
   user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
@@ -58,13 +58,17 @@ export class UserService {
   }
 
   /* ( String codOperador ) */
-  consultaGrupooperador( codOperador: string): Observable<any> {
-    return this.http.get(this.url + `consulta_grupooperador?codOperador=${codOperador}`);
+  consultaGrupooperador(codOperador: string): Observable<any> {
+    return this.http.get(
+      this.url + `consulta_grupooperador?codOperador=${codOperador}`
+    );
   }
 
   /* ( String codOperador ) */
-  consultaPagooperador( codOperador: string): Observable<any> {
-    return this.http.get(this.url + `consulta_pagooperador?codOperador=${codOperador}`);
+  consultaPagooperador(codOperador: string): Observable<any> {
+    return this.http.get(
+      this.url + `consulta_pagooperador?codOperador=${codOperador}`
+    );
   }
 
   /* ( String nroOperacion, String fecPago, Integer estado ) */
@@ -114,6 +118,10 @@ export class UserService {
     return this.http.get(this.url + "list_grupos");
   }
 
+  listPagos(): Observable<any> {
+    return this.http.get(this.url + "list_pagos");
+  }
+
   /* ( String titulo, String contenido, LocalDate date, String user ) */
   insertNews(): Observable<any> {
     return this.http.get(this.url + "insert_news");
@@ -125,11 +133,10 @@ export class UserService {
     return this.http.get(this.url + "insert_visitante");
   }
 
-
   /* ( Visitantes visitantes) */
-  insertVisitantes( paxes: Pax[]): Observable<any> {
+  insertVisitantes(paxes: Pax[]): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append("visitantes", JSON.stringify( paxes ));
+    formData.append("visitantes", JSON.stringify(paxes));
     return this.http.post(this.url + "insert_visitantes", formData);
   }
 
@@ -201,9 +208,18 @@ export class UserService {
     return this.http.get(this.url + "update_docgrupo");
   }
 
-  /* ( Integer estado, String motivoRechazo, Integer codPago ) */
-  updatePagorechazo(): Observable<any> {
-    return this.http.get(this.url + "update_pagorechazo");
+  /* (  String motivoRechazo, Integer codPago ) */
+  updatePagorechazo(codigo: number, motivo: string): Observable<any> {
+    const form: FormData = new FormData();
+    form.append("codPago", codigo.toString());
+    form.append("motivoRechazo", motivo);
+    return this.http.post(this.url + "update_pagorechazo", form);
+  }
+  /* (  Integer codPago ) */
+  updatePagoaprobado(codigo: number): Observable<any> {
+    const form: FormData = new FormData();
+    form.append("codPago", codigo.toString());
+    return this.http.post(this.url + "update_pagoaprobado", form);
   }
 
   uploadFile(file: File): Observable<any> {
