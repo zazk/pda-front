@@ -7,8 +7,8 @@ import { Pax } from "../../../models/pax";
 
 @Injectable()
 export class UserService {
-  public url: string = "//localhost:8080/";
-  //public url: string = "//ima.pe:8080/";
+  //public url: string = "//localhost:8080/";
+  public url: string = "//ima.pe:8080/";
 
   user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
