@@ -7,7 +7,7 @@ import { Pax } from "../../../models/pax";
 
 @Injectable()
 export class UserService {
-  //public url: string = "//localhost:8080/";
+  // public url: string = "//localhost:8080/";
   public url: string = "//ima.pe:8080/";
 
   user: Subject<any> = new Subject();
@@ -15,7 +15,6 @@ export class UserService {
 
   set theUser(value: any) {
     this.user.next(value); // this will make sure to tell every subscriber about the change.
-    console.log("HERE WE SET");
     localStorage.setItem("currentUser", value);
   }
 
