@@ -69,6 +69,10 @@ export class PagosComponent implements OnInit {
       }
     });
   }
+  onClearSearch(form) {
+    form.reset();
+    this.onSearch(form);
+  }
   loadScripts() {
     this.service.listPagos().subscribe(response => {
       console.log("PAGOS", response);

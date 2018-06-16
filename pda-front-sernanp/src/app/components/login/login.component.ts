@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form: any): void {
 
-    this.userService.loginUser(form.user, form.password).subscribe(response => {
+    this.userService.loginSernanp(form.user, form.password).subscribe(response => {
       if (response.user) {
         localStorage.setItem("currentUser", JSON.stringify(response.user));
         this.router.navigate(["pagos"]);

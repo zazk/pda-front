@@ -7,8 +7,8 @@ import { Pax } from "../../../models/pax";
 
 @Injectable()
 export class UserService {
-  //public url: string = "//localhost:8080/";
-  public url: string = "//ima.pe:8080/";
+  public url: string = "//localhost:8080/";
+  //public url: string = "//ima.pe:8080/";
 
   user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
@@ -30,6 +30,11 @@ export class UserService {
   /* ( String user, String pwd ) */
   loginUser(user: string, pwd: string): Observable<any> {
     return this.http.get(this.url + `login_user?user=${user}&pwd=${pwd}`);
+  }
+
+  /* ( String user, String pwd ) */
+  loginSernanp(user: string, pwd: string): Observable<any> {
+    return this.http.get(this.url + `login_sernanp?user=${user}&pwd=${pwd}`);
   }
 
   /* ( String codOperador ) */
