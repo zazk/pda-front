@@ -132,7 +132,9 @@ export class HomeComponent implements OnInit {
     });
 
     $("#datepicker").on("changeDate", () => {
-      this.fecha = $("#datepicker").datepicker("getFormattedDate");
+      this.fecha = $("#datepicker")
+      .data("datepicker")
+      .getFormattedDate("yyyy-mm-dd");
     });
   }
 }

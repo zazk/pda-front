@@ -5,15 +5,17 @@ export class Pax {
   dni: string;
   nacimiento: string;
   categoria: string;
-  genero: string;
-  constructor(obj: string[]) {
+  pais: number;
+  sexo: string;
+  constructor(obj: any[]) {
     [
-      this.nombres,
       this.apellidos,
+      this.nombres,
       this.tipoDocumento,
       this.dni,
       this.nacimiento,
-      this.genero,
+      this.pais,
+      this.sexo,
       ,
       this.categoria
     ] = obj;

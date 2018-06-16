@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { Utils } from "../shared/utils/utils";
 import { Grupo } from "../models/grupo";
 import { UserService } from "../shared/services/user/user.service";
+import { User } from "../../../pda-front-sernanp/src/app/models/user";
 
 declare var $: any;
 @Component({
@@ -20,9 +21,11 @@ export class ConfirmarVisitantesComponent implements OnInit {
   seq: number;
   year: string;
   grupos: any[];
+  usuario: any;
   constructor( private router: Router, private service: UserService) {}
 
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem("currentUser")) || {};
     this.seq = JSON.parse(localStorage.getItem("sequence")) || 0;
 
     this.paxes = JSON.parse(localStorage.getItem("paxes"));
@@ -35,18 +38,18 @@ export class ConfirmarVisitantesComponent implements OnInit {
   }
   onFinalizar() {
     const sequence = Utils.sequence( ++this.seq  , this.year );
-    const grupo = new Grupo( this.paxes, sequence, this.fecha, this.ruta );
+    const grupo = new Grupo( this.paxes, sequence, this.fecha, this.ruta, 0, this.usuario.var_cod_operador );
+    console.log("GRUPO", grupo);
     this.service.insertGrupo(grupo).subscribe((r) => {
       console.log("GRUPO INSERTADO?", r);
+
+      this.grupos.push(grupo);
+      localStorage.setItem( "grupos", JSON.stringify( this.grupos ) );
+      localStorage.setItem( "sequence", this.seq.toString()  );
+      this.router.navigate(["resumen-visitantes"]);
     });
-    console.log( grupo );
     return;
-    /*
-    this.grupos.push(grupo);
-    localStorage.setItem( "grupos", JSON.stringify( this.grupos ) );
-    localStorage.setItem( "sequence", this.seq.toString()  );
-    //this.router.navigate(["resumen-visitantes"]);
-    */
+
   }
   onAgregarPax() {
     this.router.navigate(["ingreso-visitantes"]);

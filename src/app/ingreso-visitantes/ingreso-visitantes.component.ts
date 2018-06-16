@@ -47,7 +47,7 @@ export class IngresoVisitantesComponent implements OnInit {
   onFinalizar() {
     localStorage.setItem("fecha", this.fechaEl.nativeElement.value);
     localStorage.setItem("ruta", this.rutaEl.nativeElement.value);
-    window.location.href = "confirmar-visitantes";
+    this.router.navigate(["confirmar-visitantes"]);
   }
   onCancel() {
     "fecha,rutas,paxes".split(",").forEach(s => localStorage.removeItem(s));
@@ -60,11 +60,19 @@ export class IngresoVisitantesComponent implements OnInit {
     }
   }
   loadScript() {
-    $(".datepicker").datepicker({
+    $("#fecha-visita").datepicker({
+      minDate: 0,
+      startDate: new Date(),
+      todayHighlight: true,
+      format: "yyyy-mm-dd",
+      autoclose: true
+    });
+
+    $("#datepicker-pax").datepicker({
       minDate: 0,
       endDate: new Date(),
       todayHighlight: true,
-      format: "dd-mm-yyyy",
+      format: "yyyy-mm-dd",
       autoclose: true
     });
 

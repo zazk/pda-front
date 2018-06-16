@@ -6,12 +6,14 @@ export class Grupo {
     public codigo?: string,
     public fecha?: string,
     public ruta?: number,
-    public costo?: number
+    public costo?: number,
+    public codOperador?: string,
   ) {
     this.visitantes = visitantes;
     this.codigo = codigo;
     this.fecha = fecha;
     this.ruta = ruta;
     this.costo = costo ? costo : 20;
+    this.codOperador = codOperador;
   }
 }
