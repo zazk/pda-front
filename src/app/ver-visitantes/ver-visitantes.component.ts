@@ -20,10 +20,10 @@ export class VerVisitantesComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const numero = params["numero"];
+      const codigo = params["codigo"];
       this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
-      this.grupoActivo = this.grupos.find(obj => obj.numero === numero);
-      this.paxes = this.grupoActivo.paxes;
+      this.grupoActivo = this.grupos.find(obj => obj.codigo === codigo);
+      this.paxes = this.grupoActivo.visitantes;
       this.fecha = this.grupoActivo.fecha;
       this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
         obj => obj.srl_cod_ruta === this.grupoActivo.ruta

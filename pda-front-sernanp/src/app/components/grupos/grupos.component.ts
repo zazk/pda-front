@@ -17,7 +17,7 @@ export class GruposComponent implements OnInit {
   }
   onVerGrupo(grupo: Grupo) {
     console.log("Grupo:", grupo);
-    this.router.navigate(["ver-visitantes", grupo.numero]);
+    this.router.navigate(["ver-visitantes", grupo.codigo]);
   }
 }
 

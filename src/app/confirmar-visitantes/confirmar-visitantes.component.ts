@@ -3,6 +3,7 @@ import { Pax } from "../models/pax";
 import { Router } from "@angular/router";
 import { Utils } from "../shared/utils/utils";
 import { Grupo } from "../models/grupo";
+import { UserService } from "../shared/services/user/user.service";
 
 declare var $: any;
 @Component({
@@ -19,7 +20,7 @@ export class ConfirmarVisitantesComponent implements OnInit {
   seq: number;
   year: string;
   grupos: any[];
-  constructor( private router: Router) {}
+  constructor( private router: Router, private service: UserService) {}
 
   ngOnInit() {
     this.seq = JSON.parse(localStorage.getItem("sequence")) || 0;
@@ -35,11 +36,17 @@ export class ConfirmarVisitantesComponent implements OnInit {
   onFinalizar() {
     const sequence = Utils.sequence( ++this.seq  , this.year );
     const grupo = new Grupo( this.paxes, sequence, this.fecha, this.ruta );
-    this.grupos.push(grupo);
+    this.service.insertGrupo(grupo).subscribe((r) => {
+      console.log("GRUPO INSERTADO?", r);
+    });
     console.log( grupo );
+    return;
+    /*
+    this.grupos.push(grupo);
     localStorage.setItem( "grupos", JSON.stringify( this.grupos ) );
     localStorage.setItem( "sequence", this.seq.toString()  );
-    this.router.navigate(["resumen-visitantes"]);
+    //this.router.navigate(["resumen-visitantes"]);
+    */
   }
   onAgregarPax() {
     this.router.navigate(["ingreso-visitantes"]);

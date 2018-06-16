@@ -5,6 +5,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Pago } from "../models/pago";
 import { Grupo } from "../models/grupo";
+import * as moment from "moment";
 
 declare var $: any;
 @Component({
@@ -39,15 +40,17 @@ export class HomeComponent implements OnInit {
       .subscribe(response => {
         console.log("PAGOS", response);
         if (response.length) {
-          const pagos = response.map(r =>
-            new Pago(
-              r.var_operacion,
-              r.num_monto,
-              r.dte_fec_abono,
-              r.var_comprobante,
-              r.int_estado,
-              r.var_cod_operador
-            ));
+          const pagos = response.map(
+            r =>
+              new Pago(
+                r.var_operacion,
+                r.num_monto,
+                r.dte_fec_abono,
+                r.var_comprobante,
+                r.int_estado,
+                r.var_cod_operador
+              )
+          );
           localStorage.setItem("pagos", JSON.stringify(pagos));
         }
       });
@@ -59,7 +62,7 @@ export class HomeComponent implements OnInit {
           //const grupo = response.map( r = new Grupo([],))
         }
       });
-/*     this.service
+    /*     this.service
       .insertVisitantes(this.paxesTmp)
       .subscribe(response => {
         console.log("VISITANTES", response);
@@ -99,7 +102,11 @@ export class HomeComponent implements OnInit {
         this.paxes = textFromFileLoaded
           .split("\n")
           .slice(1)
-          .map(o => new Pax(o.split(",")));
+          .map(o => {
+            const pax = new Pax(o.split(","));
+            pax.nacimiento = moment(pax.nacimiento, "l").format("YYYY-MM-DD");
+            return pax;
+          });
         console.log("CONTENT FILE", this.paxes);
       };
 

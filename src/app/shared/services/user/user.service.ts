@@ -4,11 +4,12 @@ import { Observable } from "rxjs/Observable";
 import { Pago } from "../../../models/pago";
 import { Subject } from "rxjs/Subject";
 import { Pax } from "../../../models/pax";
+import { Grupo } from "../../../models/grupo";
 
 @Injectable()
 export class UserService {
-  // public url: string = "//localhost:8080/";
-  public url: string = "//ima.pe:8080/";
+  public url: string = "//localhost:8080/";
+  // public url: string = "//ima.pe:8080/";
 
   user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
@@ -137,8 +138,10 @@ export class UserService {
   }
 
   /* ( String codOperador, Integer codRuta, LocalDate fecProgramada, Integer nroVisitantes, Integer numCosto, String insUsuario ) */
-  insertGrupo(): Observable<any> {
-    return this.http.get(this.url + "insert_grupo");
+  insertGrupo( grupo: Grupo): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append("grupo", JSON.stringify(grupo));
+    return this.http.post(this.url + "insert_grupo", formData);
   }
 
   /* ( Integer codGrupo, Integer codVisitante ) */

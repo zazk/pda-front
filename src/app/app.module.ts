@@ -57,7 +57,7 @@ const AppRouter: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "ver-visitantes/:numero",
+    path: "ver-visitantes/:codigo",
     component: VerVisitantesComponent,
     canActivate: [AuthGuard]
   },
