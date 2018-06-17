@@ -11,6 +11,11 @@ declare var $: any;
 })
 export class GruposComponent implements OnInit {
   grupos: Grupo[];
+  estados: any[] = [
+    { text: "Pendiente", class: "warning" },
+    { text: "Aceptado", class: "success" },
+    { text: "Observado", class: "danger" }
+  ];
   constructor(private router: Router, private service: UserService) {}
 
   ngOnInit() {
@@ -20,10 +25,15 @@ export class GruposComponent implements OnInit {
       console.log("GRUPOS?", grupos);
     });
   }
-  onVerGrupo(grupo: Grupo) {
-    console.log("Grupo:", grupo);
-    this.router.navigate(["ver-visitantes", grupo.codigo]);
+  onAceptarGrupo(grupo: Grupo) {
+    console.log("Aceptar Grupo:", grupo);
+    //this.router.navigate(["ver-visitantes", grupo.codigo]);
   }
+  onObservarGrupo(grupo: Grupo) {
+    console.log("Observar Grupo:", grupo);
+    //this.router.navigate(["ver-visitantes", grupo.codigo]);
+  }
+
 }
 
 $(document).ready(() => {});

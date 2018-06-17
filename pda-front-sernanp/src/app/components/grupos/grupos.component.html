@@ -44,11 +44,11 @@
                   </th>
                   <th>
                     <i class="ace-icon fa fa-files-o"></i>
-                    Grupo Nro.
+                    Operador
                   </th>
                   <th>
-                    <i class="ace-icon fa fa-money"></i>
-                    Monto
+                    <i class="ace-icon fa fa-files-o"></i>
+                    Grupo
                   </th>
                   <th>
                     <i class="ace-icon fa fa-users"></i>
@@ -63,6 +63,14 @@
                     Fecha
                   </th>
                   <th>
+                    <i class="ace-icon fa fa-file"></i>
+                    Documento
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-calendar"></i>
+                    Estado
+                  </th>
+                  <th>
                     <i class="ace-icon fa fa-laptop"></i>
                     Accion
                   </th>
@@ -75,25 +83,39 @@
                     {{i +1}}
                   </td>
                   <td>
-                    {{grupo.codigo}}
+                    {{grupo.codOperador}}
                   </td>
                   <td>
-                    {{grupo.costo}}
+                    {{grupo.codigo}}
                   </td>
                   <td>
                     {{grupo.totalVisitantes}}
                   </td>
                   <td>
-                    0
+                    {{grupo.inasistencias}}
                   </td>
                   <td>
                     {{grupo.fecha}}
                   </td>
                   <td>
-                    <span class="btn btn-primary btn-xs" (click)="onVerGrupo(grupo)">
-                      <i class="ace-icon fa fa-eye"></i>Ver
+                    {{grupo.documento}}
+                  </td>
+                  <td>
+                    <span class="label label-{{estados[ grupo.estado -1].class}}">
+                      {{estados[ grupo.estado -1].text}}
                     </span>
                   </td>
+                  <td>
+										<button class="btn btn-white btn-sm btn-round" (click)="onAceptarGrupo(grupo)">
+												<i class="ace-icon fa fa-check"></i>
+												Aceptar
+											</button>
+
+											<button class="btn btn-white btn-sm btn-round  bootbox-regular" (click)="onObservarGrupo(grupo)">
+												<i class="ace-icon fa fa-times red2"></i>
+												Observacion
+											</button>
+									</td>
                 </tr>
               </tbody>
             </table>
