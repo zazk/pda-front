@@ -1,30 +1,4 @@
---
--- PostgreSQL database dump
---
 
--- Dumped from database version 9.3.23
--- Dumped by pg_dump version 9.3.23
--- Started on 2018-05-13 10:10:26
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-
---
--- TOC entry 2051 (class 1262 OID 16393)
--- Name: sernanp; Type: DATABASE; Schema: -; Owner: postgres
---
-
-CREATE DATABASE sernanp WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Spanish_Peru.1252' LC_CTYPE = 'Spanish_Peru.1252';
-
-
-ALTER DATABASE sernanp OWNER TO postgres;
-
-\connect sernanp
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -304,7 +278,7 @@ ALTER SEQUENCE public.t_pago_srl_cod_pago_seq OWNED BY public.t_pago.srl_cod_pag
 
 CREATE TABLE public.t_pais (
     srl_cod_pais integer NOT NULL,
-    var_nombre character varying(30)
+    var_nombre character varying(64)
 );
 
 
@@ -957,10 +931,10 @@ SELECT pg_catalog.setval('public.t_pais_srl_cod_pais_seq', 31, true);
 -- Data for Name: t_ruta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.t_ruta VALUES (1, 'Ruta 1', true);
-INSERT INTO public.t_ruta VALUES (2, 'Ruta 2', true);
-INSERT INTO public.t_ruta VALUES (3, 'Ruta 3', true);
-INSERT INTO public.t_ruta VALUES (4, 'Ruta 4', true);
+INSERT INTO public.t_ruta VALUES (1, 'Ruta 1 (4/3n) Piscacucho Km82', true);
+INSERT INTO public.t_ruta VALUES (2, 'Ruta 2 (4d/3n) Qorihuayrachina Km 88', true);
+INSERT INTO public.t_ruta VALUES (3, 'Ruta 3 (6d/5n) Salkatay', true);
+INSERT INTO public.t_ruta VALUES (4, 'Ruta 5 (Directo) Chachabamba Km 104', true);
 
 
 --
