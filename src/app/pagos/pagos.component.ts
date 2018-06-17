@@ -23,11 +23,6 @@ export class PagosComponent implements OnInit {
     this.url = this.service.url;
     this.pagos = JSON.parse(localStorage.getItem("pagos")) || [];
     this.user = JSON.parse(localStorage.getItem("currentUser")) || {};
-    this.service
-      .consultaPagooperador(this.user.var_cod_operador)
-      .subscribe(obj => {
-        console.log("OBJ", obj);
-      });
     this.loadScripts();
   }
   onSearch(form: any) {
