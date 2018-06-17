@@ -10,6 +10,7 @@ import { Grupo } from "../../models/grupo";
 })
 export class RevisionGruposComponent implements OnInit {
   grupos: Grupo[];
+  routes: any[];
   estados: any[] = [
     { text: "Pendiente", class: "warning" },
     { text: "Aceptado", class: "success" },
@@ -21,7 +22,14 @@ export class RevisionGruposComponent implements OnInit {
     this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
     this.service.listGrupos().subscribe((grupos: Grupo[]) => {
       this.grupos = grupos;
+      localStorage.setItem("grupos", JSON.stringify(this.grupos));
       console.log("GRUPOS??????", grupos);
+    });
+
+    this.service.listRutas().subscribe(data => {
+      console.log("DATA :", data);
+      this.routes = data;
+      localStorage.setItem("rutas", JSON.stringify(this.routes));
     });
   }
   onAceptarGrupo(grupo: Grupo) {

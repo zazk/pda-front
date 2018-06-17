@@ -11,7 +11,8 @@ export class Grupo {
     public codOperador?: number,
     public inasistencias?: number,
     public documento?: string,
-    public estado?: number
+    public estado?: number,
+    public id?: number
   ) {
     this.paxes = paxes;
     this.codigo = codigo;
@@ -23,5 +24,6 @@ export class Grupo {
     this.inasistencias = inasistencias;
     this.documento = documento;
     this.estado = estado;
+    this.id = id;
   }
 }
