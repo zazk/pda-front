@@ -106,7 +106,8 @@
                     </span>
                   </td>
                   <td>
-                    <a class="btn btn-sm" [routerLink]="['/control-visitantes/',grupo.id]" >Ver</a>
+                    <a *ngIf="grupo.estado==1" class="btn btn-sm" [routerLink]="['/control-visitantes/',grupo.id]" >Ver</a>
+                    <a *ngIf="grupo.estado!=1" class="btn btn-sm" [routerLink]="['/ver-visitantes-grupo/',grupo.id]" >Ver</a>
 									</td>
                 </tr>
               </tbody>

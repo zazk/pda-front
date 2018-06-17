@@ -18,6 +18,7 @@ import { CambioClaveComponent } from "./components/cambio-clave/cambio-clave.com
 import { RevisionGruposComponent } from "./components/revision-grupos/revision-grupos.component";
 import { ControlVisitantesComponent } from './components/control-visitantes/control-visitantes.component';
 import { ControlVisitantesVerificadosComponent } from './components/control-visitantes-verificados/control-visitantes-verificados.component';
+import { VerVisitantesGrupoComponent } from './components/ver-visitantes-grupo/ver-visitantes-grupo.component';
 
 const AppRouter: Routes = [
   {
@@ -68,6 +69,11 @@ const AppRouter: Routes = [
     path: "control-visitantes-verificados",
     component: ControlVisitantesVerificadosComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "ver-visitantes-grupo/:codigo",
+    component: VerVisitantesGrupoComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -84,7 +90,8 @@ const AppRouter: Routes = [
     CambioClaveComponent,
     RevisionGruposComponent,
     ControlVisitantesComponent,
-    ControlVisitantesVerificadosComponent
+    ControlVisitantesVerificadosComponent,
+    VerVisitantesGrupoComponent
   ],
   imports: [
     BrowserModule,
