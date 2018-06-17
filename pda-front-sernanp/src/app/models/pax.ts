@@ -7,7 +7,7 @@ export class Pax {
   categoria: string;
   pais: number;
   sexo: string;
-  verificado: boolean;
+  asistio: boolean;
   constructor(obj: any[]) {
     [
       this.apellidos,

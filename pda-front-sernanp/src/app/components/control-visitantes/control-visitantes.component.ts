@@ -49,8 +49,8 @@ export class ControlVisitantesComponent implements OnInit {
     console.log("GRUPO ACTIVO", this.grupoActivo.visitantes);
   }
   checkAllPaxes(event) {
-    this.grupoActivo.visitantes.map(v => {
-      v.verificado = event.target.checked;
+    this.grupoActivo.visitantes.map((v: Pax) => {
+      v.asistio = event.target.checked;
       return v;
     });
     console.log("PAXES", this.grupoActivo.visitantes);

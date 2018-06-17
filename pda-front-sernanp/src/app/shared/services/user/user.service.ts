@@ -4,6 +4,7 @@ import { Observable } from "rxjs/Observable";
 import { Pago } from "../../../models/pago";
 import { Subject } from "rxjs/Subject";
 import { Pax } from "../../../models/pax";
+import { Grupo } from "../../../models/grupo";
 
 @Injectable()
 export class UserService {
@@ -198,8 +199,11 @@ export class UserService {
   }
 
   /* ( Integer codGrupo, Integer codVisitante, Boolean asistio ) */
-  updateAsistencia(): Observable<any> {
-    return this.http.get(this.url + "update_asistencia");
+  updateAsistencia( grupo: Grupo): Observable<any> {
+
+    const formData: FormData = new FormData();
+    formData.append("grupo", JSON.stringify(grupo));
+    return this.http.post(this.url + "update_asistencia", formData);
   }
 
   /* ( LocalDate date, Integer nroVisitantes, Integer nroInasistentes, Integer costo,
@@ -231,5 +235,11 @@ export class UserService {
     const formData: FormData = new FormData();
     formData.append("imagen", file, file.name);
     return this.http.post(this.url + "upload-pago", formData);
+  }
+
+  uploadFileGrupo(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append("imagen", file, file.name);
+    return this.http.post(this.url + "upload-documento-grupo", formData);
   }
 }

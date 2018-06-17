@@ -65,10 +65,23 @@
                       {{pax.dni}}
                     </td>
                     <td>
-                      {{pax.verificado}}
+                      <span *ngIf="pax.asistio" class="label label-success arrowed">Verificado</span>
+                      <span *ngIf="!pax.asistio" class="label label-danger arrowed">No Verificado</span>
                     </td>
                   </tr>
                 </tbody>
+                <tfoot>
+                  <tr><td colspan="4">
+
+                      <form action="">
+                          <div>Adjuntar Documento INC:
+                          <label>
+                            <input name="voucher" type="file" (change)="onFileSelect($event.target)" id="id-input-file-2" />
+                          </label>
+                          </div>
+                      </form>
+                  </td></tr>
+                </tfoot>
               </table>
             </div>
             <div class="text-center">
