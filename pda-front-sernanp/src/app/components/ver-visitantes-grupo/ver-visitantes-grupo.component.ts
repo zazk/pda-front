@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../shared/services/user/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Grupo } from '../../models/grupo';
+import { Component, OnInit } from "@angular/core";
+import { UserService } from "../../shared/services/user/user.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Grupo } from "../../models/grupo";
+import { Pax } from "../../models/pax";
 
 @Component({
-  selector: 'app-ver-visitantes-grupo',
-  templateUrl: './ver-visitantes-grupo.component.html',
+  selector: "app-ver-visitantes-grupo",
+  templateUrl: "./ver-visitantes-grupo.component.html",
   styles: []
 })
 export class VerVisitantesGrupoComponent implements OnInit {
-
   paxes: Pax[];
   fecha: string;
   ruta: number;
@@ -42,5 +42,4 @@ export class VerVisitantesGrupoComponent implements OnInit {
       });
     });
   }
-
 }
