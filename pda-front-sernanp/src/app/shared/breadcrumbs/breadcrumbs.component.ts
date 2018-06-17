@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { UserService } from "../services/user/user.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-breadcrumbs",
@@ -6,7 +8,14 @@ import { Component, OnInit } from "@angular/core";
   styles: []
 })
 export class BreadcrumbsComponent implements OnInit {
-  constructor() {}
+  user: any;
+  constructor(private service: UserService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem("currentUser")) || {};
+    this.service.user.subscribe(user => {
+      this.user = user;
+      console.log("USER IN NAVBAR", this.user);
+    });
+  }
 }

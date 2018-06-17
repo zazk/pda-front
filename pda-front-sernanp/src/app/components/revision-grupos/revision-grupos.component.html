@@ -1,0 +1,130 @@
+<!-- menu responsive	 -->
+<div class="menu-mobile-open fa fa-bars"></div>
+<div class="menu-mobile-close fa fa-times"></div>
+<div class="menu-overlay"></div>
+<div class="menu-sidebar">
+  <div class="menu-sidebar-cnt"></div>
+</div>
+<!-- menu responsive	 -->
+
+<div class="cnt-wrapper">
+  <div class="wrapper">
+    <app-navbar></app-navbar>
+    <div class="main-container">
+      <div class="text-right n-navprimary">
+        <h4 class="n-title blue">
+          <i class="ace-icon fa fa-globe"></i>
+          Modulo de Turismo
+        </h4>
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="container ">
+        <h3 class="header green vert-offset-top-1">Reporte de Grupos</h3>
+        <div class="vert-offset-top-2 wancho-regula">
+          <form action="" class="form-horizontal">
+            <h4 class="header smaller lighter blue">Grupo:
+              <input type="text" placeholder="Nro Grupo" /> &nbsp;&nbsp;Fecha visita:
+              <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" /> &nbsp;&nbsp;Estado:
+              <select class="w20">
+                <option value="1" selected>Pendientes</option>
+                <option value="2">Visitados</option>
+              </select>
+            </h4>
+          </form>
+          <div class="table-header">
+            Grupos
+          </div>
+          <div>
+            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    <i class="ace-icon fa fa-square-o"></i>
+                    Item
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-files-o"></i>
+                    Operador
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-files-o"></i>
+                    Grupo
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-users"></i>
+                    Nro Visitantes
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-users"></i>
+                    Nro Inasistentes
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-calendar"></i>
+                    Fecha
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-file"></i>
+                    Documento
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-calendar"></i>
+                    Estado
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-laptop"></i>
+                    Accion
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let grupo of grupos; let i = index">
+                  <td>
+                    {{i +1}}
+                  </td>
+                  <td>
+                    {{grupo.codOperador}}
+                  </td>
+                  <td>
+                    {{grupo.codigo}}
+                  </td>
+                  <td>
+                    {{grupo.totalVisitantes}}
+                  </td>
+                  <td>
+                    {{grupo.inasistencias}}
+                  </td>
+                  <td>
+                    {{grupo.fecha}}
+                  </td>
+                  <td>
+                    {{grupo.documento}}
+                  </td>
+                  <td>
+                    <span class="label label-{{estados[ grupo.estado -1].class}}">
+                      {{estados[ grupo.estado -1].text}}
+                    </span>
+                  </td>
+                  <td>
+										<button class="btn btn-white btn-sm btn-round" (click)="onAceptarGrupo(grupo)">
+												<i class="ace-icon fa fa-check"></i>
+												Aceptar
+											</button>
+
+											<button class="btn btn-white btn-sm btn-round  bootbox-regular" (click)="onObservarGrupo(grupo)">
+												<i class="ace-icon fa fa-times red2"></i>
+												Observacion
+											</button>
+									</td>
+                </tr>
+              </tbody>
+            </table>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.main-container -->
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div class="breadcrumbs ace-save-state " id="breadcrumbs">
-    <ul class="breadcrumb menu-list">
+    <ul *ngIf="user.var_rol=='recaudador'" class="breadcrumb menu-list">
       <li>
         <i class="ace-icon fa fa-money"></i>
         <a [routerLink]="['/pagos']" >Pagos</a>
@@ -7,6 +7,12 @@
       <li>
         <i class="ace-icon fa fa-users"></i>
         <a [routerLink]="['/grupos']">Grupos</a>
+      </li>
+    </ul>
+    <ul *ngIf="user.var_rol=='puesto'" class="breadcrumb menu-list">
+      <li>
+        <i class="ace-icon fa fa-money"></i>
+        <a [routerLink]="['/revision-grupos']" >Revision Grupos</a>
       </li>
     </ul>
     <!-- /.breadcrumb -->

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { User } from "../../models/user";
 import { UserService } from "../services/user/user.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -9,15 +10,17 @@ import { UserService } from "../services/user/user.service";
 })
 export class NavbarComponent implements OnInit {
   user: any;
-  constructor(private service: UserService) {
-  }
+  constructor(private service: UserService, private router: Router) {}
 
-  ngOnInit( ) {
-
-    this.user = JSON.parse(localStorage.getItem("currentUser") ) || {};
-    this.service.user.subscribe( (user) => {
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem("currentUser")) || {};
+    this.service.user.subscribe(user => {
       this.user = user;
       console.log("USER IN NAVBAR", this.user);
     });
+  }
+  onCerrarSesion() {
+    localStorage.clear();
+    this.router.navigate(["login"]);
   }
 }

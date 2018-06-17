@@ -15,6 +15,9 @@ import { BreadcrumbsComponent } from "./shared/breadcrumbs/breadcrumbs.component
 import { PagosComponent } from "./components/pagos/pagos.component";
 import { NoticiasComponent } from "./components/noticias/noticias.component";
 import { CambioClaveComponent } from "./components/cambio-clave/cambio-clave.component";
+import { RevisionGruposComponent } from "./components/revision-grupos/revision-grupos.component";
+import { ControlVisitantesComponent } from './components/control-visitantes/control-visitantes.component';
+import { ControlVisitantesVerificadosComponent } from './components/control-visitantes-verificados/control-visitantes-verificados.component';
 
 const AppRouter: Routes = [
   {
@@ -50,6 +53,21 @@ const AppRouter: Routes = [
     path: "noticias",
     component: NoticiasComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "revision-grupos",
+    component: RevisionGruposComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "control-visitantes",
+    component: ControlVisitantesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "control-visitantes-verificados",
+    component: ControlVisitantesVerificadosComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -63,7 +81,10 @@ const AppRouter: Routes = [
     BreadcrumbsComponent,
     PagosComponent,
     NoticiasComponent,
-    CambioClaveComponent
+    CambioClaveComponent,
+    RevisionGruposComponent,
+    ControlVisitantesComponent,
+    ControlVisitantesVerificadosComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +92,7 @@ const AppRouter: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(AppRouter, { enableTracing: true, useHash: true  })
+    RouterModule.forRoot(AppRouter, { enableTracing: true, useHash: true })
   ],
   providers: [AuthGuard, UserService],
   bootstrap: [AppComponent]

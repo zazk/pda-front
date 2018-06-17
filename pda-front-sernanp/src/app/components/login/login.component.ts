@@ -16,15 +16,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(form: any): void {
-
-    this.userService.loginSernanp(form.user, form.password).subscribe(response => {
-      if (response.user) {
-        localStorage.setItem("currentUser", JSON.stringify(response.user));
-        this.router.navigate(["pagos"]);
-      } else {
-        alert("Mensaje:" + response.error);
-      }
-    });
+    this.userService
+      .loginSernanp(form.user, form.password)
+      .subscribe(response => {
+        if (response.user) {
+          localStorage.setItem("currentUser", JSON.stringify(response.user));
+          if (response.user.var_rol === "recaudador") {
+            this.router.navigate(["pagos"]);
+          } else {
+            this.router.navigate(["revision-grupos"]);
+          }
+        } else {
+          alert("Mensaje:" + response.error);
+        }
+      });
   }
 
   login() {}
