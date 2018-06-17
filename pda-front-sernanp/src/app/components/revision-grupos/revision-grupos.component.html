@@ -77,7 +77,7 @@
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody *ngIf="grupos.length">
                 <tr *ngFor="let grupo of grupos; let i = index">
                   <td>
                     {{i +1}}
@@ -106,17 +106,12 @@
                     </span>
                   </td>
                   <td>
-										<button class="btn btn-white btn-sm btn-round" (click)="onAceptarGrupo(grupo)">
-												<i class="ace-icon fa fa-check"></i>
-												Aceptar
-											</button>
-
-											<button class="btn btn-white btn-sm btn-round  bootbox-regular" (click)="onObservarGrupo(grupo)">
-												<i class="ace-icon fa fa-times red2"></i>
-												Observacion
-											</button>
+                    <a class="btn btn-sm" [routerLink]="['/control-visitantes/',grupo.codigo]" >Ver</a>
 									</td>
                 </tr>
+              </tbody>
+              <tbody *ngIf="!grupos.length">
+                <tr><td colspan="9">No se encontraron grupos</td></tr>
               </tbody>
             </table>
 

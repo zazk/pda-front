@@ -60,7 +60,7 @@ const AppRouter: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "control-visitantes",
+    path: "control-visitantes/:grupo",
     component: ControlVisitantesComponent,
     canActivate: [AuthGuard]
   },
