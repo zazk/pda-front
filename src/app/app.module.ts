@@ -18,8 +18,8 @@ import { BreadcrumbsComponent } from "./shared/breadcrumbs/breadcrumbs.component
 import { PagosComponent } from "./pagos/pagos.component";
 import { NoticiasComponent } from "./noticias/noticias.component";
 import { CambioClaveComponent } from "./cambio-clave/cambio-clave.component";
-import { VerVisitantesComponent } from './ver-visitantes/ver-visitantes.component';
-import { AgregarPagoComponent } from './agregar-pago/agregar-pago.component';
+import { VerVisitantesComponent } from "./ver-visitantes/ver-visitantes.component";
+import { AgregarPagoComponent } from "./agregar-pago/agregar-pago.component";
 
 const AppRouter: Routes = [
   {

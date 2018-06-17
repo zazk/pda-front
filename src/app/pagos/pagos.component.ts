@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Pago } from "../models/pago";
 import { UserService } from "../shared/services/user/user.service";
 
@@ -16,15 +17,18 @@ export class PagosComponent implements OnInit {
     { text: "Aceptado", class: "success" },
     { text: "Rechazado", class: "danger" }
   ];
-  constructor( private service: UserService) {}
+  constructor(private service: UserService, private router: Router) {}
 
   ngOnInit() {
     this.url = this.service.url;
     this.pagos = JSON.parse(localStorage.getItem("pagos")) || [];
     this.user = JSON.parse(localStorage.getItem("currentUser")) || {};
-
+    this.service
+      .consultaPagooperador(this.user.var_cod_operador)
+      .subscribe(obj => {
+        console.log("OBJ", obj);
+      });
     this.loadScripts();
-
   }
   onSearch(form: any) {
     const pagos = JSON.parse(localStorage.getItem("pagos")) || [];
@@ -39,25 +43,27 @@ export class PagosComponent implements OnInit {
     });
   }
   loadScripts() {
-    this.service.consultaPagooperador(this.user.var_cod_operador).subscribe(response => {
-      console.log("PAGOS", response);
-      if (response.length) {
-        this.pagos = response.map(
-          r =>
-            new Pago(
-              r.var_operacion,
-              r.num_monto,
-              r.dte_fec_abono,
-              r.var_comprobante,
-              r.int_estado,
-              r.var_cod_operador,
-              r.srl_cod_pago,
-              r.txt_motivorechazo,
-              r.var_razonsocial
-            )
-        );
-        localStorage.setItem("pagos", JSON.stringify(this.pagos));
-      }
-    });
+    this.service
+      .consultaPagooperador(this.user.var_cod_operador)
+      .subscribe(response => {
+        console.log("PAGOS", response);
+        if (response.length) {
+          this.pagos = response.map(
+            r =>
+              new Pago(
+                r.var_operacion,
+                r.num_monto,
+                r.dte_fec_abono,
+                r.var_comprobante,
+                r.int_estado,
+                r.var_cod_operador,
+                r.srl_cod_pago,
+                r.txt_motivorechazo,
+                r.var_razonsocial
+              )
+          );
+          localStorage.setItem("pagos", JSON.stringify(this.pagos));
+        }
+      });
   }
 }

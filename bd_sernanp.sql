@@ -108,6 +108,7 @@ ALTER SEQUENCE public.t_categoria_srl_cod_categoria_seq OWNED BY public.t_catego
 
 CREATE TABLE public.t_grupo (
     srl_cod_grupo integer NOT NULL,
+    var_cod_grupo character varying(32),
     var_cod_operador character varying(20) NOT NULL,
     srl_cod_ruta integer NOT NULL,
     dte_fec_programada date,
@@ -219,7 +220,7 @@ CREATE TABLE public.t_operador (
     var_telefono character varying(20),
     var_email character varying(50),
     var_web character varying(100),
-    num_saldo integer,
+    num_saldo double precision,
     bol_estado boolean
 );
 
@@ -418,7 +419,8 @@ CREATE TABLE public.t_usuario (
     var_usuario character varying(30) NOT NULL,
     var_clave character varying(100),
     bol_estado boolean,
-    var_email character varying(50)
+    var_email character varying(50),
+    var_rol character varying(16)
 );
 
 
@@ -725,6 +727,219 @@ INSERT INTO public.t_pais VALUES (28, 'BOSNIA Y HERZEGOVINA');
 INSERT INTO public.t_pais VALUES (29, 'BOTSWANA');
 INSERT INTO public.t_pais VALUES (30, 'ISLA BOUVET');
 INSERT INTO public.t_pais VALUES (31, 'BRASIL');
+INSERT INTO public.t_pais VALUES (32, 'TERRITORIO BRITANICO');
+INSERT INTO public.t_pais VALUES (33, 'BRUNEI');
+INSERT INTO public.t_pais VALUES (34, 'BULGARIA');
+INSERT INTO public.t_pais VALUES (35, 'BURKINA FASO');
+INSERT INTO public.t_pais VALUES (36, 'BURUNDI');
+INSERT INTO public.t_pais VALUES (37, 'CAMBOYA');
+INSERT INTO public.t_pais VALUES (38, 'CAMERUN');
+INSERT INTO public.t_pais VALUES (39, 'CANADA');
+INSERT INTO public.t_pais VALUES (40, 'CABO VERDE');
+INSERT INTO public.t_pais VALUES (41, 'ISLAS CAIMAN');
+INSERT INTO public.t_pais VALUES (42, 'REPUBLICA');
+INSERT INTO public.t_pais VALUES (43, 'CHAD');
+INSERT INTO public.t_pais VALUES (44, 'CHILE');
+INSERT INTO public.t_pais VALUES (45, 'CHINA');
+INSERT INTO public.t_pais VALUES (46, 'ISLA DE NAVIDAD');
+INSERT INTO public.t_pais VALUES (47, 'ISLAS COCOS');
+INSERT INTO public.t_pais VALUES (48, 'COLOMBIA');
+INSERT INTO public.t_pais VALUES (49, 'COMORAS');
+INSERT INTO public.t_pais VALUES (50, 'CONGO');
+INSERT INTO public.t_pais VALUES (51, 'CONGO REPUBLICA');
+INSERT INTO public.t_pais VALUES (52, 'ISLAS DE COOK');
+INSERT INTO public.t_pais VALUES (53, 'COSTA RICA');
+INSERT INTO public.t_pais VALUES (54, 'COSTA DE MARFIL');
+INSERT INTO public.t_pais VALUES (55, 'CROACIA');
+INSERT INTO public.t_pais VALUES (56, 'CUBA');
+INSERT INTO public.t_pais VALUES (57, 'CHIPRE');
+INSERT INTO public.t_pais VALUES (58, 'REPUBLICA CHECA');
+INSERT INTO public.t_pais VALUES (59, 'DINAMARCA');
+INSERT INTO public.t_pais VALUES (60, 'DJIBOUTI');
+INSERT INTO public.t_pais VALUES (61, 'DOMINICA');
+INSERT INTO public.t_pais VALUES (62, 'REPUBLICA DOMINICANA');
+INSERT INTO public.t_pais VALUES (63, 'ECUADOR');
+INSERT INTO public.t_pais VALUES (64, 'EGIPTO');
+INSERT INTO public.t_pais VALUES (65, 'EL SALVADOR');
+INSERT INTO public.t_pais VALUES (66, 'GUINEA ECUATORIAL');
+INSERT INTO public.t_pais VALUES (67, 'ERITREA');
+INSERT INTO public.t_pais VALUES (68, 'ESTONIA');
+INSERT INTO public.t_pais VALUES (69, 'ETIOPIA');
+INSERT INTO public.t_pais VALUES (70, 'ISLAS MALVINAS');
+INSERT INTO public.t_pais VALUES (71, 'ISLAS FERCE');
+INSERT INTO public.t_pais VALUES (72, 'FIJI');
+INSERT INTO public.t_pais VALUES (73, 'FINLANDIA');
+INSERT INTO public.t_pais VALUES (74, 'FRANCIA');
+INSERT INTO public.t_pais VALUES (75, 'GUINEA FRANCESA');
+INSERT INTO public.t_pais VALUES (76, 'POLINESIA');
+INSERT INTO public.t_pais VALUES (77, 'TERRITORIO AUSTRALES');
+INSERT INTO public.t_pais VALUES (78, 'GABON');
+INSERT INTO public.t_pais VALUES (79, 'GAMBIA');
+INSERT INTO public.t_pais VALUES (80, 'GEORGIA');
+INSERT INTO public.t_pais VALUES (81, 'ALEMANIA');
+INSERT INTO public.t_pais VALUES (82, 'GHANA');
+INSERT INTO public.t_pais VALUES (83, 'GIBRALTAR');
+INSERT INTO public.t_pais VALUES (84, 'GRECIA');
+INSERT INTO public.t_pais VALUES (85, 'GROENLANDIA');
+INSERT INTO public.t_pais VALUES (86, 'GRANADA');
+INSERT INTO public.t_pais VALUES (87, 'GUADALUPE');
+INSERT INTO public.t_pais VALUES (88, 'GUAM');
+INSERT INTO public.t_pais VALUES (89, 'GUATEMALA');
+INSERT INTO public.t_pais VALUES (90, 'GUERSNEY');
+INSERT INTO public.t_pais VALUES (91, 'GUINEA');
+INSERT INTO public.t_pais VALUES (92, 'GUINEA BISSAU');
+INSERT INTO public.t_pais VALUES (93, 'GUYANA');
+INSERT INTO public.t_pais VALUES (94, 'HAITI');
+INSERT INTO public.t_pais VALUES (95, 'ISLAS HEARD Y MCDONALD');
+INSERT INTO public.t_pais VALUES (96, 'HONDURAS');
+INSERT INTO public.t_pais VALUES (97, 'HONG KONG');
+INSERT INTO public.t_pais VALUES (98, 'HUNGRIA');
+INSERT INTO public.t_pais VALUES (99, 'ISLANDIA');
+INSERT INTO public.t_pais VALUES (100, 'INDIA');
+INSERT INTO public.t_pais VALUES (101, 'INDONESIA');
+INSERT INTO public.t_pais VALUES (102, 'IRAN');
+INSERT INTO public.t_pais VALUES (103, 'IRAQ');
+INSERT INTO public.t_pais VALUES (104, 'IRLANDA');
+INSERT INTO public.t_pais VALUES (105, 'ISLA DE MAN');
+INSERT INTO public.t_pais VALUES (106, 'ISRAEL');
+INSERT INTO public.t_pais VALUES (107, 'ITALIA');
+INSERT INTO public.t_pais VALUES (108, 'JAMAICA');
+INSERT INTO public.t_pais VALUES (109, 'JAPON');
+INSERT INTO public.t_pais VALUES (110, 'JERSEY');
+INSERT INTO public.t_pais VALUES (111, 'JORDANIA');
+INSERT INTO public.t_pais VALUES (112, 'KAZAJSTAN');
+INSERT INTO public.t_pais VALUES (113, 'KENYA');
+INSERT INTO public.t_pais VALUES (114, 'KIRIBATI');
+INSERT INTO public.t_pais VALUES (115, 'COREA');
+INSERT INTO public.t_pais VALUES (116, 'COREA');
+INSERT INTO public.t_pais VALUES (117, 'KUWAIT');
+INSERT INTO public.t_pais VALUES (118, 'KIRGUISTAN');
+INSERT INTO public.t_pais VALUES (119, 'LAO');
+INSERT INTO public.t_pais VALUES (120, 'LETONIA');
+INSERT INTO public.t_pais VALUES (121, 'LIBANO');
+INSERT INTO public.t_pais VALUES (122, 'LESOTHO');
+INSERT INTO public.t_pais VALUES (123, 'LIBERIA');
+INSERT INTO public.t_pais VALUES (124, 'LIBIA');
+INSERT INTO public.t_pais VALUES (125, 'LIECHTENSTEIN');
+INSERT INTO public.t_pais VALUES (126, 'LITUANIA');
+INSERT INTO public.t_pais VALUES (127, 'LUXEMBURGO');
+INSERT INTO public.t_pais VALUES (128, 'MACAO');
+INSERT INTO public.t_pais VALUES (129, 'MACEDONIA');
+INSERT INTO public.t_pais VALUES (130, 'MADAGASCAR');
+INSERT INTO public.t_pais VALUES (131, 'MALAWI');
+INSERT INTO public.t_pais VALUES (132, 'MALASIA');
+INSERT INTO public.t_pais VALUES (133, 'MALDIVAS');
+INSERT INTO public.t_pais VALUES (134, 'MALI');
+INSERT INTO public.t_pais VALUES (135, 'MALTA');
+INSERT INTO public.t_pais VALUES (136, 'ISLAS MARSHALL');
+INSERT INTO public.t_pais VALUES (137, 'MARTINICA');
+INSERT INTO public.t_pais VALUES (138, 'MAURITANIA');
+INSERT INTO public.t_pais VALUES (139, 'MAURICIO');
+INSERT INTO public.t_pais VALUES (140, 'MAYOTTE');
+INSERT INTO public.t_pais VALUES (141, 'MEXICO');
+INSERT INTO public.t_pais VALUES (142, 'MICRONESIA');
+INSERT INTO public.t_pais VALUES (143, 'MOLDOVIA');
+INSERT INTO public.t_pais VALUES (144, 'MONACO');
+INSERT INTO public.t_pais VALUES (145, 'MONGOLIA');
+INSERT INTO public.t_pais VALUES (146, 'MONTENEGRO');
+INSERT INTO public.t_pais VALUES (147, 'MONTSERRAT');
+INSERT INTO public.t_pais VALUES (148, 'MARRUECOS');
+INSERT INTO public.t_pais VALUES (149, 'MOZAMBIQUE');
+INSERT INTO public.t_pais VALUES (150, 'MYANMAR');
+INSERT INTO public.t_pais VALUES (151, 'NAMIBIA');
+INSERT INTO public.t_pais VALUES (152, 'NAURU');
+INSERT INTO public.t_pais VALUES (153, 'NEPAL');
+INSERT INTO public.t_pais VALUES (154, 'HOLANDA');
+INSERT INTO public.t_pais VALUES (155, 'ANTILLAS HOLANDESAS');
+INSERT INTO public.t_pais VALUES (156, 'NUEVA CALEDONIA');
+INSERT INTO public.t_pais VALUES (157, 'NUEVA ZELANDA');
+INSERT INTO public.t_pais VALUES (158, 'NICARAGUA');
+INSERT INTO public.t_pais VALUES (159, 'NIGER');
+INSERT INTO public.t_pais VALUES (160, 'NIGERIA');
+INSERT INTO public.t_pais VALUES (161, 'ISLA NIUE');
+INSERT INTO public.t_pais VALUES (162, 'ISLA NORFOLK');
+INSERT INTO public.t_pais VALUES (163, 'ISLAS MARIANAS DEL NORTE');
+INSERT INTO public.t_pais VALUES (164, 'NORUEGA');
+INSERT INTO public.t_pais VALUES (165, 'OMAN');
+INSERT INTO public.t_pais VALUES (166, 'PAKISTAN');
+INSERT INTO public.t_pais VALUES (167, 'PALAU');
+INSERT INTO public.t_pais VALUES (168, 'TERRITORIO OCUPADO');
+INSERT INTO public.t_pais VALUES (169, 'PANAMA');
+INSERT INTO public.t_pais VALUES (170, 'PAPUA');
+INSERT INTO public.t_pais VALUES (171, 'PARAGUAY');
+INSERT INTO public.t_pais VALUES (172, 'PERU');
+INSERT INTO public.t_pais VALUES (173, 'FILIPINAS');
+INSERT INTO public.t_pais VALUES (174, 'SLA PITCAIRN');
+INSERT INTO public.t_pais VALUES (175, 'POLONIA');
+INSERT INTO public.t_pais VALUES (176, 'PORTUGAL');
+INSERT INTO public.t_pais VALUES (177, 'PUERTO RICO');
+INSERT INTO public.t_pais VALUES (178, 'QATAR');
+INSERT INTO public.t_pais VALUES (179, 'REUNION');
+INSERT INTO public.t_pais VALUES (180, 'RUMANIA');
+INSERT INTO public.t_pais VALUES (181, 'RUSIA');
+INSERT INTO public.t_pais VALUES (182, 'RUANDA');
+INSERT INTO public.t_pais VALUES (183, 'SAN BARTOLOME');
+INSERT INTO public.t_pais VALUES (184, 'SANTA HELENA');
+INSERT INTO public.t_pais VALUES (185, 'SAINT KITTS');
+INSERT INTO public.t_pais VALUES (186, 'SANTA LUCIA');
+INSERT INTO public.t_pais VALUES (187, 'SAN PEDRO');
+INSERT INTO public.t_pais VALUES (188, 'SAN VICENTE');
+INSERT INTO public.t_pais VALUES (189, 'SAMOA');
+INSERT INTO public.t_pais VALUES (190, 'SAN MARINO');
+INSERT INTO public.t_pais VALUES (191, 'SAO TOME');
+INSERT INTO public.t_pais VALUES (192, 'ARABIA SAUDITA');
+INSERT INTO public.t_pais VALUES (193, 'SENEGAL');
+INSERT INTO public.t_pais VALUES (194, 'SERBIA');
+INSERT INTO public.t_pais VALUES (195, 'SEYCHELLES');
+INSERT INTO public.t_pais VALUES (196, 'SIERRA LEONA');
+INSERT INTO public.t_pais VALUES (197, 'SINGAPUR');
+INSERT INTO public.t_pais VALUES (198, 'REPUBLICA ESLOVACA');
+INSERT INTO public.t_pais VALUES (199, 'ESLOVENIA');
+INSERT INTO public.t_pais VALUES (200, 'ISLAS SALOMON');
+INSERT INTO public.t_pais VALUES (201, 'SOMALIA');
+INSERT INTO public.t_pais VALUES (202, 'SUDAFRICA');
+INSERT INTO public.t_pais VALUES (203, 'GEORGIA DEL SUR');
+INSERT INTO public.t_pais VALUES (204, 'ESPANA');
+INSERT INTO public.t_pais VALUES (205, 'SRI LANKA');
+INSERT INTO public.t_pais VALUES (206, 'SUDAN');
+INSERT INTO public.t_pais VALUES (207, 'SURINAM');
+INSERT INTO public.t_pais VALUES (208, 'ISLAS SVALBARD Y JAN MAYEN');
+INSERT INTO public.t_pais VALUES (209, 'SWAZILANDIA');
+INSERT INTO public.t_pais VALUES (210, 'SUECIA');
+INSERT INTO public.t_pais VALUES (211, 'SUIZA');
+INSERT INTO public.t_pais VALUES (212, 'SIRIA');
+INSERT INTO public.t_pais VALUES (213, 'TAIWAN');
+INSERT INTO public.t_pais VALUES (214, 'TAYIKISTAN');
+INSERT INTO public.t_pais VALUES (215, 'TANZANIA');
+INSERT INTO public.t_pais VALUES (216, 'TAILANDIA');
+INSERT INTO public.t_pais VALUES (217, 'TIMORLESTE');
+INSERT INTO public.t_pais VALUES (218, 'TOGO');
+INSERT INTO public.t_pais VALUES (219, 'TOKELAU');
+INSERT INTO public.t_pais VALUES (220, 'TONGA');
+INSERT INTO public.t_pais VALUES (221, 'TRINIDAD Y TOBAGO');
+INSERT INTO public.t_pais VALUES (222, 'TUNEZ');
+INSERT INTO public.t_pais VALUES (223, 'TURQUIA');
+INSERT INTO public.t_pais VALUES (224, 'TURKMENISTAN');
+INSERT INTO public.t_pais VALUES (225, 'ISLAS TURCAS Y CAICOS');
+INSERT INTO public.t_pais VALUES (226, 'TUVALU');
+INSERT INTO public.t_pais VALUES (227, 'UGANDA');
+INSERT INTO public.t_pais VALUES (228, 'UCRANIA');
+INSERT INTO public.t_pais VALUES (229, 'EMIRATOS ARABES UNIDOS');
+INSERT INTO public.t_pais VALUES (230, 'INGLATERRA');
+INSERT INTO public.t_pais VALUES (231, 'ESTADOS UNIDOS');
+INSERT INTO public.t_pais VALUES (232, 'ISLAS PERIFERICAS MENORES DE LOS EEUU');
+INSERT INTO public.t_pais VALUES (233, 'URUGUAY');
+INSERT INTO public.t_pais VALUES (234, 'UZBEKISTAN');
+INSERT INTO public.t_pais VALUES (235, 'VANUATU');
+INSERT INTO public.t_pais VALUES (236, 'VENEZUELA');
+INSERT INTO public.t_pais VALUES (237, 'VIETNAM');
+INSERT INTO public.t_pais VALUES (238, 'ISLAS VIRGENES BRITANICAS');
+INSERT INTO public.t_pais VALUES (239, 'ISLAS VIRGENES DE LOS EEUU');
+INSERT INTO public.t_pais VALUES (240, 'ISLAS WALLIS Y FUTUNA');
+INSERT INTO public.t_pais VALUES (241, 'SAHARA');
+INSERT INTO public.t_pais VALUES (242, 'YEMEN');
+INSERT INTO public.t_pais VALUES (243, 'ZAMBIA');
+INSERT INTO public.t_pais VALUES (244, 'ZIMBABWE');
 
 
 --
