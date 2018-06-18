@@ -8,8 +8,9 @@ import { Grupo } from "../../../models/grupo";
 
 @Injectable()
 export class UserService {
-  public url: string = "//localhost:8080/";
-  //public url: string = "//ima.pe:8080/";
+  // public url: string = "//localhost:8080/";
+  public url: string = "//168.121.48.106:4007/";
+
 
   user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
