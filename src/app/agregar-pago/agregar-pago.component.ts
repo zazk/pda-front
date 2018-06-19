@@ -96,6 +96,7 @@ export class AgregarPagoComponent implements OnInit {
     // link
     $(".date-picker").datepicker({
       autoclose: true,
+      endDate: new Date(),
       todayHighlight: true
     });
 

@@ -438,7 +438,7 @@ CREATE TABLE public.t_visitante (
     var_apellido character varying(50) NOT NULL,
     var_nro_documento character varying(20),
     dte_fec_nacimiento date,
-    bol_sexo integer
+    var_sexo character varying(1)
 );
 
 
