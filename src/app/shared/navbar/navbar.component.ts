@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  onCerrarSesion() {
+  onCerrarSession() {
     localStorage.clear();
     this.router.navigate(["home"]);
   }
