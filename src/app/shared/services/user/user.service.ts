@@ -48,8 +48,8 @@ export class UserService {
   }
 
   /* ( Integer codGrupo ) */
-  consultaGrupo(): Observable<any> {
-    return this.http.get(this.url + "consulta_grupo");
+  consultaGrupo(codGrupo: number): Observable<any> {
+    return this.http.get(this.url + `consulta_grupo?codGrupo=${codGrupo}`);
   }
 
   /* ( Integer codGrupo ) */
