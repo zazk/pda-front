@@ -8,7 +8,8 @@ export class Grupo {
     public ruta?: number,
     public costo?: number,
     public codOperador?: string,
-    public totalVisitantes?: number
+    public totalVisitantes?: number,
+    public id?: number
   ) {
     this.visitantes = visitantes;
     this.codigo = codigo;
@@ -17,5 +18,6 @@ export class Grupo {
     this.costo = costo ? costo : 20;
     this.codOperador = codOperador;
     this.totalVisitantes = totalVisitantes;
+    this.id = id;
   }
 }

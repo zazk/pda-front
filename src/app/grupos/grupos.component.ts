@@ -23,12 +23,13 @@ export class GruposComponent implements OnInit {
         this.grupos = grupos.map(obj => {
           return new Grupo(
             [],
-            obj.srl_cod_grupo,
+            obj.var_cod_grupo,
             obj.dte_fec_programada,
             obj.srl_cod_ruta,
             obj.num_costo,
             obj.var_cod_operador,
-            obj.int_nro_visitante
+            obj.int_nro_visitante,
+            obj.srl_cod_grupo
           );
         });
         console.log("GRUPOS?", grupos);
@@ -36,7 +37,7 @@ export class GruposComponent implements OnInit {
   }
   onVerGrupo(grupo: Grupo) {
     console.log("Grupo:", grupo);
-    this.router.navigate(["ver-visitantes", grupo.codigo]);
+    this.router.navigate(["ver-visitantes", grupo.id]);
   }
 }
 

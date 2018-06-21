@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
     this.service.listRutas().subscribe(data => {
       console.log("DATA :", data);
       this.routes = data;
+      localStorage.setItem("rutas", JSON.stringify(this.routes));
     });
     this.service
       .consultaPagooperador(this.user.var_cod_operador)

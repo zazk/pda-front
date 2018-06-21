@@ -89,7 +89,7 @@ CREATE TABLE public.t_grupo (
     dte_fec_visita date,
     int_nro_visitante integer NOT NULL,
     int_nro_inasistente integer,
-    num_costo integer,
+    num_costo double precision,
     int_estado integer,
     var_documento character varying(200),
     txt_motivoobservado text,
