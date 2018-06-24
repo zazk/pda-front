@@ -49,6 +49,10 @@
                     </th>
                     <th>
                       <i class="ace-icon fa fa-laptop"></i>
+                      ID Pago
+                    </th>
+                    <th>
+                      <i class="ace-icon fa fa-laptop"></i>
                       Operador
                     </th>
                     <th>
@@ -81,6 +85,9 @@
                   <tr *ngFor="let pago of pagos; let i = index">
                     <td>
                       {{i+1}}
+                    </td>
+                    <td>
+                      {{pago.codigo}}
                     </td>
                     <td>
                       {{pago.operador}}

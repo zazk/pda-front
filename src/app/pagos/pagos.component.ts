@@ -22,7 +22,7 @@ export class PagosComponent implements OnInit {
   ngOnInit() {
     this.url = this.service.url;
     this.pagos = JSON.parse(localStorage.getItem("pagos")) || [];
-    this.user = JSON.parse(localStorage.getItem("currentUser")) || {};
+    this.user = this.service.theUser;
     this.loadScripts();
   }
   onSearch(form: any) {

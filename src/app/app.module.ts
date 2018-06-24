@@ -3,6 +3,8 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MaterialModule } from "./material.module";
+
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
@@ -104,7 +106,7 @@ const AppRouter: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    FormsModule,
+    MaterialModule,
     ReactiveFormsModule,
     RouterModule.forRoot(AppRouter, { enableTracing: true })
   ],

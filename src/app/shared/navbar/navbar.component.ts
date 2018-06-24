@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   constructor(private service: UserService, private router: Router) {}
 
   ngOnInit() {
+    console.log("Gogogo");
     this.user = JSON.parse(localStorage.getItem("currentUser")) || {};
     this.service.user.subscribe(user => {
       this.user = user;

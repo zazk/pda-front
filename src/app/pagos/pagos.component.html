@@ -32,7 +32,7 @@
                   <option value="" selected>Seleccionar</option>
                   <option value="1" selected>Pendiente</option>
                   <option value="2">Aprobados</option>
-                  <option value="3">Rechazdos</option>
+                  <option value="3">Rechazados</option>
                 </select>
 
                 <button type="submit" class="btn btn-sm">Buscar</button>
@@ -75,7 +75,7 @@
                 <tbody  *ngIf="pagos.length">
                   <tr *ngFor="let pago of pagos; let i = index">
                     <td>
-                      {{i}}
+                      {{i+1}}
                     </td>
                     <td>
                       {{pago.operacion}}

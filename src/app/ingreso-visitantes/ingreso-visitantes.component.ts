@@ -1,7 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  TemplateRef,
+  Inject
+} from "@angular/core";
 import { Pax } from "../models/pax";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { MatDialog, MatDialogRef } from "@angular/material";
 
 declare var $: any;
 @Component({
@@ -10,16 +18,21 @@ declare var $: any;
   styles: []
 })
 export class IngresoVisitantesComponent implements OnInit {
-
   paxes: Pax[];
+  activePax: Pax;
   fecha: string;
   ruta: string;
   routes: any[];
   fechaPax: string;
+  dialogRef: MatDialogRef<any>;
+  @ViewChild("dialogConfirm") dialogConfirm: TemplateRef<any>;
   @ViewChild("fechaEl") fechaEl: ElementRef;
   @ViewChild("rutaEl") rutaEl: ElementRef;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.paxes = JSON.parse(localStorage.getItem("paxes")) || [];
@@ -40,9 +53,9 @@ export class IngresoVisitantesComponent implements OnInit {
       alert("Todos los datos del pasajero son requeridos");
     }
   }
-  onRemovePax(pax: Pax) {
-    this.paxes = this.paxes.filter(p => p.dni !== pax.dni);
-    localStorage.setItem("paxes", JSON.stringify(this.paxes));
+  onRemovePax(pax: Pax): void {
+    this.openDialog(pax);
+    return;
   }
   onFinalizar() {
     localStorage.setItem("fecha", this.fechaEl.nativeElement.value);
@@ -58,6 +71,23 @@ export class IngresoVisitantesComponent implements OnInit {
     if (!pattern.test(event.key)) {
       event.preventDefault();
     }
+  }
+
+  openDialog(pax: Pax): void {
+    this.activePax = pax;
+    this.dialogRef = this.dialog.open(this.dialogConfirm, {
+      width: "250px",
+      data: { pax: pax }
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+    });
+  }
+  onConfirmRemovePax() {
+    this.paxes = this.paxes.filter(p => p.dni !== this.activePax.dni);
+    localStorage.setItem("paxes", JSON.stringify(this.paxes));
+    this.dialogRef.close();
   }
   loadScript() {
     $("#fecha-visita").datepicker({

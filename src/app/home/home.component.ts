@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.loadScripts();
-    this.user = JSON.parse(localStorage.getItem("currentUser")) || {};
+    this.user = JSON.parse(this.service.theUser) || {};
     this.paxesTmp = JSON.parse(localStorage.getItem("paxes")) || [];
     console.log("USER", this.user);
     this.service.listRutas().subscribe(data => {
