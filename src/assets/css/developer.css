@@ -188,6 +188,35 @@ table td {
 body.active {
   overflow: hidden;
 }
+.navbar-container {
+  padding-right: 0;
+}
+.h-alert-news {
+  margin: 0 10px;
+}
+.h-alert-news > a {
+  background: none !important;
+}
+/** custom datepicker **/
+.home-datepicker {
+  margin: auto;
+}
+.ui-widget-content {
+  color: #06589e;
+}
+.ui-datepicker td>a.ui-state-active {
+  background: #337ab7;
+}
+.ui-datepicker td>a.ui-state-highlight {
+  background: #69aa46;
+  border: none;
+  color: #fff;
+}
+.ui-datepicker .ui-datepicker-next:before,
+.ui-datepicker .ui-datepicker-prev:before {
+  color: #06589e;
+}
+/** custom datepicker **/
 @media screen and (max-width: 1024px) {
   .menu {
     display: none;
@@ -258,11 +287,40 @@ body.active {
     width: 100%;
     margin-bottom: 30px;
   }
-}
-@media screen and (max-width: 480px) {
+  .navbar-header.navbar-logo {
+    width: 100%;
+  }
+  .menu-mobile-open {
+    top: 43px;
+    background: none;
+    right: 0;
+  }
   .navbar-buttons.navbar-header {
+    background-color: #62a8d1;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 40px;
+  }
+  .navbar-buttons.navbar-header .light-blue.dropdown-modal {
     position: absolute;
-    right: 0px;
-    top: 0px;
+    top: 0;
+    right: 0;
+  }
+  .navbar-buttons.navbar-header ul {
+    text-align: right !important;
+  }
+  .navbar-buttons.navbar-header .ace-nav>li.light-blue>a {
+    background: none;
+  }
+  .navbar-buttons.navbar-header .ace-nav>li {
+    border: none;
+    float: none;
+    display: inline-block;
+  }
+  .navbar:not(.navbar-collapse) .ace-nav>li:first-child {
+    border: none;
+  }
+  .navbar:not(.navbar-collapse) .ace-nav {
+    background: none;
   }
 }
