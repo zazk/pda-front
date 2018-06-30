@@ -316,7 +316,8 @@ ALTER SEQUENCE public.t_pais_srl_cod_pais_seq OWNED BY public.t_pais.srl_cod_pai
 CREATE TABLE public.t_ruta (
     srl_cod_ruta integer NOT NULL,
     var_nombre character varying(50) NOT NULL,
-    bol_estado boolean NOT NULL
+    bol_estado boolean NOT NULL,
+    num_costo_visitante double precision
 );
 
 
