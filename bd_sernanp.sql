@@ -932,10 +932,10 @@ SELECT pg_catalog.setval('public.t_pais_srl_cod_pais_seq', 31, true);
 -- Data for Name: t_ruta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.t_ruta VALUES (1, 'Ruta 1 (4/3n) Piscacucho Km82', true);
-INSERT INTO public.t_ruta VALUES (2, 'Ruta 2 (4d/3n) Qorihuayrachina Km 88', true);
-INSERT INTO public.t_ruta VALUES (3, 'Ruta 3 (6d/5n) Salkatay', true);
-INSERT INTO public.t_ruta VALUES (4, 'Ruta 5 (Directo) Chachabamba Km 104', true);
+INSERT INTO public.t_ruta VALUES (1, 'Ruta 1 (4/3n) Piscacucho Km82', true, 15);
+INSERT INTO public.t_ruta VALUES (2, 'Ruta 2 (4d/3n) Qorihuayrachina Km 88', true, 15);
+INSERT INTO public.t_ruta VALUES (3, 'Ruta 3 (6d/5n) Salkatay', true, 15);
+INSERT INTO public.t_ruta VALUES (4, 'Ruta 5 (Directo) Chachabamba Km 104', true, 15);
 
 
 --
