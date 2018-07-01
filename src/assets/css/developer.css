@@ -212,6 +212,9 @@ body.active {
   border: none;
   color: #fff;
 }
+.ui-datepicker td>a.ui-state-highlight.ui-state-active {
+  background: #337ab7;
+}
 .ui-datepicker .ui-datepicker-next:before,
 .ui-datepicker .ui-datepicker-prev:before {
   color: #06589e;
