@@ -25,6 +25,28 @@
 .w96 {
   width: 96%;
 }
+.login-layout .widget-box .widget-body .toolbar>div>a {
+  color: #fff;
+}
+.row-login {
+  max-width: 320px;
+  width: 100%;
+}
+.login-layout .main-content.main-login {
+  min-height: 100vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header.blue {
+  color: #8b8b8b !important;
+  font-weight: 400;
+}
+.l-remember {
+  font-size: 13px;
+  color: #8b8b8b;
+  font-weight: 400;
+}
 .n-table-responsive .n-label {
   display: none;
 }
@@ -43,7 +65,7 @@ table td {
   top: 0;
 }
 .breadcrumb >li {
-  color: #438eb9;
+  color: #dc723a;
 }
 .breadcrumb >li.active,
 .breadcrumb >li:hover {
@@ -83,7 +105,7 @@ table td {
 }
 .menu-mobile-close,
 .menu-mobile-open {
-  background-color: #438eb9;
+  background-color: #dc723a;
   border-radius: 7%;
   color: #fff;
   cursor: pointer;
@@ -122,7 +144,7 @@ table td {
   opacity: 0;
   z-index: 1000;
   background: #fff;
-  color: #438eb9;
+  color: #dc723a;
 }
 .menu-mobile-close.active {
   visibility: visible;
@@ -138,7 +160,7 @@ table td {
   position: fixed;
   top: 0;
   right: -200px;
-  background: #438eb9;
+  background: #dc723a;
   z-index: 1000;
   transition: right 0.45s ease;
 }
