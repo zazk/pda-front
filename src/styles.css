@@ -11,3 +11,8 @@
   content: "| ";
   padding: 0 5px;
 }
+
+.pax-total{
+  font-size:18px;
+  font-weight: bold;
+}

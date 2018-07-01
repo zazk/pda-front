@@ -63,7 +63,7 @@ export class IngresoVisitantesComponent implements OnInit {
     this.router.navigate(["confirmar-visitantes"]);
   }
   onCancel() {
-    "fecha,rutas,paxes".split(",").forEach(s => localStorage.removeItem(s));
+    "fecha,paxes".split(",").forEach(s => localStorage.removeItem(s));
     this.router.navigate(["home"]);
   }
   onValidateNumber(event: any) {
@@ -94,16 +94,18 @@ export class IngresoVisitantesComponent implements OnInit {
       minDate: 0,
       startDate: new Date(),
       todayHighlight: true,
-      format: "yyyy-mm-dd",
+      dateFormat: "yy-mm-dd",
       autoclose: true
     });
 
     $("#datepicker-pax").datepicker({
-      minDate: 0,
-      endDate: new Date(),
+      maxDate: new Date(),
       todayHighlight: true,
-      format: "yyyy-mm-dd",
-      autoclose: true
+      dateFormat: "yy-mm-dd",
+      autoclose: true,
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1920:" + (new Date().getFullYear())
     });
 
     $("#fecha-visita").on("changeDate", () => {

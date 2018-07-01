@@ -23,9 +23,6 @@
 
           <form action="" class="form-horizontal">
             <h4 class="header smaller lighter blue">
-              Grupo Nro.
-              <strong>000134-MAPI</strong>
-              |
               Fecha visita:
               <input #fechaEl class=" datepicker" id="fecha-visita"
                 type="text" readonly data-date-format="dd-mm-yyyy" value="{{fecha}}" />
@@ -33,8 +30,8 @@
               Ruta:
               <select #rutaEl class="w20">
                 <option  *ngFor="let r of routes"
-                  [attr.selected]="r.srl_cod_ruta == ruta? true : null"
-                  value="{{r.srl_cod_ruta}}">{{r.var_nombre}}</option>
+                  [attr.selected]="r.id == ruta? true : null"
+                  value="{{r.id}}">{{r.nombre}}</option>
               </select>
             </h4>
           </form>
@@ -156,6 +153,14 @@
                     <span (click)="onRemovePax(pax)" class="btn btn-danger btn-sm">
                       <i class="ace-icon fa fa-trash-o "></i>Eliminar
                     </span>
+                  </td>
+                </tr>
+                <tr >
+                  <td class="pax-total">
+                    Total
+                  </td>
+                  <td class="pax-total">
+                    S/.{{15*paxes.length}}
                   </td>
                 </tr>
               </tbody>

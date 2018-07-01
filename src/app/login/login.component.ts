@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(form.user, form.password).subscribe(response => {
       if (response.user) {
         localStorage.setItem("currentUser", JSON.stringify(response.user));
+        localStorage.setItem("rutas", JSON.stringify(response.rutas));
+        localStorage.setItem("tipoDocumento", JSON.stringify(response.tipoDocumento));
+
         this.router.navigate(["home"]);
       } else {
         alert("Mensaje:" + response.error);

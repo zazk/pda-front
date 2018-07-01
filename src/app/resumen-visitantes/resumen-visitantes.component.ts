@@ -20,7 +20,7 @@ export class ResumenVisitantesComponent implements OnInit {
     this.fecha = localStorage.getItem("fecha");
     this.ruta = parseInt(localStorage.getItem("ruta"), 10);
     this.rutaActiva = JSON.parse( localStorage.getItem("rutas") )
-      .find( obj => obj.srl_cod_ruta === this.ruta ).var_nombre;
+      .find( obj => obj.id === this.ruta ).nombre;
   }
   onCreateGroup(): void {
     "fecha,paxes,ruta".split(",").forEach(s => localStorage.removeItem(s));

@@ -30,12 +30,10 @@ export class HomeComponent implements OnInit {
     this.loadScripts();
     this.user = JSON.parse(this.service.theUser) || {};
     this.paxesTmp = JSON.parse(localStorage.getItem("paxes")) || [];
+    this.routes = JSON.parse(localStorage.getItem("rutas")) || [];
     console.log("USER", this.user);
-    this.service.listRutas().subscribe(data => {
-      console.log("DATA :", data);
-      this.routes = data;
-      localStorage.setItem("rutas", JSON.stringify(this.routes));
-    });
+    console.log("RUTAS", this.routes);
+
     this.service
       .consultaPagooperador(this.user.var_cod_operador)
       .subscribe(response => {
@@ -73,18 +71,20 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
+    console.log("Por favor seleccione fecha", form.value, "fecha", this.fecha, form.value.ruta);
     if (this.fecha && form.value.ruta) {
       localStorage.setItem("paxes", JSON.stringify(this.paxes) || "[]");
       localStorage.setItem("fecha", this.fecha);
-      localStorage.setItem("ruta", form.value.ruta);
-      localStorage.setItem("rutas", JSON.stringify(this.routes));
+      localStorage.setItem("ruta", form.value.ruta.id);
       this.router.navigate(["ingreso-visitantes"]);
     } else {
       console.log("Por favor seleccione fecha", this.fecha, form.value.ruta);
       alert("Ingresar Fecha y Ruta ");
     }
   }
-
+  onChangeRuta(event): void {
+    console.log("Event", event);
+  }
   onUpdateDate($event) {}
 
   onFileSelect(input: HTMLInputElement) {
@@ -129,13 +129,12 @@ export class HomeComponent implements OnInit {
       minDate: 0,
       startDate: new Date(),
       todayHighlight: true,
-      format: "dd-mm-yyyy"
+      dateFormat: "yy-mm-dd",
+      onSelect:  ( date) => {
+        console.log("GOGOGO", date, this);
+        this.fecha = date;
+      }
     });
 
-    $("#datepicker").on("changeDate", () => {
-      this.fecha = $("#datepicker")
-      .data("datepicker")
-      .getFormattedDate("yyyy-mm-dd");
-    });
   }
 }

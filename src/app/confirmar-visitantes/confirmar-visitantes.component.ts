@@ -1,9 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit,
+  ViewChild,
+  ElementRef,
+  TemplateRef } from "@angular/core";
 import { Pax } from "../models/pax";
 import { Router } from "@angular/router";
 import { Utils } from "../shared/utils/utils";
 import { Grupo } from "../models/grupo";
 import { UserService } from "../shared/services/user/user.service";
+import { MatDialog, MatDialogRef } from "@angular/material";
 import { User } from "../../../pda-front-sernanp/src/app/models/user";
 
 declare var $: any;
@@ -15,6 +19,7 @@ declare var $: any;
 export class ConfirmarVisitantesComponent implements OnInit {
 
   paxes: Pax[];
+  activePax: Pax;
   fecha: string;
   ruta: number;
   rutaActiva: string;
@@ -22,7 +27,10 @@ export class ConfirmarVisitantesComponent implements OnInit {
   year: string;
   grupos: any[];
   usuario: any;
-  constructor( private router: Router, private service: UserService) {}
+  dialogRef: MatDialogRef<any>;
+  @ViewChild("dialogConfirm") dialogConfirm: TemplateRef<any>;
+  constructor( private router: Router, private service: UserService,
+    private dialog: MatDialog) {}
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem("currentUser")) || {};
@@ -34,7 +42,7 @@ export class ConfirmarVisitantesComponent implements OnInit {
     this.fecha = localStorage.getItem("fecha");
     this.ruta = parseInt(localStorage.getItem("ruta"), 10);
     this.rutaActiva = JSON.parse( localStorage.getItem("rutas") )
-      .find( obj => obj.srl_cod_ruta === this.ruta ).var_nombre;
+      .find( obj => obj.id === this.ruta ).nombre;
   }
   onFinalizar() {
     const sequence = Utils.sequence( ++this.seq  , this.year );
@@ -53,6 +61,27 @@ export class ConfirmarVisitantesComponent implements OnInit {
   }
   onAgregarPax() {
     this.router.navigate(["ingreso-visitantes"]);
+  }
+
+  onRemovePax(pax: Pax): void {
+    this.openDialog(pax);
+    return;
+  }
+  openDialog(pax: Pax): void {
+    this.activePax = pax;
+    this.dialogRef = this.dialog.open(this.dialogConfirm, {
+      width: "250px",
+      data: { pax: pax }
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+    });
+  }
+  onConfirmRemovePax() {
+    this.paxes = this.paxes.filter(p => p.dni !== this.activePax.dni);
+    localStorage.setItem("paxes", JSON.stringify(this.paxes));
+    this.dialogRef.close();
   }
 }
 

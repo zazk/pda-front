@@ -1,7 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  TemplateRef
+} from "@angular/core";
 import { Pax } from "../models/pax";
 import { Router, ActivatedRoute } from "@angular/router";
 import { UserService } from "../shared/services/user/user.service";
+import { MatDialog, MatDialogRef } from "@angular/material";
 
 @Component({
   selector: "app-ver-visitantes",
@@ -10,6 +17,8 @@ import { UserService } from "../shared/services/user/user.service";
 })
 export class VerVisitantesComponent implements OnInit {
   paxes: Pax[];
+  activePax: Pax;
+  dialogRef: MatDialogRef<any>;
   fecha: string;
   ruta: number;
   rutaActiva: string;
@@ -18,7 +27,13 @@ export class VerVisitantesComponent implements OnInit {
   grupos: any[];
   grupoActivo: any;
   load: boolean = false;
-  constructor(private service: UserService, private router: Router, private route: ActivatedRoute) {}
+  @ViewChild("dialogConfirm") dialogConfirm: TemplateRef<any>;
+  constructor(
+    private service: UserService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -39,8 +54,25 @@ export class VerVisitantesComponent implements OnInit {
   onVerGrupos() {
     this.router.navigate(["grupos"]);
   }
-  onRemovePax(pax: Pax) {
-    this.paxes = this.paxes.filter(p => p.dni !== pax.dni);
-    localStorage.setItem("paxes", JSON.stringify( this.paxes ) );
+
+  onRemovePax(pax: Pax): void {
+    this.openDialog(pax);
+    return;
+  }
+  openDialog(pax: Pax): void {
+    this.activePax = pax;
+    this.dialogRef = this.dialog.open(this.dialogConfirm, {
+      width: "250px",
+      data: { pax: pax }
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+    });
+  }
+  onConfirmRemovePax() {
+    this.paxes = this.paxes.filter(p => p.dni !== this.activePax.dni);
+    localStorage.setItem("paxes", JSON.stringify(this.paxes));
+    this.dialogRef.close();
   }
 }

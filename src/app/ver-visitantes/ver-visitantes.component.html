@@ -94,3 +94,16 @@
     <!-- /.main-container -->
   </div>
 </div>
+
+<ng-template #dialogConfirm>
+  <div mat-dialog-content>
+    <p>
+        ¿Confirma la eliminació de esta persona?
+    </p>
+    <p><strong>{{activePax.apellidos}}, {{activePax.nombres}}</strong></p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onConfirmRemovePax()" >Eliminar</button>
+  </div>
+</ng-template>

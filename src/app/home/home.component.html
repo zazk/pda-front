@@ -34,7 +34,7 @@
 
             <div class="">
               <div class="input-group home-datepicker" id="datepicker" >
-                <input name="fecha" class="form-control date-picker" type="hidden" id="my_hidden_input"  />
+                <input ngModel name="fecha" class="form-control date-picker" type="hidden" id="my_hidden_input"  />
               </div>
             </div>
 
@@ -43,9 +43,9 @@
               <h4 class="blue">Ruta seleccionada</h4>
             </div>
             <div class="form-group vert-offset-top-1">
-              <select ngModel name="ruta" class="w100" placeholder="Seleccione" >
+              <select ngModel name="ruta" class="w100" placeholder="Seleccione" (change)="onChangeRuta($event.target.value)" >
                 <option >Seleccione la ruta</option>
-                <option *ngFor="let ruta of routes" value="{{ruta.srl_cod_ruta}}">{{ruta.var_nombre}}</option>
+                <option [ngValue]="ruta" *ngFor="let ruta of routes" value="{{ruta.id}}">{{ruta.nombre}}</option>
               </select>
             </div>
             <div class="form-group">
