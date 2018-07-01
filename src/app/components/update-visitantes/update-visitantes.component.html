@@ -1,0 +1,160 @@
+<div class="row ss3-main">
+  <div class="col-xs-6">
+
+    <div class="table-header">
+      Registro de visitantes
+    </div>
+    <table class="table-bordered" width="100%">
+      <tr>
+        <td class="p10">
+          <form #f="ngForm" (ngSubmit)="onSubmitPax(f)" class="form-horizontal">
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Tipo doc </label>
+              <div class="col-sm-9">
+                <select ngModel name="tipoDocumento" required>
+                  <option >Seleccionar</option>
+                  <option value="1">DNI</option>
+                  <option value="2">Pasaporte</option>
+                  <option value="3">Carne extranjeria</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Nro Doc</label>
+
+              <div class="col-sm-9">
+                <input ngModel name="dni" required pattern="[0-9]+" (keydown)="onValidateNumber($event)"
+                  type="text" autocomplete="off"  placeholder="########" class="col-xs-10 col-sm-5 w100" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Apellidos </label>
+
+              <div class="col-sm-9">
+                <input ngModel name="apellidos" required type="text" id="form-field-1" placeholder="Apellidos" class="col-xs-10 col-sm-5 w100">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombres </label>
+
+              <div class="col-sm-9">
+                <input ngModel name="nombres" required type="text" id="form-field-1" placeholder="Nombres" class="col-xs-10 col-sm-5 w100">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Pais </label>
+
+              <div class="col-sm-9">
+                <select ngModel name="pais" required>
+                  <option selected>Seleccionar</option>
+                  <option value="1">Alemania</option>
+                  <option value="2">Argentina</option>
+                  <option value="3">Belgica</option>
+                  <option value="4">Estados Unidos</option>
+                  <option value="5">Peru</option>
+                  <option value="6">Rusia</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Sexo</label>
+
+              <div class="col-sm-9">
+                <div class="radio">
+                  <label>
+                    <input ngModel name="sexo" type="radio" class="ace" value="M" />
+                    <span class="lbl"> Masculino</span>
+                  </label>
+                </div>
+
+                <div class="radio">
+                  <label>
+                    <input ngModel name="sexo" type="radio" class="ace" value="F" />
+                    <span class="lbl"> Femenino</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class=" col-sm-3 control-label no-padding-right" for="form-field-1">Fecha Nac</label>
+
+              <div class="col-sm-9">
+                <input name="nacimiento" required readonly
+                  class="form-control datepicker" id="datepicker-paxer" type="text" placeholder="dd-mm-yyyy" data-date-format="dd-mm-yyyy"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Categoria </label>
+
+              <div class="col-sm-9">
+                <select ngModel name="categoria" required>
+                  <option value="1">Adulto</option>
+                  <option value="2">Estudiante</option>
+                </select>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-yellow" >Añadir Visitante</button>
+            </div>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-xs-6">
+    <div class="table-header">
+      Visitantes
+    </div>
+    <table class="table table-striped table-bordered table-hover">
+      <tbody *ngIf="paxes.length">
+        <tr *ngFor="let pax of paxes">
+          <td>
+            {{pax.nombres}} {{pax.apellidos}}
+          </td>
+          <td>
+            <span (click)="onRemovePax(pax)" class="btn btn-danger btn-sm">
+              <i class="ace-icon fa fa-trash-o "></i>Eliminar
+            </span>
+          </td>
+        </tr>
+        <tr >
+          <td class="pax-total">
+            Total
+          </td>
+          <td class="pax-total">
+            S/.{{15*paxes.length}}
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="!paxes.length">
+        <tr>
+          <td>
+            No se encuentran Visitantes Registrados.
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+    <div class="text-center">
+      <button type="button" class="btn btn-warning" (click)="cancel.emit()">Cancelar</button>
+      <button type="button" class="btn btn-success" (click)="finalizar.emit(paxes)">Finalizar confirmacion</button>
+    </div>
+  </div>
+
+</div>
+
+
+<ng-template #dialogConfirm>
+  <div mat-dialog-content>
+    <p>
+        ¿Confirma la eliminació de esta persona?
+    </p>
+    <p><strong>{{activePax.apellidos}}, {{activePax.nombres}}</strong></p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="onConfirmRemovePax()" >Eliminar</button>
+  </div>
+</ng-template>

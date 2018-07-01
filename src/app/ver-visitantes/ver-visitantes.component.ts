@@ -45,8 +45,8 @@ export class VerVisitantesComponent implements OnInit {
         this.paxes = this.grupoActivo.visitantes;
         this.fecha = this.grupoActivo.fecha;
         this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
-          obj => obj.srl_cod_ruta === parseInt(this.grupoActivo.ruta, 10)
-        ).var_nombre;
+          obj => obj.id === parseInt(this.grupoActivo.ruta, 10)
+        ).nombre;
         this.load = true;
       });
     });

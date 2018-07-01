@@ -5,7 +5,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material.module";
 
-
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { UserService } from "./shared/services/user/user.service";
@@ -22,6 +21,7 @@ import { NoticiasComponent } from "./noticias/noticias.component";
 import { CambioClaveComponent } from "./cambio-clave/cambio-clave.component";
 import { VerVisitantesComponent } from "./ver-visitantes/ver-visitantes.component";
 import { AgregarPagoComponent } from "./agregar-pago/agregar-pago.component";
+import { UpdateVisitantesComponent } from "./components/update-visitantes/update-visitantes.component";
 
 const AppRouter: Routes = [
   {
@@ -100,7 +100,8 @@ const AppRouter: Routes = [
     NoticiasComponent,
     CambioClaveComponent,
     VerVisitantesComponent,
-    AgregarPagoComponent
+    AgregarPagoComponent,
+    UpdateVisitantesComponent
   ],
   imports: [
     BrowserModule,
