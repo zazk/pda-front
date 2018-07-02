@@ -11,36 +11,40 @@
     <app-navbar></app-navbar>
     <div class="main-container">
       <div class="text-right n-navprimary">
-        <h4 class="n-title blue">
+        <h4 class="n-title orange">
           <i class="ace-icon fa fa-globe"></i>
           Modulo de Turismo
         </h4>
         <app-breadcrumbs></app-breadcrumbs>
       </div>
       <div class="container">
-        <h3 class="header green vert-offset-top-1">Lista de pagos</h3>
+        <h3 class="header orange vert-offset-top-1">Lista de pagos</h3>
         <div class="vert-offset-top-2">
-          <div class="wancho-regular">
+          <div class="">
             <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-horizontal">
-              <div class="row vert-offset-bottom-1">
-                <label for="form-field-select-2">Operador:</label>
-                <input ngModel name="operador" type="text" placeholder="Operador" class="">
-                |
-                <label for="form-field-select-2">Nro Operacion:</label>
-                <input ngModel name="operacion" type="text" placeholder="Operacion" class=" ">
-                |
-                <button class="btn btn-primary btn-sm" type="submit" >
-                  <i class="ace-icon fa fa-search align-top bigger-125"></i>
-                  Buscar
-                </button>
-                | <span class="btn btn-sm" (click)="onClearSearch(f)">Limpiar</span>
-              </div>
+              <ul class="vert-offset-bottom-1 w-controles">
+                <li>
+                  <label for="form-field-select-2">Operador:</label>
+                  <input ngModel name="operador" type="text" placeholder="Operador" class="">
+                </li>
+                <li>
+                  <label for="form-field-select-2">Nro Operacion:</label>
+                  <input ngModel name="operacion" type="text" placeholder="Operacion" class=" ">
+                </li>
+                <li class="w-control-buttons">
+                  <button class="btn btn-primary btn-sm" type="submit" >
+                    <i class="ace-icon fa fa-search align-top bigger-125"></i>
+                    Buscar
+                  </button>
+                   <span class="btn btn-sm" (click)="onClearSearch(f)">Limpiar</span>
+                </li>
+              </ul>
             </form>
             <div class="table-header">
               {{pagos.length}} pagos realizados
             </div>
             <div>
-              <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+              <table id="dynamic-table" class="table n-table-responsive   table-striped table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>
@@ -84,51 +88,92 @@
                 <tbody *ngIf="pagos.length">
                   <tr *ngFor="let pago of pagos; let i = index">
                     <td>
-                      {{i+1}}
+                      <div class="n-label">
+                        Item
+                      </div>
+                      <div class="n-descrip">
+                        {{i+1}}
+                      </div>
                     </td>
                     <td>
-                      {{pago.codigo}}
+                      <div class="n-label">
+                        ID Pago
+                      </div>
+                      <div class="n-descrip">
+                        {{pago.codigo}}
+                      </div>
                     </td>
                     <td>
-                      {{pago.operador}}
+                      <div class="n-label">
+                        Operador
+                      </div>
+                      <div class="n-descrip">
+                        {{pago.operador}}
+                      </div>
                     </td>
                     <td>
-                      {{pago.operacion}}
+                      <div class="n-label">
+                        Nro operacion
+                      </div>
+                      <div class="n-descrip">
+                        {{pago.operacion}}
+                      </div>
                     </td>
                     <td>
-                      S/. {{pago.monto}}
+                      <div class="n-label">
+                        Monto Abonado
+                      </div>
+                      <div class="n-descrip">
+                        S/. {{pago.monto}}
+                      </div>
                     </td>
                     <td>
-                      {{pago.fecha}}
+                      <div class="n-label">
+                        Fecha Abono
+                      </div>
+                      <div class="n-descrip">
+                        {{pago.fecha}}
+                      </div>
                     </td>
                     <td>
-                      <ul class="ace-thumbnails clearfix">
-                        <li>
+                        <div class="n-label">
+                          Estado
+                        </div>
+                        <div class="n-descrip">
                           <a class="btn btn-primary btn-xs" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
                             <i class="ace-icon fa fa-eye"></i>Ver
                           </a>
-                        </li>
-                      </ul>
+                        </div>
                     </td>
                     <td>
-                      <span class="label label-{{estados[ pago.estado -1].class}}">
-                        {{estados[ pago.estado -1].text}}
-                      </span>
-                    </td>
-                    <td>
-                      <div *ngIf="pago.estado == '1'">
-                        <button class="btn btn-white btn-sm btn-round" (click)="onAceptarPago(pago)">
-                          <i class="ace-icon fa fa-check"></i>
-                          Abonar
-                        </button>
-
-                        <button class="btn btn-white btn-sm btn-round bootbox-regular" (click)="onRechazarPago(pago)">
-                          <i class="ace-icon fa fa-times red2"></i>
-                          Rechazar
-                        </button>
+                      <div class="n-label">
+                        Voucher
                       </div>
-                      <div *ngIf="pago.motivo">
-                        {{pago.motivo}}
+                      <div class="n-descrip">
+                        <span class="label label-{{estados[ pago.estado -1].class}}">
+                          {{estados[ pago.estado -1].text}}
+                        </span>
+                      </div>
+                    </td>
+                    <td class="n-accion">
+                      <div class="n-label">
+                        Accion
+                      </div>
+                      <div class="n-descrip">
+                        <div *ngIf="pago.estado == '1'">
+                          <button class="btn btn-white btn-sm btn-round" (click)="onAceptarPago(pago)">
+                            <i class="ace-icon fa fa-check"></i>
+                            Abonar
+                          </button>
+
+                          <button class="btn btn-white btn-sm btn-round bootbox-regular" (click)="onRechazarPago(pago)">
+                            <i class="ace-icon fa fa-times red2"></i>
+                            Rechazar
+                          </button>
+                        </div>
+                        <div *ngIf="pago.motivo">
+                          {{pago.motivo}}
+                        </div>
                       </div>
                     </td>
                   </tr>
