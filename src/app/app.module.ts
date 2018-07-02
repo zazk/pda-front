@@ -22,6 +22,8 @@ import { CambioClaveComponent } from "./cambio-clave/cambio-clave.component";
 import { VerVisitantesComponent } from "./ver-visitantes/ver-visitantes.component";
 import { AgregarPagoComponent } from "./agregar-pago/agregar-pago.component";
 import { UpdateVisitantesComponent } from "./components/update-visitantes/update-visitantes.component";
+import { UpdateGrupoComponent } from "./components/update-grupo/update-grupo.component";
+import { ModifyGrupoComponent } from "./components/modify-grupo/modify-grupo.component";
 
 const AppRouter: Routes = [
   {
@@ -64,6 +66,11 @@ const AppRouter: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: "modificar-grupo/:codigo",
+    component: ModifyGrupoComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: "grupos",
     component: GruposComponent,
     canActivate: [AuthGuard]
@@ -101,7 +108,9 @@ const AppRouter: Routes = [
     CambioClaveComponent,
     VerVisitantesComponent,
     AgregarPagoComponent,
-    UpdateVisitantesComponent
+    UpdateVisitantesComponent,
+    UpdateGrupoComponent,
+    ModifyGrupoComponent
   ],
   imports: [
     BrowserModule,

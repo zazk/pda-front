@@ -81,9 +81,12 @@
             </div>
             <div class="text-center">
               <button type="button" class="btn" onclick="window.print()">
-                  <i class="ace-icon fa fa-print bigger-160"></i>
+                  <i class="ace-icon fa fa-print"></i>
                   Imprimir
               </button>
+              <button type="button" class="btn" (click)="onEditar(grupoActivo)">
+                Editar
+            </button>
               <button type="button" class="btn btn-warning" (click)="onVerGrupos()">Ver Grupos</button>
             </div>
           </div>

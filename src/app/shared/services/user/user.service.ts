@@ -187,9 +187,12 @@ export class UserService {
   }
 
   /* ( LocalDate date, Integer codRuta, Integer id ) */
-  updateGrupo(): Observable<any> {
-    return this.http.get(this.url + "update_grupo");
+  updateGrupo( grupo: Grupo): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append("grupo", JSON.stringify(grupo));
+    return this.http.post(this.url + "update_grupo", formData);
   }
+
 
   /* ( Integer codGrupo, Integer codVisitante, Boolean asistio ) */
   updateAsistencia(): Observable<any> {

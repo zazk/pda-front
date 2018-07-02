@@ -21,6 +21,7 @@ export class UpdateVisitantesComponent implements OnInit {
     private dialog: MatDialog) {}
 
   ngOnInit() {
+    this.paxes = JSON.parse(localStorage.getItem("paxes")) || [];
     this.loadScript();
   }
 

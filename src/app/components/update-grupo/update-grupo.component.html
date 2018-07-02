@@ -1,0 +1,14 @@
+<form action="" class="form-horizontal">
+  <h4 class="header smaller lighter blue">
+    Fecha visita:
+    <input #fechaEl class="input datepicker" id="fecha-visita-grupo"
+      type="text" readonly data-date-format="dd-mm-yyyy" value="{{fecha}}" />
+    |
+    Ruta:
+    <select #rutaEl class="w20" (change)="onChangeRuta($event.target.value)" >
+      <option  *ngFor="let r of routes"
+        [attr.selected]="r.id == ruta? true : null"
+        value="{{r.id}}">{{r.nombre}}</option>
+    </select>
+  </h4>
+</form>

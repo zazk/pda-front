@@ -75,4 +75,8 @@ export class VerVisitantesComponent implements OnInit {
     localStorage.setItem("paxes", JSON.stringify(this.paxes));
     this.dialogRef.close();
   }
+  onEditar(grupo: any) {
+    console.log("GRUPO", grupo);
+    this.router.navigate(["modificar-grupo", grupo.id]);
+  }
 }
