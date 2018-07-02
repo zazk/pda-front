@@ -42,7 +42,7 @@ export class ModifyGrupoComponent implements OnInit {
     this.grupoActivo.fecha = localStorage.getItem("fecha");
     this.grupoActivo.ruta = parseInt(localStorage.getItem("ruta"), 10);
 
-    this.service.insertGrupo(this.grupoActivo).subscribe((r) => {
+    this.service.updateGrupo(this.grupoActivo).subscribe((r) => {
       this.usuario.num_saldo = r.grupo.operador.num_saldo;
       this.service.theUser = JSON.stringify(this.usuario);
       this.router.navigate(["ver-visitantes", this.grupoActivo.id]);
