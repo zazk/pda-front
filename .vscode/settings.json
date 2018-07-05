@@ -1,2 +1,12 @@
 {
+  "git.autofetch": true,
+  "[typescript]": {},
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "[java]": {},
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "gitlens.keymap": "chorded",
+  "gitlens.historyExplorer.enabled": true,
+  "editor.formatOnSave": true
 }

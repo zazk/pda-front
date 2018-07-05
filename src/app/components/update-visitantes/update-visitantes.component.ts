@@ -1,7 +1,16 @@
-import { EventEmitter, Component, OnInit, Input, Output, TemplateRef, ViewChild } from "@angular/core";
+import {
+  EventEmitter,
+  Component,
+  OnInit,
+  Input,
+  Output,
+  TemplateRef,
+  ViewChild
+} from "@angular/core";
 import { Pax } from "../../models/pax";
 import { NgForm } from "@angular/forms";
 import { MatDialogRef, MatDialog } from "@angular/material";
+import { Ruta } from "../../models/ruta";
 
 declare var $: any;
 @Component({
@@ -17,11 +26,16 @@ export class UpdateVisitantesComponent implements OnInit {
   fechaPax: string;
   activePax: Pax;
   dialogRef: MatDialogRef<any>;
-  constructor(
-    private dialog: MatDialog) {}
+  rutaActiva: Ruta;
+  ruta: number;
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {
     this.paxes = JSON.parse(localStorage.getItem("paxes")) || [];
+    this.ruta = parseInt(localStorage.getItem("ruta"), 10);
+    this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
+      obj => obj.id === this.ruta
+    );
     this.loadScript();
   }
 
@@ -42,7 +56,6 @@ export class UpdateVisitantesComponent implements OnInit {
     return;
   }
 
-
   openDialog(pax: Pax): void {
     this.activePax = pax;
     this.dialogRef = this.dialog.open(this.dialogConfirm, {
@@ -57,7 +70,11 @@ export class UpdateVisitantesComponent implements OnInit {
 
   onValidateNumber(event: any) {
     const pattern = /[0-9\+\-\ ]/;
-    if (!pattern.test(event.key)) {
+    if (
+      !pattern.test(event.key) &&
+      !(event.key === "Tab") &&
+      !(event.key === "Backspace")
+    ) {
       event.preventDefault();
     }
   }
@@ -77,8 +94,8 @@ export class UpdateVisitantesComponent implements OnInit {
       autoclose: true,
       changeMonth: true,
       changeYear: true,
-      yearRange: "1920:" + (new Date().getFullYear()),
-      onSelect:  ( date) => {
+      yearRange: "1920:" + new Date().getFullYear(),
+      onSelect: date => {
         console.log("GOGOGO", date, this);
         this.fechaPax = date;
       }
