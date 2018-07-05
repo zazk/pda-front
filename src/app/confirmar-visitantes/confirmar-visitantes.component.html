@@ -22,9 +22,7 @@
         <div class="vert-offset-top-2">
           <div class="wancho-medium">
             <h4 class="header smaller lighter blue">
-              Fecha de visita: {{fecha}}
-              |
-              Ruta: {{rutaActiva}}
+              Fecha de visita: {{fecha}} | Ruta: {{rutaActiva.nombre}}
             </h4>
             <div class="table-header">
               6 visitantes ingresados
@@ -70,7 +68,7 @@
                       {{pax.dni}}
                     </td>
                     <td>
-                      <a  (click)="onRemovePax(pax)" class="btn btn-danger btn-sm">
+                      <a (click)="onRemovePax(pax)" class="btn btn-danger btn-sm">
                         <i class="ace-icon fa fa-trash-o "></i>Eliminar</a>
                     </td>
                   </tr>
@@ -78,7 +76,7 @@
               </table>
               <div class="center">
                 <div class="pax-total">
-                  Total: S/.{{15*paxes.length}}
+                  Total: S/.{{rutaActiva.costoVisitante*paxes.length}}
                 </div>
               </div>
             </div>
@@ -100,12 +98,14 @@
 <ng-template #dialogConfirm>
   <div mat-dialog-content>
     <p>
-        ¿Confirma la eliminació de esta persona?
+      ¿Confirma la eliminació de esta persona?
     </p>
-    <p><strong>{{activePax.apellidos}}, {{activePax.nombres}}</strong></p>
+    <p>
+      <strong>{{activePax.apellidos}}, {{activePax.nombres}}</strong>
+    </p>
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="dialogRef.close()">Cancelar</button>
-    <button mat-raised-button color="primary" (click)="onConfirmRemovePax()" >Eliminar</button>
+    <button mat-raised-button color="primary" (click)="onConfirmRemovePax()">Eliminar</button>
   </div>
 </ng-template>

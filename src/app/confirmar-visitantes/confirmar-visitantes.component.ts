@@ -1,7 +1,10 @@
-import { Component, OnInit,
+import {
+  Component,
+  OnInit,
   ViewChild,
   ElementRef,
-  TemplateRef } from "@angular/core";
+  TemplateRef
+} from "@angular/core";
 import { Pax } from "../models/pax";
 import { Router } from "@angular/router";
 import { Utils } from "../shared/utils/utils";
@@ -9,6 +12,7 @@ import { Grupo } from "../models/grupo";
 import { UserService } from "../shared/services/user/user.service";
 import { MatDialog, MatDialogRef } from "@angular/material";
 import { User } from "../../../pda-front-sernanp/src/app/models/user";
+import { Ruta } from "../models/ruta";
 
 declare var $: any;
 @Component({
@@ -17,20 +21,22 @@ declare var $: any;
   styles: []
 })
 export class ConfirmarVisitantesComponent implements OnInit {
-
   paxes: Pax[];
   activePax: Pax;
   fecha: string;
   ruta: number;
-  rutaActiva: string;
+  rutaActiva: Ruta;
   seq: number;
   year: string;
   grupos: any[];
   usuario: any;
   dialogRef: MatDialogRef<any>;
   @ViewChild("dialogConfirm") dialogConfirm: TemplateRef<any>;
-  constructor( private router: Router, private service: UserService,
-    private dialog: MatDialog) {}
+  constructor(
+    private router: Router,
+    private service: UserService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem("currentUser")) || {};
@@ -38,28 +44,36 @@ export class ConfirmarVisitantesComponent implements OnInit {
 
     this.paxes = JSON.parse(localStorage.getItem("paxes"));
     this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
-    this.year = JSON.parse(localStorage.getItem("year")) || (new Date().getFullYear());
+    this.year =
+      JSON.parse(localStorage.getItem("year")) || new Date().getFullYear();
     this.fecha = localStorage.getItem("fecha");
     this.ruta = parseInt(localStorage.getItem("ruta"), 10);
-    this.rutaActiva = JSON.parse( localStorage.getItem("rutas") )
-      .find( obj => obj.id === this.ruta ).nombre;
+    this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
+      obj => obj.id === this.ruta
+    );
   }
   onFinalizar() {
-    const sequence = Utils.sequence( ++this.seq  , this.year );
-    const grupo = new Grupo( this.paxes, sequence, this.fecha, this.ruta, 0, this.usuario.var_cod_operador );
+    const sequence = Utils.sequence(++this.seq, this.year);
+    const grupo = new Grupo(
+      this.paxes,
+      sequence,
+      this.fecha,
+      this.ruta,
+      0,
+      this.usuario.var_cod_operador
+    );
     console.log("GRUPO", grupo);
-    this.service.insertGrupo(grupo).subscribe((r) => {
+    this.service.insertGrupo(grupo).subscribe(r => {
       console.log("GRUPO INSERTADO?", r);
 
       this.grupos.push(grupo);
       this.usuario.num_saldo = r.grupo.operador.num_saldo;
       this.service.theUser = JSON.stringify(this.usuario);
-      localStorage.setItem( "grupos", JSON.stringify( this.grupos ) );
-      localStorage.setItem( "sequence", this.seq.toString()  );
+      localStorage.setItem("grupos", JSON.stringify(this.grupos));
+      localStorage.setItem("sequence", this.seq.toString());
       this.router.navigate(["resumen-visitantes"]);
     });
     return;
-
   }
   onAgregarPax() {
     this.router.navigate(["ingreso-visitantes"]);
@@ -87,6 +101,4 @@ export class ConfirmarVisitantesComponent implements OnInit {
   }
 }
 
-$(document).ready(() => {
-
-});
+$(document).ready(() => {});
