@@ -40,7 +40,7 @@ export class AgregarPagoComponent implements OnInit {
       );
       console.log("PAGO", pago);
 
-      this.service.insertPago(pago).subscribe(( response) => {
+      this.service.insertPago(pago).subscribe(response => {
         this.pagos.push(pago);
         localStorage.setItem("pagos", JSON.stringify(this.pagos));
         this.service.theUser = JSON.stringify(response.operador);
@@ -97,14 +97,12 @@ export class AgregarPagoComponent implements OnInit {
     $(".date-picker").datepicker({
       autoclose: true,
       endDate: new Date(),
-      todayHighlight: true
-    });
-
-    $(".date-picker").on("changeDate", () => {
-      this.fecha = $(".date-picker")
-        .data("datepicker")
-        .getFormattedDate("yyyy-mm-dd");
-        console.log("This Fecha", this.fecha);
+      todayHighlight: true,
+      dateFormat: "yy-mm-dd",
+      onSelect: date => {
+        console.log("GOGOGO", date, this);
+        this.fecha = date;
+      }
     });
   }
 }
