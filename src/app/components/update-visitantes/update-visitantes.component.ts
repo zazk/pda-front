@@ -11,6 +11,7 @@ import { Pax } from "../../models/pax";
 import { NgForm } from "@angular/forms";
 import { MatDialogRef, MatDialog } from "@angular/material";
 import { Ruta } from "../../models/ruta";
+import { UserService } from "../../shared/services/user/user.service";
 
 declare var $: any;
 @Component({
@@ -28,14 +29,20 @@ export class UpdateVisitantesComponent implements OnInit {
   dialogRef: MatDialogRef<any>;
   rutaActiva: Ruta;
   ruta: number;
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private service: UserService) {}
 
   ngOnInit() {
     this.paxes = JSON.parse(localStorage.getItem("paxes")) || [];
-    this.ruta = parseInt(localStorage.getItem("ruta"), 10);
     this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
-      obj => obj.id === this.ruta
+      obj => obj.id === this.service.ruta
     );
+
+    this.service.rutaObs.subscribe(ruta => {
+      this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
+        obj => obj.id === parseInt(ruta, 10)
+      );
+    });
+
     this.loadScript();
   }
 

@@ -12,6 +12,8 @@ export class UserService {
   public url: string = "//168.121.48.106:4007/";
 
   user: Subject<any> = new Subject();
+  public rutaObs: Subject<any> = new Subject();
+
   constructor(private http: HttpClient) {}
 
   set theUser(value: any) {
@@ -21,6 +23,15 @@ export class UserService {
 
   get theUser() {
     return localStorage.getItem("currentUser");
+  }
+
+  set ruta(value: number) {
+    this.rutaObs.next(value); // this will make sure to tell every subscriber about the change.
+    localStorage.setItem("ruta", value.toString());
+  }
+
+  get ruta() {
+    return parseInt(localStorage.getItem("ruta"), 10);
   }
 
   login(): Observable<any> {
@@ -58,13 +69,17 @@ export class UserService {
   }
 
   /* ( String codOperador ) */
-  consultaGrupooperador( codOperador: string): Observable<any> {
-    return this.http.get(this.url + `consulta_grupooperador?codOperador=${codOperador}`);
+  consultaGrupooperador(codOperador: string): Observable<any> {
+    return this.http.get(
+      this.url + `consulta_grupooperador?codOperador=${codOperador}`
+    );
   }
 
   /* ( String codOperador ) */
-  consultaPagooperador( codOperador: string): Observable<any> {
-    return this.http.get(this.url + `consulta_pagooperador?codOperador=${codOperador}`);
+  consultaPagooperador(codOperador: string): Observable<any> {
+    return this.http.get(
+      this.url + `consulta_pagooperador?codOperador=${codOperador}`
+    );
   }
 
   /* ( String nroOperacion, String fecPago, Integer estado ) */
@@ -129,16 +144,15 @@ export class UserService {
     return this.http.get(this.url + "insert_visitante");
   }
 
-
   /* ( Visitantes visitantes) */
-  insertVisitantes( paxes: Pax[]): Observable<any> {
+  insertVisitantes(paxes: Pax[]): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append("visitantes", JSON.stringify( paxes ));
+    formData.append("visitantes", JSON.stringify(paxes));
     return this.http.post(this.url + "insert_visitantes", formData);
   }
 
   /* ( String codOperador, Integer codRuta, LocalDate fecProgramada, Integer nroVisitantes, Integer numCosto, String insUsuario ) */
-  insertGrupo( grupo: Grupo): Observable<any> {
+  insertGrupo(grupo: Grupo): Observable<any> {
     const formData: FormData = new FormData();
     formData.append("grupo", JSON.stringify(grupo));
     return this.http.post(this.url + "insert_grupo", formData);
@@ -187,12 +201,11 @@ export class UserService {
   }
 
   /* ( LocalDate date, Integer codRuta, Integer id ) */
-  updateGrupo( grupo: Grupo): Observable<any> {
+  updateGrupo(grupo: Grupo): Observable<any> {
     const formData: FormData = new FormData();
     formData.append("grupo", JSON.stringify(grupo));
     return this.http.post(this.url + "update_grupo", formData);
   }
-
 
   /* ( Integer codGrupo, Integer codVisitante, Boolean asistio ) */
   updateAsistencia(): Observable<any> {

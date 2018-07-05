@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { UserService } from "../../shared/services/user/user.service";
 
 declare var $: any;
 
@@ -12,10 +13,9 @@ export class UpdateGrupoComponent implements OnInit {
   @Input() ruta: string;
   routes: any[] = [];
 
-  constructor() {}
+  constructor(private service: UserService) {}
 
   ngOnInit() {
-
     this.routes = JSON.parse(localStorage.getItem("rutas")) || [];
     this.fecha = localStorage.getItem("fecha");
     this.ruta = localStorage.getItem("ruta");
@@ -24,6 +24,7 @@ export class UpdateGrupoComponent implements OnInit {
   onChangeRuta(value: any) {
     console.log("Value", value);
     this.ruta = value;
+    this.service.ruta = value;
     localStorage.setItem("ruta", value);
   }
   loadScript() {
