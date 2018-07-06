@@ -8,6 +8,7 @@ export class Pax {
   pais: number;
   sexo: string;
   asistio: boolean;
+  verificado: boolean;
   constructor(obj: any[]) {
     [
       this.apellidos,
@@ -18,7 +19,8 @@ export class Pax {
       this.pais,
       this.sexo,
       ,
-      this.categoria
+      this.categoria,
+      this.verificado
     ] = obj;
     this.categoria = this.categoria.replace(";", "");
   }
