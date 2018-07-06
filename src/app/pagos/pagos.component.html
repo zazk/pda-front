@@ -19,24 +19,34 @@
       </div>
       <div class="container">
         <h3 class="header green vert-offset-top-1">Lista de pagos</h3>
-        <div class="vert-offset-top-2">
+        <div class="vert-offset-top-2 vert-offset-bottom-2">
           <div class="wancho-medium">
-            <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-horizontal">
-              <h4 class="header smaller lighter blue">Operacion:
-                <input ngModel name="operacion" class="input input-sm" type="text" placeholder="Nro Operacion" maxlength="10" />
+            <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="vert-offset-bottom-1">
+              <div class="form-inline text-right">
+                <div class="form-group">
+                  <label class="control-label" for="name">
+                    Operación:
+                  </label>
+                  <input ngModel name="operacion" id="name" class="form-control" type="text" placeholder="Nro Operacion" maxlength="10" />
+                </div>
+                <div class="form-group">
+                  <!-- Fecha: <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy"
+                  />-->
+                  <label class="control-label" for="estado">
+                    Estado:
+                  </label>
+                  <select ngModel name="estado" id="estado" class="w20 form-control">
+                    <option value="" selected>Seleccionar</option>
+                    <option value="1" selected>Pendiente</option>
+                    <option value="2">Aprobados</option>
+                    <option value="3">Rechazados</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-sm">Buscar</button>
+                </div>
 
-                <!-- Fecha: <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy"
-                />-->
-                Estado:
-                <select ngModel name="estado"  class="w20">
-                  <option value="" selected>Seleccionar</option>
-                  <option value="1" selected>Pendiente</option>
-                  <option value="2">Aprobados</option>
-                  <option value="3">Rechazados</option>
-                </select>
-
-                <button type="submit" class="btn btn-sm">Buscar</button>
-              </h4>
+              </div>
             </form>
             <div class="table-header">
               {{pagos.length}} pagos realizados
@@ -72,7 +82,7 @@
                   </tr>
                 </thead>
 
-                <tbody  *ngIf="pagos.length">
+                <tbody *ngIf="pagos.length">
                   <tr *ngFor="let pago of pagos; let i = index">
                     <td>
                       {{i+1}}
@@ -92,18 +102,16 @@
                       </span>
                     </td>
                     <td>
-                      <ul class="ace-thumbnails clearfix">
-                        <li>
-                          <a class="btn btn-primary btn-sm" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
-                            <i class="ace-icon fa fa-eye"></i>Ver
-                          </a>
-                        </li>
-                      </ul>
+                      <a class="btn btn-sm btn-success" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
+                        <i class="ace-icon fa fa-eye"></i>Ver
+                      </a>
                     </td>
                   </tr>
                 </tbody>
-                <tbody  *ngIf="!pagos.length">
-                  <tr><td colspan="6">No se ha realizado ningun pago</td></tr>
+                <tbody *ngIf="!pagos.length">
+                  <tr>
+                    <td colspan="6">No se ha realizado ningun pago</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
