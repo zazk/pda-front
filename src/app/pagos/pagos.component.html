@@ -19,97 +19,100 @@
       </div>
       <div class="container">
         <h3 class="header green vert-offset-top-1">Lista de pagos</h3>
-        <div class="vert-offset-top-2">
-          <div class="wancho-medium">
-            <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-horizontal">
-              <h4 class="header smaller lighter blue">Operacion:
-                <input ngModel name="operacion" class="input input-sm" type="text" placeholder="Nro Operacion" maxlength="10" />
-
-                <!-- Fecha: <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy"
-                />-->
+        <div class="vert-offset-top-2 vert-offset-bottom-2">
+          <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="vert-offset-bottom-1 form-inline text-right">
+            <div class="form-group">
+              <label class="control-label" for="operacion">
+                Operación:
+              </label>
+              <input ngModel name="operacion" id="operacion" class="form-control" type="text" placeholder="Nro Operacion" maxlength="10"
+              />
+            </div>
+            <div class="form-group">
+              <!-- Fecha: <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy"/>-->
+              <label class="control-label" for="estado">
                 Estado:
-                <select ngModel name="estado"  class="w20">
-                  <option value="" selected>Seleccionar</option>
-                  <option value="1" selected>Pendiente</option>
-                  <option value="2">Aprobados</option>
-                  <option value="3">Rechazados</option>
-                </select>
+              </label>
+              <select ngModel name="estado" id="estado" class="w20 form-control">
+                <option value="" selected>Seleccionar</option>
+                <option value="1" selected>Pendiente</option>
+                <option value="2">Aprobados</option>
+                <option value="3">Rechazados</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-sm">Buscar</button>
+            </div>
+          </form>
+          <div class="table-header">
+            {{pagos.length}} pagos realizados
+          </div>
+          <div>
+            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    <i class="ace-icon fa fa-certificate"></i>
+                    Item
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-edit"></i>
+                    Nro operacion
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-money"></i>
+                    Monto Abonado
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-calendar"></i>
+                    Fecha Abono
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-info-circle"></i>
+                    Estado
+                  </th>
+                  <th>
+                    <i class="ace-icon fa fa-folder-o"></i>
+                    Voucher
+                  </th>
+                </tr>
+              </thead>
 
-                <button type="submit" class="btn btn-sm">Buscar</button>
-              </h4>
-            </form>
-            <div class="table-header">
-              {{pagos.length}} pagos realizados
-            </div>
-            <div>
-              <table id="dynamic-table" class="table table-striped table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th>
-                      <i class="ace-icon fa fa-certificate"></i>
-                      Item
-                    </th>
-                    <th>
-                      <i class="ace-icon fa fa-edit"></i>
-                      Nro operacion
-                    </th>
-                    <th>
-                      <i class="ace-icon fa fa-money"></i>
-                      Monto Abonado
-                    </th>
-                    <th>
-                      <i class="ace-icon fa fa-calendar"></i>
-                      Fecha Abono
-                    </th>
-                    <th>
-                      <i class="ace-icon fa fa-info-circle"></i>
-                      Estado
-                    </th>
-                    <th>
-                      <i class="ace-icon fa fa-folder-o"></i>
-                      Voucher
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody  *ngIf="pagos.length">
-                  <tr *ngFor="let pago of pagos; let i = index">
-                    <td>
-                      {{i+1}}
-                    </td>
-                    <td>
-                      {{pago.operacion}}
-                    </td>
-                    <td>
-                      S/. {{pago.monto}}
-                    </td>
-                    <td>
-                      {{pago.fecha}}
-                    </td>
-                    <td>
-                      <span class="label label-{{estados[ pago.estado -1].class}}">
-                        {{estados[ pago.estado -1].text}}
-                      </span>
-                    </td>
-                    <td>
-                      <ul class="ace-thumbnails clearfix">
-                        <li>
-                          <a class="btn btn-primary btn-sm" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
-                            <i class="ace-icon fa fa-eye"></i>Ver
-                          </a>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-                </tbody>
-                <tbody  *ngIf="!pagos.length">
-                  <tr><td colspan="6">No se ha realizado ningun pago</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="text-center">
-              <button type="button" class="btn btn-success" onclick="window.location.href='agregar-pago'">+ Agregar pago</button>
-            </div>
+              <tbody *ngIf="pagos.length">
+                <tr *ngFor="let pago of pagos; let i = index">
+                  <td>
+                    {{i+1}}
+                  </td>
+                  <td>
+                    {{pago.operacion}}
+                  </td>
+                  <td>
+                    S/. {{pago.monto}}
+                  </td>
+                  <td>
+                    {{pago.fecha}}
+                  </td>
+                  <td>
+                    <span class="label label-{{estados[ pago.estado -1].class}}">
+                      {{estados[ pago.estado -1].text}}
+                    </span>
+                  </td>
+                  <td>
+                    <a class="btn btn-block btn-xs btn-primary" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
+                      <i class="ace-icon fa fa-eye"></i>Ver
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="!pagos.length">
+                <tr>
+                  <td colspan="6">No se ha realizado ningun pago</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center">
+            <button type="button" class="btn btn-block btn-md btn-success" onclick="window.location.href='agregar-pago'">+ Agregar pago</button>
           </div>
         </div>
 
