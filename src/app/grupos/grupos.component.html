@@ -20,16 +20,32 @@
       </div>
       <div class="container ">
         <h3 class="header green vert-offset-top-1">Reporte de Grupos</h3>
-        <div class="vert-offset-top-2 wancho-regula">
-          <form action="" class="form-horizontal">
-            <h4 class="header smaller lighter blue">Grupo:
-              <input type="text" placeholder="Nro Grupo" /> &nbsp;&nbsp;Fecha visita:
-              <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" /> &nbsp;&nbsp;Estado:
-              <select class="w20">
+        <div class="vert-offset-top-2 vert-offset-bottom-2">
+          <form action="" class="form-inline text-right vert-offset-bottom-1">
+            <div class="form-group">
+              <label for="" class="control-label">
+                Grupo:
+              </label>
+              <input type="text" placeholder="Nro Grupo" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="" class="control-label">
+                Fecha visita:
+              </label>
+              <input class="w20 date-picker " id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" />
+            </div>
+            <div class="form-group">
+              <label for="" class="control-label">
+                Estado:
+              </label>
+              <select class="w20 form-control">
                 <option value="1" selected>Pendientes</option>
                 <option value="2">Visitados</option>
               </select>
-            </h4>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-sm">Buscar</button>
+            </div>
           </form>
           <div class="table-header">
             Grupos
@@ -39,7 +55,7 @@
               <thead>
                 <tr>
                   <th>
-                    <i class="ace-icon fa fa-square-o"></i>
+                    <i class="ace-icon fa fa-certificate"></i>
                     Item
                   </th>
                   <th>
@@ -90,15 +106,15 @@
                     {{grupo.fecha}}
                   </td>
                   <td>
-                    <span class="btn btn-primary btn-xs" (click)="onVerGrupo(grupo)">
+                    <span class="btn btn-primary btn-xs btn-block" (click)="onVerGrupo(grupo)">
                       <i class="ace-icon fa fa-eye"></i>Ver
                     </span>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div>
-              <a class="btn btn-sm" [routerLink]="['/home']" >Agregar Grupo</a>
+            <div class="text-center">
+              <a class="btn btn-block btn-md btn-success" [routerLink]="['/home']">+ Agregar Grupo</a>
             </div>
 
           </div>
