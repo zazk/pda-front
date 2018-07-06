@@ -11,7 +11,7 @@ declare var bootbox: any;
   styles: []
 })
 export class PagosComponent implements OnInit {
-  pagos: Pago[];
+  pagos: Pago[] = [];
   url: string;
   estados: any[] = [
     { text: "Pendiente", class: "warning" },
@@ -22,7 +22,6 @@ export class PagosComponent implements OnInit {
 
   ngOnInit() {
     this.url = this.service.url;
-    this.pagos = JSON.parse(localStorage.getItem("pagos")) || [];
     this.loadScripts();
   }
   onSearch(form: any) {

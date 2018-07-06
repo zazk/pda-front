@@ -49,8 +49,8 @@ export class UserService {
   }
 
   /* ( String email ) */
-  consultaOperadorxemail(): Observable<any> {
-    return this.http.get(this.url + "consulta_operadorxemail");
+  consultaOperadorxemail(email: string): Observable<any> {
+    return this.http.get(this.url + `consulta_operadorxemail?email=${email}`);
   }
 
   /* ( Integer codVisitante ) */
