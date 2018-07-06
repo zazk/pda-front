@@ -27,24 +27,31 @@
                 <label>
                   Grupo:
                 </label>
-                <input type="text" placeholder="Nro Grupo" />  
+                <input type="text" placeholder="Nro Grupo" />
               </li>
               <li>
                 <label>
                   Fecha visita:
-                </label>                
+                </label>
                 <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" />
               </li>
               <li>
                 <label>
                   Estado:
-                </label>                
+                </label>
                 <select class="w20">
                   <option value="1" selected>Pendientes</option>
                   <option value="2">Visitados</option>
-                </select>                
+                </select>
               </li>
-            </ul> 
+              <li class="w-control-buttons">
+                <button class="btn btn-primary btn-sm" type="submit">
+                  <i class="ace-icon fa fa-search align-top bigger-125"></i>
+                  Buscar
+                </button>
+                <span class="btn btn-sm" (click)="onClearSearch(f)">Limpiar</span>
+              </li>
+            </ul>
           </form>
           <div class="table-header">
             Grupos
@@ -165,17 +172,17 @@
                       Acción
                     </div>
                     <div class="n-descrip">
-  										<button class="btn btn-white btn-sm btn-round" (click)="onAceptarGrupo(grupo)">
-  												<i class="ace-icon fa fa-check"></i>
-  												Aceptar
-  											</button>
+                      <button class="btn btn-white btn-sm btn-round" (click)="onAceptarGrupo(grupo)">
+                        <i class="ace-icon fa fa-check"></i>
+                        Aceptar
+                      </button>
 
-  											<button class="btn btn-white btn-sm btn-round  bootbox-regular" (click)="onObservarGrupo(grupo)">
-  												<i class="ace-icon fa fa-times red2"></i>
-  												Observacion
-  											</button>
+                      <button class="btn btn-white btn-sm btn-round  bootbox-regular" (click)="onObservarGrupo(grupo)">
+                        <i class="ace-icon fa fa-times red2"></i>
+                        Observacion
+                      </button>
                     </div>
-									</td>
+                  </td>
                 </tr>
               </tbody>
             </table>
