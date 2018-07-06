@@ -9,7 +9,7 @@ import { UserService } from "../shared/services/user/user.service";
   styles: []
 })
 export class PagosComponent implements OnInit {
-  pagos: Pago[];
+  pagos: Pago[] = [];
   url: string;
   user: any;
   estados: any[] = [
@@ -21,8 +21,8 @@ export class PagosComponent implements OnInit {
 
   ngOnInit() {
     this.url = this.service.url;
-    this.pagos = JSON.parse(localStorage.getItem("pagos")) || [];
-    this.user = this.service.theUser;
+    // this.pagos = JSON.parse(localStorage.getItem("pagos")) || [];
+    this.user = JSON.parse(this.service.theUser);
     this.loadScripts();
   }
   onSearch(form: any) {
@@ -38,6 +38,7 @@ export class PagosComponent implements OnInit {
     });
   }
   loadScripts() {
+    console.log("USER", this.user);
     this.service
       .consultaPagooperador(this.user.var_cod_operador)
       .subscribe(response => {
