@@ -29,7 +29,9 @@ export class GruposComponent implements OnInit {
             obj.num_costo,
             obj.var_cod_operador,
             obj.int_nro_visitante,
-            obj.srl_cod_grupo
+            obj.srl_cod_grupo,
+            obj.int_nro_inasistente,
+            obj.int_estado
           );
         });
         console.log("GRUPOS?", grupos);

@@ -9,7 +9,9 @@ export class Grupo {
     public costo?: number,
     public codOperador?: string,
     public totalVisitantes?: number,
-    public id?: number
+    public id?: number,
+    public inasistencias?: number,
+    public estado?: number
   ) {
     this.visitantes = visitantes;
     this.codigo = codigo;
@@ -19,5 +21,7 @@ export class Grupo {
     this.codOperador = codOperador;
     this.totalVisitantes = totalVisitantes;
     this.id = id;
+    this.inasistencias = inasistencias;
+    this.estado = estado;
   }
 }

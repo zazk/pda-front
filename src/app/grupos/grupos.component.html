@@ -99,13 +99,13 @@
                     {{grupo.totalVisitantes}}
                   </td>
                   <td>
-                    0
+                    {{grupo.inasistencias}}
                   </td>
                   <td>
                     {{grupo.fecha}}
                   </td>
                   <td>
-                    <span class="btn btn-primary btn-xs btn-block" (click)="onVerGrupo(grupo)">
+                    <span *ngIf="grupo.estado == 1 " class="btn btn-primary btn-xs btn-block" (click)="onVerGrupo(grupo)">
                       <i class="ace-icon fa fa-eye"></i>Ver
                     </span>
                   </td>
