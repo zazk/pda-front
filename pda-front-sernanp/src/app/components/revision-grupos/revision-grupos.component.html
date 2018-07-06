@@ -22,14 +22,36 @@
         <h3 class="header orange vert-offset-top-1">Reporte de Grupos</h3>
         <div class="vert-offset-top-2 wancho-regula">
           <form action="" class="form-horizontal">
-            <h4 class="header smaller lighter blue">Grupo:
-              <input type="text" placeholder="Nro Grupo" /> &nbsp;&nbsp;Fecha visita:
-              <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" /> &nbsp;&nbsp;Estado:
-              <select class="w20">
-                <option value="1" selected>Pendientes</option>
-                <option value="2">Visitados</option>
-              </select>
-            </h4>
+            <ul class="vert-offset-bottom-1 w-controles">
+              <li>
+                <label for="">
+                  Grupo:
+                </label>
+                <input type="text" placeholder="Nro Grupo" />
+              </li>
+              <li>
+                <label for="">
+                  Fecha visita:
+                </label>
+                <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" />
+              </li>
+              <li>
+                <label for="">
+                  Estado:
+                </label>
+                <select class="w20">
+                  <option value="1" selected>Pendientes</option>
+                  <option value="2">Visitados</option>
+                </select>
+              </li>
+              <li class="w-control-buttons">
+                <button class="btn btn-primary btn-sm" type="submit">
+                  <i class="ace-icon fa fa-search align-top bigger-125"></i>
+                  Buscar
+                </button>
+                <span class="btn btn-sm" (click)="onClearSearch(f)">Limpiar</span>
+              </li>
+            </ul>
           </form>
           <div class="table-header">
             Grupos
@@ -106,13 +128,15 @@
                     </span>
                   </td>
                   <td>
-                    <a *ngIf="grupo.estado==1" class="btn btn-sm" [routerLink]="['/control-visitantes/',grupo.id]" >Ver</a>
-                    <a *ngIf="grupo.estado!=1" class="btn btn-sm" [routerLink]="['/ver-visitantes-grupo/',grupo.id]" >Ver</a>
-									</td>
+                    <a *ngIf="grupo.estado==1" class="btn btn-sm" [routerLink]="['/control-visitantes/',grupo.id]">Ver</a>
+                    <a *ngIf="grupo.estado!=1" class="btn btn-sm" [routerLink]="['/ver-visitantes-grupo/',grupo.id]">Ver</a>
+                  </td>
                 </tr>
               </tbody>
               <tbody *ngIf="!grupos.length">
-                <tr><td colspan="9">No se encontraron grupos</td></tr>
+                <tr>
+                  <td colspan="9">No se encontraron grupos</td>
+                </tr>
               </tbody>
             </table>
 
