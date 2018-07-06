@@ -37,6 +37,8 @@ export class ControlVisitantesVerificadosComponent implements OnInit {
     this.loadScripts();
   }
   onVerificar() {
+    this.grupoActivo.documento = this.filename;
+    console.log("GRUPO ACTIVOA.", this.grupoActivo, this.filename);
     this.service.updateAsistencia(this.grupoActivo).subscribe(r => {
       console.log(r);
       this.router.navigate(["revision-grupos"]);
@@ -52,9 +54,6 @@ export class ControlVisitantesVerificadosComponent implements OnInit {
     const files = input.files;
 
     if (files && files.length) {
-      console.log("Filename: " + files[0].name);
-      console.log("Type: " + files[0].type);
-      console.log("Size: " + files[0].size + " bytes");
 
       const fileToRead = files[0];
       this.service.uploadFile(fileToRead).subscribe(

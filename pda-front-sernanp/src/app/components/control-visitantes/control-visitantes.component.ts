@@ -45,17 +45,23 @@ export class ControlVisitantesComponent implements OnInit {
   }
   updatePaxVerificado(option, event) {
     console.log("CHECKED:", event.target.checked, "Option:", option);
-    this.grupoActivo.visitantes[option].verificado = event.target.checked;
+    this.grupoActivo.visitantes[option].asistio = event.target.checked;
     console.log("GRUPO ACTIVO", this.grupoActivo.visitantes);
   }
   checkAllPaxes(event) {
     this.grupoActivo.visitantes =  this.grupoActivo.visitantes.map((v: Pax) => {
-      v.verificado = event.target.checked;
+      v.asistio = event.target.checked;
       return v;
     });
     console.log("PAXES", this.grupoActivo.visitantes);
   }
   onFinalizar() {
+    this.grupoActivo.visitantes =  this.grupoActivo.visitantes.map((v: Pax) => {
+      if( v.asistio === null ){
+        v.asistio = false;
+      }
+      return v;
+    });
     localStorage.setItem("grupoActivo", JSON.stringify(this.grupoActivo));
     console.log("GRUPO ACTIVO", this.grupoActivo);
     this.router.navigate(["control-visitantes-verificados"]);
