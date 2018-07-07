@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
           if (response.user.var_rol === "recaudador") {
             this.router.navigate(["pagos"]);
           } else {
-            this.router.navigate(["revision-grupos"]);
+            this.router.navigate(["puesto/revision-grupos"]);
           }
         } else {
           alert("Mensaje:" + response.error);

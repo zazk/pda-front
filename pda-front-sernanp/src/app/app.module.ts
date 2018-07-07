@@ -19,6 +19,7 @@ import { RevisionGruposComponent } from "./components/revision-grupos/revision-g
 import { ControlVisitantesComponent } from './components/control-visitantes/control-visitantes.component';
 import { ControlVisitantesVerificadosComponent } from './components/control-visitantes-verificados/control-visitantes-verificados.component';
 import { VerVisitantesGrupoComponent } from './components/ver-visitantes-grupo/ver-visitantes-grupo.component';
+import { PuestoGruposComponent } from './components/puesto-grupos/puesto-grupos.component';
 
 const AppRouter: Routes = [
   {
@@ -56,8 +57,13 @@ const AppRouter: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "revision-grupos",
+    path: "puesto/revision-grupos",
     component: RevisionGruposComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "puesto/grupos",
+    component: PuestoGruposComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -91,10 +97,11 @@ const AppRouter: Routes = [
     RevisionGruposComponent,
     ControlVisitantesComponent,
     ControlVisitantesVerificadosComponent,
-    VerVisitantesGrupoComponent
+    VerVisitantesGrupoComponent,
+    PuestoGruposComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     FormsModule,
     HttpClientModule,
     FormsModule,

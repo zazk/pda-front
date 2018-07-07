@@ -22,7 +22,7 @@
 
         <h3 class="header green vert-offset-top-1">Selecciona Ruta</h3>
         <div class="login-container text-center vert-offset-top-3">
-          <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
             <h4 class="blue">Saldo Actual</h4>
             <h1 class="smaller vert-offset-top-1">
               <div class="bigger-125 bg-primary p10">S/. {{user.num_saldo}}</div>
@@ -33,8 +33,8 @@
             </h4>
 
             <div class="">
-              <div class="input-group home-datepicker" id="datepicker" >
-                <input ngModel name="fecha" class="form-control date-picker" type="hidden" id="my_hidden_input"  />
+              <div class="input-group home-datepicker" id="datepicker">
+                <input ngModel name="fecha" class="form-control date-picker" type="hidden" id="my_hidden_input" />
               </div>
             </div>
 
@@ -43,16 +43,16 @@
               <h4 class="blue">Ruta seleccionada</h4>
             </div>
             <div class="form-group vert-offset-top-1">
-              <select ngModel name="ruta" class="w100" placeholder="Seleccione" (change)="onChangeRuta($event.target.value)" >
-                <option >Seleccione la ruta</option>
+              <select ngModel name="ruta" class="w100" placeholder="Seleccione" (change)="onChangeRuta($event.target.value)">
+                <option selected disabled>Seleccione la ruta</option>
                 <option [ngValue]="ruta" *ngFor="let ruta of routes" value="{{ruta.id}}">{{ruta.nombre}}</option>
               </select>
             </div>
             <div class="form-group">
-              <input ngModel name="paxes" type="file" accept=".csv"  (change)="onFileSelect($event.target)" id="id-input-file-2" />
+              <input ngModel name="paxes" type="file" accept=".csv" (change)="onFileSelect($event.target)" id="id-input-file-2" />
             </div>
             <div class="vert-offset-top-2">
-              <button type="button" class="btn btn-success"  type="submit" >Continuar</button>
+              <button type="button" class="btn btn-success" type="submit">Continuar</button>
               <br />
               <br />
             </div>

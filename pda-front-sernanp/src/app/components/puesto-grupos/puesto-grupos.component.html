@@ -19,27 +19,27 @@
         <app-breadcrumbs></app-breadcrumbs>
       </div>
       <div class="container ">
-        <h3 class="header orange vert-offset-top-1">Revisión de Grupos Hoy: {{fecha | date:'d MMM, y'}}</h3>
+        <h3 class="header orange vert-offset-top-1">Reporte de Grupos</h3>
         <div class="vert-offset-top-2 wancho-regula">
-          <form #f="ngForm" (ngSubmit)="onSearch(f.value)"  class="form-horizontal">
+          <form action="" class="form-horizontal">
             <ul class="vert-offset-bottom-1 w-controles">
               <li>
                 <label for="">
                   Grupo:
                 </label>
-                <input ngModel name="grupo" type="text" placeholder="Nro Grupo" />
+                <input type="text" placeholder="Nro Grupo" />
               </li>
               <li>
                 <label for="">
                   Fecha visita:
                 </label>
-                <input ngModel name="fecha" class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" />
+                <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" />
               </li>
               <li>
                 <label for="">
                   Estado:
                 </label>
-                <select ngModel name="estado" class="w20">
+                <select class="w20">
                   <option value="1" selected>Pendientes</option>
                   <option value="2">Visitados</option>
                 </select>

@@ -1,17 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { UserService } from "../../shared/services/user/user.service";
-import { Grupo } from "../../models/grupo";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '../../../../../node_modules/@angular/router';
+import { UserService } from '../../shared/services/user/user.service';
+import { Grupo } from '../../models/grupo';
 
 @Component({
-  selector: "app-revision-grupos",
-  templateUrl: "./revision-grupos.component.html",
-  styles: []
+  selector: 'app-puesto-grupos',
+  templateUrl: './puesto-grupos.component.html'
 })
-export class RevisionGruposComponent implements OnInit {
+export class PuestoGruposComponent implements OnInit {
   grupos: Grupo[];
   routes: any[];
-  fecha: Date = new Date();
   estados: any[] = [
     { text: "Pendiente", class: "warning" },
     { text: "Aceptado", class: "success" },
@@ -21,7 +19,7 @@ export class RevisionGruposComponent implements OnInit {
 
   ngOnInit() {
     this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
-    this.service.listGruposHoy().subscribe((grupos: Grupo[]) => {
+    this.service.listGrupos().subscribe((grupos: Grupo[]) => {
       this.grupos = grupos;
       localStorage.setItem("grupos", JSON.stringify(this.grupos));
       console.log("GRUPOS??????", grupos);
@@ -41,20 +39,5 @@ export class RevisionGruposComponent implements OnInit {
     console.log("Observar Grupo:", grupo);
     //this.router.navigate(["ver-visitantes", grupo.codigo]);
   }
-  onSearch(form: any) {
-    const pagos = JSON.parse(localStorage.getItem("pagos")) || [];
-    this.grupos = pagos.filter((p: Grupo) => {
-      if (form.operador) {
-        return p.codigo.indexOf(form.operador) >= 0;
-      }
-      if (form.operacion) {
-        return p.fecha.indexOf(form.operacion) >= 0;
-      }
-      return true;
-    });
-  }
-  onClearSearch(form) {
-    form.reset();
-    this.onSearch(form);
-  }
+
 }

@@ -11,7 +11,8 @@ export class Grupo {
     public totalVisitantes?: number,
     public id?: number,
     public inasistencias?: number,
-    public estado?: number
+    public estado?: number,
+    public fechaCreacion?: string
   ) {
     this.visitantes = visitantes;
     this.codigo = codigo;
@@ -23,5 +24,6 @@ export class Grupo {
     this.id = id;
     this.inasistencias = inasistencias;
     this.estado = estado;
+    this.fechaCreacion = fechaCreacion;
   }
 }

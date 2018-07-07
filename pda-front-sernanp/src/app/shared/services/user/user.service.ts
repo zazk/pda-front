@@ -125,6 +125,10 @@ export class UserService {
     return this.http.get(this.url + "list_grupos");
   }
 
+  listGruposHoy(): Observable<any> {
+    return this.http.get(this.url + "list_grupos_hoy");
+  }
+
   listPagos(): Observable<any> {
     return this.http.get(this.url + "list_pagos");
   }

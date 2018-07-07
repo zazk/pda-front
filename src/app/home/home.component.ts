@@ -14,12 +14,7 @@ declare var $: any;
   styles: []
 })
 export class HomeComponent implements OnInit {
-  routes: any[] = [
-    { srl_cod_ruta: 1, var_nombre: "Camino Inca 2D/1N" },
-    { srl_cod_ruta: 1, var_nombre: "Camino Inca 4D/3N" },
-    { srl_cod_ruta: 1, var_nombre: "Salkantay 3D/2N" },
-    { srl_cod_ruta: 1, var_nombre: "Choquequirao 3D/2N" }
-  ];
+  routes: any[] = [];
   paxes: Pax[];
   paxesTmp: Pax[];
   fecha: string;
@@ -61,17 +56,16 @@ export class HomeComponent implements OnInit {
           //const grupo = response.map( r = new Grupo([],))
         }
       });
-    /*     this.service
-      .insertVisitantes(this.paxesTmp)
-      .subscribe(response => {
-        console.log("VISITANTES", response);
-        if (response.length) {
-        }
-      }); */
   }
 
   onSubmit(form: NgForm): void {
-    console.log("Por favor seleccione fecha", form.value, "fecha", this.fecha, form.value.ruta);
+    console.log(
+      "Por favor seleccione fecha",
+      form.value,
+      "fecha",
+      this.fecha,
+      form.value.ruta
+    );
     if (this.fecha && form.value.ruta) {
       localStorage.setItem("paxes", JSON.stringify(this.paxes) || "[]");
       localStorage.setItem("fecha", this.fecha);
@@ -130,11 +124,10 @@ export class HomeComponent implements OnInit {
       startDate: new Date(),
       todayHighlight: true,
       dateFormat: "yy-mm-dd",
-      onSelect:  ( date) => {
+      onSelect: date => {
         console.log("GOGOGO", date, this);
         this.fecha = date;
       }
     });
-
   }
 }

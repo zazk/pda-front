@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Grupo } from "../models/grupo";
 import { Router } from "@angular/router";
 import { UserService } from "../shared/services/user/user.service";
+import * as moment from "moment";
 
 declare var $: any;
 @Component({
@@ -31,10 +32,11 @@ export class GruposComponent implements OnInit {
             obj.int_nro_visitante,
             obj.srl_cod_grupo,
             obj.int_nro_inasistente,
-            obj.int_estado
+            obj.int_estado,
+            moment(obj.dte_fec_creacion).format("YYYY-MM-DD")
           );
         });
-        console.log("GRUPOS?", grupos);
+        console.log("GRUPOS?", grupos, "Grupos Parsed", this.grupos);
       });
   }
   onVerGrupo(grupo: Grupo) {
