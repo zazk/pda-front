@@ -26,7 +26,6 @@ export class ConfirmarVisitantesComponent implements OnInit {
   fecha: string;
   ruta: number;
   rutaActiva: Ruta;
-  seq: number;
   year: string;
   grupos: any[];
   usuario: any;
@@ -40,8 +39,6 @@ export class ConfirmarVisitantesComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem("currentUser")) || {};
-    this.seq = JSON.parse(localStorage.getItem("sequence")) || 0;
-
     this.paxes = JSON.parse(localStorage.getItem("paxes"));
     this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
     this.year =
@@ -53,10 +50,9 @@ export class ConfirmarVisitantesComponent implements OnInit {
     );
   }
   onFinalizar() {
-    const sequence = Utils.sequence(++this.seq, this.year);
     const grupo = new Grupo(
       this.paxes,
-      sequence,
+      "",
       this.fecha,
       this.ruta,
       0,
@@ -70,7 +66,7 @@ export class ConfirmarVisitantesComponent implements OnInit {
       this.usuario.num_saldo = r.grupo.operador.num_saldo;
       this.service.theUser = JSON.stringify(this.usuario);
       localStorage.setItem("grupos", JSON.stringify(this.grupos));
-      localStorage.setItem("sequence", this.seq.toString());
+      localStorage.setItem("grupoInsertado", JSON.stringify(r));
       this.router.navigate(["resumen-visitantes"]);
     });
     return;
