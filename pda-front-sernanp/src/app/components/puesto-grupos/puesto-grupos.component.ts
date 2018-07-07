@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '../../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from '../../shared/services/user/user.service';
 import { Grupo } from '../../models/grupo';
 

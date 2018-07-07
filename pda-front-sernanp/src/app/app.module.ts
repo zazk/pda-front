@@ -20,11 +20,16 @@ import { ControlVisitantesComponent } from './components/control-visitantes/cont
 import { ControlVisitantesVerificadosComponent } from './components/control-visitantes-verificados/control-visitantes-verificados.component';
 import { VerVisitantesGrupoComponent } from './components/ver-visitantes-grupo/ver-visitantes-grupo.component';
 import { PuestoGruposComponent } from './components/puesto-grupos/puesto-grupos.component';
+import { ValidateComponent } from './components/validate/validate.component';
 
 const AppRouter: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "validate/:token",
+    component: ValidateComponent
   },
   {
     path: "",
@@ -98,7 +103,8 @@ const AppRouter: Routes = [
     ControlVisitantesComponent,
     ControlVisitantesVerificadosComponent,
     VerVisitantesGrupoComponent,
-    PuestoGruposComponent
+    PuestoGruposComponent,
+    ValidateComponent
   ],
   imports: [
   BrowserModule,
