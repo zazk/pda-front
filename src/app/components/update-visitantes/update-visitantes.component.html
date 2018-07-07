@@ -13,7 +13,7 @@
               <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Tipo doc </label>
               <div class="col-sm-9">
                 <select ngModel name="tipoDocumento" required>
-                  <option>Seleccionar</option>
+                  <option value="">Seleccionar</option>
                   <option value="1">DNI</option>
                   <option value="2">Pasaporte</option>
                   <option value="3">Carne extranjeria</option>
@@ -47,7 +47,7 @@
 
               <div class="col-sm-9">
                 <select ngModel name="pais" required>
-                  <option selected>Seleccionar</option>
+                  <option value="" selected>Seleccionar</option>
                   <option *ngFor="let pais of paises" value="{{pais.srl_cod_pais}}">{{pais.var_nombre}}</option>
                 </select>
               </div>
@@ -90,7 +90,8 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-yellow">Añadir Visitante</button>
+              <button *ngIf="paxes.length < 15" type="submit" class="btn btn-yellow">Añadir Visitante</button>
+              <span *ngIf="paxes.length >= 15">El número máximo por grupo es 15.</span>
             </div>
           </form>
         </td>
@@ -133,7 +134,7 @@
     </table>
     <div class="text-center">
       <button type="button" class="btn btn-warning" (click)="cancel.emit()">Cancelar</button>
-      <button type="button" class="btn btn-success" (click)="finalizar.emit(paxes)">Finalizar confirmacion</button>
+      <button *ngIf="paxes.length" type="button" class="btn btn-success" (click)="finalizar.emit(paxes)">Finalizar confirmacion</button>
     </div>
   </div>
 
