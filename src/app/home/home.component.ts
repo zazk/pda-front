@@ -26,36 +26,11 @@ export class HomeComponent implements OnInit {
     this.user = JSON.parse(this.service.theUser) || {};
     this.paxesTmp = JSON.parse(localStorage.getItem("paxes")) || [];
     this.routes = JSON.parse(localStorage.getItem("rutas")) || [];
-    console.log("USER", this.user);
-    console.log("RUTAS", this.routes);
-
     this.service
-      .consultaPagooperador(this.user.var_cod_operador)
-      .subscribe(response => {
-        console.log("PAGOS", response);
-        if (response.length) {
-          const pagos = response.map(
-            r =>
-              new Pago(
-                r.var_operacion,
-                r.num_monto,
-                r.dte_fec_abono,
-                r.var_comprobante,
-                r.int_estado,
-                r.var_cod_operador
-              )
-          );
-          localStorage.setItem("pagos", JSON.stringify(pagos));
-        }
-      });
-    this.service
-      .consultaGrupooperador(this.user.var_cod_operador)
-      .subscribe(response => {
-        console.log("GRUPOS", response);
-        if (response.length) {
-          //const grupo = response.map( r = new Grupo([],))
-        }
-      });
+      .listPaises()
+      .subscribe(paises =>
+        localStorage.setItem("paises", JSON.stringify(paises))
+      );
   }
 
   onSubmit(form: NgForm): void {

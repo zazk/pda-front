@@ -13,7 +13,7 @@
               <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Tipo doc </label>
               <div class="col-sm-9">
                 <select ngModel name="tipoDocumento" required>
-                  <option >Seleccionar</option>
+                  <option>Seleccionar</option>
                   <option value="1">DNI</option>
                   <option value="2">Pasaporte</option>
                   <option value="3">Carne extranjeria</option>
@@ -24,8 +24,8 @@
               <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Nro Doc</label>
 
               <div class="col-sm-9">
-                <input ngModel name="dni" required pattern="[0-9]+" (keydown)="onValidateNumber($event)"
-                  type="text" autocomplete="off"  placeholder="########" class="col-xs-10 col-sm-5 w100" />
+                <input ngModel name="dni" required pattern="[0-9]+" (keydown)="onValidateNumber($event)" type="text" autocomplete="off" placeholder="########"
+                  class="col-xs-10 col-sm-5 w100" />
               </div>
             </div>
             <div class="form-group">
@@ -48,12 +48,7 @@
               <div class="col-sm-9">
                 <select ngModel name="pais" required>
                   <option selected>Seleccionar</option>
-                  <option value="1">Alemania</option>
-                  <option value="2">Argentina</option>
-                  <option value="3">Belgica</option>
-                  <option value="4">Estados Unidos</option>
-                  <option value="5">Peru</option>
-                  <option value="6">Rusia</option>
+                  <option *ngFor="let pais of paises" value="{{pais.srl_cod_pais}}">{{pais.var_nombre}}</option>
                 </select>
               </div>
             </div>
@@ -80,9 +75,8 @@
               <label class=" col-sm-3 control-label no-padding-right" for="form-field-1">Fecha Nac</label>
 
               <div class="col-sm-9">
-                <input name="nacimiento" required readonly
-                  class="form-control datepicker" id="datepicker-paxer" type="text" placeholder="dd-mm-yyyy" data-date-format="dd-mm-yyyy"
-                />
+                <input name="nacimiento" required readonly class="form-control datepicker" id="datepicker-paxer" type="text" placeholder="dd-mm-yyyy"
+                  data-date-format="dd-mm-yyyy" />
               </div>
             </div>
             <div class="form-group">
@@ -96,7 +90,7 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-yellow" >Añadir Visitante</button>
+              <button type="submit" class="btn btn-yellow">Añadir Visitante</button>
             </div>
           </form>
         </td>
@@ -119,7 +113,7 @@
             </span>
           </td>
         </tr>
-        <tr >
+        <tr>
           <td class="pax-total">
             Total
           </td>
@@ -149,12 +143,14 @@
 <ng-template #dialogConfirm>
   <div mat-dialog-content>
     <p>
-        ¿Confirma la eliminació de esta persona?
+      ¿Confirma la eliminació de esta persona?
     </p>
-    <p><strong>{{activePax.apellidos}}, {{activePax.nombres}}</strong></p>
+    <p>
+      <strong>{{activePax.apellidos}}, {{activePax.nombres}}</strong>
+    </p>
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="dialogRef.close()">Cancelar</button>
-    <button mat-raised-button color="primary" (click)="onConfirmRemovePax()" >Eliminar</button>
+    <button mat-raised-button color="primary" (click)="onConfirmRemovePax()">Eliminar</button>
   </div>
 </ng-template>

@@ -19,12 +19,9 @@ declare var $: any;
 export class IngresoVisitantesComponent implements OnInit {
   paxes: Pax[];
   fechaPax: string;
-  constructor(
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   onFinalizar(event) {
     console.log("EVENT", event);
     this.router.navigate(["confirmar-visitantes"]);

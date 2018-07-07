@@ -29,9 +29,11 @@ export class UpdateVisitantesComponent implements OnInit {
   dialogRef: MatDialogRef<any>;
   rutaActiva: Ruta;
   ruta: number;
+  paises: any[] = [];
   constructor(private dialog: MatDialog, private service: UserService) {}
 
   ngOnInit() {
+    this.paises = JSON.parse(localStorage.getItem("paises"));
     this.paxes = JSON.parse(localStorage.getItem("paxes")) || [];
     this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
       obj => obj.id === this.service.ruta
