@@ -1778,10 +1778,8 @@ ADD CONSTRAINT t_visitante_srl_cod_pais_fkey FOREIGN KEY
 (srl_cod_pais);
 
 -- Audit
-ALTER TABLE pda.t_grupo ADD COLUMN dte_fec_creacion TIMESTAMP DEFAULT NOW
-();
-ALTER TABLE pda.t_pago ADD COLUMN dte_fec_creacion TIMESTAMP DEFAULT NOW
-();
+ALTER TABLE pda.t_grupo ADD COLUMN dte_fec_creacion TIMESTAMP DEFAULT NOW();
+ALTER TABLE pda.t_pago ADD COLUMN dte_fec_creacion TIMESTAMP DEFAULT NOW();
 
 
 --
