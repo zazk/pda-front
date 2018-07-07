@@ -9,7 +9,6 @@ import { Pax } from "../../models/pax";
   styles: []
 })
 export class ModifyGrupoComponent implements OnInit {
-
   grupoActivo: any = {};
   paxes: Pax[];
   fecha: string;
@@ -19,7 +18,9 @@ export class ModifyGrupoComponent implements OnInit {
 
   constructor(
     private service: UserService,
-    private route: ActivatedRoute, private router: Router) {}
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.usuario = JSON.parse(localStorage.getItem("currentUser")) || {};
@@ -32,17 +33,23 @@ export class ModifyGrupoComponent implements OnInit {
         this.fecha = this.grupoActivo.fecha;
         this.ruta = this.grupoActivo.ruta;
         this.load = true;
+        localStorage.setItem("fecha", this.grupoActivo.fecha);
+        localStorage.setItem(
+          "paxes",
+          JSON.stringify(this.grupoActivo.visitantes)
+        );
       });
     });
   }
 
   onFinalizar(event) {
     console.log("EVENT", event);
-    this.grupoActivo.visitantes = JSON.parse(localStorage.getItem("paxes")) || [];
+    this.grupoActivo.visitantes =
+      JSON.parse(localStorage.getItem("paxes")) || [];
     this.grupoActivo.fecha = localStorage.getItem("fecha");
     this.grupoActivo.ruta = parseInt(localStorage.getItem("ruta"), 10);
 
-    this.service.updateGrupo(this.grupoActivo).subscribe((r) => {
+    this.service.updateGrupo(this.grupoActivo).subscribe(r => {
       this.usuario.num_saldo = r.grupo.operador.num_saldo;
       this.service.theUser = JSON.stringify(this.usuario);
       this.router.navigate(["ver-visitantes", this.grupoActivo.id]);
