@@ -231,7 +231,8 @@ CREATE TABLE pda.t_pago
   var_cod_operador character varying(30) NOT NULL,
   var_operacion character varying(30) NOT NULL,
   num_monto integer NOT NULL,
-  dte_fec_abono date,
+  dte_fec_abono timestamp,
+  dte_fec_validacion timestamp,
   var_comprobante character varying(200) NOT NULL,
   int_estado integer,
   txt_motivorechazo text
@@ -1781,6 +1782,8 @@ ADD CONSTRAINT t_visitante_srl_cod_pais_fkey FOREIGN KEY
 ALTER TABLE pda.t_grupo ADD COLUMN dte_fec_creacion TIMESTAMP DEFAULT NOW
 ();
 ALTER TABLE pda.t_pago ADD COLUMN dte_fec_creacion TIMESTAMP DEFAULT NOW
+();
+ALTER TABLE pda.t_visitante ADD COLUMN dte_fec_creacion TIMESTAMP DEFAULT NOW
 ();
 
 
