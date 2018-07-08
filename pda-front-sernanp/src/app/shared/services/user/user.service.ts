@@ -11,7 +11,6 @@ export class UserService {
   // public url: string = "//localhost:4007/";
   public url: string = "//168.121.48.106:4007/";
 
-
   user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
 
@@ -204,8 +203,7 @@ export class UserService {
   }
 
   /* ( Integer codGrupo, Integer codVisitante, Boolean asistio ) */
-  updateAsistencia( grupo: Grupo): Observable<any> {
-
+  updateAsistencia(grupo: Grupo): Observable<any> {
     const formData: FormData = new FormData();
     formData.append("grupo", JSON.stringify(grupo));
     return this.http.post(this.url + "update_asistencia", formData);

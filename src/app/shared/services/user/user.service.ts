@@ -8,8 +8,8 @@ import { Grupo } from "../../../models/grupo";
 
 @Injectable()
 export class UserService {
-  // public url: string = "//localhost:4007/";
-  public url: string = "//168.121.48.106:4007/";
+  public url: string = "//localhost:4007/";
+  // public url: string = "//168.121.48.106:4007/";
 
   user: Subject<any> = new Subject();
   public rutaObs: Subject<any> = new Subject();
