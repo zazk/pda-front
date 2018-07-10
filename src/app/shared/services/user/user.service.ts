@@ -1,15 +1,15 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import { Pago } from "../../../models/pago";
-import { Subject } from "rxjs/Subject";
-import { Pax } from "../../../models/pax";
-import { Grupo } from "../../../models/grupo";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Pago } from '../../../models/pago';
+import { Subject } from 'rxjs/Subject';
+import { Pax } from '../../../models/pax';
+import { Grupo } from '../../../models/grupo';
 
 @Injectable()
 export class UserService {
-  public url: string = "//localhost:4007/";
-  // public url: string = "//168.121.48.106:4007/";
+  // public url: string = "//localhost:4007/";
+  public url: string = '//cnx.sernanp.gob.pe:4007/';
 
   user: Subject<any> = new Subject();
   public rutaObs: Subject<any> = new Subject();
@@ -18,24 +18,24 @@ export class UserService {
 
   set theUser(value: any) {
     this.user.next(value); // this will make sure to tell every subscriber about the change.
-    localStorage.setItem("currentUser", value);
+    localStorage.setItem('currentUser', value);
   }
 
   get theUser() {
-    return localStorage.getItem("currentUser");
+    return localStorage.getItem('currentUser');
   }
 
   set ruta(value: number) {
     this.rutaObs.next(value); // this will make sure to tell every subscriber about the change.
-    localStorage.setItem("ruta", value.toString());
+    localStorage.setItem('ruta', value.toString());
   }
 
   get ruta() {
-    return parseInt(localStorage.getItem("ruta"), 10);
+    return parseInt(localStorage.getItem('ruta'), 10);
   }
 
   login(): Observable<any> {
-    return this.http.get(this.url + "login");
+    return this.http.get(this.url + 'login');
   }
 
   /* ( String user, String pwd ) */
@@ -45,7 +45,7 @@ export class UserService {
 
   /* ( String codOperador ) */
   consultaOperador(): Observable<any> {
-    return this.http.get(this.url + "consulta_operador");
+    return this.http.get(this.url + 'consulta_operador');
   }
 
   /* ( String email ) */
@@ -55,7 +55,7 @@ export class UserService {
 
   /* ( Integer codVisitante ) */
   consultaVisitante(): Observable<any> {
-    return this.http.get(this.url + "consulta_visitante");
+    return this.http.get(this.url + 'consulta_visitante');
   }
 
   /* ( Integer codGrupo ) */
@@ -65,7 +65,7 @@ export class UserService {
 
   /* ( Integer codGrupo ) */
   listVisitantexgrupo(): Observable<any> {
-    return this.http.get(this.url + "list_visitantexgrupo");
+    return this.http.get(this.url + 'list_visitantexgrupo');
   }
 
   /* ( String codOperador ) */
@@ -84,153 +84,153 @@ export class UserService {
 
   /* ( String nroOperacion, String fecPago, Integer estado ) */
   filtroPagooperador(): Observable<any> {
-    return this.http.get(this.url + "filtro_pagooperador");
+    return this.http.get(this.url + 'filtro_pagooperador');
   }
 
   /* ( String nroOperacion, String codOperador ) */
   filtroPagorecaudador(): Observable<any> {
-    return this.http.get(this.url + "filtro_pagorecaudador");
+    return this.http.get(this.url + 'filtro_pagorecaudador');
   }
 
   /* ( String codGrupo, String fecVisita, Integer estado ) */
   filtroGrupooperador(): Observable<any> {
-    return this.http.get(this.url + "filtro_grupooperador");
+    return this.http.get(this.url + 'filtro_grupooperador');
   }
 
   listVistantes(): Observable<any> {
-    return this.http.get(this.url + "list_visitantes");
+    return this.http.get(this.url + 'list_visitantes');
   }
 
   listRutas(): Observable<any> {
-    return this.http.get(this.url + "list_rutas");
+    return this.http.get(this.url + 'list_rutas');
   }
 
   listCategorias(): Observable<any> {
-    return this.http.get(this.url + "list_categorias");
+    return this.http.get(this.url + 'list_categorias');
   }
 
   listPaises(): Observable<any> {
-    return this.http.get(this.url + "list_paises");
+    return this.http.get(this.url + 'list_paises');
   }
 
   listTipdocumentos(): Observable<any> {
-    return this.http.get(this.url + "list_tipdocumentos");
+    return this.http.get(this.url + 'list_tipdocumentos');
   }
 
   listNoticias(): Observable<any> {
-    return this.http.get(this.url + "list_noticias");
+    return this.http.get(this.url + 'list_noticias');
   }
 
   listNoticiasactivas(): Observable<any> {
-    return this.http.get(this.url + "list_noticias_activas");
+    return this.http.get(this.url + 'list_noticias_activas');
   }
 
   listGrupos(): Observable<any> {
-    return this.http.get(this.url + "list_grupos");
+    return this.http.get(this.url + 'list_grupos');
   }
 
   listPagos(): Observable<any> {
-    return this.http.get(this.url + "list_pagos");
+    return this.http.get(this.url + 'list_pagos');
   }
 
   /* ( String titulo, String contenido, LocalDate date, String user ) */
   insertNews(): Observable<any> {
-    return this.http.get(this.url + "insert_news");
+    return this.http.get(this.url + 'insert_news');
   }
 
   /* ( Integer codDocumento, Integer codCategoria, Integer codPais, String nombre,
     String apellido, String nroDocumento, LocalDate fNac, Integer sexo ) */
   insertVisitante(): Observable<any> {
-    return this.http.get(this.url + "insert_visitante");
+    return this.http.get(this.url + 'insert_visitante');
   }
 
   /* ( Visitantes visitantes) */
   insertVisitantes(paxes: Pax[]): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append("visitantes", JSON.stringify(paxes));
-    return this.http.post(this.url + "insert_visitantes", formData);
+    formData.append('visitantes', JSON.stringify(paxes));
+    return this.http.post(this.url + 'insert_visitantes', formData);
   }
 
   /* ( String codOperador, Integer codRuta, LocalDate fecProgramada, Integer nroVisitantes, Integer numCosto, String insUsuario ) */
   insertGrupo(grupo: Grupo): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append("grupo", JSON.stringify(grupo));
-    return this.http.post(this.url + "insert_grupo", formData);
+    formData.append('grupo', JSON.stringify(grupo));
+    return this.http.post(this.url + 'insert_grupo', formData);
   }
 
   /* ( Integer codGrupo, Integer codVisitante ) */
   insertVisitantegrupo(): Observable<any> {
-    return this.http.get(this.url + "insert_visitantegrupo");
+    return this.http.get(this.url + 'insert_visitantegrupo');
   }
 
   /* ( String codOperador, String nroOperacion, Integer monto, LocalDate fecAbono, String voucher ) */
   insertPago(pago: Pago): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append("codOperador", pago.codOperador);
-    formData.append("nroOperacion", pago.operacion);
-    formData.append("monto", pago.monto.toString());
-    formData.append("fecAbono", pago.fecha);
-    formData.append("voucher", pago.voucher);
-    return this.http.post(this.url + "insert_pago", formData);
+    formData.append('codOperador', pago.codOperador);
+    formData.append('nroOperacion', pago.operacion);
+    formData.append('monto', pago.monto.toString());
+    formData.append('fecAbono', pago.fecha);
+    formData.append('voucher', pago.voucher);
+    return this.http.post(this.url + 'insert_pago', formData);
   }
 
   /* ( Integer codNoticia ) */
   deleteNews(): Observable<any> {
-    return this.http.get(this.url + "delete_news");
+    return this.http.get(this.url + 'delete_news');
   }
 
   /* ( Integer codGrupo, Integer codVisitante ) */
   deleteVisitantegrupo(): Observable<any> {
-    return this.http.get(this.url + "delete_visitantegrupo");
+    return this.http.get(this.url + 'delete_visitantegrupo');
   }
 
   /* ( String newClave, Integer codUser ) */
   updatePwd(): Observable<any> {
-    return this.http.get(this.url + "update_pwd");
+    return this.http.get(this.url + 'update_pwd');
   }
 
   /* ( String titulo, String contenido, LocalDate date, Boolean estado, Integer id ) */
   updateNews(): Observable<any> {
-    return this.http.get(this.url + "update_news");
+    return this.http.get(this.url + 'update_news');
   }
 
   /* ( Integer codDocumento, Integer codCategoria, Integer codPais, String nombre,
     String apellido, String nroDocumento, LocalDate fNac, Integer sexo, Integer id ) */
   updateVisitante(): Observable<any> {
-    return this.http.get(this.url + "update_visitante");
+    return this.http.get(this.url + 'update_visitante');
   }
 
   /* ( LocalDate date, Integer codRuta, Integer id ) */
   updateGrupo(grupo: Grupo): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append("grupo", JSON.stringify(grupo));
-    return this.http.post(this.url + "update_grupo", formData);
+    formData.append('grupo', JSON.stringify(grupo));
+    return this.http.post(this.url + 'update_grupo', formData);
   }
 
   /* ( Integer codGrupo, Integer codVisitante, Boolean asistio ) */
   updateAsistencia(): Observable<any> {
-    return this.http.get(this.url + "update_asistencia");
+    return this.http.get(this.url + 'update_asistencia');
   }
 
   /* ( LocalDate date, Integer nroVisitantes, Integer nroInasistentes, Integer costo,
     Integer estado, String documento, String userModificacion, LocalDate dateModificacion, Integer codGrupo ) */
   updateVisitagrupo(): Observable<any> {
-    return this.http.get(this.url + "update_visitagrupo");
+    return this.http.get(this.url + 'update_visitagrupo');
   }
 
   /* ( Integer codGrupo, String documento ) */
   updateDocgrupo(): Observable<any> {
-    return this.http.get(this.url + "update_docgrupo");
+    return this.http.get(this.url + 'update_docgrupo');
   }
 
   /* ( Integer estado, String motivoRechazo, Integer codPago ) */
   updatePagorechazo(): Observable<any> {
-    return this.http.get(this.url + "update_pagorechazo");
+    return this.http.get(this.url + 'update_pagorechazo');
   }
 
   uploadFile(file: File): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append("imagen", file, file.name);
-    return this.http.post(this.url + "upload-pago", formData);
+    formData.append('imagen', file, file.name);
+    return this.http.post(this.url + 'upload-pago', formData);
   }
 }
