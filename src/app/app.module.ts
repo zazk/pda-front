@@ -118,7 +118,7 @@ const AppRouter: Routes = [
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(AppRouter, { enableTracing: true, useHash: true })
+    RouterModule.forRoot(AppRouter, { enableTracing: true })
   ],
   providers: [AuthGuard, UserService],
   bootstrap: [AppComponent]
