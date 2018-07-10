@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { Pago } from "../models/pago";
-import { UserService } from "../shared/services/user/user.service";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Pago } from '../models/pago';
+import { UserService } from '../shared/services/user/user.service';
 
 @Component({
-  selector: "app-pagos",
-  templateUrl: "./pagos.component.html",
+  selector: 'app-pagos',
+  templateUrl: './pagos.component.html',
   styles: []
 })
 export class PagosComponent implements OnInit {
@@ -13,9 +13,9 @@ export class PagosComponent implements OnInit {
   url: string;
   user: any;
   estados: any[] = [
-    { text: "Pendiente", class: "warning" },
-    { text: "Aceptado", class: "success" },
-    { text: "Rechazado", class: "danger" }
+    { text: 'Pendiente', class: 'warning' },
+    { text: 'Aceptado', class: 'success' },
+    { text: 'Rechazado', class: 'danger' }
   ];
   constructor(private service: UserService, private router: Router) {}
 
@@ -26,7 +26,7 @@ export class PagosComponent implements OnInit {
     this.loadScripts();
   }
   onSearch(form: any) {
-    const pagos = JSON.parse(localStorage.getItem("pagos")) || [];
+    const pagos = JSON.parse(localStorage.getItem('pagos')) || [];
     this.pagos = pagos.filter((p: Pago) => {
       if (form.estado) {
         return p.estado == form.estado;
@@ -38,11 +38,11 @@ export class PagosComponent implements OnInit {
     });
   }
   loadScripts() {
-    console.log("USER", this.user);
+    console.log('USER', this.user);
     this.service
       .consultaPagooperador(this.user.var_cod_operador)
       .subscribe(response => {
-        console.log("PAGOS", response);
+        console.log('PAGOS', response);
         if (response.length) {
           this.pagos = response.map(
             r =>
@@ -58,7 +58,7 @@ export class PagosComponent implements OnInit {
                 r.var_razonsocial
               )
           );
-          localStorage.setItem("pagos", JSON.stringify(this.pagos));
+          localStorage.setItem('pagos', JSON.stringify(this.pagos));
         }
       });
   }
