@@ -1,33 +1,33 @@
-import { Component, OnInit } from "@angular/core";
-import { UserService } from "../shared/services/user/user.service";
-import { NgForm } from "@angular/forms";
-import { Pago } from "../models/pago";
-import { Router } from "@angular/router";
-import { User } from "../models/user";
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../shared/services/user/user.service';
+import { NgForm } from '@angular/forms';
+import { Pago } from '../models/pago';
+import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 declare var $: any;
 
 @Component({
-  selector: "app-agregar-pago",
-  templateUrl: "./agregar-pago.component.html",
+  selector: 'app-agregar-pago',
+  templateUrl: './agregar-pago.component.html',
   styles: []
 })
 export class AgregarPagoComponent implements OnInit {
   filename: string;
-  pagos: Pago[];
+  pagos: Pago[] = [];
   fecha: string;
   usuario: User;
   constructor(private service: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.usuario = JSON.parse(localStorage.getItem("currentUser")) || {};
-    this.pagos = JSON.parse(localStorage.getItem("pagos")) || [];
-    console.log("USUARIO", this.usuario);
+    this.usuario = JSON.parse(localStorage.getItem('currentUser')) || {};
+    this.pagos = JSON.parse(localStorage.getItem('pagos')) || [];
+    console.log('USUARIO', this.usuario);
     this.loadScript();
   }
 
   onSubmit(form: NgForm): void {
-    console.log("FORM", form, "FECHA", this.fecha, "USUARIO", this.usuario);
+    console.log('FORM', form, 'FECHA', this.fecha, 'USUARIO', this.usuario);
     const obj: any = form.value;
     if (this.filename && obj.monto && obj.operacion) {
       const pago: Pago = new Pago(
@@ -35,20 +35,20 @@ export class AgregarPagoComponent implements OnInit {
         obj.monto,
         this.fecha,
         this.filename,
-        "true",
+        'true',
         this.usuario.var_cod_operador
       );
-      console.log("PAGO", pago);
+      console.log('PAGO', pago);
 
       this.service.insertPago(pago).subscribe(response => {
         this.pagos.push(pago);
-        localStorage.setItem("pagos", JSON.stringify(this.pagos));
+        localStorage.setItem('pagos', JSON.stringify(this.pagos));
         this.service.theUser = JSON.stringify(response.operador);
-        this.router.navigate(["pagos"]);
+        this.router.navigate(['pagos']);
       });
     } else {
-      console.log("Por favor suba su pago", this.filename, form.value.monto);
-      alert("Ingresar todos los campos");
+      console.log('Por favor suba su pago', this.filename, form.value.monto);
+      alert('Ingresar todos los campos');
     }
   }
 
@@ -56,14 +56,14 @@ export class AgregarPagoComponent implements OnInit {
     const files = input.files;
 
     if (files && files.length) {
-      console.log("Filename: " + files[0].name);
-      console.log("Type: " + files[0].type);
-      console.log("Size: " + files[0].size + " bytes");
+      console.log('Filename: ' + files[0].name);
+      console.log('Type: ' + files[0].type);
+      console.log('Size: ' + files[0].size + ' bytes');
 
       const fileToRead = files[0];
       this.service.uploadFile(fileToRead).subscribe(
         data => {
-          console.log("DATA:", data);
+          console.log('DATA:', data);
           if (data.message) {
             this.filename = data.message;
           } else {
@@ -77,16 +77,16 @@ export class AgregarPagoComponent implements OnInit {
     }
   }
   loadScript() {
-    $(".chosen-select").chosen();
-    $("#id-input-file-2").ace_file_input({
-      no_file: "Ingresar voucher",
-      btn_choose: "Choose",
-      btn_change: "Cargar",
+    $('.chosen-select').chosen();
+    $('#id-input-file-2').ace_file_input({
+      no_file: 'Ingresar voucher',
+      btn_choose: 'Choose',
+      btn_change: 'Cargar',
       droppable: false,
       onchange: null,
       thumbnail: false,
       // | true | large
-      whitelist: "gif|png|jpg|jpeg"
+      whitelist: 'gif|png|jpg|jpeg'
       // blacklist:'exe|php'
       // onchange:''
       //
@@ -94,13 +94,13 @@ export class AgregarPagoComponent implements OnInit {
 
     // datepicker plugin
     // link
-    $(".date-picker").datepicker({
+    $('.date-picker').datepicker({
       autoclose: true,
       endDate: new Date(),
       todayHighlight: true,
-      dateFormat: "yy-mm-dd",
+      dateFormat: 'yy-mm-dd',
       onSelect: date => {
-        console.log("GOGOGO", date, this);
+        console.log('GOGOGO', date, this);
         this.fecha = date;
       }
     });

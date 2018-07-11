@@ -15,8 +15,8 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
   routes: any[] = [];
-  paxes: Pax[];
-  paxesTmp: Pax[];
+  paxes: Pax[] = [];
+  paxesTmp: Pax[] = [];
   fecha: string;
   user: any;
   constructor(private router: Router, private service: UserService) {}

@@ -1,22 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import { Grupo } from "../models/grupo";
-import { Router } from "@angular/router";
-import { UserService } from "../shared/services/user/user.service";
-import * as moment from "moment";
+import { Component, OnInit } from '@angular/core';
+import { Grupo } from '../models/grupo';
+import { Router } from '@angular/router';
+import { UserService } from '../shared/services/user/user.service';
+import * as moment from 'moment';
 
 declare var $: any;
 @Component({
-  selector: "app-grupos",
-  templateUrl: "./grupos.component.html",
+  selector: 'app-grupos',
+  templateUrl: './grupos.component.html',
   styles: []
 })
 export class GruposComponent implements OnInit {
-  grupos: Grupo[];
+  grupos: Grupo[] = [];
   constructor(private router: Router, private service: UserService) {}
 
   ngOnInit() {
-    this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
-    console.log("USER", this.service.theUser);
+    this.grupos = JSON.parse(localStorage.getItem('grupos')) || [];
+    console.log('USER', this.service.theUser);
     const user = JSON.parse(this.service.theUser);
     this.service
       .consultaGrupooperador(user.var_cod_operador)
@@ -33,15 +33,15 @@ export class GruposComponent implements OnInit {
             obj.srl_cod_grupo,
             obj.int_nro_inasistente,
             obj.int_estado,
-            moment(obj.dte_fec_creacion).format("YYYY-MM-DD")
+            moment(obj.dte_fec_creacion).format('YYYY-MM-DD')
           );
         });
-        console.log("GRUPOS?", grupos, "Grupos Parsed", this.grupos);
+        console.log('GRUPOS?', grupos, 'Grupos Parsed', this.grupos);
       });
   }
   onVerGrupo(grupo: Grupo) {
-    console.log("Grupo:", grupo);
-    this.router.navigate(["ver-visitantes", grupo.id]);
+    console.log('Grupo:', grupo);
+    this.router.navigate(['ver-visitantes', grupo.id]);
   }
 }
 

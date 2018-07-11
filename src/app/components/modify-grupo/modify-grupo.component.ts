@@ -10,7 +10,7 @@ import { Pax } from '../../models/pax';
 })
 export class ModifyGrupoComponent implements OnInit {
   grupoActivo: any = {};
-  paxes: Pax[];
+  paxes: Pax[] = [];
   fecha: string;
   ruta: string;
   load: boolean;

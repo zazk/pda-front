@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { UserService } from "../../shared/services/user/user.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from '../../shared/services/user/user.service';
 
 declare var $: any;
 
 @Component({
-  selector: "app-update-grupo",
-  templateUrl: "./update-grupo.component.html",
+  selector: 'app-update-grupo',
+  templateUrl: './update-grupo.component.html',
   styles: []
 })
 export class UpdateGrupoComponent implements OnInit {
@@ -16,28 +16,28 @@ export class UpdateGrupoComponent implements OnInit {
   constructor(private service: UserService) {}
 
   ngOnInit() {
-    this.routes = JSON.parse(localStorage.getItem("rutas")) || [];
-    this.fecha = localStorage.getItem("fecha");
-    this.ruta = localStorage.getItem("ruta");
+    this.routes = JSON.parse(localStorage.getItem('rutas')) || [];
+    this.fecha = localStorage.getItem('fecha');
+    this.ruta = localStorage.getItem('ruta');
     this.loadScript();
   }
   onChangeRuta(value: any) {
-    console.log("Value", value);
+    console.log('Value', value);
     this.ruta = value;
     this.service.ruta = value;
-    localStorage.setItem("ruta", value);
+    localStorage.setItem('ruta', value);
   }
   loadScript() {
-    $("#fecha-visita-grupo").datepicker({
+    $('#fecha-visita-grupo').datepicker({
       minDate: 0,
       startDate: new Date(),
       todayHighlight: true,
-      dateFormat: "yy-mm-dd",
+      dateFormat: 'yy-mm-dd',
       autoclose: true,
       onSelect: date => {
-        console.log("GOGOGO", date, this);
+        console.log('GOGOGO', date, this);
         this.fecha = date;
-        localStorage.setItem("fecha", this.fecha);
+        localStorage.setItem('fecha', this.fecha);
       }
     });
   }
