@@ -1,7 +1,7 @@
 <div id="navbar" class="navbar navbar-default ace-save-state">
   <div class="navbar-container ace-save-state" id="navbar-container">
     <div class="navbar-header navbar-logo  pull-left">
-      <a href="home" class="navbar-brand">
+      <a [routerLink]="['/home/']" class="navbar-brand">
         <small>
           <i class="fa fa-leaf"></i>
           PDA Sernanp
@@ -17,35 +17,35 @@
         </li>
 
         <li class="grey dropdown-modal h-alert-news">
-          <a href="noticias">
-            <i class="ace-icon fa fa-bell icon-animated-bell"></i>
-            <span class="badge badge-important">&nbsp;Noticias&nbsp;</span>
+          <a [routerLink]="['/noticias/']">
+            <i class=" ace-icon fa fa-bell icon-animated-bell "></i>
+            <span class="badge badge-important ">&nbsp;Noticias&nbsp;</span>
           </a>
         </li>
 
-        <li class="light-blue dropdown-modal">
-          <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+        <li class="light-blue dropdown-modal ">
+          <a data-toggle="dropdown " href="" class="nav-menu dropdown-toggle ">
 
-            <span class="fa fa-user-circle fa-2x"></span>
-            <span class="user-info">
+            <span class="fa fa-user-circle fa-2x "></span>
+            <span class="user-info ">
               <small>Bienvenido,</small>{{user.var_razonsocial}}
             </span>
 
-            <i class="ace-icon fa fa-caret-down"></i>
+            <i class="ace-icon fa fa-caret-down "></i>
           </a>
 
-          <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+          <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close ">
             <!--li>
-              <a href="cambio-clave">
-                <i class="ace-icon fa fa-cog"></i>Cambio contraseña
+              <a href="cambio-clave ">
+                <i class="ace-icon fa fa-cog "></i>Cambio contraseña
               </a>
             </li-->
 
-            <li class="divider"></li>
+            <li class="divider "></li>
 
             <li>
-              <a href="" (click)="onCerrarSession()">
-                <i class="ace-icon fa fa-power-off"></i>Cerrar Sesion
+              <a href=" " (click)="onCerrarSession() ">
+                <i class="ace-icon fa fa-power-off "></i>Cerrar Sesion
               </a>
             </li>
           </ul>
