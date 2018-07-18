@@ -91,11 +91,18 @@ export class HomeComponent implements OnInit {
         this.paxes = textFromFileLoaded
           .split('\n')
           .slice(1)
+          .reduce(function(a, b) {
+            if (a.indexOf(b) < 0) {
+              a.push(b);
+            }
+            return a;
+          }, [])
           .map(o => {
             const pax = new Pax(o.split(','));
             pax.nacimiento = moment(pax.nacimiento, 'l').format('YYYY-MM-DD');
             return pax;
-          });
+          })
+          .slice(0, 15);
         console.log('CONTENT FILE', this.paxes);
       };
 
