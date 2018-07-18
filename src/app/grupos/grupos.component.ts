@@ -36,9 +36,25 @@ export class GruposComponent implements OnInit {
             moment(obj.dte_fec_creacion).format('YYYY-MM-DD')
           );
         });
+
+        localStorage.setItem('grupos', JSON.stringify(this.grupos));
         console.log('GRUPOS?', grupos, 'Grupos Parsed', this.grupos);
       });
   }
+
+  onSearch(form: any) {
+    const grupos = JSON.parse(localStorage.getItem('grupos')) || [];
+    this.grupos = grupos.filter((g: Grupo) => {
+      if (form.estado) {
+        return g.estado === parseInt(form.estado, 10);
+      }
+      if (form.codigo) {
+        return g.codigo.indexOf(form.codigo) >= 0;
+      }
+      return true;
+    });
+  }
+
   onVerGrupo(grupo: Grupo) {
     console.log('Grupo:', grupo);
     this.router.navigate(['ver-visitantes', grupo.id]);

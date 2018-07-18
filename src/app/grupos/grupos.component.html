@@ -20,25 +20,26 @@
       <div class="container ">
         <h3 class="header green vert-offset-top-1">Reporte de Grupos</h3>
         <div class="vert-offset-top-2 vert-offset-bottom-2">
-          <form action="" class="form-inline text-right vert-offset-bottom-1">
+          <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline text-right vert-offset-bottom-1">
             <div class="form-group">
               <label for="" class="control-label">
                 Grupo:
               </label>
-              <input type="text" placeholder="Nro Grupo" class="form-control" />
+              <input ngModel name="codigo" type="text" placeholder="Nro Grupo" class="form-control" />
             </div>
-            <div class="form-group">
+            <!-- div class="form-group">
               <label for="" class="control-label">
                 Fecha visita:
               </label>
               <input class="w20 date-picker " id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" />
-            </div>
+            </div -->
             <div class="form-group">
               <label for="" class="control-label">
                 Estado:
               </label>
-              <select class="w20 form-control">
-                <option value="1" selected>Pendientes</option>
+              <select ngModel name="estado" class="w20 form-control">
+                <option value="" selected>Seleccionar</option>
+                <option value="1">Pendientes</option>
                 <option value="2">Visitados</option>
               </select>
             </div>
