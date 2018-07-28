@@ -11,33 +11,35 @@ export class PuestoGruposComponent implements OnInit {
   grupos: Grupo[];
   routes: any[];
   estados: any[] = [
-    { text: "Pendiente", class: "warning" },
-    { text: "Aceptado", class: "success" },
-    { text: "Observado", class: "danger" }
+    { text: 'Pendiente', class: 'warning' },
+    { text: 'Aceptado', class: 'success' },
+    { text: 'Observado', class: 'danger' }
   ];
   constructor(private router: Router, private service: UserService) {}
 
   ngOnInit() {
-    this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
+    this.grupos = JSON.parse(localStorage.getItem('grupos')) || [];
     this.service.listGrupos().subscribe((grupos: Grupo[]) => {
       this.grupos = grupos;
-      localStorage.setItem("grupos", JSON.stringify(this.grupos));
-      console.log("GRUPOS??????", grupos);
+      localStorage.setItem('grupos', JSON.stringify(this.grupos));
+      console.log('GRUPOS??????', grupos);
     });
 
     this.service.listRutas().subscribe(data => {
-      console.log("DATA :", data);
+      console.log('DATA :', data);
       this.routes = data;
-      localStorage.setItem("rutas", JSON.stringify(this.routes));
+      localStorage.setItem('rutas', JSON.stringify(this.routes));
     });
   }
   onAceptarGrupo(grupo: Grupo) {
-    console.log("Aceptar Grupo:", grupo);
+    console.log('Aceptar Grupo:', grupo);
     //this.router.navigate(["ver-visitantes", grupo.codigo]);
   }
   onObservarGrupo(grupo: Grupo) {
-    console.log("Observar Grupo:", grupo);
+    console.log('Observar Grupo:', grupo);
     //this.router.navigate(["ver-visitantes", grupo.codigo]);
   }
 
+  onSearch(form: any) {}
+  onClearSearch(form) {}
 }

@@ -21,7 +21,7 @@
       <div class="container ">
         <h3 class="header orange vert-offset-top-1">Reporte de Grupos</h3>
         <div class="vert-offset-top-2 wancho-regula">
-          <form action="" class="form-horizontal">
+          <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-horizontal">
             <ul class="vert-offset-bottom-1 w-controles">
               <li>
                 <label>
