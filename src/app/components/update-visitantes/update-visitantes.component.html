@@ -134,7 +134,12 @@
     </table>
     <div class="text-center">
       <button type="button" class="btn btn-warning" (click)="cancel.emit()">Cancelar</button>
-      <button *ngIf="paxes.length" type="button" class="btn btn-success" (click)="finalizar.emit(paxes)">Finalizar confirmacion</button>
+      <span *ngIf="!edicion">
+        <button *ngIf="paxes.length" type="button" class="btn btn-success" (click)="finalizar.emit(paxes)">Finalizar confirmacion</button>
+      </span>
+      <span *ngIf="edicion">
+        <button *ngIf="paxes.length" type="button" class="btn btn-success" (click)="finalizar.emit(paxes)">Finalizar Edición</button>
+      </span>
     </div>
   </div>
 

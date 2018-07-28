@@ -4,15 +4,15 @@ import {
   ViewChild,
   ElementRef,
   TemplateRef
-} from "@angular/core";
-import { Pax } from "../models/pax";
-import { Router, ActivatedRoute } from "@angular/router";
-import { UserService } from "../shared/services/user/user.service";
-import { MatDialog, MatDialogRef } from "@angular/material";
+} from '@angular/core';
+import { Pax } from '../models/pax';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../shared/services/user/user.service';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: "app-ver-visitantes",
-  templateUrl: "./ver-visitantes.component.html",
+  selector: 'app-ver-visitantes',
+  templateUrl: './ver-visitantes.component.html',
   styles: []
 })
 export class VerVisitantesComponent implements OnInit {
@@ -27,7 +27,7 @@ export class VerVisitantesComponent implements OnInit {
   grupos: any[];
   grupoActivo: any;
   load: boolean = false;
-  @ViewChild("dialogConfirm") dialogConfirm: TemplateRef<any>;
+  @ViewChild('dialogConfirm') dialogConfirm: TemplateRef<any>;
   constructor(
     private service: UserService,
     private router: Router,
@@ -37,14 +37,14 @@ export class VerVisitantesComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const codigo = params["codigo"];
+      const codigo = params['codigo'];
 
       this.service.consultaGrupo(codigo).subscribe(r => {
-        console.log("HEY GRUPO", r);
+        console.log('HEY GRUPO', r);
         this.grupoActivo = r.grupo;
         this.paxes = this.grupoActivo.visitantes;
         this.fecha = this.grupoActivo.fecha;
-        this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
+        this.rutaActiva = JSON.parse(localStorage.getItem('rutas')).find(
           obj => obj.id === parseInt(this.grupoActivo.ruta, 10)
         ).nombre;
         this.load = true;
@@ -52,7 +52,7 @@ export class VerVisitantesComponent implements OnInit {
     });
   }
   onVerGrupos() {
-    this.router.navigate(["grupos"]);
+    this.router.navigate(['grupos']);
   }
 
   onRemovePax(pax: Pax): void {
@@ -62,21 +62,21 @@ export class VerVisitantesComponent implements OnInit {
   openDialog(pax: Pax): void {
     this.activePax = pax;
     this.dialogRef = this.dialog.open(this.dialogConfirm, {
-      width: "250px",
+      width: '250px',
       data: { pax: pax }
     });
 
     this.dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
+      console.log('The dialog was closed');
     });
   }
   onConfirmRemovePax() {
     this.paxes = this.paxes.filter(p => p.dni !== this.activePax.dni);
-    localStorage.setItem("paxes", JSON.stringify(this.paxes));
+    localStorage.setItem('paxes', JSON.stringify(this.paxes));
     this.dialogRef.close();
   }
   onEditar(grupo: any) {
-    console.log("GRUPO", grupo);
-    this.router.navigate(["modificar-grupo", grupo.id]);
+    console.log('GRUPO', grupo);
+    this.router.navigate(['modificar-grupo', grupo.id]);
   }
 }

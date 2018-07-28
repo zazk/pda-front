@@ -6,24 +6,25 @@ import {
   Output,
   TemplateRef,
   ViewChild
-} from "@angular/core";
-import { Pax } from "../../models/pax";
-import { NgForm } from "@angular/forms";
-import { MatDialogRef, MatDialog } from "@angular/material";
-import { Ruta } from "../../models/ruta";
-import { UserService } from "../../shared/services/user/user.service";
+} from '@angular/core';
+import { Pax } from '../../models/pax';
+import { NgForm } from '@angular/forms';
+import { MatDialogRef, MatDialog } from '@angular/material';
+import { Ruta } from '../../models/ruta';
+import { UserService } from '../../shared/services/user/user.service';
 
 declare var $: any;
 @Component({
-  selector: "app-update-visitantes",
-  templateUrl: "./update-visitantes.component.html",
+  selector: 'app-update-visitantes',
+  templateUrl: './update-visitantes.component.html',
   styles: []
 })
 export class UpdateVisitantesComponent implements OnInit {
   @Input() paxes: Pax[] = [];
+  @Input() edicion: boolean = false;
   @Output() cancel = new EventEmitter();
   @Output() finalizar = new EventEmitter();
-  @ViewChild("dialogConfirm") dialogConfirm: TemplateRef<any>;
+  @ViewChild('dialogConfirm') dialogConfirm: TemplateRef<any>;
   fechaPax: string;
   activePax: Pax;
   dialogRef: MatDialogRef<any>;
@@ -33,14 +34,14 @@ export class UpdateVisitantesComponent implements OnInit {
   constructor(private dialog: MatDialog, private service: UserService) {}
 
   ngOnInit() {
-    this.paises = JSON.parse(localStorage.getItem("paises"));
-    this.paxes = JSON.parse(localStorage.getItem("paxes")) || [];
-    this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
+    this.paises = JSON.parse(localStorage.getItem('paises'));
+    this.paxes = JSON.parse(localStorage.getItem('paxes')) || [];
+    this.rutaActiva = JSON.parse(localStorage.getItem('rutas')).find(
       obj => obj.id === this.service.ruta
     );
 
     this.service.rutaObs.subscribe(ruta => {
-      this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
+      this.rutaActiva = JSON.parse(localStorage.getItem('rutas')).find(
         obj => obj.id === parseInt(ruta, 10)
       );
     });
@@ -53,10 +54,10 @@ export class UpdateVisitantesComponent implements OnInit {
     f.value.nacimiento = this.fechaPax;
     if (f.valid && this.fechaPax) {
       this.paxes.push(f.value);
-      localStorage.setItem("paxes", JSON.stringify(this.paxes));
+      localStorage.setItem('paxes', JSON.stringify(this.paxes));
       f.reset();
     } else {
-      alert("Todos los datos del pasajero son requeridos");
+      alert('Todos los datos del pasajero son requeridos');
     }
   }
 
@@ -68,12 +69,12 @@ export class UpdateVisitantesComponent implements OnInit {
   openDialog(pax: Pax): void {
     this.activePax = pax;
     this.dialogRef = this.dialog.open(this.dialogConfirm, {
-      width: "250px",
+      width: '250px',
       data: { pax: pax }
     });
 
     this.dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
+      console.log('The dialog was closed');
     });
   }
 
@@ -81,8 +82,8 @@ export class UpdateVisitantesComponent implements OnInit {
     const pattern = /[0-9\+\-\ ]/;
     if (
       !pattern.test(event.key) &&
-      !(event.key === "Tab") &&
-      !(event.key === "Backspace")
+      !(event.key === 'Tab') &&
+      !(event.key === 'Backspace')
     ) {
       event.preventDefault();
     }
@@ -90,22 +91,22 @@ export class UpdateVisitantesComponent implements OnInit {
 
   onConfirmRemovePax() {
     this.paxes = this.paxes.filter(p => p.dni !== this.activePax.dni);
-    localStorage.setItem("paxes", JSON.stringify(this.paxes));
+    localStorage.setItem('paxes', JSON.stringify(this.paxes));
     this.dialogRef.close();
   }
 
   loadScript() {
-    console.log("ROUND!!");
-    $("#datepicker-paxer").datepicker({
+    console.log('ROUND!!');
+    $('#datepicker-paxer').datepicker({
       maxDate: new Date(),
       todayHighlight: true,
-      dateFormat: "yy-mm-dd",
+      dateFormat: 'yy-mm-dd',
       autoclose: true,
       changeMonth: true,
       changeYear: true,
-      yearRange: "1920:" + new Date().getFullYear(),
+      yearRange: '1920:' + new Date().getFullYear(),
       onSelect: date => {
-        console.log("GOGOGO", date, this);
+        console.log('GOGOGO', date, this);
         this.fechaPax = date;
       }
     });

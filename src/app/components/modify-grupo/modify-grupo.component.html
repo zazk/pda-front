@@ -21,7 +21,7 @@
         <h3 class="header green vert-offset-top-1">Modificar Grupo: {{grupoActivo.codigo}}</h3>
         <div class="row ss3-main">
           <app-update-grupo [fecha]="fecha" [ruta]="ruta"></app-update-grupo>
-          <app-update-visitantes [paxes]="paxes" (cancel)="onCancel()" (finalizar)="onFinalizar()" ></app-update-visitantes>
+          <app-update-visitantes [paxes]="paxes" (cancel)="onCancel()" [edicion]="true" (finalizar)="onFinalizar()"></app-update-visitantes>
         </div>
       </div>
     </div>

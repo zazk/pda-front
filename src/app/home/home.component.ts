@@ -49,7 +49,14 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['ingreso-visitantes']);
     } else {
       console.log('Por favor seleccione fecha', this.fecha, form.value.ruta);
-      alert('Ingresar Fecha y Ruta ');
+      const msg = [];
+      if (!this.fecha) {
+        msg.push('Seleccione Fecha de Visita');
+      }
+      if (!form.value.ruta) {
+        msg.push('Seleccione Ruta');
+      }
+      alert(msg.join(' / '));
     }
   }
   onChangeRuta(event): void {
