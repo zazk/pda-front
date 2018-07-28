@@ -40,6 +40,21 @@ export class PuestoGruposComponent implements OnInit {
     //this.router.navigate(["ver-visitantes", grupo.codigo]);
   }
 
-  onSearch(form: any) {}
-  onClearSearch(form) {}
+  onSearch(form: any) {
+    const grupos = JSON.parse(localStorage.getItem('grupos')) || [];
+    console.log('grupos', grupos);
+    this.grupos = grupos.filter((g: Grupo) => {
+      if (form.codigo) {
+        return g.codigo.indexOf(form.codigo) >= 0;
+      }
+      if (form.estado) {
+        return g.estado == form.estado;
+      }
+      return true;
+    });
+  }
+  onClearSearch(form) {
+    form.reset();
+    this.onSearch(form);
+  }
 }

@@ -27,20 +27,21 @@
                 <label>
                   Grupo:
                 </label>
-                <input type="text" placeholder="Nro Grupo" />
+                <input ngModel name="codigo" type="text" placeholder="Nro Grupo" />
               </li>
-              <li>
+              <!-- li>
                 <label>
                   Fecha visita:
                 </label>
                 <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" />
-              </li>
+              </li -->
               <li>
                 <label>
                   Estado:
                 </label>
-                <select class="w20">
-                  <option value="1" selected>Pendientes</option>
+                <select ngModel name="estado" class="w20">
+                  <option value="" selected>Todos</option>
+                  <option value="1">Pendientes</option>
                   <option value="2">Visitados</option>
                 </select>
               </li>
