@@ -11,7 +11,12 @@
     display: none;
   }
 }
-
+.login-container h1 {
+  font-size: 24px;
+}
+.logo {
+  margin-top: 50px;
+}
 .breadcrumb > li + li:before {
   color: #ccc;
   content: '| ';

@@ -1,23 +1,23 @@
 <div class="breadcrumbs ace-save-state " id="breadcrumbs">
-    <ul *ngIf="user.var_rol=='recaudador'" class="breadcrumb menu-list">
-      <li>
-        <i class="ace-icon fa fa-money"></i>
-        <a [routerLink]="['/pagos']" >Pagos</a>
-      </li>
-      <li>
-        <i class="ace-icon fa fa-users"></i>
-        <a [routerLink]="['/grupos']">Grupos</a>
-      </li>
-    </ul>
-    <ul *ngIf="user.var_rol=='puesto'" class="breadcrumb menu-list">
-      <li>
-        <i class="ace-icon fa fa-money"></i>
-        <a [routerLink]="['/puesto/revision-grupos']" >Revision Grupos</a>
-      </li>
-      <li>
-        <i class="ace-icon fa fa-money"></i>
-        <a [routerLink]="['/puesto/grupos']" >Todos los Grupos</a>
-      </li>
-    </ul>
-    <!-- /.breadcrumb -->
-  </div>
+  <ul *ngIf="user.var_rol=='recaudador'" class="breadcrumb menu-list">
+    <li>
+      <i class="ace-icon fa fa-money"></i>
+      <a [routerLink]="['/pagos']">Pagos</a>
+    </li>
+    <li>
+      <i class="ace-icon fa fa-users"></i>
+      <a [routerLink]="['/grupos']">Grupos</a>
+    </li>
+  </ul>
+  <ul *ngIf="user.var_rol=='puesto'" class="breadcrumb menu-list">
+    <li>
+      <i class="ace-icon fa fa-money"></i>
+      <a [routerLink]="['/puesto/revision-grupos']">Revision Grupos</a>
+    </li>
+    <li>
+      <i class="ace-icon fa fa-money"></i>
+      <a [routerLink]="['/puesto/grupos']">Todos los Grupos</a>
+    </li>
+  </ul>
+  <!-- /.breadcrumb -->
+</div>
