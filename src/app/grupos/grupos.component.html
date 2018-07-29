@@ -27,12 +27,13 @@
               </label>
               <input ngModel name="codigo" type="text" placeholder="Nro Grupo" class="form-control" />
             </div>
-            <!-- div class="form-group">
+            <div class="form-group">
               <label for="" class="control-label">
                 Fecha visita:
               </label>
-              <input class="w20 date-picker " id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" />
-            </div -->
+              <input ngModel name="fecha" class="w20 date-picker " readonly id="datepicker" placeholder="DD-MM-YYYY" type="text" data-date-format="dd-mm-yyyy"
+              />
+            </div>
             <div class="form-group">
               <label for="" class="control-label">
                 Estado:
@@ -44,7 +45,8 @@
               </select>
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-sm">Buscar</button>
+              <button type="submit" class="btn btn-sm btn-success">Buscar</button>
+              <span class="btn btn-sm" (click)="onClearSearch(f)">Limpiar</span>
             </div>
           </form>
           <div class="table-header">

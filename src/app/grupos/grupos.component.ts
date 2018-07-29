@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class GruposComponent implements OnInit {
   grupos: Grupo[] = [];
+  fecha: string;
   constructor(private router: Router, private service: UserService) {}
 
   ngOnInit() {
@@ -25,7 +26,7 @@ export class GruposComponent implements OnInit {
           return new Grupo(
             [],
             obj.var_cod_grupo,
-            obj.dte_fec_programada,
+            moment(obj.dte_fec_programada).format('DD-MM-YYYY'),
             obj.srl_cod_ruta,
             obj.num_costo,
             obj.var_cod_operador,
@@ -33,13 +34,14 @@ export class GruposComponent implements OnInit {
             obj.srl_cod_grupo,
             obj.int_nro_inasistente,
             obj.int_estado,
-            moment(obj.dte_fec_creacion).format('YYYY-MM-DD')
+            moment(obj.dte_fec_creacion).format('DD-MM-YYYY')
           );
         });
 
         localStorage.setItem('grupos', JSON.stringify(this.grupos));
         console.log('GRUPOS?', grupos, 'Grupos Parsed', this.grupos);
       });
+    this.loadScripts();
   }
 
   onSearch(form: any) {
@@ -51,14 +53,34 @@ export class GruposComponent implements OnInit {
       if (form.codigo) {
         return g.codigo.indexOf(form.codigo) >= 0;
       }
+      if (this.fecha) {
+        return g.fecha === this.fecha;
+      }
       return true;
     });
+  }
+
+  onClearSearch(form) {
+    form.reset();
+    this.fecha = '';
+    this.onSearch(form);
   }
 
   onVerGrupo(grupo: Grupo) {
     console.log('Grupo:', grupo);
     this.router.navigate(['ver-visitantes', grupo.id]);
   }
-}
 
-$(document).ready(() => {});
+  // JQuery Functions
+  loadScripts() {
+    $('#datepicker').datepicker({
+      minDate: 0,
+      startDate: new Date(),
+      todayHighlight: true,
+      dateFormat: 'dd-mm-yy',
+      onSelect: date => {
+        this.fecha = date;
+      }
+    });
+  }
+}

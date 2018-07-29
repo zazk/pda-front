@@ -8,6 +8,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { Pax } from '../../models/pax';
+import * as moment from 'moment';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { Ruta } from '../../models/ruta';
@@ -52,14 +53,23 @@ export class UpdateVisitantesComponent implements OnInit {
   }
 
   onSubmitPax(f: NgForm) {
-    console.log(f);
-    f.value.nacimiento = this.fechaPax;
-    if (f.valid && this.fechaPax) {
+    const isDateValid = moment(f.value.nacimiento, 'DD-MM-YYYY').isValid();
+    if (this.fechaPax && !f.value.nacimiento && isDateValid) {
+      f.value.nacimiento = this.fechaPax;
+    }
+    if (f.valid && this.fechaPax && isDateValid) {
       this.paxes.push(f.value);
       localStorage.setItem('paxes', JSON.stringify(this.paxes));
       f.reset();
     } else {
-      alert('Todos los datos del pasajero son requeridos');
+      const msg: any[] = [];
+      if (!isDateValid) {
+        msg.push('Fecha de Nacimiento Inválida');
+      }
+      if (!f.valid) {
+        msg.push('Todos los datos del Pasajero son Obligatorios');
+      }
+      alert(msg.join(' / '));
     }
   }
 
@@ -89,7 +99,16 @@ export class UpdateVisitantesComponent implements OnInit {
     if (this.typeID !== 1) {
       pattern = /[A-Za-z0-9\+]/;
     }
-    console.log('TYPE ID', this.typeID);
+    this.onValidateKey(event, pattern);
+  }
+
+  onValidateDate(event: any) {
+    const pattern = /[0-9-\+]/;
+    console.log('DATE TYPE ID', event.key);
+    this.onValidateKey(event, pattern);
+  }
+
+  onValidateKey(event: any, pattern: any) {
     if (
       !pattern.test(event.key) &&
       !(event.key === 'Tab') &&

@@ -20,7 +20,8 @@
       <div class="container">
         <h3 class="header green vert-offset-top-1">Revisar Datos</h3>
         <div class="vert-offset-top-2">
-          <div class="wancho-medium">
+          <div class="wancho-medium app-relative">
+            <app-loading [isVisible]="isLoading"></app-loading>
             <h4 class="header smaller lighter blue">
               Fecha de visita: {{fecha}} | Ruta: {{rutaActiva.nombre}}
             </h4>

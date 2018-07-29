@@ -7,18 +7,21 @@ export class Pax {
   categoria: string;
   pais: number;
   sexo: string;
-  constructor(obj: any[]) {
+  constructor() {}
+  static mapFromImport(obj: any[]) {
+    const user = new Pax();
     [
-      this.apellidos,
-      this.nombres,
-      this.tipoDocumento,
-      this.dni,
-      this.nacimiento,
-      this.pais ,
-      this.sexo,
+      user.apellidos,
+      user.nombres,
+      user.tipoDocumento,
+      user.dni,
+      user.nacimiento,
+      user.pais,
+      user.sexo,
       ,
-      this.categoria
+      user.categoria
     ] = obj;
-    this.categoria = this.categoria.replace(";", "");
+    user.categoria = user.categoria.replace(';', '');
+    return user;
   }
 }

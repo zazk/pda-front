@@ -30,6 +30,7 @@ export class ConfirmarVisitantesComponent implements OnInit {
   grupos: any[] = [];
   usuario: any;
   dialogRef: MatDialogRef<any>;
+  isLoading: boolean = false;
   @ViewChild('dialogConfirm') dialogConfirm: TemplateRef<any>;
   constructor(
     private router: Router,
@@ -50,6 +51,7 @@ export class ConfirmarVisitantesComponent implements OnInit {
     );
   }
   onFinalizar() {
+    this.isLoading = true;
     const grupo = new Grupo(
       this.paxes,
       '',
@@ -61,13 +63,13 @@ export class ConfirmarVisitantesComponent implements OnInit {
     console.log('GRUPO', grupo);
     this.service.insertGrupo(grupo).subscribe(r => {
       console.log('GRUPO INSERTADO?', r);
-
       this.grupos.push(grupo);
       this.usuario.num_saldo = r.grupo.operador.num_saldo;
       this.service.theUser = JSON.stringify(this.usuario);
       localStorage.setItem('grupos', JSON.stringify(this.grupos));
       localStorage.setItem('grupoInsertado', JSON.stringify(r));
       this.router.navigate(['resumen-visitantes']);
+      this.isLoading = false;
     });
     return;
   }

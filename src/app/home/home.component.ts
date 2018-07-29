@@ -90,8 +90,8 @@ export class HomeComponent implements OnInit {
             return a;
           }, [])
           .map(o => {
-            const pax = new Pax(o.split(','));
-            pax.nacimiento = moment(pax.nacimiento, 'l').format('YYYY-MM-DD');
+            const pax = Pax.mapFromImport(o.split(','));
+            pax.nacimiento = moment(pax.nacimiento, 'l').format('DD-MM-YYYY');
             return pax;
           })
           .slice(0, 15);
@@ -118,7 +118,6 @@ export class HomeComponent implements OnInit {
       todayHighlight: true,
       dateFormat: 'dd-mm-yy',
       onSelect: date => {
-        console.log('GOGOGO', date, this);
         this.fecha = date;
       }
     });
