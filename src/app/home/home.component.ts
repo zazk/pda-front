@@ -16,9 +16,11 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
   routes: any[] = [];
+  minFeeRoute: number = 0;
   paxes: Pax[] = [];
   paxesTmp: Pax[] = [];
   fecha: string;
+  disabled: boolean = true;
   user: any;
   constructor(private router: Router, private service: UserService) {}
 
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
       .subscribe(paises =>
         localStorage.setItem('paises', JSON.stringify(paises))
       );
+    this.disabled = this.user.num_saldo <= 0;
   }
 
   onSubmit(form: NgForm): void {
@@ -77,24 +80,6 @@ export class HomeComponent implements OnInit {
       const fileReader = new FileReader();
       fileReader.onload = (fileLoadedEvent: any) => {
         const textFromFileLoaded = fileLoadedEvent.target.result;
-        /*
-        textFromFileLoaded
-          .split('\n')
-          .slice(1)
-          .map(o => {
-            const op: Operador = new Operador();
-            o = o.split(',');
-            op.codOperador = o[0];
-            op.razonSocial = o[1];
-            op.ruc = o[0];
-            op.direccion = o[0];
-            op.email = o[0];
-            op.saldo = o[0];
-            op.telefono = o[0];
-            op.web = o[0];
-          });
-        return;
-        */
         this.paxes = textFromFileLoaded
           .split('\n')
           .slice(1)

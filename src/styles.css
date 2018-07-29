@@ -1,18 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 @media print {
-  .n-title{position: static;}
-  .navbar-buttons,.breadcrumbs,.btn { display: none; }
+  .n-title {
+    position: static;
+  }
+  .navbar-buttons,
+  .breadcrumbs,
+  .btn {
+    display: none;
+  }
 }
 
 .breadcrumb > li + li:before {
   color: #ccc;
-  content: "| ";
+  content: '| ';
   padding: 0 5px;
 }
 
-.pax-total{
-  font-size:18px;
+.pax-total {
+  font-size: 18px;
+  font-weight: bold;
+}
+.show-fecha {
+  color: #06589e;
+  font-size: 20px;
+  margin-top: 10px;
   font-weight: bold;
 }

@@ -36,6 +36,9 @@
               <div class="input-group home-datepicker" id="datepicker">
                 <input ngModel name="fecha" class="form-control date-picker" type="hidden" id="my_hidden_input" />
               </div>
+              <div class="show-fecha">
+                {{ fecha }}
+              </div>
             </div>
 
             <div class="col-xs-8 col-sm-11">
@@ -44,15 +47,15 @@
             </div>
             <div class="form-group vert-offset-top-1">
               <select ngModel name="ruta" class="w100" placeholder="Seleccione" (change)="onChangeRuta($event.target.value)">
-                <option selected disabled>Seleccione la ruta</option>
-                <option [ngValue]="ruta.id" *ngFor="let ruta of routes">{{ruta.nombre}}</option>
+                <option value="">Seleccione la ruta</option>
+                <option value="{{ruta.id}}" *ngFor="let ruta of routes">{{ruta.nombre}}</option>
               </select>
             </div>
             <div class="form-group">
               <input ngModel name="paxes" type="file" accept=".csv" (change)="onFileSelect($event.target)" id="id-input-file-2" />
             </div>
             <div class="vert-offset-top-2">
-              <button type="button" class="btn btn-success" type="submit">Continuar</button>
+              <button type="button" [disabled]="disabled" class="btn btn-success" type="submit">Continuar</button>
               <br />
               <br />
             </div>

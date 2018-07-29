@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { UserService } from "../../shared/services/user/user.service";
-import { Router } from "@angular/router";
+import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from '../../shared/services/user/user.service';
+import { Router } from '@angular/router';
 
 declare var $: any;
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
+  selector: 'app-login',
+  templateUrl: './login.component.html',
   styles: []
 })
 export class LoginComponent implements OnInit {
@@ -20,14 +20,14 @@ export class LoginComponent implements OnInit {
       .loginSernanp(form.user, form.password)
       .subscribe(response => {
         if (response.user) {
-          localStorage.setItem("currentUser", JSON.stringify(response.user));
-          if (response.user.var_rol === "recaudador") {
-            this.router.navigate(["pagos"]);
+          localStorage.setItem('currentUser', JSON.stringify(response.user));
+          if (response.user.var_rol === 'recaudador') {
+            this.router.navigate(['pagos']);
           } else {
-            this.router.navigate(["puesto/revision-grupos"]);
+            this.router.navigate(['puesto/revision-grupos']);
           }
         } else {
-          alert("Mensaje:" + response.error);
+          alert(response.error);
         }
       });
   }
@@ -36,31 +36,31 @@ export class LoginComponent implements OnInit {
 }
 
 $(document).ready(() => {
-  $(document).on("click", ".toolbar a[data-target]", function(e) {
+  $(document).on('click', '.toolbar a[data-target]', function(e) {
     e.preventDefault();
-    const target = $(this).data("target");
-    $(".widget-box.visible").removeClass("visible"); // hide others
-    $(target).addClass("visible"); // show target
+    const target = $(this).data('target');
+    $('.widget-box.visible').removeClass('visible'); // hide others
+    $(target).addClass('visible'); // show target
   });
 
-  $("#btn-login-dark").on("click", function(e) {
-    $("body").attr("class", "login-layout");
-    $("#id-text2").attr("class", "white");
-    $("#id-company-text").attr("class", "blue");
-
-    e.preventDefault();
-  });
-  $("#btn-login-light").on("click", function(e) {
-    $("body").attr("class", "login-layout light-login");
-    $("#id-text2").attr("class", "grey");
-    $("#id-company-text").attr("class", "blue");
+  $('#btn-login-dark').on('click', function(e) {
+    $('body').attr('class', 'login-layout');
+    $('#id-text2').attr('class', 'white');
+    $('#id-company-text').attr('class', 'blue');
 
     e.preventDefault();
   });
-  $("#btn-login-blur").on("click", function(e) {
-    $("body").attr("class", "login-layout blur-login");
-    $("#id-text2").attr("class", "white");
-    $("#id-company-text").attr("class", "light-blue");
+  $('#btn-login-light').on('click', function(e) {
+    $('body').attr('class', 'login-layout light-login');
+    $('#id-text2').attr('class', 'grey');
+    $('#id-company-text').attr('class', 'blue');
+
+    e.preventDefault();
+  });
+  $('#btn-login-blur').on('click', function(e) {
+    $('body').attr('class', 'login-layout blur-login');
+    $('#id-text2').attr('class', 'white');
+    $('#id-company-text').attr('class', 'light-blue');
 
     e.preventDefault();
   });

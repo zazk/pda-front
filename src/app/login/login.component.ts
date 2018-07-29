@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
         this.router.navigate(['home']);
       } else {
-        alert('Mensaje:' + response.error);
+        alert(response.error);
       }
     });
   }
