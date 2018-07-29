@@ -1,11 +1,12 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import {
   MatDialogModule,
   MatButtonModule,
   MatCheckboxModule,
-  MatAutocompleteModule
-} from "@angular/material";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+  MatAutocompleteModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -13,14 +14,16 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatButtonModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule {}

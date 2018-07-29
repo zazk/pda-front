@@ -25,11 +25,13 @@ export class UpdateVisitantesComponent implements OnInit {
   @Output() cancel = new EventEmitter();
   @Output() finalizar = new EventEmitter();
   @ViewChild('dialogConfirm') dialogConfirm: TemplateRef<any>;
+  dni: string = '';
   fechaPax: string;
   activePax: Pax;
   dialogRef: MatDialogRef<any>;
   rutaActiva: Ruta;
   ruta: number;
+  typeID: number = 0;
   paises: any[] = [];
   constructor(private dialog: MatDialog, private service: UserService) {}
 
@@ -77,9 +79,17 @@ export class UpdateVisitantesComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-
-  onValidateNumber(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
+  onUpdateID(event: any) {
+    this.typeID = parseInt(event.target.value, 10);
+    console.log('DOCUMENT', this.dni);
+    this.dni = '';
+  }
+  onValidateID(event: any) {
+    let pattern = /[0-9\+]/;
+    if (this.typeID !== 1) {
+      pattern = /[A-Za-z0-9\+]/;
+    }
+    console.log('TYPE ID', this.typeID);
     if (
       !pattern.test(event.key) &&
       !(event.key === 'Tab') &&
@@ -96,17 +106,15 @@ export class UpdateVisitantesComponent implements OnInit {
   }
 
   loadScript() {
-    console.log('ROUND!!');
     $('#datepicker-paxer').datepicker({
       maxDate: new Date(),
       todayHighlight: true,
-      dateFormat: 'yy-mm-dd',
+      dateFormat: 'dd-mm-yy',
       autoclose: true,
       changeMonth: true,
       changeYear: true,
       yearRange: '1920:' + new Date().getFullYear(),
       onSelect: date => {
-        console.log('GOGOGO', date, this);
         this.fechaPax = date;
       }
     });

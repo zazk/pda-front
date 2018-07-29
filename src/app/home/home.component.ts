@@ -116,7 +116,7 @@ export class HomeComponent implements OnInit {
       minDate: 0,
       startDate: new Date(),
       todayHighlight: true,
-      dateFormat: 'yy-mm-dd',
+      dateFormat: 'dd-mm-yy',
       onSelect: date => {
         console.log('GOGOGO', date, this);
         this.fecha = date;

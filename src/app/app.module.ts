@@ -24,6 +24,7 @@ import { AgregarPagoComponent } from './agregar-pago/agregar-pago.component';
 import { UpdateVisitantesComponent } from './components/update-visitantes/update-visitantes.component';
 import { UpdateGrupoComponent } from './components/update-grupo/update-grupo.component';
 import { ModifyGrupoComponent } from './components/modify-grupo/modify-grupo.component';
+import { AppLoadingComponent } from './components/app-loading/app-loading.component';
 
 const AppRouter: Routes = [
   {
@@ -110,7 +111,8 @@ const AppRouter: Routes = [
     AgregarPagoComponent,
     UpdateVisitantesComponent,
     UpdateGrupoComponent,
-    ModifyGrupoComponent
+    ModifyGrupoComponent,
+    AppLoadingComponent
   ],
   imports: [
     BrowserModule,

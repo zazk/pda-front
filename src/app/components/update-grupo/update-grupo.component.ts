@@ -31,7 +31,7 @@ export class UpdateGrupoComponent implements OnInit {
       minDate: 0,
       startDate: new Date(),
       todayHighlight: true,
-      dateFormat: 'yy-mm-dd',
+      dateFormat: 'dd-mm-yy',
       autoclose: true,
       onSelect: date => {
         console.log('GOGOGO', date, this);
