@@ -25,7 +25,6 @@ export class UpdateGrupoComponent implements OnInit {
     console.log('Value', value);
     this.ruta = value;
     this.service.ruta = value;
-    localStorage.setItem('ruta', value);
   }
   loadScript() {
     $('#fecha-visita-grupo').datepicker({

@@ -40,7 +40,7 @@
               <select ngModel name="estado" class="w20 form-control">
                 <option value="" selected>Seleccionar</option>
                 <option value="1">Pendientes</option>
-                <option value="2">Visitados</option>
+                <option value="2">Ingresado</option>
               </select>
             </div>
             <div class="form-group">
@@ -116,10 +116,10 @@
                     {{grupo.fecha}}
                   </td>
                   <td>
-                    <span *ngIf="grupo.estado == 1" class="label label-success">
+                    <span *ngIf="grupo.estado == 1" class="label label-warning">
                       Pendiente
                     </span>
-                    <span *ngIf="grupo.estado == 2" class="label label-warning">
+                    <span *ngIf="grupo.estado == 2" class="label label-success">
                       Ingresado
                     </span>
                   </td>

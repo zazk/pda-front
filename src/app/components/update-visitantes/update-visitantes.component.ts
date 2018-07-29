@@ -39,7 +39,7 @@ export class UpdateVisitantesComponent implements OnInit {
     this.rutaActiva = JSON.parse(localStorage.getItem('rutas')).find(
       obj => obj.id === this.service.ruta
     );
-
+    console.log('Ruta Activa:', this.rutaActiva, 'SERVICE:', this.service.ruta);
     this.service.rutaObs.subscribe(ruta => {
       this.rutaActiva = JSON.parse(localStorage.getItem('rutas')).find(
         obj => obj.id === parseInt(ruta, 10)

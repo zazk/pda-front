@@ -27,11 +27,11 @@ export class ModifyGrupoComponent implements OnInit {
     this.route.params.subscribe(params => {
       const codigo = params['codigo'];
       this.service.consultaGrupo(codigo).subscribe(r => {
-        console.log('HEY GRUPO', r);
         this.grupoActivo = r.grupo;
         this.paxes = this.grupoActivo.visitantes;
         this.fecha = this.grupoActivo.fecha;
         this.ruta = this.grupoActivo.ruta;
+        this.service.ruta = this.grupoActivo.ruta;
         this.load = true;
         localStorage.setItem('fecha', this.grupoActivo.fecha);
         localStorage.setItem(

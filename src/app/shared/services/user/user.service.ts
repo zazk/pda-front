@@ -31,7 +31,7 @@ export class UserService {
   }
 
   get ruta() {
-    return parseInt(localStorage.getItem('ruta'), 10);
+    return parseInt(localStorage.getItem('ruta'), 10) || 0;
   }
 
   login(): Observable<any> {
