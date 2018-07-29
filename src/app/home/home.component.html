@@ -16,10 +16,9 @@
       </div>
       <div class="container n-container">
 
-        <h3 class="header green vert-offset-top-1">Selecciona Ruta</h3>
         <div class="login-container text-center vert-offset-top-3">
           <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-            <h4 class="blue">Saldo Actual</h4>
+            <h4 class="blue">Saldo actual</h4>
             <h1 class="smaller vert-offset-top-1">
               <div class="bigger-125 bg-primary p10">S/. {{user.num_saldo}}</div>
               <br />
@@ -39,7 +38,7 @@
 
             <div class="col-xs-8 col-sm-11">
               <br />
-              <h4 class="blue">Ruta seleccionada</h4>
+              <h4 class="blue">Seleccionar ruta</h4>
             </div>
             <div class="form-group vert-offset-top-1">
               <select ngModel name="ruta" class="w100" placeholder="Seleccione" (change)="onChangeRuta($event.target.value)">
@@ -49,6 +48,9 @@
             </div>
             <div class="form-group">
               <input ngModel name="paxes" type="file" accept=".csv" (change)="onFileSelect($event.target)" id="id-input-file-2" />
+              <div>
+                <small>* Acepta archivo en formato .csv</small>
+              </div>
             </div>
             <div class="vert-offset-top-2">
               <button type="button" [disabled]="disabled" class="btn btn-success" type="submit">Continuar</button>

@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit {
   loadScripts() {
     $('.chosen-select').chosen();
     $('#id-input-file-2').ace_file_input({
-      no_file: 'Importar Visitantes',
+      no_file: 'Cargar lista de visitantes',
       btn_choose: 'Importar',
       btn_change: 'Cambiar',
       droppable: false,
