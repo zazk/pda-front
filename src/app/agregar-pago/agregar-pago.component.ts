@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder
+} from '@angular/forms';
 import { UserService } from '../shared/services/user/user.service';
 import { NgForm } from '@angular/forms';
 import { Pago } from '../models/pago';
@@ -17,18 +23,28 @@ export class AgregarPagoComponent implements OnInit {
   pagos: Pago[] = [];
   fecha: string;
   usuario: User;
-  constructor(private service: UserService, private router: Router) {}
+  form: FormGroup;
+  constructor(
+    private service: UserService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
+    this.form = this.fb.group({
+      operacion: ['', Validators.required],
+      monto: [0, Validators.required],
+      fecha: ['', Validators.required],
+      voucher: ['', Validators.required]
+    });
     this.usuario = JSON.parse(localStorage.getItem('currentUser')) || {};
     this.pagos = JSON.parse(localStorage.getItem('pagos')) || [];
     console.log('USUARIO', this.usuario);
     this.loadScript();
   }
 
-  onSubmit(form: NgForm): void {
-    console.log('FORM', form, 'FECHA', this.fecha, 'USUARIO', this.usuario);
-    const obj: any = form.value;
+  onSubmit(): void {
+    const obj: any = this.form.value;
     if (this.filename && obj.monto && obj.operacion) {
       const pago: Pago = new Pago(
         obj.operacion,
@@ -47,7 +63,11 @@ export class AgregarPagoComponent implements OnInit {
         this.router.navigate(['pagos']);
       });
     } else {
-      console.log('Por favor suba su pago', this.filename, form.value.monto);
+      console.log(
+        'Por favor suba su pago',
+        this.filename,
+        this.form.value.monto
+      );
       alert('Ingresar todos los campos');
     }
   }
@@ -66,6 +86,7 @@ export class AgregarPagoComponent implements OnInit {
           console.log('DATA:', data);
           if (data.message) {
             this.filename = data.message;
+            this.form.controls['voucher'].patchValue(this.filename);
           } else {
             console.log(data.error);
           }
@@ -102,6 +123,7 @@ export class AgregarPagoComponent implements OnInit {
       onSelect: date => {
         console.log('GOGOGO', date, this);
         this.fecha = date;
+        this.form.controls['fecha'].patchValue(date);
       }
     });
   }

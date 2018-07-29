@@ -32,3 +32,8 @@
 .app-relative {
   position: relative;
 }
+
+.errors {
+  color: red;
+  padding: 10px;
+}

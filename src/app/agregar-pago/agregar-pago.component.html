@@ -44,26 +44,27 @@
             <table class="table-bordered" width="100%">
               <tr>
                 <td class="p10">
-                  <form  #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
+                  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-horizontal">
                     <div class="form-group">
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nro operacion </label>
 
                       <div class="col-sm-9">
-                        <input ngModel name="operacion" type="text" id="form-field-1" placeholder="Nro operacion" class="col-xs-10 col-sm-5 w100">
+                        <input formControlName="operacion" type="text" id="form-field-1" placeholder="Nro operacion" class="col-xs-10 col-sm-5 w100">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Monto </label>
 
                       <div class="col-sm-9">
-                        <input ngModel name="monto" type="text" id="form-field-1" placeholder="Monto" class="col-xs-10 col-sm-5 w100">
+                        <input formControlName="monto" value="" type="number" id="form-field-1" placeholder="Monto" class="col-xs-10 col-sm-5 w100">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Fecha de abono</label>
 
                       <div class="col-sm-9">
-                        <input ngModel name="fecha" readonly class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+                        <input formControlName="fecha" readonly class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy"
+                        />
                       </div>
                     </div>
 
@@ -71,21 +72,33 @@
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Voucher</label>
 
                       <div class="col-sm-9">
-                        <input ngModel name="voucher" type="file" (change)="onFileSelect($event.target)" id="id-input-file-2" />
+                        <input type="file" (change)="onFileSelect($event.target)" id="id-input-file-2" />
+                        <input formControlName="voucher" type="hidden" />
                       </div>
-
-
+                    </div>
+                    <div class="errors text-center">
+                      <div *ngIf="form.get('operacion').hasError('required') && form.get('operacion').touched" class="error">
+                        Número de operación es obligatorio
+                      </div>
+                      <div *ngIf="form.get('monto').hasError('required') && form.get('monto').touched" class="error">
+                        Monto de operación es obligatorio
+                      </div>
+                      <div *ngIf="form.get('fecha').hasError('required') && form.get('fecha').touched" class="error">
+                        Fecha es obligatorio
+                      </div>
+                      <div *ngIf="form.get('voucher').hasError('required') && form.get('voucher').touched" class="error">
+                        Archivo adjunto es obligatorio
+                      </div>
                     </div>
                     <div class="text-center">
-                      <button type="button" type="submit" class="btn btn-success" >Ingresar Pago</button>
+                      <a type="button" class="btn btn-md" [routerLink]="['/pagos/']">Regresar a la lista de Pagos</a>
+                      <button type="button" [disabled]="form.invalid" type="submit" class="btn btn-success">Ingresar Pago</button>
                     </div>
                   </form>
                 </td>
               </tr>
             </table>
           </div>
-
-
         </div>
       </div>
 
