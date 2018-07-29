@@ -1498,7 +1498,7 @@ SELECT pg_catalog.setval('mpda.t_pais_srl_cod_pais_seq', 31, true);
 
 INSERT INTO mpda.t_ruta
 VALUES
-  (1, 'Ruta 1 (4/3n) Piscacucho Km82', true, 15);
+  (1, 'Ruta 1 (4d/3n) Piscacucho Km82', true, 15);
 INSERT INTO mpda.t_ruta
 VALUES
   (2, 'Ruta 2 (4d/3n) Qorihuayrachina Km 88', true, 15);

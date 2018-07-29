@@ -12,6 +12,8 @@ export class PagosComponent implements OnInit {
   pagos: Pago[] = [];
   url: string;
   user: any;
+  indexPage: number = 1;
+  itemsPage: number = 10;
   estados: any[] = [
     { text: 'Pendiente', class: 'warning' },
     { text: 'Aceptado', class: 'success' },
