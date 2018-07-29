@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -120,6 +121,7 @@ const AppRouter: Routes = [
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     RouterModule.forRoot(AppRouter, { enableTracing: false, useHash: true })
   ],
   providers: [AuthGuard, UserService],

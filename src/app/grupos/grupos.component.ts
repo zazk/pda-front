@@ -13,6 +13,8 @@ declare var $: any;
 export class GruposComponent implements OnInit {
   grupos: Grupo[] = [];
   fecha: string;
+  indexPage: number = 1;
+  itemsPage: number = 10;
   constructor(private router: Router, private service: UserService) {}
 
   ngOnInit() {

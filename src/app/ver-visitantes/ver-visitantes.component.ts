@@ -9,6 +9,7 @@ import { Pax } from '../models/pax';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../shared/services/user/user.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-ver-visitantes',
@@ -42,7 +43,10 @@ export class VerVisitantesComponent implements OnInit {
       this.service.consultaGrupo(codigo).subscribe(r => {
         console.log('HEY GRUPO', r);
         this.grupoActivo = r.grupo;
-        this.paxes = this.grupoActivo.visitantes;
+        (this.grupoActivo.fecha = moment(this.grupoActivo.fecha).format(
+          'DD-MM-YYYY'
+        )),
+          (this.paxes = this.grupoActivo.visitantes);
         this.fecha = this.grupoActivo.fecha;
         this.rutaActiva = JSON.parse(localStorage.getItem('rutas')).find(
           obj => obj.id === parseInt(this.grupoActivo.ruta, 10)
