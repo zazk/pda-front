@@ -12,14 +12,10 @@
     <app-navbar></app-navbar>
     <div class="main-container">
       <div class="text-right n-navprimary">
-        <h4 class="n-title orange">
-          <i class="ace-icon fa fa-globe"></i>
-          Modulo de Turismo
-        </h4>
         <app-breadcrumbs></app-breadcrumbs>
       </div>
       <div class="container ">
-        <h3 class="header orange vert-offset-top-1">Reporte de Grupos</h3>
+        <h3 class="header orange vert-offset-top-1">Reporte de grupos</h3>
         <div class="vert-offset-top-2 wancho-regula">
           <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-horizontal">
             <ul class="vert-offset-bottom-1 w-controles">
@@ -42,7 +38,8 @@
                 <select ngModel name="estado" class="w20">
                   <option value="" selected>Todos</option>
                   <option value="1">Pendientes</option>
-                  <option value="2">Visitados</option>
+                  <option value="2">Registrados</option>
+                  <option value="3">Observados</option>
                 </select>
               </li>
               <li class="w-control-buttons">

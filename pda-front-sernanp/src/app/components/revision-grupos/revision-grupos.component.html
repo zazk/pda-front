@@ -12,10 +12,6 @@
     <app-navbar></app-navbar>
     <div class="main-container">
       <div class="text-right n-navprimary">
-        <h4 class="n-title orange">
-          <i class="ace-icon fa fa-globe"></i>
-          Modulo de Turismo
-        </h4>
         <app-breadcrumbs></app-breadcrumbs>
       </div>
       <div class="container ">
@@ -42,7 +38,7 @@
                 <select ngModel name="estado" class="w20">
                   <option value="" selected>Todos</option>
                   <option value="1">Pendientes</option>
-                  <option value="2">Visitados</option>
+                  <option value="2">Registrados</option>
                 </select>
               </li>
               <li class="w-control-buttons">
@@ -75,11 +71,11 @@
                   </th>
                   <th>
                     <i class="ace-icon fa fa-users"></i>
-                    Nro Visitantes
+                    Nro visitantes
                   </th>
                   <th>
                     <i class="ace-icon fa fa-users"></i>
-                    Nro Inasistentes
+                    Nro inasistentes
                   </th>
                   <th>
                     <i class="ace-icon fa fa-calendar"></i>
@@ -95,15 +91,15 @@
                   </th>
                   <th>
                     <i class="ace-icon fa fa-laptop"></i>
-                    Accion
+                    Acción
                   </th>
                 </tr>
               </thead>
 
               <tbody *ngIf="grupos.length">
-                <tr *ngFor="let grupo of grupos; let i = index">
+                <tr *ngFor="let grupo of grupos | paginate: { itemsPerPage: itemsPage, currentPage: indexPage }; let i = index">
                   <td>
-                    {{i +1}}
+                    {{i + (indexPage * itemsPage) + 1}}
                   </td>
                   <td>
                     {{grupo.codOperador}}
@@ -140,7 +136,9 @@
                 </tr>
               </tbody>
             </table>
-
+            <div class="text-center">
+              <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
+            </div>
 
           </div>
         </div>

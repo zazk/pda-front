@@ -10,6 +10,8 @@ import { Grupo } from '../../models/grupo';
 export class PuestoGruposComponent implements OnInit {
   grupos: Grupo[];
   routes: any[];
+  indexPage: number = 1;
+  itemsPage: number = 10;
   estados: any[] = [
     { text: 'Pendiente', class: 'warning' },
     { text: 'Aceptado', class: 'success' },

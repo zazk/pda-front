@@ -11,10 +11,6 @@
     <app-navbar></app-navbar>
     <div class="main-container">
       <div class="text-right n-navprimary">
-        <h4 class="n-title orange">
-          <i class="ace-icon fa fa-globe"></i>
-          Modulo de Turismo
-        </h4>
         <app-breadcrumbs></app-breadcrumbs>
       </div>
       <div class="container">
@@ -28,15 +24,15 @@
                   <input ngModel name="operador" type="text" placeholder="Operador" class="">
                 </li>
                 <li>
-                  <label for="form-field-select-2">Nro Operacion:</label>
+                  <label for="form-field-select-2">Nro operacion:</label>
                   <input ngModel name="operacion" type="text" placeholder="Operacion" class=" ">
                 </li>
                 <li class="w-control-buttons">
-                  <button class="btn btn-primary btn-sm" type="submit" >
+                  <button class="btn btn-primary btn-sm" type="submit">
                     <i class="ace-icon fa fa-search align-top bigger-125"></i>
                     Buscar
                   </button>
-                   <span class="btn btn-sm" (click)="onClearSearch(f)">Limpiar</span>
+                  <span class="btn btn-sm" (click)="onClearSearch(f)">Limpiar</span>
                 </li>
               </ul>
             </form>
@@ -61,15 +57,15 @@
                     </th>
                     <th>
                       <i class="ace-icon fa fa-edit"></i>
-                      Nro operacion
+                      Nro operación
                     </th>
                     <th>
                       <i class="ace-icon fa fa-money"></i>
-                      Monto Abonado
+                      Monto abonado
                     </th>
                     <th>
                       <i class="ace-icon fa fa-calendar"></i>
-                      Fecha Abono
+                      Fecha abono
                     </th>
                     <th>
                       <i class="ace-icon fa fa-info-circle"></i>
@@ -80,19 +76,19 @@
                       Voucher
                     </th>
                     <th>
-                      Accion
+                      Acción
                     </th>
                   </tr>
                 </thead>
 
                 <tbody *ngIf="pagos.length">
-                  <tr *ngFor="let pago of pagos; let i = index">
+                  <tr *ngFor="let pago of pagos | paginate: { itemsPerPage: itemsPage, currentPage: indexPage } ; let i = index">
                     <td>
                       <div class="n-label">
                         Item
                       </div>
                       <div class="n-descrip">
-                        {{i+1}}
+                        {{i + (indexPage * itemsPage) + 1}}
                       </div>
                     </td>
                     <td>
@@ -113,7 +109,7 @@
                     </td>
                     <td>
                       <div class="n-label">
-                        Nro operacion
+                        Nro operación
                       </div>
                       <div class="n-descrip">
                         {{pago.operacion}}
@@ -121,7 +117,7 @@
                     </td>
                     <td>
                       <div class="n-label">
-                        Monto Abonado
+                        Monto abonado
                       </div>
                       <div class="n-descrip">
                         S/. {{pago.monto}}
@@ -129,21 +125,21 @@
                     </td>
                     <td>
                       <div class="n-label">
-                        Fecha Abono
+                        Fecha abono
                       </div>
                       <div class="n-descrip">
                         {{pago.fecha}}
                       </div>
                     </td>
                     <td>
-                        <div class="n-label">
-                          Estado
-                        </div>
-                        <div class="n-descrip">
-                          <a class="btn btn-primary btn-xs" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
-                            <i class="ace-icon fa fa-eye"></i>Ver
-                          </a>
-                        </div>
+                      <div class="n-label">
+                        Estado
+                      </div>
+                      <div class="n-descrip">
+                        <a class="btn btn-primary btn-xs" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
+                          <i class="ace-icon fa fa-eye"></i>Ver
+                        </a>
+                      </div>
                     </td>
                     <td>
                       <div class="n-label">
@@ -180,10 +176,13 @@
                 </tbody>
                 <tbody *ngIf="!pagos.length">
                   <tr>
-                    <td colspan="8">No se ha realizado ningun pago</td>
+                    <td colspan="9">No se ha realizado ningun pago</td>
                   </tr>
                 </tbody>
               </table>
+              <div class="text-center">
+                <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
+              </div>
             </div>
 
           </div>

@@ -14,7 +14,7 @@ export class GruposComponent implements OnInit {
   routes: any[];
   estados: any[] = [
     { text: 'Pendiente', class: 'warning' },
-    { text: 'Aceptado', class: 'success' },
+    { text: 'Registrado', class: 'success' },
     { text: 'Observado', class: 'danger' }
   ];
   constructor(private router: Router, private service: UserService) {}

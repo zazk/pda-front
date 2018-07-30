@@ -75,7 +75,7 @@
               </thead>
 
               <tbody *ngIf="pagos.length">
-                <tr *ngFor="let pago of pagos| paginate: { itemsPerPage: itemsPage, currentPage: indexPage } ; let i = index">
+                <tr *ngFor="let pago of pagos | paginate: { itemsPerPage: itemsPage, currentPage: indexPage } ; let i = index">
                   <td>
                     {{i + (indexPage * itemsPage) + 1}}
                   </td>
@@ -106,12 +106,9 @@
                 </tr>
               </tbody>
             </table>
-            <div class="text-center">
-              <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
-              <a class="btn btn-md btn-success" [routerLink]="['/home']">+ Agregar Grupo</a>
-            </div>
           </div>
           <div class="text-center">
+            <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
             <a type="button" class="btn btn-md btn-success" [routerLink]="['/agregar-pago/']">+ Agregar pago</a>
           </div>
         </div>

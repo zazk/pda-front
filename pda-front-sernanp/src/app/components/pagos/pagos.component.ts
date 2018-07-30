@@ -1,22 +1,24 @@
-import { Component, OnInit } from "@angular/core";
-import { Pago } from "../../models/pago";
-import { UserService } from "../../shared/services/user/user.service";
+import { Component, OnInit } from '@angular/core';
+import { Pago } from '../../models/pago';
+import { UserService } from '../../shared/services/user/user.service';
 
 declare var $: any;
 declare var ace: any;
 declare var bootbox: any;
 @Component({
-  selector: "app-pagos",
-  templateUrl: "./pagos.component.html",
+  selector: 'app-pagos',
+  templateUrl: './pagos.component.html',
   styles: []
 })
 export class PagosComponent implements OnInit {
   pagos: Pago[] = [];
   url: string;
+  indexPage: number = 1;
+  itemsPage: number = 10;
   estados: any[] = [
-    { text: "Pendiente", class: "warning" },
-    { text: "Aceptado", class: "success" },
-    { text: "Rechazado", class: "danger" }
+    { text: 'Pendiente', class: 'warning' },
+    { text: 'Aceptado', class: 'success' },
+    { text: 'Rechazado', class: 'danger' }
   ];
   constructor(private service: UserService) {}
 
@@ -25,7 +27,7 @@ export class PagosComponent implements OnInit {
     this.loadScripts();
   }
   onSearch(form: any) {
-    const pagos = JSON.parse(localStorage.getItem("pagos")) || [];
+    const pagos = JSON.parse(localStorage.getItem('pagos')) || [];
     this.pagos = pagos.filter((p: Pago) => {
       if (form.operador) {
         return p.operador.indexOf(form.operador) >= 0;
@@ -41,28 +43,28 @@ export class PagosComponent implements OnInit {
       console.log(r);
       this.pagos.map(p => {
         if (p.codigo === pago.codigo) {
-          p.estado = "2";
+          p.estado = '2';
         }
         return p;
       });
-      localStorage.setItem("pagos", JSON.stringify(this.pagos));
+      localStorage.setItem('pagos', JSON.stringify(this.pagos));
     });
   }
   onRechazarPago(pago: any): void {
-    console.log("PAGO RECHAZO", pago);
-    bootbox.prompt("Motivo de rechazo", motivo => {
-      console.log("RETURN RECHAZO", motivo);
+    console.log('PAGO RECHAZO', pago);
+    bootbox.prompt('Motivo de rechazo', motivo => {
+      console.log('RETURN RECHAZO', motivo);
       if (motivo) {
         this.service.updatePagorechazo(pago.codigo, motivo).subscribe(r => {
           console.log(r);
           this.pagos.map(p => {
             if (p.codigo === pago.codigo) {
-              p.estado = "3";
+              p.estado = '3';
               p.motivo = motivo;
             }
             return p;
           });
-          localStorage.setItem("pagos", JSON.stringify(this.pagos));
+          localStorage.setItem('pagos', JSON.stringify(this.pagos));
         });
       } else {
       }
@@ -74,7 +76,7 @@ export class PagosComponent implements OnInit {
   }
   loadScripts() {
     this.service.listPagos().subscribe(response => {
-      console.log("PAGOS", response);
+      console.log('PAGOS', response);
       if (response.length) {
         this.pagos = response.map(
           r =>
@@ -90,7 +92,7 @@ export class PagosComponent implements OnInit {
               r.var_razonsocial
             )
         );
-        localStorage.setItem("pagos", JSON.stringify(this.pagos));
+        localStorage.setItem('pagos', JSON.stringify(this.pagos));
       }
     });
   }

@@ -12,9 +12,11 @@ export class RevisionGruposComponent implements OnInit {
   grupos: Grupo[];
   routes: any[];
   fecha: Date = new Date();
+  indexPage: number = 1;
+  itemsPage: number = 10;
   estados: any[] = [
     { text: 'Pendiente', class: 'warning' },
-    { text: 'Aceptado', class: 'success' },
+    { text: 'Registrado', class: 'success' },
     { text: 'Observado', class: 'danger' }
   ];
   constructor(private router: Router, private service: UserService) {}

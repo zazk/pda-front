@@ -21,6 +21,7 @@ import { ControlVisitantesVerificadosComponent } from './components/control-visi
 import { VerVisitantesGrupoComponent } from './components/ver-visitantes-grupo/ver-visitantes-grupo.component';
 import { PuestoGruposComponent } from './components/puesto-grupos/puesto-grupos.component';
 import { ValidateComponent } from './components/validate/validate.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const AppRouter: Routes = [
   {
@@ -112,6 +113,7 @@ const AppRouter: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     RouterModule.forRoot(AppRouter, { enableTracing: false, useHash: true })
   ],
   providers: [AuthGuard, UserService],

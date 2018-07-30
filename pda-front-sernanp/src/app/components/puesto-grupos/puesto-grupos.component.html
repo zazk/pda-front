@@ -12,10 +12,6 @@
     <app-navbar></app-navbar>
     <div class="main-container">
       <div class="text-right n-navprimary">
-        <h4 class="n-title orange">
-          <i class="ace-icon fa fa-globe"></i>
-          Modulo de Turismo
-        </h4>
         <app-breadcrumbs></app-breadcrumbs>
       </div>
       <div class="container ">
@@ -101,9 +97,9 @@
               </thead>
 
               <tbody *ngIf="grupos.length">
-                <tr *ngFor="let grupo of grupos; let i = index">
+                <tr *ngFor="let grupo of grupos | paginate: { itemsPerPage: itemsPage, currentPage: indexPage } ; let i = index">
                   <td>
-                    {{i +1}}
+                    {{i + (indexPage * itemsPage) + 1}}
                   </td>
                   <td>
                     {{grupo.codOperador}}
@@ -141,6 +137,9 @@
               </tbody>
             </table>
 
+            <div class="text-center">
+              <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
+            </div>
 
           </div>
         </div>
