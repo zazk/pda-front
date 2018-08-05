@@ -40,7 +40,7 @@
                   <option value="" selected>Todos</option>
                   <option value="1">Pendientes</option>
                   <option value="2">Aceptado</option>
-                  <option value="2">Observado</option>
+                  <option value="3">Observado</option>
                 </select>
               </li>
               <li class="w-control-buttons">
@@ -101,7 +101,7 @@
               <tbody *ngIf="grupos.length">
                 <tr *ngFor="let grupo of grupos | paginate: { itemsPerPage: itemsPage, currentPage: indexPage } ; let i = index">
                   <td>
-                    {{i + (indexPage * itemsPage) + 1}}
+                    {{i + ((indexPage-1) * itemsPage) + 1}}
                   </td>
                   <td>
                     {{grupo.codOperador}}
@@ -143,7 +143,7 @@
             </table>
 
             <div class="text-center">
-              <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
+              <pagination-controls *ngIf="grupos.length" previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
             </div>
 
           </div>

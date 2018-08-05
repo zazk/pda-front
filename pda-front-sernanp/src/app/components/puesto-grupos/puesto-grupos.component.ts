@@ -49,9 +49,9 @@ export class PuestoGruposComponent implements OnInit {
   }
 
   onSearch(form: any) {
-    const grupos = JSON.parse(localStorage.getItem('grupos')) || [];
-    console.log('grupos', grupos, 'fecha', this.fecha);
-    this.grupos = grupos.filter((g: Grupo) => {
+    const gruposFull = JSON.parse(localStorage.getItem('grupos')) || [];
+    console.log('grupos', gruposFull, 'fecha', this.fecha);
+    this.grupos = gruposFull.filter((g: Grupo) => {
       if (form.codigo) {
         return g.codigo.indexOf(form.codigo) >= 0;
       }
@@ -67,13 +67,12 @@ export class PuestoGruposComponent implements OnInit {
   }
   onClearSearch(form) {
     form.reset();
+    this.fecha = '';
     this.onSearch(form);
   }
   // JQuery Functions
   loadScripts() {
     $('#datepicker').datepicker({
-      minDate: 0,
-      startDate: new Date(),
       todayHighlight: true,
       dateFormat: 'dd-mm-yy',
       onSelect: date => {

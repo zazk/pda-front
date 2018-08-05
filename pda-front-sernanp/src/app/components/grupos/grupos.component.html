@@ -38,7 +38,7 @@
                 <select ngModel name="estado" class="w20">
                   <option value="" selected>Todos</option>
                   <option value="1">Pendientes</option>
-                  <option value="2">Registrados</option>
+                  <option value="2">Aceptados</option>
                   <option value="3">Observados</option>
                 </select>
               </li>
@@ -98,13 +98,13 @@
               </thead>
 
               <tbody>
-                <tr *ngFor="let grupo of grupos; let i = index">
+                <tr *ngFor="let grupo of grupos | paginate: { itemsPerPage: itemsPage, currentPage: indexPage } ; let i = index">
                   <td>
                     <div class="n-label">
                       Item
                     </div>
                     <div class="n-descrip">
-                      {{i +1}}
+                      {{i + ((indexPage-1) * itemsPage) + 1}}
                     </div>
                   </td>
                   <td>
@@ -185,6 +185,9 @@
               </tbody>
             </table>
 
+            <div class="text-center">
+              <pagination-controls *ngIf="grupos.length" previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
+            </div>
 
           </div>
         </div>

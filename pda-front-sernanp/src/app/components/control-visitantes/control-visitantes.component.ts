@@ -18,6 +18,8 @@ export class ControlVisitantesComponent implements OnInit {
   grupos: any[];
   grupoActivo: any;
   load: boolean = false;
+  indexPage: number = 1;
+  itemsPage: number = 10;
   constructor(
     private service: UserService,
     private router: Router,
