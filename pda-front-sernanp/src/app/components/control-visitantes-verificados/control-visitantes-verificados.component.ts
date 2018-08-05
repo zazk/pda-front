@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { UserService } from "../../shared/services/user/user.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import { Pax } from "../../models/pax";
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../shared/services/user/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Pax } from '../../models/pax';
 
 declare var $: any;
 @Component({
-  selector: "app-control-visitantes-verificados",
-  templateUrl: "./control-visitantes-verificados.component.html",
+  selector: 'app-control-visitantes-verificados',
+  templateUrl: './control-visitantes-verificados.component.html',
   styles: []
 })
 export class ControlVisitantesVerificadosComponent implements OnInit {
@@ -27,10 +27,10 @@ export class ControlVisitantesVerificadosComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.grupoActivo = JSON.parse(localStorage.getItem("grupoActivo")) || {};
+    this.grupoActivo = JSON.parse(localStorage.getItem('grupoActivo')) || {};
     this.paxes = this.grupoActivo.visitantes;
     this.fecha = this.grupoActivo.fecha;
-    this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
+    this.rutaActiva = JSON.parse(localStorage.getItem('rutas')).find(
       obj => obj.srl_cod_ruta === parseInt(this.grupoActivo.ruta, 10)
     ).var_nombre;
     this.load = true;
@@ -38,13 +38,13 @@ export class ControlVisitantesVerificadosComponent implements OnInit {
   }
   onVerificar() {
     this.grupoActivo.documento = this.filename;
-    console.log("GRUPO ACTIVOA.", this.grupoActivo, this.filename);
+    console.log('GRUPO ACTIVOA.', this.grupoActivo, this.filename);
     this.service.updateAsistencia(this.grupoActivo).subscribe(r => {
       console.log(r);
-      this.router.navigate(["revision-grupos"]);
+      this.router.navigate(['/puesto/revision-grupos']);
     });
     console.log(
-      "Grupo Verificado",
+      'Grupo Verificado',
       this.grupoActivo,
       JSON.stringify(this.grupoActivo)
     );
@@ -54,11 +54,10 @@ export class ControlVisitantesVerificadosComponent implements OnInit {
     const files = input.files;
 
     if (files && files.length) {
-
       const fileToRead = files[0];
       this.service.uploadFile(fileToRead).subscribe(
         data => {
-          console.log("DATA:", data);
+          console.log('DATA:', data);
           if (data.message) {
             this.filename = data.message;
           } else {
@@ -73,16 +72,16 @@ export class ControlVisitantesVerificadosComponent implements OnInit {
   }
 
   loadScripts() {
-    console.log("LOAD SCRIPTS", $);
-    $("#id-input-file-2").ace_file_input({
-      no_file: "Ingresar voucher",
-      btn_choose: "Choose",
-      btn_change: "Cargar",
+    console.log('LOAD SCRIPTS', $);
+    $('#id-input-file-2').ace_file_input({
+      no_file: 'Ingresar voucher',
+      btn_choose: 'Choose',
+      btn_change: 'Cargar',
       droppable: false,
       onchange: null,
       thumbnail: false,
       // | true | large
-      whitelist: "gif|png|jpg|jpeg"
+      whitelist: 'gif|png|jpg|jpeg'
       // blacklist:'exe|php'
       // onchange:''
       //
