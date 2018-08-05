@@ -38,16 +38,10 @@ export class ControlVisitantesVerificadosComponent implements OnInit {
   }
   onVerificar() {
     this.grupoActivo.documento = this.filename;
-    console.log('GRUPO ACTIVOA.', this.grupoActivo, this.filename);
     this.service.updateAsistencia(this.grupoActivo).subscribe(r => {
       console.log(r);
       this.router.navigate(['/puesto/revision-grupos']);
     });
-    console.log(
-      'Grupo Verificado',
-      this.grupoActivo,
-      JSON.stringify(this.grupoActivo)
-    );
   }
 
   onFileSelect(input: HTMLInputElement) {
@@ -57,11 +51,11 @@ export class ControlVisitantesVerificadosComponent implements OnInit {
       const fileToRead = files[0];
       this.service.uploadFile(fileToRead).subscribe(
         data => {
-          console.log('DATA:', data);
           if (data.message) {
             this.filename = data.message;
           } else {
             console.log(data.error);
+            alert(data.error);
           }
         },
         error => {

@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { UserService } from "../../shared/services/user/user.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import { Grupo } from "../../models/grupo";
-import { Pax } from "../../models/pax";
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../shared/services/user/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Grupo } from '../../models/grupo';
+import { Pax } from '../../models/pax';
 
 @Component({
-  selector: "app-ver-visitantes-grupo",
-  templateUrl: "./ver-visitantes-grupo.component.html",
+  selector: 'app-ver-visitantes-grupo',
+  templateUrl: './ver-visitantes-grupo.component.html',
   styles: []
 })
 export class VerVisitantesGrupoComponent implements OnInit {
@@ -20,6 +20,7 @@ export class VerVisitantesGrupoComponent implements OnInit {
   grupoActivo: any;
   load: boolean = false;
   filename: string;
+  urlDownload: string;
   constructor(
     private service: UserService,
     private router: Router,
@@ -28,14 +29,15 @@ export class VerVisitantesGrupoComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const codigo = params["codigo"];
-      this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
+      const codigo = params['codigo'];
+      this.grupos = JSON.parse(localStorage.getItem('grupos')) || [];
       this.service.consultaGrupo(codigo).subscribe(r => {
-        console.log("HEY GRUPO", r);
         this.grupoActivo = r.grupo;
         this.paxes = this.grupoActivo.visitantes;
         this.fecha = this.grupoActivo.fecha;
-        this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
+        this.urlDownload =
+          this.service.url + 'file/' + this.grupoActivo.documento;
+        this.rutaActiva = JSON.parse(localStorage.getItem('rutas')).find(
           obj => obj.srl_cod_ruta === parseInt(this.grupoActivo.ruta, 10)
         ).var_nombre;
         this.load = true;

@@ -18,3 +18,7 @@
   content: '| ';
   padding: 0 5px;
 }
+
+.actions {
+  margin: 10px 0;
+}

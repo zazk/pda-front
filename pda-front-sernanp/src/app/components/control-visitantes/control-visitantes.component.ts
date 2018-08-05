@@ -29,7 +29,6 @@ export class ControlVisitantesComponent implements OnInit {
       const codigo = params['codigo'];
       this.grupos = JSON.parse(localStorage.getItem('grupos')) || [];
       this.service.consultaGrupo(codigo).subscribe(r => {
-        console.log('HEY GRUPO', r);
         this.grupoActivo = r.grupo;
         this.paxes = this.grupoActivo.visitantes;
         this.fecha = this.grupoActivo.fecha;

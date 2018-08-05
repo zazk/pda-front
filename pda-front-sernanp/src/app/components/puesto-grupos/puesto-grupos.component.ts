@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../shared/services/user/user.service';
 import { Grupo } from '../../models/grupo';
+declare var $: any;
 
 @Component({
   selector: 'app-puesto-grupos',
@@ -12,6 +13,8 @@ export class PuestoGruposComponent implements OnInit {
   routes: any[];
   indexPage: number = 1;
   itemsPage: number = 10;
+  urlFiles: string = '';
+  fecha: string = '';
   estados: any[] = [
     { text: 'Pendiente', class: 'warning' },
     { text: 'Aceptado', class: 'success' },
@@ -20,6 +23,7 @@ export class PuestoGruposComponent implements OnInit {
   constructor(private router: Router, private service: UserService) {}
 
   ngOnInit() {
+    this.urlFiles = this.service.url + 'file/';
     this.grupos = JSON.parse(localStorage.getItem('grupos')) || [];
     this.service.listGrupos().subscribe((grupos: Grupo[]) => {
       this.grupos = grupos;
@@ -32,6 +36,8 @@ export class PuestoGruposComponent implements OnInit {
       this.routes = data;
       localStorage.setItem('rutas', JSON.stringify(this.routes));
     });
+
+    this.loadScripts();
   }
   onAceptarGrupo(grupo: Grupo) {
     console.log('Aceptar Grupo:', grupo);
@@ -44,7 +50,7 @@ export class PuestoGruposComponent implements OnInit {
 
   onSearch(form: any) {
     const grupos = JSON.parse(localStorage.getItem('grupos')) || [];
-    console.log('grupos', grupos);
+    console.log('grupos', grupos, 'fecha', this.fecha);
     this.grupos = grupos.filter((g: Grupo) => {
       if (form.codigo) {
         return g.codigo.indexOf(form.codigo) >= 0;
@@ -52,11 +58,28 @@ export class PuestoGruposComponent implements OnInit {
       if (form.estado) {
         return g.estado == form.estado;
       }
+
+      if (this.fecha) {
+        return g.fecha === this.fecha;
+      }
       return true;
     });
   }
   onClearSearch(form) {
     form.reset();
     this.onSearch(form);
+  }
+  // JQuery Functions
+  loadScripts() {
+    $('#datepicker').datepicker({
+      minDate: 0,
+      startDate: new Date(),
+      todayHighlight: true,
+      dateFormat: 'dd-mm-yy',
+      onSelect: date => {
+        console.log('DATE', date);
+        this.fecha = date;
+      }
+    });
   }
 }

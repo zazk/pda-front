@@ -25,12 +25,13 @@
                 </label>
                 <input ngModel name="codigo" type="text" placeholder="Nro Grupo" />
               </li>
-              <!-- li>
-                <label>
+              <li>
+                <label for="" class="control-label">
                   Fecha visita:
                 </label>
-                <input class="w20 date-picker" id="id-date-picker-2" type="text" data-date-format="dd-mm-yyyy" />
-              </li -->
+                <input ngModel name="fecha" class="w20 date-picker " readonly id="datepicker" placeholder="DD-MM-YYYY" type="text" data-date-format="dd-mm-yyyy"
+                />
+              </li>
               <li>
                 <label>
                   Estado:
@@ -118,7 +119,10 @@
                     {{grupo.fecha}}
                   </td>
                   <td>
-                    {{grupo.documento}}
+
+                    <a *ngIf="grupo.documento" target="_blank" title="Descargar {{grupo.documento}}" href="{{urlFiles + grupo.documento}}">
+                      <i class="ace-icon fa fa-download"></i>
+                    </a>
                   </td>
                   <td>
                     <span class="label label-{{estados[ grupo.estado -1].class}}">
