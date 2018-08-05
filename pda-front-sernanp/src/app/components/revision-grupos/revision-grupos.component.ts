@@ -16,8 +16,10 @@ export class RevisionGruposComponent implements OnInit {
   itemsPage: number = 10;
   estados: any[] = [
     { text: 'Pendiente', class: 'warning' },
+    { text: 'Verificado', class: 'primary' },
+    { text: 'Observado', class: 'default' },
     { text: 'Aceptado', class: 'success' },
-    { text: 'Observado', class: 'danger' }
+    { text: 'Rechazado', class: 'danger' }
   ];
   constructor(private router: Router, private service: UserService) {}
 

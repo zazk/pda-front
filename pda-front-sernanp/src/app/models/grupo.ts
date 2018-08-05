@@ -1,4 +1,4 @@
-import { Pax } from "./pax";
+import { Pax } from './pax';
 
 export class Grupo {
   constructor(
@@ -12,7 +12,8 @@ export class Grupo {
     public inasistencias?: number,
     public documento?: string,
     public estado?: number,
-    public id?: number
+    public id?: number,
+    public observacion?: string
   ) {
     this.paxes = paxes;
     this.codigo = codigo;
@@ -24,6 +25,6 @@ export class Grupo {
     this.inasistencias = inasistencias;
     this.documento = documento;
     this.estado = estado;
-    this.id = id;
+    this.observacion = observacion;
   }
 }

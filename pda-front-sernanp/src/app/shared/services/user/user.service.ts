@@ -8,8 +8,8 @@ import { Grupo } from '../../../models/grupo';
 
 @Injectable()
 export class UserService {
-  public url: string = '//localhost:4007/';
-  // public url: string = '//cnx.sernanp.gob.pe:4007/';
+  // public url: string = '//localhost:4007/';
+  public url: string = '//cnx.sernanp.gob.pe:4007/';
 
   user: Subject<any> = new Subject();
   constructor(private http: HttpClient) {}
@@ -218,6 +218,20 @@ export class UserService {
   /* ( Integer codGrupo, String documento ) */
   updateDocgrupo(): Observable<any> {
     return this.http.get(this.url + 'update_docgrupo');
+  }
+
+  /* (  String motivoRechazo, Integer codPago ) */
+  updateGruporechazo(codigo: number, motivo: string): Observable<any> {
+    const form: FormData = new FormData();
+    form.append('codGrupo', codigo.toString());
+    form.append('motivoObservacion', motivo);
+    return this.http.post(this.url + 'update_gruporechazo', form);
+  }
+  /* (  Integer codPago ) */
+  updateGrupoaprobado(codigo: number): Observable<any> {
+    const form: FormData = new FormData();
+    form.append('codGrupo', codigo.toString());
+    return this.http.post(this.url + 'update_grupoaprobado', form);
   }
 
   /* (  String motivoRechazo, Integer codPago ) */

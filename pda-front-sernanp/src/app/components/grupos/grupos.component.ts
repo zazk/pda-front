@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../../shared/services/user/user.service';
 
 declare var $: any;
+declare var ace: any;
+declare var bootbox: any;
 @Component({
   selector: 'app-grupos',
   templateUrl: './grupos.component.html',
@@ -14,14 +16,18 @@ export class GruposComponent implements OnInit {
   routes: any[];
   indexPage: number = 1;
   itemsPage: number = 10;
+  urlFiles: string = '';
   estados: any[] = [
     { text: 'Pendiente', class: 'warning' },
+    { text: 'Verificado', class: 'primary' },
+    { text: 'Observado', class: 'default' },
     { text: 'Aceptado', class: 'success' },
-    { text: 'Observado', class: 'danger' }
+    { text: 'Rechazado', class: 'danger' }
   ];
   constructor(private router: Router, private service: UserService) {}
 
   ngOnInit() {
+    this.urlFiles = this.service.url + 'file/';
     this.grupos = JSON.parse(localStorage.getItem('grupos')) || [];
     this.service.listGrupos().subscribe((grupos: Grupo[]) => {
       this.grupos = grupos;
@@ -37,11 +43,37 @@ export class GruposComponent implements OnInit {
   }
   onAceptarGrupo(grupo: Grupo) {
     console.log('Aceptar Grupo:', grupo);
-    //this.router.navigate(["ver-visitantes", grupo.codigo]);
+    this.service.updateGrupoaprobado(grupo.id).subscribe(r => {
+      console.log(r);
+      this.grupos = this.grupos.map(g => {
+        if (g.codigo === grupo.codigo) {
+          g.estado = r.estado;
+        }
+        return g;
+      });
+      localStorage.setItem('pagos', JSON.stringify(this.grupos));
+    });
   }
   onObservarGrupo(grupo: Grupo) {
     console.log('Observar Grupo:', grupo);
-    //this.router.navigate(["ver-visitantes", grupo.codigo]);
+
+    bootbox.prompt('Motivo de rechazo', motivo => {
+      console.log('RETURN RECHAZO', motivo);
+      if (motivo) {
+        this.service.updateGruporechazo(grupo.id, motivo).subscribe(r => {
+          console.log(r);
+          this.grupos = this.grupos.map(g => {
+            if (g.codigo === grupo.codigo) {
+              g.estado = r.estado;
+              g.observacion = motivo;
+            }
+            return g;
+          });
+          localStorage.setItem('pagos', JSON.stringify(this.grupos));
+        });
+      } else {
+      }
+    });
   }
   onSearch(form: any) {
     const grupos = JSON.parse(localStorage.getItem('grupos')) || [];

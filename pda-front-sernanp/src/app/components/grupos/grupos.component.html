@@ -38,8 +38,10 @@
                 <select ngModel name="estado" class="w20">
                   <option value="" selected>Todos</option>
                   <option value="1">Pendientes</option>
-                  <option value="2">Aceptados</option>
+                  <option value="2">Verificado</option>
                   <option value="3">Observados</option>
+                  <option value="4">Aceptados</option>
+                  <option value="5">Rechazados</option>
                 </select>
               </li>
               <li class="w-control-buttons">
@@ -148,12 +150,9 @@
                     </div>
                   </td>
                   <td>
-                    <div class="n-label">
-                      Documento
-                    </div>
-                    <div class="n-descrip">
-                      {{grupo.documento}}
-                    </div>
+                    <a *ngIf="grupo.documento" target="_blank" title="Descargar {{grupo.documento}}" href="{{urlFiles + grupo.documento}}">
+                      <i class="ace-icon fa fa-download"></i>
+                    </a>
                   </td>
                   <td>
                     <div class="n-label">
@@ -169,7 +168,7 @@
                     <div class="n-label">
                       Acción
                     </div>
-                    <div class="n-descrip">
+                    <div *ngIf="grupo.estado == 2 || grupo.estado == 3" class="n-descrip">
                       <button class="btn btn-white btn-sm btn-round" (click)="onAceptarGrupo(grupo)">
                         <i class="ace-icon fa fa-check"></i>
                         Aceptar
