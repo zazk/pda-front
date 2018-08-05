@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { Pax } from '../../models/pax';
 import * as moment from 'moment';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { Ruta } from '../../models/ruta';
 import { UserService } from '../../shared/services/user/user.service';
@@ -34,6 +34,7 @@ export class UpdateVisitantesComponent implements OnInit {
   ruta: number;
   typeID: number = 0;
   paises: any[] = [];
+
   constructor(private dialog: MatDialog, private service: UserService) {}
 
   ngOnInit() {
@@ -52,12 +53,16 @@ export class UpdateVisitantesComponent implements OnInit {
     this.loadScript();
   }
 
-  onSubmitPax(f: NgForm) {
-    const isDateValid = moment(f.value.nacimiento, 'DD-MM-YYYY').isValid();
-    if (this.fechaPax && !f.value.nacimiento && isDateValid) {
+  onSubmitPax(f: FormGroup) {
+    const isDateValid =
+      moment(f.value.nacimiento, 'DD-MM-YYYY').isValid() || this.fechaPax;
+    if (this.fechaPax) {
       f.value.nacimiento = this.fechaPax;
+      f.controls['fecha'].patchValue(this.fechaPax);
     }
-    if (f.valid && this.fechaPax && isDateValid) {
+    console.log('FORM', f.value, f.controls);
+
+    if (f.valid && isDateValid) {
       this.paxes.push(f.value);
       localStorage.setItem('paxes', JSON.stringify(this.paxes));
       f.reset();

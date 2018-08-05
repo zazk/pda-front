@@ -71,6 +71,10 @@
                     <i class="ace-icon fa fa-folder-o"></i>
                     Voucher
                   </th>
+                  <th>
+                    <i class="ace-icon fa fa-file"></i>
+                    Observación
+                  </th>
                 </tr>
               </thead>
 
@@ -97,6 +101,9 @@
                     <a class="btn btn-block btn-xs btn-primary" href="{{url}}/file/{{pago.voucher}}" target="_blank" data-rel="colorbox">
                       <i class="ace-icon fa fa-eye"></i>Ver
                     </a>
+                  </td>
+                  <td>
+                    <span *ngIf="pago.motivo">{{pago.motivo}}</span>
                   </td>
                 </tr>
               </tbody>

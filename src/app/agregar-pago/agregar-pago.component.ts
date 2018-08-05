@@ -117,11 +117,10 @@ export class AgregarPagoComponent implements OnInit {
     // link
     $('.date-picker').datepicker({
       autoclose: true,
-      endDate: new Date(),
+      maxDate: new Date(),
       todayHighlight: true,
       dateFormat: 'yy-mm-dd',
       onSelect: date => {
-        console.log('GOGOGO', date, this);
         this.fecha = date;
         this.form.controls['fecha'].patchValue(date);
       }
