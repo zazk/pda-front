@@ -22,11 +22,7 @@
         <div *ngIf="load" class="vert-offset-top-2">
           <div class="wancho-medium">
             <h4 class="header smaller lighter blue">
-              Grupo Nro. {{grupoActivo.codigo}}
-              |
-              {{fecha}}
-              |
-              Ruta: {{rutaActiva}}
+              Grupo Nro. {{grupoActivo.codigo}} | {{fecha}} | Ruta: {{rutaActiva}}
             </h4>
             <div class="table-header">
               {{paxes.length}} visitantes ingresados
@@ -73,7 +69,7 @@
               </table>
             </div>
             <div class="text-center">
-              <a class="btn" [routerLink]="['/revision-grupos/']">Revisar Grupos</a>
+              <a class="btn" [routerLink]="['/puesto/revision-grupos/']">Revisar Grupos</a>
             </div>
           </div>
         </div>

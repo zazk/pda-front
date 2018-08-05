@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { Pax } from "../../models/pax";
-import { UserService } from "../../shared/services/user/user.service";
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Pax } from '../../models/pax';
+import { UserService } from '../../shared/services/user/user.service';
 
 @Component({
-  selector: "app-control-visitantes",
-  templateUrl: "./control-visitantes.component.html",
+  selector: 'app-control-visitantes',
+  templateUrl: './control-visitantes.component.html',
   styles: []
 })
 export class ControlVisitantesComponent implements OnInit {
@@ -26,14 +26,14 @@ export class ControlVisitantesComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const codigo = params["codigo"];
-      this.grupos = JSON.parse(localStorage.getItem("grupos")) || [];
+      const codigo = params['codigo'];
+      this.grupos = JSON.parse(localStorage.getItem('grupos')) || [];
       this.service.consultaGrupo(codigo).subscribe(r => {
-        console.log("HEY GRUPO", r);
+        console.log('HEY GRUPO', r);
         this.grupoActivo = r.grupo;
         this.paxes = this.grupoActivo.visitantes;
         this.fecha = this.grupoActivo.fecha;
-        this.rutaActiva = JSON.parse(localStorage.getItem("rutas")).find(
+        this.rutaActiva = JSON.parse(localStorage.getItem('rutas')).find(
           obj => obj.srl_cod_ruta === parseInt(this.grupoActivo.ruta, 10)
         ).var_nombre;
         this.load = true;
@@ -41,29 +41,29 @@ export class ControlVisitantesComponent implements OnInit {
     });
   }
   onVerGrupos() {
-    this.router.navigate(["revision-grupos"]);
+    this.router.navigate(['/puesto/revision-grupos']);
   }
   updatePaxVerificado(option, event) {
-    console.log("CHECKED:", event.target.checked, "Option:", option);
+    console.log('CHECKED:', event.target.checked, 'Option:', option);
     this.grupoActivo.visitantes[option].asistio = event.target.checked;
-    console.log("GRUPO ACTIVO", this.grupoActivo.visitantes);
+    console.log('GRUPO ACTIVO', this.grupoActivo.visitantes);
   }
   checkAllPaxes(event) {
-    this.grupoActivo.visitantes =  this.grupoActivo.visitantes.map((v: Pax) => {
+    this.grupoActivo.visitantes = this.grupoActivo.visitantes.map((v: Pax) => {
       v.asistio = event.target.checked;
       return v;
     });
-    console.log("PAXES", this.grupoActivo.visitantes);
+    console.log('PAXES', this.grupoActivo.visitantes);
   }
   onFinalizar() {
-    this.grupoActivo.visitantes =  this.grupoActivo.visitantes.map((v: Pax) => {
-      if( v.asistio === null ){
+    this.grupoActivo.visitantes = this.grupoActivo.visitantes.map((v: Pax) => {
+      if (v.asistio === null) {
         v.asistio = false;
       }
       return v;
     });
-    localStorage.setItem("grupoActivo", JSON.stringify(this.grupoActivo));
-    console.log("GRUPO ACTIVO", this.grupoActivo);
-    this.router.navigate(["control-visitantes-verificados"]);
+    localStorage.setItem('grupoActivo', JSON.stringify(this.grupoActivo));
+    console.log('GRUPO ACTIVO', this.grupoActivo);
+    this.router.navigate(['control-visitantes-verificados']);
   }
 }

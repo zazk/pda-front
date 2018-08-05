@@ -22,11 +22,7 @@
         <div *ngIf="load" class="vert-offset-top-2">
           <div class="wancho-medium">
             <h4 class="header smaller lighter blue">
-              Grupo Nro. {{grupoActivo.codigo}}
-              |
-              {{fecha}}
-              |
-              Ruta: {{rutaActiva}}
+              Grupo Nro. {{grupoActivo.codigo}} | {{fecha}} | Ruta: {{rutaActiva}}
             </h4>
             <div class="table-header">
               {{paxes.length}} visitantes ingresados
@@ -71,21 +67,23 @@
                   </tr>
                 </tbody>
                 <tfoot>
-                  <tr><td colspan="4">
+                  <tr>
+                    <td colspan="4">
 
                       <form action="">
-                          <div>Adjuntar Documento INC:
+                        <div>Adjuntar Documento INC:
                           <label>
                             <input name="voucher" type="file" (change)="onFileSelect($event.target)" id="id-input-file-2" />
                           </label>
-                          </div>
+                        </div>
                       </form>
-                  </td></tr>
+                    </td>
+                  </tr>
                 </tfoot>
               </table>
             </div>
             <div class="text-center">
-              <a class="btn" [routerLink]="['/control-visitantes/',grupoActivo.id]">Cancelar</a>
+              <a class="btn" [routerLink]="['/puesto/control-visitantes/',grupoActivo.id]">Cancelar</a>
               <button type="button" class="btn btn-success" (click)="onVerificar()">Finalizar Verificación</button>
 
             </div>

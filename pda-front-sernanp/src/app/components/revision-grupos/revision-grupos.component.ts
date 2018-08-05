@@ -16,7 +16,7 @@ export class RevisionGruposComponent implements OnInit {
   itemsPage: number = 10;
   estados: any[] = [
     { text: 'Pendiente', class: 'warning' },
-    { text: 'Registrado', class: 'success' },
+    { text: 'Aceptado', class: 'success' },
     { text: 'Observado', class: 'danger' }
   ];
   constructor(private router: Router, private service: UserService) {}
@@ -24,8 +24,8 @@ export class RevisionGruposComponent implements OnInit {
   ngOnInit() {
     this.grupos = JSON.parse(localStorage.getItem('grupos')) || [];
     this.service.listGruposHoy().subscribe((grupos: Grupo[]) => {
-      this.grupos = grupos;
-      localStorage.setItem('grupos', JSON.stringify(this.grupos));
+      localStorage.setItem('grupos', JSON.stringify(grupos));
+      this.grupos = grupos.filter((g: Grupo) => g.estado === 1);
       console.log('GRUPOS??????', grupos);
     });
 

@@ -13,7 +13,7 @@ declare var bootbox: any;
 export class PagosComponent implements OnInit {
   pagos: Pago[] = [];
   url: string;
-  indexPage: number = 1;
+  indexPage: number = 0;
   itemsPage: number = 10;
   estados: any[] = [
     { text: 'Pendiente', class: 'warning' },
@@ -30,7 +30,8 @@ export class PagosComponent implements OnInit {
     const pagos = JSON.parse(localStorage.getItem('pagos')) || [];
     this.pagos = pagos.filter((p: Pago) => {
       if (form.operador) {
-        return p.operador.indexOf(form.operador) >= 0;
+        const termOperador = form.operador.toLowerCase();
+        return p.operador.toLowerCase().indexOf(termOperador) >= 0;
       }
       if (form.operacion) {
         return p.operacion.indexOf(form.operacion) >= 0;
