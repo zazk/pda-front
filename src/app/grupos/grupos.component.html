@@ -134,7 +134,7 @@
             </table>
 
             <div class="text-center">
-              <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
+              <pagination-controls *ngIf="grupos.length" previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="indexPage = $event"></pagination-controls>
               <a class="btn btn-md btn-success" [routerLink]="['/home']">+ Agregar Grupo</a>
             </div>
 

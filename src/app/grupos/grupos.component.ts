@@ -76,8 +76,6 @@ export class GruposComponent implements OnInit {
   // JQuery Functions
   loadScripts() {
     $('#datepicker').datepicker({
-      minDate: 0,
-      startDate: new Date(),
       todayHighlight: true,
       dateFormat: 'dd-mm-yy',
       onSelect: date => {
