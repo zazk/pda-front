@@ -16,7 +16,6 @@ export class UserService {
 
   set theUser(value: any) {
     this.user.next(value); // this will make sure to tell every subscriber about the change.
-    console.log('HERE WE SET');
     localStorage.setItem('currentUser', value);
   }
 
@@ -258,5 +257,9 @@ export class UserService {
     const formData: FormData = new FormData();
     formData.append('imagen', file, file.name);
     return this.http.post(this.url + 'upload-documento-grupo', formData);
+  }
+
+  getReporteRutas(): Observable<any> {
+    return this.http.get(this.url + 'reporte_operador');
   }
 }

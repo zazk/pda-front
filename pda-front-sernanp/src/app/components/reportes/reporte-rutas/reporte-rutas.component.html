@@ -1,3 +1,48 @@
-<p>
-  reporte-rutas works!
-</p>
+<!-- menu responsive	 -->
+<div class="menu-mobile-open fa fa-bars"></div>
+<div class="menu-mobile-close fa fa-times"></div>
+<div class="menu-overlay"></div>
+<div class="menu-sidebar">
+  <div class="menu-sidebar-cnt"></div>
+</div>
+<!-- menu responsive	 -->
+
+<div class="cnt-wrapper">
+  <div class="wrapper">
+    <app-navbar></app-navbar>
+    <div class="main-container">
+      <div class="text-right n-navprimary">
+        <app-breadcrumbs></app-breadcrumbs>
+      </div>
+      <div class="container ">
+        <h3 class="header orange vert-offset-top-1">Reporte por Rutas</h3>
+        <div class="vert-offset-top-2 wancho-regula">
+          <div class="table-header">
+            Reporte Rutas
+          </div>
+          <div>
+            <table class="n-table-responsive table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Ruta</th>
+                  <th>Nacionales</th>
+                  <th>Extranjeros</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ruta of rutas; let i = index">
+                  <td>{{ruta.var_nombre}}</td>
+                  <td>{{ruta.nacional}}</td>
+                  <td>{{ruta.extranjero}}</td>
+                  <td>{{ruta.total}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.main-container -->
+  </div>
+</div>

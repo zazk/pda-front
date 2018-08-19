@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-reporte-rutas',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reporte-rutas.component.css']
 })
 export class ReporteRutasComponent implements OnInit {
-
-  constructor() { }
+  rutas: any[] = [];
+  constructor(private service: UserService) {}
 
   ngOnInit() {
+    this.service.getReporteRutas().subscribe(r => {
+      this.rutas = r;
+    });
   }
-
 }
