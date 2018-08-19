@@ -22,6 +22,11 @@ import { VerVisitantesGrupoComponent } from './components/ver-visitantes-grupo/v
 import { PuestoGruposComponent } from './components/puesto-grupos/puesto-grupos.component';
 import { ValidateComponent } from './components/validate/validate.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ReporteRutasComponent } from './components/reportes/reporte-rutas/reporte-rutas.component';
+import { ReporteAbonosComponent } from './components/reportes/reporte-abonos/reporte-abonos.component';
+import { ReporteRecaudacionComponent } from './components/reportes/reporte-recaudacion/reporte-recaudacion.component';
+import { ReporteRecaudacionRutaComponent } from './components/reportes/reporte-recaudacion-ruta/reporte-recaudacion-ruta.component';
+import { ReporteVisitantesComponent } from './components/reportes/reporte-visitantes/reporte-visitantes.component';
 
 const AppRouter: Routes = [
   {
@@ -45,6 +50,31 @@ const AppRouter: Routes = [
   {
     path: 'cambio-clave',
     component: CambioClaveComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'reportes/rutas',
+    component: ReporteRutasComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'reportes/abonos',
+    component: ReporteAbonosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'reportes/recaudacion',
+    component: ReporteRecaudacionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'reportes/recaudacion-ruta',
+    component: ReporteRecaudacionRutaComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'reportes/visitantes',
+    component: ReporteVisitantesComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -105,7 +135,12 @@ const AppRouter: Routes = [
     ControlVisitantesVerificadosComponent,
     VerVisitantesGrupoComponent,
     PuestoGruposComponent,
-    ValidateComponent
+    ValidateComponent,
+    ReporteRutasComponent,
+    ReporteAbonosComponent,
+    ReporteRecaudacionComponent,
+    ReporteRecaudacionRutaComponent,
+    ReporteVisitantesComponent
   ],
   imports: [
     BrowserModule,
