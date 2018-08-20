@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-reporte-abonos',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class ReporteAbonosComponent implements OnInit {
-
-  constructor() { }
+  abonos: any[] = [];
+  constructor(private service: UserService) {}
 
   ngOnInit() {
+    this.service.getReporteAbonos().subscribe(r => {
+      this.abonos = r;
+    });
   }
-
 }

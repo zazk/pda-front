@@ -262,4 +262,16 @@ export class UserService {
   getReporteRutas(): Observable<any> {
     return this.http.get(this.url + 'reporte_operador');
   }
+  getReporteAbonos(): Observable<any> {
+    return this.http.get(this.url + 'reporte_abonos');
+  }
+  getReporteRecaudacion(): Observable<any> {
+    return this.http.get(this.url + 'reporte_recaudacion');
+  }
+  getReporteRecaudacionRuta(): Observable<any> {
+    return this.http.get(this.url + 'reporte_recaudacion_ruta');
+  }
+  getReporteVisitantes(): Observable<any> {
+    return this.http.get(this.url + 'reporte_visitantes');
+  }
 }
